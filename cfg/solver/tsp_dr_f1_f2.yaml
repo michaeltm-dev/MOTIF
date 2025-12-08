@@ -1,0 +1,20 @@
+# @package _global_.solver
+name: Traveling Salesman Problem with Deconstruction-Repair
+problem: TSP
+algorithm: DR
+base_path: ${paths.problems_dir}/tsp_dr
+eval_script: ${.base_path}/eval.py
+active: tsp_dr
+base_module: dr
+
+# Functions to optimize
+functions:
+  - id: F1
+    name: edge_score
+    path: ${solver.base_path}/F1.py
+    description: "Evaluate edge desirability for intelligent tour construction. Analyzes distance relationships and city characteristics to provide scoring guidance for greedy initialization, enabling the genetic algorithm to start with high-quality foundation solutions."
+
+  - id: F2
+    name: city_badness
+    path: ${solver.base_path}/F2.py
+    description: "Calculate city badness scores for strategic deconstruction decisions. Identifies problematic cities within tour context by analyzing local tour quality, guiding selective removal during crossover's deconstruction phase for effective genetic material exchange."

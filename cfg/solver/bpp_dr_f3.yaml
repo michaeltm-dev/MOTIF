@@ -1,0 +1,15 @@
+# @package _global_.solver
+name: Bin Packing Problem with Deconstruction-Repair
+problem: BPP
+algorithm: DR
+base_path: ${paths.problems_dir}/bpp_dr
+eval_script: ${.base_path}/eval.py
+active: bpp_dr
+base_module: dr
+
+# Functions to optimize
+functions:
+  - id: F3
+    name: insert_position
+    path: ${solver.base_path}/F3.py
+    description: "Determine optimal insertion positions for intelligent permutation repair. Evaluates item relationships and permutation structure to find best placement points during reconstruction, ensuring high-quality solution generation in the repair process."

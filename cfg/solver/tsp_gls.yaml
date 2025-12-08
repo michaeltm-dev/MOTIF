@@ -1,0 +1,15 @@
+# @package _global_.solver
+name: Traveling Salesman Problem with Guided Local Search
+problem: TSP
+algorithm: GLS
+base_path: ${paths.problems_dir}/tsp_gls
+eval_script: ${.base_path}/eval.py
+active: tsp_gls
+base_module: gls
+
+# Functions to optimize
+functions:
+  - id: F1
+    name: generate_guide_matrix
+    path: ${solver.base_path}/F1.py
+    description: "Generate edge importance matrix for intelligent penalty guidance. Analyzes distance patterns to determine edge criticality and sets importance values that guide penalty selection mechanisms for effective search diversification."

@@ -1,0 +1,20 @@
+# @package _global_.solver
+name: Bin Packing Problem with Deconstruction-Repair
+problem: BPP
+algorithm: DR
+base_path: ${paths.problems_dir}/bpp_dr
+eval_script: ${.base_path}/eval.py
+active: bpp_dr
+base_module: dr
+
+# Functions to optimize
+functions:
+  - id: F1
+    name: item_compatibility
+    path: ${solver.base_path}/F1.py
+    description: "Evaluate item compatibility for intelligent permutation construction. Analyzes size complementarity and capacity constraints to guide greedy initialization, enabling the algorithm to start with high-quality foundation permutations that maximize bin utilization efficiency."
+
+  - id: F2
+    name: item_badness
+    path: ${solver.base_path}/F2.py
+    description: "Calculate item badness scores for strategic deconstruction decisions. Identifies problematic items by analyzing size characteristics and placement difficulty, guiding selective removal during deconstruction phase for effective solution diversification."

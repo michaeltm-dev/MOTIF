@@ -1,0 +1,15 @@
+# @package _global_.solver
+name: Traveling Salesman Problem with Deconstruction-Repair
+problem: TSP
+algorithm: DR
+base_path: ${paths.problems_dir}/tsp_dr
+eval_script: ${.base_path}/eval.py
+active: tsp_dr
+base_module: dr
+
+# Functions to optimize
+functions:
+  - id: F3
+    name: insert_position
+    path: ${solver.base_path}/F3.py
+    description: "Determine optimal insertion positions for intelligent tour repair. Evaluates tour structure and city relationships to find best placement points during reconstruction, ensuring high-quality offspring generation in the genetic crossover process."

@@ -1,0 +1,25 @@
+# @package _global_.solver
+name: Capacitated Vehicle Routing Problem with Ant Colony Optimization
+problem: CVRP
+algorithm: ACO
+base_path: ${paths.problems_dir}/cvrp_aco
+eval_script: ${.base_path}/eval.py
+active: cvrp_aco
+base_module: aco
+
+# Functions to optimize
+functions:
+  - id: F1
+    name: initialize
+    path: ${solver.base_path}/F1.py
+    description: "Initialize heuristic and pheromone matrices for vehicle routing. Creates efficient representations of routing desirability by balancing distance costs, demand patterns, and capacity constraints, enabling vehicles to make intelligent customer selection decisions."
+
+  - id: F2
+    name: compute_probabilities
+    path: ${solver.base_path}/F2.py
+    description: "Generate transition probabilities for capacity-aware route construction. Combines pheromone trails with heuristic information to guide vehicle decisions, adapting the balance between exploration and exploitation throughout the optimization process."
+
+  - id: F3
+    name: update_pheromone
+    path: ${solver.base_path}/F3.py
+    description: "Update guidance system based on routing solution quality. Implements reinforcement learning that strengthens edges used in efficient routes while allowing exploration of alternative routing strategies through controlled evaporation."

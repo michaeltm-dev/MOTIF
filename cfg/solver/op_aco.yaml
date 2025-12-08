@@ -1,0 +1,20 @@
+# @package _global_.solver
+name: Orienteering Problem with Ant Colony Optimization
+problem: OP
+algorithm: ACO
+base_path: ${paths.problems_dir}/op_aco
+eval_script: ${.base_path}/eval.py
+active: op_aco
+base_module: aco
+
+# Functions to optimize
+functions:
+  - id: F1
+    name: initialize
+    path: ${solver.base_path}/F1.py
+    description: "Initialize heuristic and pheromone matrices. Creates efficient representations of the desirability of node transitions based on prize values, distances between nodes, and the maximum tour length constraint."
+
+  - id: F2
+    name: update_pheromone
+    path: ${solver.base_path}/F2.py
+    description: "Update pheromone levels based on ant solutions. Implements a reinforcement mechanism that strengthens edges used in high-quality tours, creating an adaptive memory of the colony's collective experience."

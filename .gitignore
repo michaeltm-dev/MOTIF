@@ -1,0 +1,15 @@
+.private/
+.env
+env
+__pycache__/
+outputs/
+logger/
+*.ipynb 
+pics/
+bin/
+problems/tsp_cons/benchmark/
+problems/tsp_cons/solutions
+benchmark/
+solutions
+ablation
+results/

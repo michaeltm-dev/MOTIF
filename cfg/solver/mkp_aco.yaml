@@ -1,0 +1,25 @@
+# @package _global_.solver
+name: Multiple Knapsack Problem with Ant Colony Optimization
+problem: MKP
+algorithm: ACO
+base_path: ${paths.problems_dir}/mkp_aco
+eval_script: ${.base_path}/eval.py
+active: mkp_aco
+base_module: aco
+
+# Functions to optimize
+functions:
+  - id: F1
+    name: initialize
+    path: ${solver.base_path}/F1.py
+    description: "Initialize heuristic and pheromone matrices for Multiple Knapsack Problem. Creates efficient representations of item desirability by balancing prize value against resource consumption, enabling ants to make intelligent selection decisions."
+
+  - id: F2
+    name: compute_probabilities
+    path: ${solver.base_path}/F2.py
+    description: "Generate unnormalized transition weights for item selection based on pheromone intensity and heuristic desirability. Combines learned experience with local information to guide ant decisions in capacity-constrained environments."
+
+  - id: F3
+    name: update_pheromone
+    path: ${solver.base_path}/F3.py
+    description: "Update pheromone levels based on solution quality for knapsack optimization. Implements reinforcement learning that strengthens items used in high-value solutions while maintaining exploration through evaporation."

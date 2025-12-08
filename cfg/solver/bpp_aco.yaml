@@ -1,0 +1,20 @@
+# @package _global_.solver
+name: Bin Packing Problem with Ant Colony Optimization
+problem: BPP
+algorithm: ACO
+base_path: ${paths.problems_dir}/bpp_aco
+eval_script: ${.base_path}/eval.py
+active: bpp_aco
+base_module: aco
+
+# Functions to optimize
+functions:
+  - id: F1
+    name: initialize
+    path: ${solver.base_path}/F1.py
+    description: "Initialize heuristic and pheromone matrices for bin packing optimization. Creates intelligent representations of item placement desirability by analyzing size compatibility patterns and setting exploration incentives for efficient bin utilization strategies."
+
+  - id: F2
+    name: update_pheromone
+    path: ${solver.base_path}/F2.py
+    description: "Update pheromone levels based on bin packing solution quality. Implements adaptive learning that reinforces successful item placement patterns while maintaining exploration of alternative packing strategies through controlled evaporation."

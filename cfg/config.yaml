@@ -1,0 +1,33 @@
+defaults:
+  - _self_
+  - solver: tsp_aco
+  - override hydra/job_logging: custom
+  - override hydra/output: custom
+
+hydra:
+  job:
+    name: competitive_mcts
+    chdir: False
+  output_subdir: .hydra
+  verbose: false
+  hydra_logging:
+    root:
+      level: INFO
+      handlers: []
+
+# LLM client configuration
+llm:
+  model: gpt-4o-mini
+  temperature: 1.0
+
+# Competitive MCTS configuration
+mcts:
+  outer_iterations: 20 # Number of outer iterations (tree selection)
+  inner_iterations: 10 # Number of competitive turns per selected tree
+  final_iterations: 10 # Number of iterations for the final round
+
+# Paths configuration
+paths:
+  project_root: ${hydra:runtime.cwd}
+  results_dir: ${paths.project_root}/results
+  problems_dir: ${paths.project_root}/problems
