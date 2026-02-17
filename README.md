@@ -171,7 +171,19 @@ functions:
 
 ## 📚 6. Citation
 
-Waiting for AAAI 2026 publication details.
+If you find MOTIF useful in your research, please consider citing our paper:
+
+```bibtex
+@inproceedings{nguyen2026motif,
+  title     = {MOTIF: Multi-Strategy Optimization via Turn-based Interactive Framework},
+  author    = {Nguyen, Viet Tuan Kiet and Dao, Tung and Tran, Cong Dao and Huynh, Thi Thanh Binh},
+  booktitle = {Proceedings of the AAAI Conference on Artificial Intelligence (AAAI)},
+  year      = {2026},
+  address   = {Singapore},
+  month     = {January},
+  note      = {Oral Presentation}
+}
+```
 
 ---
 
