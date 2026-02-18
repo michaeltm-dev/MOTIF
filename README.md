@@ -176,7 +176,7 @@ If you find MOTIF useful in your research, please consider citing our paper:
 ```bibtex
 @inproceedings{nguyen2026motif,
   title     = {MOTIF: Multi-Strategy Optimization via Turn-based Interactive Framework},
-  author    = {Nguyen, Viet Tuan Kiet and Dao, Tung and Tran, Cong Dao and Huynh, Thi Thanh Binh},
+  author    = {Kiet, Nguyen Viet Tuan and Tung, Dao Van and Dao, Tran Cong and Binh, Huynh Thi Thanh},
   booktitle = {Proceedings of the AAAI Conference on Artificial Intelligence (AAAI)},
   year      = {2026},
   address   = {Singapore},
