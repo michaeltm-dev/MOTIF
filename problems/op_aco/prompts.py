@@ -12,6 +12,7 @@ RULES = """RULES:
 - Use only inputs passed to the function.
 - You may define simple hyperparameters inside the function.
 - Depot is node 0.
+- Do not include docstrings or long comments.
 - Handle edge cases and return numerically stable outputs.
 ---
 """
@@ -24,9 +25,13 @@ SIGNATURE:
 import numpy as np
 
 def initialize(prize: np.ndarray, distance: np.ndarray, maxlen: float) -> tuple[np.ndarray, np.ndarray]:
-    \"\"\"Return heuristic and pheromone matrices, both shape (n, n).\"\"\"
     pass
 ```
+- `prize`: reward for visiting each node.
+- `distance`: pairwise node distances.
+- `maxlen`: maximum allowed tour length.
+- `heuristic`: returned transition desirability prior.
+- `pheromone`: returned initial search memory.
 
 HINT: Combine prize, travel distance, depot relation, and remaining budget pressure to score transitions.
 
@@ -41,9 +46,14 @@ SIGNATURE:
 import numpy as np
 
 def update_pheromone(pheromone: np.ndarray, sols: list, objs: np.ndarray, it: int, n_iterations: int) -> np.ndarray:
-    \"\"\"Return updated pheromone matrix, shape (n, n).\"\"\"
     pass
 ```
+- `pheromone`: current transition memory.
+- `sols`: node sequences constructed by ants.
+- `objs`: collected prize for each solution.
+- `it`: current search iteration.
+- `n_iterations`: total search iterations.
+- `return`: updated pheromone matrix.
 
 HINT: Reinforce high-prize node sequences while preserving enough evaporation for exploration.
 

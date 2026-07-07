@@ -12,6 +12,7 @@ RULES = """RULES:
 - Use only inputs passed to the function.
 - You may define simple hyperparameters inside the function.
 - Node 0 is the depot; customers are nodes 1..n-1.
+- Do not include docstrings or long comments.
 - Handle edge cases and return numerically stable outputs.
 ---
 """
@@ -24,9 +25,14 @@ SIGNATURE:
 import numpy as np
 
 def edge_score(i: int, j: int, distances: np.ndarray, demands: np.ndarray, capacity: int) -> float:
-    \"\"\"Return desirability score for edge (i, j); higher is better.\"\"\"
     pass
 ```
+- `i`: first node.
+- `j`: next node.
+- `distances`: pairwise node distances.
+- `demands`: demand of each node.
+- `capacity`: vehicle capacity.
+- `return`: edge desirability score; higher is better.
 
 HINT: Score edges by distance, demand compatibility, depot/customer role, and capacity pressure.
 
@@ -42,9 +48,14 @@ import numpy as np
 
 def customer_badness(customer_idx: int, permutation: list[int], distances: np.ndarray,
                     demands: np.ndarray, capacity: int) -> float:
-    \"\"\"Return badness of customer at customer_idx; higher is removed earlier.\"\"\"
     pass
 ```
+- `customer_idx`: customer position in `permutation`.
+- `permutation`: current customer ordering.
+- `distances`: pairwise node distances.
+- `demands`: demand of each node.
+- `capacity`: vehicle capacity.
+- `return`: removal badness; higher is removed earlier.
 
 HINT: Score customers with high routing disruption or demand difficulty as removal candidates.
 
@@ -60,9 +71,14 @@ import numpy as np
 
 def insert_position(customer: int, permutation: list[int], distances: np.ndarray,
                    demands: np.ndarray, capacity: int) -> int:
-    \"\"\"Return insertion index in [0, len(permutation)].\"\"\"
     pass
 ```
+- `customer`: customer to insert.
+- `permutation`: current customer ordering.
+- `distances`: pairwise node distances.
+- `demands`: demand of each node.
+- `capacity`: vehicle capacity.
+- `return`: insertion index.
 
 HINT: Insert where incremental routing cost and capacity pressure are lowest.
 

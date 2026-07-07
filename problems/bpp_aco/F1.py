@@ -1,28 +1,6 @@
 import numpy as np
 
 def initialize(demands: np.ndarray, capacity: int) -> tuple[np.ndarray, np.ndarray]:
-    """
-    Initialize heuristic and pheromone matrices for Bin Packing Problem.
-    
-    This strategy creates the foundation for intelligent item placement by:
-    - Transforming demand information into placement desirability
-    - Setting initial pheromone levels for exploration guidance
-    
-    Parameters
-    ----------
-    demands : np.ndarray, shape (n,)
-        Demand/size of each item to be packed.
-    capacity : int
-        Bin capacity constraint.
-        
-    Returns
-    -------
-    tuple[np.ndarray, np.ndarray]
-        heuristic : np.ndarray, shape (n, n)
-            Heuristic matrix representing desirability of item combinations.
-        pheromone : np.ndarray, shape (n, n)
-            Initial pheromone levels for exploration guidance.
-    """
     n = len(demands)
     
     # Basic heuristic: normalized demand ratios

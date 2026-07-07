@@ -11,6 +11,7 @@ RULES = """RULES:
 - Keep the exact function signature.
 - Use only inputs passed to the function.
 - You may define simple hyperparameters inside the function.
+- Do not include docstrings or long comments.
 - Handle edge cases and return numerically stable outputs.
 ---
 """
@@ -23,9 +24,10 @@ SIGNATURE:
 import numpy as np
 
 def generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:
-    \"\"\"Return edge importance matrix, shape (n, n).\"\"\"
     pass
 ```
+- `distance_matrix`: pairwise city distances.
+- `return`: guide values for penalizing weak edges.
 
 HINT: Combine distance, nearest-neighbor structure, and edge criticality to guide penalty selection.
 

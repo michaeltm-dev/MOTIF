@@ -1,25 +1,6 @@
 import numpy as np
 
 def insert_position(item: int, permutation: list[int], demands: np.ndarray, capacity: int) -> int:
-    """
-    Find best position to insert item in permutation for BPP.
-    
-    Parameters
-    ----------
-    item : int
-        Item ID to insert
-    permutation : list[int]
-        Current permutation of items
-    demands : np.ndarray, shape (n,)
-        Size/demand of each item
-    capacity : int
-        Bin capacity constraint
-        
-    Returns
-    -------
-    int
-        Best position index to insert item (0 to len(permutation))
-    """
     if len(permutation) == 0:
         return 0
     

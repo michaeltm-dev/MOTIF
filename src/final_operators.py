@@ -49,6 +49,7 @@ RULES:
 - Keep the exact function signature.
 - Beat the fixed baseline and the opponent if possible.
 - Consider interactions with the other strategies.
+- Do not include docstrings or long comments.
 - Keep reasoning concise (50 words max).
 ---"""
 

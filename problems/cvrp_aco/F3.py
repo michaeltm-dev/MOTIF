@@ -1,27 +1,6 @@
 import numpy as np
 
 def update_pheromone(pheromone, solutions, costs, iteration, n_iterations):
-    """
-    Update pheromone levels for CVRP based on solution quality.
-    
-    Parameters
-    ----------
-    pheromone : np.ndarray, shape (n, n)
-        Current pheromone levels.
-    solutions : list
-        List of solutions (each solution is a list of routes).
-    costs : list
-        List of solution costs.
-    iteration : int
-        Current iteration number.
-    n_iterations : int
-        Total number of iterations.
-        
-    Returns
-    -------
-    np.ndarray, shape (n, n)
-        Updated pheromone levels.
-    """
     # Evaporation
     decay = 0.9
     pheromone = pheromone * decay

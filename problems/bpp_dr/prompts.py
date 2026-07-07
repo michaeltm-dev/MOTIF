@@ -11,6 +11,7 @@ RULES = """RULES:
 - Keep the exact function signature.
 - Use only inputs passed to the function.
 - You may define simple hyperparameters inside the function.
+- Do not include docstrings or long comments.
 - Handle edge cases and return numerically stable outputs.
 ---
 """
@@ -23,9 +24,13 @@ SIGNATURE:
 import numpy as np
 
 def item_compatibility(i: int, j: int, demands: np.ndarray, capacity: int) -> float:
-    \"\"\"Return compatibility score for placing items i and j near each other; higher is better.\"\"\"
     pass
 ```
+- `i`: first item.
+- `j`: next item.
+- `demands`: item sizes.
+- `capacity`: bin capacity.
+- `return`: item compatibility score; higher is better.
 
 HINT: Score item pairs by size complementarity and expected capacity utilization.
 
@@ -40,9 +45,13 @@ SIGNATURE:
 import numpy as np
 
 def item_badness(item_idx: int, permutation: list[int], demands: np.ndarray, capacity: int) -> float:
-    \"\"\"Return badness of item at item_idx in the permutation; higher is removed earlier.\"\"\"
     pass
 ```
+- `item_idx`: item position in `permutation`.
+- `permutation`: current item ordering.
+- `demands`: item sizes.
+- `capacity`: bin capacity.
+- `return`: removal badness; higher is removed earlier.
 
 HINT: Score items that make bins hard to fill or disturb local size structure as worse.
 
@@ -57,9 +66,13 @@ SIGNATURE:
 import numpy as np
 
 def insert_position(item: int, permutation: list[int], demands: np.ndarray, capacity: int) -> int:
-    \"\"\"Return insertion index in [0, len(permutation)].\"\"\"
     pass
 ```
+- `item`: item to insert.
+- `permutation`: current item ordering.
+- `demands`: item sizes.
+- `capacity`: bin capacity.
+- `return`: insertion index.
 
 HINT: Insert where local size compatibility and bin utilization are likely to improve most.
 
