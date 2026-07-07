@@ -1,82 +1,41 @@
-PROBLEM_DESCRIPTION = """
-You are participating in a competitive algorithmic optimization challenge.
+SYSTEM_PROMPT = (
+    "You are an expert in the domain of optimization heuristics. "
+    "Your task is to design heuristics that can effectively solve optimization problems."
+)
 
-GAME SETUP:
-- Two players (P1 and P2) compete to create the best implementation
-- Goal: Design strategies that maximize total prize while respecting capacity constraints
-- Your implementations will be evaluated against a baseline and your opponent
-- Better performance than both baseline and opponent earns maximum reward
-
-PROBLEM CONTEXT:
-- Task: Find optimal item selection for multiple knapsack constraints
-- All weights are normalized such that the constraints are 1.0 after normalization
-- The problem involves n items and m constraints
-- Need intelligent strategies for item selection and constraint management
+PROBLEM = """PROBLEM: Multiple Knapsack Problem.
+OBJECTIVE: Maximize total prize under multiple normalized capacity constraints.
 """
 
-CONSTRAINTS = """
-<constraints>
-1. DO NOT modify the method signature by adding new parameters, even optional ones with None defaults.
-2. Only use data that is actually passed via the provided parameters.
-3. If you need additional information or metrics, derive them algorithmically from the existing parameters.
-4. Focus on extracting meaningful patterns from the provided data rather than relying on external inputs.
-5. Inside the function body, you can declare new hyperparameters with reasonable default values.
-</constraints>
+RULES = """RULES:
+- Keep the exact function signature; do not add optional parameters.
+- Use only inputs passed to the function.
+- You may define simple hyperparameters inside the function.
+- Handle edge cases and return numerically stable outputs.
+---
 """
 
-F1 = f"""
-<role>
-You are a competitive algorithm designer specializing in knapsack optimization strategies.
-</role>
+F1 = f"""{PROBLEM}
+TASK: Implement an initialization heuristic.
 
-<task>
-Implement the initialization strategy that sets up guidance matrices for intelligent item selection:
-
+SIGNATURE:
 ```python
 import numpy as np
 
 def initialize(prize: np.ndarray, weight: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
-    \"\"\"
-    Initialize heuristic and pheromone matrices for Multiple Knapsack Problem.
-    
-    This strategy creates the foundation for intelligent item selection by:
-    - Transforming prize and weight information into selection desirability
-    - Balancing value efficiency with constraint satisfaction
-    - Setting up exploration incentives for optimal item discovery
-    
-    Parameters
-    ----------
-    prize : np.ndarray, shape (n,)
-        Prize values for each item.
-    weight : np.ndarray, shape (n, m)
-        Weight matrix for each item across m constraints.
-        
-    Returns
-    -------
-    tuple[np.ndarray, np.ndarray]
-        heuristic : np.ndarray, shape (n,)
-            Heuristic values for each item based on prize-to-weight efficiency.
-        pheromone : np.ndarray, shape (n,)
-            Initial pheromone levels for item selection guidance.
-    \"\"\"
-    # Your implementation here
+    \"\"\"Return item heuristic and pheromone vectors.\"\"\"
     pass
 ```
-</task>
 
-{CONSTRAINTS}
+HINT: Combine prize, total weight burden, and bottleneck constraints to estimate item desirability.
 
-{PROBLEM_DESCRIPTION}
+{RULES}
 """
 
-F2 = f"""
-<role>
-You are a competitive algorithm designer specializing in knapsack optimization strategies.
-</role>
+F2 = f"""{PROBLEM}
+TASK: Implement an item-selection weight heuristic.
 
-<task>
-Implement the probability computation strategy that generates base transition weights for item selection:
-
+SIGNATURE:
 ```python
 import numpy as np
 
@@ -86,84 +45,28 @@ def compute_probabilities(
     iteration: int,
     n_iterations: int
 ) -> np.ndarray:
-    \"\"\"
-    Generate unnormalized transition weights for item selection based on pheromone and heuristic.
-    
-    This strategy creates base probability weights that will be combined with feasibility masks:
-    - Combines learned experience (pheromone) with local value information (heuristic)
-    - Adapts influence parameters based on optimization progress
-    - Provides foundation weights for capacity-aware item selection
-    
-    Parameters
-    ----------
-    pheromone : np.ndarray, shape (n+1,)
-        Current pheromone levels (including dummy node).
-    heuristic : np.ndarray, shape (n+1,)
-        Heuristic desirability values (including dummy node).
-    iteration : int
-        Current iteration number.
-    n_iterations : int
-        Total number of iterations.
-        
-    Returns
-    -------
-    np.ndarray, shape (n+1,)
-        Unnormalized transition weights for item selection.
-    \"\"\"
-    # Your implementation here
+    \"\"\"Return unnormalized item-selection weights.\"\"\"
     pass
 ```
-</task>
 
-{CONSTRAINTS}
+HINT: Balance pheromone and heuristic signals while keeping the dummy node and feasibility masks usable.
 
-{PROBLEM_DESCRIPTION}
+{RULES}
 """
 
-F3 = f"""
-<role>
-You are a competitive algorithm designer specializing in knapsack optimization strategies.
-</role>
+F3 = f"""{PROBLEM}
+TASK: Implement a pheromone update heuristic.
 
-<task>
-Implement the learning strategy that updates guidance based on solution quality:
-
+SIGNATURE:
 ```python
 import numpy as np
 
 def update_pheromone(pheromone: np.ndarray, sols: np.ndarray, objs: np.ndarray, it: int, n_iterations: int) -> np.ndarray:
-    \"\"\"
-    Update pheromone levels based on solutions for the Multiple Knapsack Problem.
-    
-    This strategy manages the learning mechanism by:
-    - Reducing old pheromone information (evaporation)
-    - Reinforcing successful item selections based on total prize value
-    - Balancing memory persistence with new solution discoveries
-    
-    Parameters
-    ----------
-    pheromone : np.ndarray, shape (n+1,)
-        Current pheromone levels (including dummy node).
-    sols : np.ndarray
-        Solutions constructed by ants, containing indices of selected items.
-    objs : np.ndarray, shape (n_ants,)
-        Objective values (total prize) of solutions.
-    it : int
-        Current iteration number.
-    n_iterations : int
-        Total number of iterations.
-        
-    Returns
-    -------
-    np.ndarray, shape (n+1,)
-        Updated pheromone levels after learning from solution quality.
-    \"\"\"
-    # Your implementation here
+    \"\"\"Return updated item pheromone vector.\"\"\"
     pass
 ```
-</task>
 
-{CONSTRAINTS}
+HINT: Reinforce items from high-prize feasible solutions and evaporate old trails conservatively.
 
-{PROBLEM_DESCRIPTION}
+{RULES}
 """

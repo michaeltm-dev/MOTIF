@@ -1,117 +1,51 @@
-PROBLEM_DESCRIPTION = """
-You are participating in a competitive algorithmic optimization challenge.
+SYSTEM_PROMPT = (
+    "You are an expert in the domain of optimization heuristics. "
+    "Your task is to design heuristics that can effectively solve optimization problems."
+)
 
-GAME SETUP:
-- Two players (P1 and P2) compete to create the best implementation
-- Goal: Design strategies that maximize prize collection while respecting tour length constraints
-- Your implementations will be evaluated against a baseline and your opponent
-- Better performance than both baseline and opponent earns maximum reward
-
-PROBLEM CONTEXT:
-- Task: Find optimal subtours that maximize collected prizes
-- Nodes have prize values and are connected by distance constraints
-- Must start and end at depot (node 0) within maximum tour length
-- Need intelligent strategies for node selection and tour construction
+PROBLEM = """PROBLEM: Orienteering Problem.
+OBJECTIVE: Maximize collected prize while staying within the maximum tour length.
 """
 
-CONSTRAINTS = """
-<constraints>
-1. DO NOT modify the method signature - keep parameters exactly as specified
-2. Declare hyperparameters with reasonable defaults inside function body
-3. Ensure code is syntactically correct and handles edge cases
-</constraints>
+RULES = """RULES:
+- Keep the exact function signature.
+- Use only inputs passed to the function.
+- You may define simple hyperparameters inside the function.
+- Depot is node 0.
+- Handle edge cases and return numerically stable outputs.
+---
 """
 
-F1 = f"""
-<role>
-You are a competitive algorithm designer specializing in prize collection optimization strategies.
-</role>
+F1 = f"""{PROBLEM}
+TASK: Implement an initialization heuristic.
 
-<task>
-Implement the initialization strategy that sets up guidance matrices for intelligent node selection:
-
+SIGNATURE:
 ```python
 import numpy as np
 
 def initialize(prize: np.ndarray, distance: np.ndarray, maxlen: float) -> tuple[np.ndarray, np.ndarray]:
-    \"\"\"
-    Initialize heuristic and pheromone matrices for Orienteering Problem optimization.
-    
-    This strategy creates the foundation for intelligent node selection by:
-    - Transforming prize and distance information into desirability guidance
-    - Considering maximum tour length constraints in initialization
-    
-    Parameters
-    ----------
-    prize : np.ndarray, shape (n,)
-        Prize values for each node. Depot is at index 0.
-    distance : np.ndarray, shape (n, n)
-        Distance matrix between nodes. Depot is at index 0.
-    maxlen : float
-        Maximum allowed tour length constraint.
-
-    Returns
-    -------
-    tuple[np.ndarray, np.ndarray]
-        heuristic : np.ndarray, shape (n, n)
-            Matrix representing desirability of transitions based on prize-distance efficiency.
-        pheromone : np.ndarray, shape (n, n)
-            Matrix representing initial guidance trails for prize collection exploration.
-    \"\"\"
-    # Your implementation here
+    \"\"\"Return heuristic and pheromone matrices, both shape (n, n).\"\"\"
     pass
 ```
-</task>
 
-{CONSTRAINTS}
+HINT: Combine prize, travel distance, depot relation, and remaining budget pressure to score transitions.
 
-{PROBLEM_DESCRIPTION}
+{RULES}
 """
 
-F2 = f"""
-<role>
-You are a competitive algorithm designer specializing in prize collection optimization strategies.
-</role>
+F2 = f"""{PROBLEM}
+TASK: Implement a pheromone update heuristic.
 
-<task>
-Implement the learning strategy that updates guidance based on solution quality:
-
+SIGNATURE:
 ```python
 import numpy as np
 
 def update_pheromone(pheromone: np.ndarray, sols: list, objs: np.ndarray, it: int, n_iterations: int) -> np.ndarray:
-    \"\"\"
-    Update guidance system based on prize collection performance and exploration balance.
-    
-    This strategy manages the learning mechanism by:
-    - Reinforcing successful node sequences based on total prizes collected
-    - Balancing memory persistence with new information discovery
-    - Adapting learning rate based on optimization progress
-    
-    Parameters
-    ----------
-    pheromone : np.ndarray, shape (n, n)
-        Current guidance distribution matrix.
-    sols : list
-        Ant solution sequences containing node indices.
-    objs : np.ndarray, shape (n_ants,)
-        Total prize values collected by each ant.
-    it : int
-        Current optimization iteration index.
-    n_iterations : int
-        Total planned optimization iterations for adaptive tuning.
-
-    Returns
-    -------
-    np.ndarray, shape (n, n)
-        Updated guidance levels after learning from prize collection quality.
-    \"\"\"
-    # Your implementation here
+    \"\"\"Return updated pheromone matrix, shape (n, n).\"\"\"
     pass
 ```
-</task>
 
-{CONSTRAINTS}
+HINT: Reinforce high-prize node sequences while preserving enough evaporation for exploration.
 
-{PROBLEM_DESCRIPTION}
+{RULES}
 """

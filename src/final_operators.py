@@ -12,7 +12,7 @@ class FinalOperators:
         )
         
         context = FinalOperators._build_context(
-            current_combination, target_strategy, baseline_cost, player,
+            current_combination, baseline_combination, target_strategy, baseline_cost, player,
             opponent_best_code, opponent_best_improvement, successful_summaries
         )
         
@@ -26,62 +26,71 @@ class FinalOperators:
     
     @staticmethod
     def _get_system_prompt(baseline_combination: dict, baseline_cost: float, target_strategy: str):
+        return (
+            "You are an expert in the domain of optimization heuristics. "
+            "Your task is to design heuristics that can effectively solve optimization problems."
+        )
+
+    @staticmethod
+    def _build_baseline_section(baseline_combination: dict, baseline_cost: float, target_strategy: str):
         baseline_text = ""
         for strategy_id, code in baseline_combination.items():
-            baseline_text += f"<{strategy_id.lower()}>\n{code}\n</{strategy_id.lower()}>\n\n"
+            baseline_text += f"{strategy_id}:\n```python\n{code}\n```\n\n"
         
-        return f"""You are in the FINAL ROUND of competitive optimization.
-
-GOAL: Beat both baseline cost ({baseline_cost:.6f}) AND your opponent.
+        return f"""FINAL ROUND:
+- Target strategy: {target_strategy}
+- Baseline cost: {baseline_cost:.6f}
+- Improve the target while keeping the full system coherent.
 
 BASELINE SYSTEM:
 {baseline_text}
 
-TARGET: Optimize {target_strategy}
-
-COMPETITION RULES:
-- Baseline is FIXED during this strategy optimization
-- Beat baseline AND opponent for maximum reward
-- Consider system-level synergies between strategies
-- Maintain code correctness and efficiency
-
-SUCCESS CRITERIA:
-- Cost < {baseline_cost:.6f} (beat baseline)
-- Cost < opponent's best (beat opponent)"""
+RULES:
+- Keep the exact function signature.
+- Beat the fixed baseline and the opponent if possible.
+- Consider interactions with the other strategies.
+- Keep reasoning concise (50 words max).
+---"""
 
     @staticmethod
-    def _build_context(current_combination: dict, target_strategy: str, baseline_cost: float,
-                       player: str, opponent_best_code: str, opponent_best_improvement: float,
+    def _build_context(current_combination: dict, baseline_combination: dict, target_strategy: str,
+                       baseline_cost: float, player: str, opponent_best_code: str, opponent_best_improvement: float,
                        successful_summaries: list):
         # Current system state
+        baseline_section = FinalOperators._build_baseline_section(
+            baseline_combination, baseline_cost, target_strategy
+        )
+
         system_parts = []
         for strategy_id, code in current_combination.items():
-            system_parts.append(f"<{strategy_id.lower()}>\n{code}\n</{strategy_id.lower()}>")
+            system_parts.append(f"{strategy_id}:\n```python\n{code}\n```")
         system_text = "\n\n".join(system_parts)
         
-        system_section = f"""<current_system>
+        system_section = f"""CURRENT SYSTEM:
 {system_text}
-</current_system>"""
+"""
         
         # Target strategy
         current_impl = current_combination[target_strategy]
-        target_section = f"""<target_strategy>
-Optimize: {target_strategy}
+        target_section = f"""TARGET STRATEGY:
+{target_strategy}
 
-Current implementation:
+CURRENT IMPLEMENTATION:
+```python
 {current_impl}
-</target_strategy>"""
+```"""
         
         # Opponent info
         if opponent_best_code:
-            opponent_section = f"""<opponent>
-Opponent's best implementation for {target_strategy} (improvement: {opponent_best_improvement:.2f}%):
+            opponent_section = f"""OPPONENT BEST FOR {target_strategy}:
+- Improvement over baseline: {opponent_best_improvement:.2f}%
+
+```python
 {opponent_best_code}
-</opponent>"""
+```"""
         else:
-            opponent_section = f"""<opponent>
-No opponent results yet for {target_strategy}.
-</opponent>"""
+            opponent_section = f"""OPPONENT BEST FOR {target_strategy}:
+- No opponent result yet."""
         
         # History of successful moves
         if successful_summaries:
@@ -89,23 +98,20 @@ No opponent results yet for {target_strategy}.
         else:
             history_text = "- No successful moves yet"
         
-        history_section = f"""<history>
-Successful moves for {target_strategy}:
+        history_section = f"""RECENT SUCCESSFUL MOVES FOR {target_strategy}:
 {history_text}
-</history>"""
+"""
         
         # Instructions
-        instructions = f"""<instructions>
-TASK: Optimize {target_strategy} to beat BOTH baseline ({baseline_cost:.6f}) AND opponent.
+        instructions = f"""---
+INSTRUCTION:
+You are {player}. Optimize {target_strategy} to beat baseline cost {baseline_cost:.6f} and the opponent.
 
-You are {player}.
-
-Focus on:
+FOCUS:
 - Hyperparameter tuning
-- Algorithm variants
+- Formula variants
 - System-level synergies with other strategies
 
-Provide an improved implementation that achieves lower cost.
-</instructions>"""
+Return an improved implementation only for {target_strategy}."""
         
-        return f"{system_section}\n\n{target_section}\n\n{opponent_section}\n\n{history_section}\n\n{instructions}"
+        return f"{baseline_section}\n\n{system_section}\n\n{target_section}\n\n{opponent_section}\n\n{history_section}\n\n{instructions}"

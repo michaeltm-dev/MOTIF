@@ -1,76 +1,41 @@
-PROBLEM_DESCRIPTION = """
-You are participating in a competitive algorithmic optimization challenge.
+SYSTEM_PROMPT = (
+    "You are an expert in the domain of optimization heuristics. "
+    "Your task is to design heuristics that can effectively solve optimization problems."
+)
 
-GAME SETUP:
-- Two players (P1 and P2) compete to create the best implementation
-- Goal: Design strategies that find shortest routes efficiently  
-- Your implementations will be evaluated against a baseline and your opponent
-- Better performance than both baseline and opponent earns maximum reward
-
-PROBLEM CONTEXT:
-- Task: Find optimal routes visiting all locations exactly once
-- Cities are positioned in unit square coordinates
-- Need efficient strategies for route construction and improvement
+PROBLEM = """PROBLEM: Traveling Salesman Problem.
+OBJECTIVE: Minimize the length of a tour that visits every city exactly once and returns to the start.
 """
 
-CONSTRAINTS = """
-<constraints>
-1. DO NOT modify the method signature - keep parameters exactly as specified
-2. Declare hyperparameters with reasonable defaults
-3. Ensure code is syntactically correct and handles edge cases
-</constraints>
+RULES = """RULES:
+- Keep the exact function signature.
+- Use only inputs passed to the function.
+- You may define simple hyperparameters inside the function.
+- Handle edge cases and return numerically stable outputs.
+---
 """
 
-F1 = f"""
-<role>
-You are a competitive algorithm designer specializing in route optimization strategies.
-</role>
+F1 = f"""{PROBLEM}
+TASK: Implement an initialization heuristic.
 
-<task>
-Implement the initialization strategy that sets up guidance matrices for route finding:
-
+SIGNATURE:
 ```python
 import numpy as np
 
 def initialize(distances: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
-    \"\"\"
-    Initialize heuristic and pheromone matrices for route optimization.
-    
-    This strategy creates the foundation for intelligent route selection by:
-    - Transforming distance information into desirability guidance
-    - Setting initial exploration incentives for route discovery
-    
-    Parameters
-    ----------
-    distances : np.ndarray, shape (n_cities, n_cities)
-        Matrix of pairwise distances between cities; entries must be positive.
-
-    Returns
-    -------
-    tuple[np.ndarray, np.ndarray]
-        heuristic : np.ndarray, shape (n_cities, n_cities)
-            Matrix representing desirability of traveling between cities based on local information.
-        pheromone : np.ndarray, shape (n_cities, n_cities)
-            Matrix representing initial intensity of guidance trails for route exploration.
-    \"\"\"
-    # Your implementation here
+    \"\"\"Return heuristic and pheromone matrices, both shape (n_cities, n_cities).\"\"\"
     pass
 ```
-</task>
 
-{CONSTRAINTS}
+HINT: Try combining various factors to determine how promising it is to select an edge.
 
-{PROBLEM_DESCRIPTION}
+{RULES}
 """
 
-F2 = f"""
-<role>
-You are a competitive algorithm designer specializing in route optimization strategies.
-</role>
+F2 = f"""{PROBLEM}
+TASK: Implement a transition-weight heuristic.
 
-<task>
-Implement the probability computation strategy that guides route selection decisions:
-
+SIGNATURE:
 ```python
 import numpy as np
 
@@ -80,48 +45,19 @@ def compute_probabilities(
     iteration: int,
     n_iterations: int
 ) -> np.ndarray:
-    \"\"\"
-    Generate transition weights that balance exploration guidance and local desirability.
-    
-    This strategy determines how agents choose between route options by:
-    - Combining learned experience (pheromone) with local information (heuristic)
-    - Adapting decision-making based on optimization progress
-    - Creating unnormalized weights for probabilistic route selection
-    
-    Parameters
-    ----------
-    pheromone : np.ndarray, shape (n_cities, n_cities)
-        Current guidance levels from accumulated experience.
-    heuristic : np.ndarray, shape (n_cities, n_cities)
-        Local desirability information for route segments.
-    iteration : int
-        Current optimization step index.
-    n_iterations : int
-        Total planned optimization steps for adaptive tuning.
-
-    Returns
-    -------
-    np.ndarray, shape (n_cities, n_cities)
-        Unnormalized transition weights for agent decision-making.
-    \"\"\"
-    # Your implementation here
+    \"\"\"Return unnormalized transition weights, shape (n_cities, n_cities).\"\"\"
     pass
 ```
-</task>
 
-{CONSTRAINTS}
+HINT: Balance pheromone intensity and edge desirability; adapt their influence over time if useful.
 
-{PROBLEM_DESCRIPTION}
+{RULES}
 """
 
-F3 = f"""
-<role>
-You are a competitive algorithm designer specializing in route optimization strategies.
-</role>
+F3 = f"""{PROBLEM}
+TASK: Implement a pheromone update heuristic.
 
-<task>
-Implement the guidance update strategy that learns from route quality:
-
+SIGNATURE:
 ```python
 import numpy as np
 
@@ -132,38 +68,11 @@ def update_pheromone(
     iteration: int,
     n_iterations: int,
 ) -> np.ndarray:
-    \"\"\"
-    Update guidance system based on route quality and exploration balance.
-    
-    This strategy manages the learning mechanism by:
-    - Reducing old guidance information (evaporation)
-    - Reinforcing successful route segments based on quality
-    - Balancing memory persistence with new information
-    
-    Parameters
-    ----------
-    pheromone : np.ndarray, shape (n_cities, n_cities)
-        Current guidance distribution matrix.
-    paths : np.ndarray, shape (n_cities, n_ants)
-        Agent route sequences with city indices per column.
-    costs : np.ndarray, shape (n_ants,)
-        Total route cost for each agent.
-    iteration : int
-        Current optimization step index.
-    n_iterations : int
-        Total planned optimization steps for adaptive tuning.
-
-    Returns
-    -------
-    np.ndarray, shape (n_cities, n_cities)
-        Updated guidance levels after learning from route quality.
-    \"\"\"
-    # Your implementation here
+    \"\"\"Return updated pheromone matrix, shape (n_cities, n_cities).\"\"\"
     pass
 ```
-</task>
 
-{CONSTRAINTS}
+HINT: Evaporate old trails and reinforce edges from shorter tours while keeping values stable.
 
-{PROBLEM_DESCRIPTION}
+{RULES}
 """
