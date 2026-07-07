@@ -4,7 +4,8 @@ class Node:
     """
     Node for competitive 2-player MCTS.
     Each node stores two code versions (P1 and P2) and tracks which player's turn it is.
-    Only one W/Q value is stored per node since only the active player's Q is used for selection.
+    Only one W/Q value is stored per node. For non-root nodes, this value is from
+    the perspective of the player who created the node (the parent's active player).
     """
     
     def __init__(self, p1_code: str, p2_code: str, function_name: str, parent=None, 

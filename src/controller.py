@@ -253,7 +253,7 @@ class Controller:
         print(f"[REVERT] Reverted {strategy_id} to previous best")
     
     def _propagate_baseline_update(self):
-        """Update baseline in all trees and recalculate Q-values."""
+        """Update baseline in all trees and reset baseline-dependent UCT values."""
         print(f"[BASELINE] Propagating update to all trees...")
         
         for strategy_id, mcts in self.trees.items():

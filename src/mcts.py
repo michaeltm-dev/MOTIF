@@ -16,8 +16,9 @@ class CompetitiveMCTS:
     Key design:
     - Tree search is driven entirely by node.active_player (not a global current_player).
     - Root is always P1's turn. Children alternate: depth 1 is P2, depth 2 is P1, etc.
-    - Each node stores one W/Q pair since only the active player's Q is used for selection.
-    - Backpropagation assigns u1 to P1 nodes and u2 to P2 nodes.
+    - Each non-root node stores one W/Q pair for the player who created that node
+      (the active player of its parent). This makes UCT selection at a parent use
+      child values from the parent's perspective.
     """
     
     def __init__(self, function_name: str, strategy_id: str, initial_code: str,
@@ -87,7 +88,7 @@ class CompetitiveMCTS:
         # 3. Simulation: evaluate new code, compute Q1 and Q2
         q1, q2 = self._simulate(child, expanding_player)
         
-        # 4. Backpropagation: assign u1 to P1 nodes, u2 to P2 nodes
+        # 4. Backpropagation: assign each edge/node value to the player who created it
         self._backpropagate(child, q1, q2)
         
         # 5. Update best tracking
@@ -113,7 +114,8 @@ class CompetitiveMCTS:
         - Otherwise, select child with highest UCT value from perspective of node.active_player.
         
         UCT(child) = Q(child) + C * sqrt(log(N) / n)
-        where Q is the Q-value stored at child (corresponding to child's parent's active_player).
+        where Q is the Q-value stored at child from the perspective of
+        node.active_player, i.e. the player choosing among node's children.
         """
         node = self.root
         
@@ -145,7 +147,7 @@ class CompetitiveMCTS:
         Select best child using UCT formula.
         
         The Q-value at each child represents the value from the perspective of
-        the player who CREATED that child (i.e., node.active_player).
+        the player who created that child, i.e. node.active_player.
         """
         if not node.children:
             return None
@@ -237,9 +239,10 @@ class CompetitiveMCTS:
         new_cost = self._evaluate_code(child, expanding_player)
         
         if new_cost is None or new_cost == float('inf'):
-            # Evaluation failed - set improvement to 0%
+            # Evaluation failed: assign a strong negative improvement so invalid
+            # implementations do not receive neutral sigmoid reward.
             child.set_cost(expanding_player, float('inf'))
-            child.set_improvement(expanding_player, 0.0)
+            child.set_improvement(expanding_player, -100.0)
         else:
             child.set_cost(expanding_player, new_cost)
             improvement = (self.baseline_cost - new_cost) / abs(self.baseline_cost) * 100
@@ -320,17 +323,15 @@ class CompetitiveMCTS:
     def _backpropagate(self, leaf, q1, q2):
         """
         Backpropagation: propagate Q-values up the tree.
-        
-        Each node receives the Q-value corresponding to its active_player:
-        - P1 nodes receive q1
-        - P2 nodes receive q2
+
+        Selection at a node compares its children, so each child must store the
+        utility of the player who created it (the parent's active player).
+        The root has no creator; its value is only used for visit accounting.
         """
         node = leaf
         while node is not None:
-            if node.active_player == "P1":
-                node.update_stats(q1)
-            else:
-                node.update_stats(q2)
+            value_player = node.parent.active_player if node.parent else node.active_player
+            node.update_stats(q1 if value_player == "P1" else q2)
             node = node.parent
     
     def _update_best_if_improved(self, child, expanding_player):
@@ -358,6 +359,7 @@ class CompetitiveMCTS:
         """Update baseline cost and recalculate all improvements in the tree."""
         self.baseline_cost = new_baseline
         self._recalculate_improvements(self.root)
+        self._reset_tree_statistics(self.root)
         
         # Recalculate best improvements
         if self.p1_best_cost < float('inf'):
@@ -386,6 +388,13 @@ class CompetitiveMCTS:
         
         for child in node.children:
             self._recalculate_improvements(child)
+
+    def _reset_tree_statistics(self, node):
+        """Reset UCT statistics after a baseline change while keeping explored code."""
+        node.visits = 0
+        node.total_value = 0.0
+        for child in node.children:
+            self._reset_tree_statistics(child)
     
     def get_opponent_best_code(self, player: str) -> str:
         """Get opponent's best code (used by operators for context)."""

@@ -1,11 +1,12 @@
-import os
 from typing import Dict, List, Optional, Tuple
+
 from openai import OpenAI
+
 from utils.format.response import CompetitiveResponse
 
 class LLMClient:
     """
-    LLM client for competitive MCTS.
+    OpenAI Responses API client for competitive MCTS.
     """
     def __init__(
         self,
@@ -22,13 +23,14 @@ class LLMClient:
         self.model = model
         self.temperature = temperature
 
-        # Setup client
-        if model.startswith("gpt"):
-            api_key = os.getenv("OPENAI_API_KEY")
-        else:
-            raise ValueError("Unsupported model type. Only 'gpt' is supported.")
+        self.client = OpenAI()
 
-        self.client = OpenAI(api_key=api_key)
+    def _require_responses_api(self):
+        if not hasattr(self.client, "responses"):
+            raise RuntimeError(
+                "Installed openai package does not support the Responses API. "
+                "Install the version from requirements.txt."
+            )
     
     def get_response(self, messages: List[Dict[str, str]], function_id: Optional[str] = None, temperature: Optional[float] = None) -> str:
         """
@@ -44,15 +46,15 @@ class LLMClient:
         """
         temp = temperature if temperature is not None else self.temperature
         
-        response = self.client.chat.completions.create(
+        self._require_responses_api()
+
+        response = self.client.responses.create(
             model=self.model,
-            messages=messages,
+            input=messages,
             temperature=temp,
-            n=1,
-            stream=False,
-        ).choices[0].message.content
+        )
         
-        return response
+        return response.output_text
 
     def get_code(self, messages: List[Dict[str, str]], function_id: Optional[str] = None, temperature: Optional[float] = None) -> Tuple[str, str, str]:
         """
@@ -64,17 +66,19 @@ class LLMClient:
             temperature: Optional temperature override
             
         Returns:
-            Tuple of (code, explanation="", summary)
+            Tuple of (reasoning, code, summary)
         """
         temp = temperature if temperature is not None else self.temperature
 
-        response = self.client.beta.chat.completions.parse(
+        self._require_responses_api()
+
+        response = self.client.responses.parse(
             model=self.model,
-            messages=messages,
+            input=messages,
             temperature=temp,
-            n=1,
-            response_format=CompetitiveResponse,
-        ).choices[0].message.parsed
+            text_format=CompetitiveResponse,
+        )
 
         # Return in expected format (code, explanation, summary)
-        return response.reasoning, response.code, response.summary
+        parsed = response.output_parsed
+        return parsed.reasoning, parsed.code, parsed.summary

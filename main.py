@@ -5,8 +5,8 @@ import importlib.util
 from omegaconf import DictConfig
 from dotenv import load_dotenv
 
-from utils.client import init_client
 from utils.logger import CompetitiveLogger
+from utils.openai import LLMClient
 from src.controller import Controller
 from src.final_round import FinalRound
 
@@ -137,7 +137,10 @@ def main(cfg: DictConfig):
     print("Two AI players compete in both phases")
     
     # Initialize LLM client
-    client, _ = init_client(cfg)
+    client = LLMClient(
+        model=cfg.llm.model,
+        temperature=cfg.llm.temperature
+    )
     
     # Load prompts
     solver_path = solver_config.base_path
