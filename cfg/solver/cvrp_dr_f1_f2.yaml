@@ -1,20 +1,3 @@
 # @package _global_.solver
-name: Capacitated Vehicle Routing Problem with Deconstruction-Repair
-problem: CVRP
-algorithm: DR
 base_path: ${paths.problems_dir}/cvrp_dr
-eval_script: ${.base_path}/eval.py
-active: cvrp_dr
-base_module: dr
-
-# Functions to optimize
-functions:
-  - id: F1
-    name: edge_score
-    path: ${solver.base_path}/F1.py
-    description: "Evaluate edge desirability for CVRP tour construction. Analyzes distance relationships and demand patterns to provide scoring guidance for greedy initialization, enabling the algorithm to start with capacity-aware foundation permutations."
-
-  - id: F2
-    name: customer_badness
-    path: ${solver.base_path}/F2.py
-    description: "Calculate customer badness scores for strategic deconstruction decisions. Identifies problematic customers by analyzing demand size and distance patterns, guiding selective removal during deconstruction phase for effective solution diversification."
+functions: [F1, F2]

@@ -1,25 +1,3 @@
 # @package _global_.solver
-name: Traveling Salesman Problem with Ant Colony Optimization
-problem: TSP
-algorithm: ACO
 base_path: ${paths.problems_dir}/tsp_aco
-eval_script: ${.base_path}/eval.py
-active: tsp_aco
-base_module: aco
-
-# Functions to optimize
-functions:
-  - id: F1
-    name: initialize
-    path: ${solver.base_path}/F1.py
-    description: "Initialize heuristic and pheromone matrices."
-
-  - id: F2
-    name: compute_probabilities
-    path: ${solver.base_path}/F2.py
-    description: "Generate unnormalized transition weights reflecting pheromone intensity and heuristic desirability."
-
-  - id: F3
-    name: update_pheromone
-    path: ${solver.base_path}/F3.py
-    description: "Simulate pheromone dynamics: apply evaporation and reinforce edges used by agents."
+functions: [F1, F2, F3]

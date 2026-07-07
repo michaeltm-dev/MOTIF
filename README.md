@@ -146,25 +146,9 @@ problems/
 
 ```yaml
 # @package _global_.solver
-name: Problem with Solver # Based on your choice
-problem: problem_name     # Based on your choice
-algorithm: solver_name    # Based on your choice
 base_path: ${paths.problems_dir}/problem_solver # Path to problem-solver directory
-eval_script: ${.base_path}/eval.py
-active: problem_solver
-base_module: solver 
 
-# Functions to optimize
-functions:
-  - id: F1
-    name: your_function_name
-    path: ${solver.base_path}/F1.py
-    description: "Brief description of F1 strategy."
-
-  - id: F2
-    name: your_function_name
-    path: ${solver.base_path}/F2.py
-    description: "Brief description of F2 strategy."
+functions: [F1, F2] # Strategy files to optimize
 ```
 
 ---

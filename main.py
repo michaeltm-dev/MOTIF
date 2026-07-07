@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 
 from utils.logger import CompetitiveLogger
 from utils.openai import LLMClient
+from utils.solver_config import normalize_solver_config
 from src.controller import Controller
 from src.final_round import FinalRound
 
@@ -125,7 +126,7 @@ def main(cfg: DictConfig):
     1. Round 1: MCTS-based individual strategy optimization
     2. Final Round: Sequential system-aware optimization
     """
-    solver_config = cfg.solver
+    solver_config = normalize_solver_config(cfg.solver)
     problem_name = solver_config.problem
     algorithm_name = solver_config.algorithm
     final_iterations = cfg.mcts.final_iterations
