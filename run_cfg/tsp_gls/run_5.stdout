@@ -1,0 +1,1118 @@
+Starting Two-Phase Competitive Optimization
+Problem: TSP using GLS
+Round 1: MCTS optimization (individual strategies)
+Final Round: Sequential optimization (system-aware)
+Two AI players compete in both phases
+
+Logging enabled:
+  Round 1: results/20260729_093949_tsp_gls_round_1.json
+  Final Round: results/20260729_093949_tsp_gls_round_2.json
+
+============================================================
+PHASE 1: ROUND 1 - MCTS OPTIMIZATION
+============================================================
+[BASELINE] Evaluating initial implementation...
+[BASELINE] Initial cost: 54.43596134614174
+
+==================================================
+INITIALIZING COMPETITIVE STRATEGY TREES
+==================================================
+  Initialized tree for F1 (generate_guide_matrix)
+==================================================
+
+Initialized Controller with dynamic baseline
+
+==================================================
+STARTING ROUND 1: MCTS OPTIMIZATION
+Initial baseline: 54.43596134614174
+Outer iterations: 20
+==================================================
+
+==================== OUTER ITERATION 1/20 ====================
+[UCB] Selected: F1
+
+[STRATEGY] Running 10 iterations on F1
+  Current baseline: 54.435961
+  Turn 1: P1 used innovation
+    Summary: Enhanced edge penalization based on nearest neighbors.
+    Improvement: -0.27%
+  Turn 2: P1 used learning
+    Summary: Enhanced guide matrix using edge criticality and nearest-neighbor influence.
+    Improvement: -0.20%
+  Turn 3: P1 used counter
+    Summary: Implemented distance normalization and penalty based on nearest neighbors.
+    Improvement: -0.21%
+  Turn 4: P2 used counter
+    Summary: Enhanced guide matrix by penalizing distant edges based on nearest neighbors.
+    Improvement: -0.15%
+  Turn 5: P2 used learning
+    Summary: Enhanced guide matrix using distance normalization and neighbor penalties.
+    Improvement: -0.15%
+  Turn 6: P2 used innovation
+    Summary: Introduced edge criticality penalization based on nearest neighbors.
+    Improvement: 0.00%
+  Turn 7: P2 used learning
+    Summary: Improved guide matrix by combining edge criticality and nearest-neighbor influence.
+    Improvement: -1.24%
+  Turn 8: P2 used counter
+    Summary: Enhanced edge penalization to improve tour length.
+    Improvement: -1.52%
+  Turn 9: P2 used counter
+    Summary: Enhanced edge penalization using nearest neighbors for improved tour selection.
+    Improvement: -0.10%
+  Turn 10: P2 used innovation
+    Summary: Introduced penalties based on average nearest neighbor distances.
+    Improvement: -0.24%
+[BASELINE] Checking F1 results...
+[BASELINE] No improvement
+  Current baseline: 54.435961
+  Best achieved: 54.435961
+[SAVE] Saved best implementation for F1
+[REVERT] Reverted F1 to previous best
+
+==================== OUTER ITERATION 2/20 ====================
+[UCB] Selected: F1
+
+[STRATEGY] Running 10 iterations on F1
+  Current baseline: 54.435961
+  Turn 11: P2 used innovation
+    Summary: Enhanced guide matrix using variance from nearest neighbors for improved edge selection.
+    Improvement: -0.03%
+  Turn 12: P2 used learning
+    Summary: Enhanced guide matrix by factoring in nearest neighbors for edge penalties.
+    Improvement: 0.00%
+  Turn 13: P1 used learning
+    Summary: Enhanced guide matrix using distance normalization and refined neighbor penalties.
+    Improvement: 0.00%
+  Turn 14: P1 used innovation
+    Summary: Enhanced guide matrix using standard deviation of neighbors to penalize longer edges.
+    Improvement: -0.19%
+  Turn 15: P1 used learning
+    Summary: Enhanced penalization with critical nearest neighbors for better edge selection.
+    Improvement: 0.00%
+  Turn 16: P1 used innovation
+    Summary: Introduced adaptive penalties based on mean and maximum distance to enhance edge selection.
+    Improvement: -0.45%
+  Turn 17: P1 used innovation
+    Summary: Enhanced guide matrix using reciprocal nearest neighbor distances for edge penalization.
+    Improvement: -0.38%
+  Turn 18: P1 used learning
+    Summary: Enhanced edge penalties using critical neighbor distance.
+    Improvement: 0.00%
+  Turn 19: P1 used counter
+    Summary: Refined penalties for weak edges and improved normalization of distances.
+    Improvement: -0.14%
+  Turn 20: P1 used learning
+    Summary: Enhanced guide matrix balancing edge distance and neighbor influence.
+    Improvement: -0.28%
+[BASELINE] Checking F1 results...
+[BASELINE] No improvement
+  Current baseline: 54.435961
+  Best achieved: 54.435961
+[SAVE] Saved best implementation for F1
+[REVERT] Reverted F1 to previous best
+
+==================== OUTER ITERATION 3/20 ====================
+[UCB] Selected: F1
+
+[STRATEGY] Running 10 iterations on F1
+  Current baseline: 54.435961
+  Turn 21: P1 used innovation
+    Summary: Implemented a hybrid heuristic using median distances for effective edge penalization.
+    Improvement: -0.42%
+  Turn 22: P1 used innovation
+    Summary: Dynamic penalties based on distance and nearest neighbors enhance the guide matrix.
+    Improvement: -0.03%
+  Turn 23: P1 used learning
+    Summary: Enhanced guide matrix with critical edge penalties based on nearest neighbors.
+    Improvement: -0.11%
+  Turn 24: P1 used counter
+    Summary: Enhanced penalization with average distance from nearest neighbors.
+    Improvement: -0.11%
+  Turn 25: P1 used counter
+    Summary: Enhanced penalties based on average of three nearest neighbors.
+    Improvement: -0.23%
+  Turn 26: P1 used learning
+    Summary: Combined edge penalties with nearest neighbors for better guidance.
+    Improvement: -0.11%
+  Turn 27: P1 used innovation
+    Summary: Introduced a decay factor for nearest neighbors and added connectivity penalties.
+    Improvement: -0.19%
+  Turn 28: P1 used counter
+    Summary: Enhanced penalty calculation improves differentiation of critical edges.
+    Improvement: -0.28%
+  Turn 29: P1 used innovation
+    Summary: Implemented a centrality-based penalty in the guide matrix.
+    Improvement: 0.00%
+  Turn 30: P1 used learning
+    Summary: Optimized edge penalties using average distance for improved tour selection.
+    Improvement: -0.70%
+[BASELINE] Checking F1 results...
+[BASELINE] No improvement
+  Current baseline: 54.435961
+  Best achieved: 54.435961
+[SAVE] Saved best implementation for F1
+[REVERT] Reverted F1 to previous best
+
+==================== OUTER ITERATION 4/20 ====================
+[UCB] Selected: F1
+
+[STRATEGY] Running 10 iterations on F1
+  Current baseline: 54.435961
+  Turn 31: P1 used counter
+    Summary: Enhanced penalties based on overall edge distances and neighbor influences.
+    Improvement: -0.37%
+  Turn 32: P1 used innovation
+    Summary: Introduced a combined penalty based on nearby distances and normalization.
+    Improvement: -0.17%
+  Turn 33: P1 used learning
+    Summary: Enhanced penalties for weak edges using average nearest neighbor distances.
+    Improvement: -0.11%
+  Turn 34: P1 used counter
+    Summary: Introduced average distance from nearest neighbors for better edge penalization.
+    Improvement: -0.17%
+  Turn 35: P1 used counter
+    Summary: Improved neighbor influence and reduced penalties for closer edges.
+    Improvement: -0.31%
+  Turn 36: P2 used innovation
+    Summary: Enhanced penalties based on critical paths from nearest neighbors.
+    Improvement: -0.33%
+[EVAL WARNING] Traceback (most recent call last):
+  File "/home/fool/Local/MOTIF/problems/tsp_gls/eval.py", line 6, in <module>
+    from gls import run_tsp_gls
+  File "/home/fool/Local/MOTIF/problems/tsp_gls/gls.py", line 4, in <module>
+    from F1 import generate_guide_matrix
+  File "/home/fool/Local/MOTIF/problems/tsp_gls/F1.py", line 11
+    return guide_matrix.
+                        ^
+SyntaxError: invalid syntax
+  Turn 37: P1 used innovation
+    Summary: Enhanced edge penalization based on distance ratio and neighborhood connectivity.
+    Improvement: 0.00%
+  Turn 38: P2 used innovation
+    Summary: Enhanced guide matrix using average neighbor distance inversion.
+    Improvement: -0.59%
+  Turn 39: P2 used innovation
+    Summary: Enhanced penalties based on logarithmic adjustments for edge criticality.
+    Improvement: -0.13%
+  Turn 40: P2 used counter
+    Summary: Enhanced penalties using centrality and distance metrics.
+    Improvement: -0.39%
+[BASELINE] Checking F1 results...
+[BASELINE] No improvement
+  Current baseline: 54.435961
+  Best achieved: 54.435961
+[SAVE] Saved best implementation for F1
+[REVERT] Reverted F1 to previous best
+
+==================== OUTER ITERATION 5/20 ====================
+[UCB] Selected: F1
+
+[STRATEGY] Running 10 iterations on F1
+  Current baseline: 54.435961
+  Turn 41: P1 used learning
+    Summary: Enhanced edge penalties with distance normalization for better route optimization.
+    Improvement: -0.10%
+  Turn 42: P1 used counter
+    Summary: Improved penalization by considering neighbor distances more comprehensively.
+    Improvement: -1.03%
+[EVAL WARNING] Traceback (most recent call last):
+  File "/home/fool/Local/MOTIF/problems/tsp_gls/eval.py", line 130, in <module>
+    main(mode)
+    ~~~~^^^^^^
+  File "/home/fool/Local/MOTIF/problems/tsp_gls/eval.py", line 119, in main
+    costs = process_file(path, PERTURBATION_MOVES, ITER_LIMIT)
+  File "/home/fool/Local/MOTIF/problems/tsp_gls/eval.py", line 73, in process_file
+    result = solve_instance(coordinates, perturbation_moves, iter_limit, int(seeds[i]))
+  File "/home/fool/Local/MOTIF/problems/tsp_gls/eval.py", line 35, in solve_instance
+    best_cost = run_tsp_gls(
+        distmat=dist_matrix,
+        perturbation_moves=perturbation_moves,
+        iter_limit=iter_limit
+    )
+  File "/home/fool/Local/MOTIF/problems/tsp_gls/gls.py", line 180, in run_tsp_gls
+    guide = generate_guide_matrix(distmat.copy())
+  File "/home/fool/Local/MOTIF/problems/tsp_gls/F1.py", line 6, in generate_guide_matrix
+    min_distances = np.min(distance_matrix[distance_matrix > 0], axis=1)
+  File "/home/fool/Local/MOTIF/.venv/lib/python3.13/site-packages/numpy/core/fromnumeric.py", line 2953, in min
+    return _wrapreduction(a, np.minimum, 'min', axis, None, out,
+                          keepdims=keepdims, initial=initial, where=where)
+  File "/home/fool/Local/MOTIF/.venv/lib/python3.13/site-packages/numpy/core/fromnumeric.py", line 88, in _wrapreduction
+    return ufunc.reduce(obj, axis, dtype, out, **passkwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+numpy.exceptions.AxisError: axis 1 is out of bounds for array of dimension 1
+  Turn 43: P2 used innovation
+    Summary: Implemented penalties based on edge criticality calculated from minimum distances.
+    Improvement: 0.00%
+  Turn 44: P1 used counter
+    Summary: Introduced dynamic penalties based on critical edge distances.
+    Improvement: -0.28%
+  Turn 45: P2 used counter
+    Summary: Introduced edge penalties based on distance normalization and mean distance.
+    Improvement: -0.09%
+  Turn 46: P2 used innovation
+    Summary: Implemented an exponential decay based on distance rank for improved edge selection.
+    Improvement: -1.20%
+  Turn 47: P2 used counter
+    Summary: Introduced inverse distance normalization and combined with edge centrality.
+    Improvement: -0.47%
+  Turn 48: P2 used learning
+    Summary: Enhanced guide matrix using centrality penalties and distance normalization.
+    Improvement: 0.00%
+  Turn 49: P2 used counter
+    Summary: Improved guide matrix with a balanced penalty approach based on distance.
+    Improvement: -0.29%
+  Turn 50: P2 used learning
+    Summary: Enhanced guide matrix balancing centrality and nearest neighbor distances.
+    Improvement: -0.19%
+[BASELINE] Checking F1 results...
+[BASELINE] No improvement
+  Current baseline: 54.435961
+  Best achieved: 54.435961
+[SAVE] Saved best implementation for F1
+[REVERT] Reverted F1 to previous best
+
+==================== OUTER ITERATION 6/20 ====================
+[UCB] Selected: F1
+
+[STRATEGY] Running 10 iterations on F1
+  Current baseline: 54.435961
+  Turn 51: P2 used innovation
+    Summary: Introduced edge criticality with average distance penalties.
+    Improvement: -0.45%
+  Turn 52: P2 used counter
+    Summary: Enhanced guide matrix by refining penalties based on distance thresholds.
+    Improvement: -0.16%
+  Turn 53: P2 used learning
+    Summary: Introduced dynamic penalty adjustments based on edge length and centrality.
+    Improvement: -0.15%
+  Turn 54: P2 used learning
+    Summary: Enhanced guide matrix using normalization, centrality, and neighbor proximity penalties.
+    Improvement: -0.15%
+  Turn 55: P2 used learning
+    Summary: Enhanced guide matrix by combining centrality penalties with nearest-neighbor promotion.
+    Improvement: -0.02%
+  Turn 56: P2 used counter
+    Summary: Enhanced penalty approach based on edge criticality for better edge selection.
+    Improvement: 0.00%
+  Turn 57: P2 used counter
+    Summary: Improved guide matrix by combining edge penalties and centrality measures.
+    Improvement: 0.00%
+  Turn 58: P2 used counter
+    Summary: Improved penalties using both distance variance and connection strength.
+    Improvement: -0.65%
+  Turn 59: P2 used counter
+    Summary: Enhanced penalization using median distances for critical edge selection.
+    Improvement: 0.00%
+[EVAL WARNING] TypeError: only length-1 arrays can be converted to Python scalars
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/fool/Local/MOTIF/problems/tsp_gls/eval.py", line 130, in <module>
+    main(mode)
+    ~~~~^^^^^^
+  File "/home/fool/Local/MOTIF/problems/tsp_gls/eval.py", line 119, in main
+    costs = process_file(path, PERTURBATION_MOVES, ITER_LIMIT)
+  File "/home/fool/Local/MOTIF/problems/tsp_gls/eval.py", line 73, in process_file
+    result = solve_instance(coordinates, perturbation_moves, iter_limit, int(seeds[i]))
+  File "/home/fool/Local/MOTIF/problems/tsp_gls/eval.py", line 35, in solve_instance
+    best_cost = run_tsp_gls(
+        distmat=dist_matrix,
+        perturbation_moves=perturbation_moves,
+        iter_limit=iter_limit
+    )
+  File "/home/fool/Local/MOTIF/problems/tsp_gls/gls.py", line 180, in run_tsp_gls
+    guide = generate_guide_matrix(distmat.copy())
+  File "/home/fool/Local/MOTIF/problems/tsp_gls/F1.py", line 12, in generate_guide_matrix
+    guide_matrix[i][j] = distance_matrix[i][j] * (1 + normalized_degree[j]) * (1 - neighbor_importance * 0.5)
+    ~~~~~~~~~~~~~~~^^^
+ValueError: setting an array element with a sequence.
+  Turn 60: P2 used learning
+    Summary: Enhanced guide matrix with neighbor importance and centrality penalties.
+    Improvement: 0.00%
+[BASELINE] Checking F1 results...
+[BASELINE] No improvement
+  Current baseline: 54.435961
+  Best achieved: 54.435961
+[SAVE] Saved best implementation for F1
+[REVERT] Reverted F1 to previous best
+
+==================== OUTER ITERATION 7/20 ====================
+[UCB] Selected: F1
+
+[STRATEGY] Running 10 iterations on F1
+  Current baseline: 54.435961
+  Turn 61: P2 used learning
+    Summary: Combined centrality penalties and nearest neighbor averages for improved guiding.
+    Improvement: -0.24%
+  Turn 62: P2 used learning
+    Summary: Combines edge criticality with nearest neighbor distances for better guiding.
+    Improvement: -0.15%
+  Turn 63: P2 used counter
+    Summary: Enhanced edge penalties using average distance to nearest three neighbors.
+    Improvement: -0.28%
+  Turn 64: P2 used innovation
+    Summary: Introduced hybrid distance normalization and critical connection penalties.
+    Improvement: -0.43%
+  Turn 65: P2 used learning
+    Summary: Enhanced guide matrix with neighbor influence and degree normalization.
+    Improvement: -0.25%
+  Turn 66: P2 used innovation
+    Summary: Introduced edge weighting based on local density and distance ratios.
+    Improvement: -0.69%
+  Turn 67: P2 used learning
+    Summary: Combined degree penalties with nearest neighbor distance normalization.
+    Improvement: -0.24%
+  Turn 68: P2 used learning
+    Summary: Integrated centrality penalty with variance adjustments for better edge selection.
+    Improvement: -0.34%
+  Turn 69: P2 used innovation
+    Summary: Introduced edge centrality and distance normalization for dynamic penalties.
+    Improvement: -0.30%
+[EVAL WARNING] TypeError: only length-1 arrays can be converted to Python scalars
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/fool/Local/MOTIF/problems/tsp_gls/eval.py", line 130, in <module>
+    main(mode)
+    ~~~~^^^^^^
+  File "/home/fool/Local/MOTIF/problems/tsp_gls/eval.py", line 119, in main
+    costs = process_file(path, PERTURBATION_MOVES, ITER_LIMIT)
+  File "/home/fool/Local/MOTIF/problems/tsp_gls/eval.py", line 73, in process_file
+    result = solve_instance(coordinates, perturbation_moves, iter_limit, int(seeds[i]))
+  File "/home/fool/Local/MOTIF/problems/tsp_gls/eval.py", line 35, in solve_instance
+    best_cost = run_tsp_gls(
+        distmat=dist_matrix,
+        perturbation_moves=perturbation_moves,
+        iter_limit=iter_limit
+    )
+  File "/home/fool/Local/MOTIF/problems/tsp_gls/gls.py", line 180, in run_tsp_gls
+    guide = generate_guide_matrix(distmat.copy())
+  File "/home/fool/Local/MOTIF/problems/tsp_gls/F1.py", line 15, in generate_guide_matrix
+    guide_matrix[i][j] = distance_matrix[i][j] * (1 + centrality_penalty)  # penalize far edges
+    ~~~~~~~~~~~~~~~^^^
+ValueError: setting an array element with a sequence.
+  Turn 70: P2 used learning
+    Summary: Enhanced edge penalization by combining centrality with nearest neighbors.
+    Improvement: 0.00%
+[BASELINE] Checking F1 results...
+[BASELINE] No improvement
+  Current baseline: 54.435961
+  Best achieved: 54.435961
+[SAVE] Saved best implementation for F1
+[REVERT] Reverted F1 to previous best
+
+==================== OUTER ITERATION 8/20 ====================
+[UCB] Selected: F1
+
+[STRATEGY] Running 10 iterations on F1
+  Current baseline: 54.435961
+  Turn 71: P2 used learning
+    Summary: Enhanced penalization using edge criticality and neighbor distance means.
+    Improvement: -0.06%
+  Turn 72: P2 used counter
+    Summary: Implemented adaptive scaling in guide matrix for better edge evaluation.
+    Improvement: -0.72%
+  Turn 73: P2 used learning
+    Summary: Implemented guide matrix penalizing non-neighbors and boosting neighbor edges.
+    Improvement: -0.11%
+  Turn 74: P2 used learning
+    Summary: Enhanced penalties based on degree and nearest neighbors improve edge selection.
+    Improvement: -0.30%
+  Turn 75: P2 used counter
+    Summary: Improved guide matrix by combining distance variance and centrality penalties.
+    Improvement: -0.25%
+  Turn 76: P2 used counter
+    Summary: Enhanced edge penalties based on distance to nearest neighbors for better optimization.
+    Improvement: -0.25%
+  Turn 77: P2 used learning
+    Summary: Enhanced edge penalization with centrality and nearest neighbor factors.
+    Improvement: -0.13%
+  Turn 78: P2 used learning
+    Summary: Enhanced guide matrix using centrality and distance metrics.
+    Improvement: -0.06%
+  Turn 79: P2 used counter
+    Summary: Enhanced penalty based on distance variance among nearest neighbors.
+    Improvement: -0.47%
+  Turn 80: P2 used innovation
+    Summary: Introduced cumulative edge weights and average distance penalties.
+    Improvement: -0.23%
+[BASELINE] Checking F1 results...
+[BASELINE] No improvement
+  Current baseline: 54.435961
+  Best achieved: 54.435961
+[SAVE] Saved best implementation for F1
+[REVERT] Reverted F1 to previous best
+
+==================== OUTER ITERATION 9/20 ====================
+[UCB] Selected: F1
+
+[STRATEGY] Running 10 iterations on F1
+  Current baseline: 54.435961
+  Turn 81: P2 used learning
+    Summary: Enhanced edge penalties based on degree and relative distances.
+    Improvement: 0.00%
+[EVAL WARNING] TypeError: only length-1 arrays can be converted to Python scalars
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/fool/Local/MOTIF/problems/tsp_gls/eval.py", line 130, in <module>
+    main(mode)
+    ~~~~^^^^^^
+  File "/home/fool/Local/MOTIF/problems/tsp_gls/eval.py", line 119, in main
+    costs = process_file(path, PERTURBATION_MOVES, ITER_LIMIT)
+  File "/home/fool/Local/MOTIF/problems/tsp_gls/eval.py", line 73, in process_file
+    result = solve_instance(coordinates, perturbation_moves, iter_limit, int(seeds[i]))
+  File "/home/fool/Local/MOTIF/problems/tsp_gls/eval.py", line 35, in solve_instance
+    best_cost = run_tsp_gls(
+        distmat=dist_matrix,
+        perturbation_moves=perturbation_moves,
+        iter_limit=iter_limit
+    )
+  File "/home/fool/Local/MOTIF/problems/tsp_gls/gls.py", line 180, in run_tsp_gls
+    guide = generate_guide_matrix(distmat.copy())
+  File "/home/fool/Local/MOTIF/problems/tsp_gls/F1.py", line 11, in generate_guide_matrix
+    guide_matrix[i][j] = distance_matrix[i][j] * (1 + strengths[j] / np.mean(connectivity))
+    ~~~~~~~~~~~~~~~^^^
+ValueError: setting an array element with a sequence.
+  Turn 82: P2 used innovation
+    Summary: Implemented adaptive edge criticality to enhance guide matrix penalties.
+    Improvement: 0.00%
+  Turn 83: P2 used learning
+    Summary: Enhanced penalties by incorporating edge centrality and nearest neighbor distance.
+    Improvement: 0.00%
+  Turn 84: P2 used counter
+    Summary: Improved neighbor influence and critical edge penalization.
+    Improvement: -0.16%
+  Turn 85: P2 used innovation
+    Summary: Balanced distance and average-based penalties for improved paths.
+    Improvement: -0.09%
+  Turn 86: P2 used counter
+    Summary: Improved penalty calculations by integrating edge criticality with distance normalization.
+    Improvement: -0.32%
+  Turn 87: P2 used innovation
+    Summary: Implemented dynamic penalties based on average neighbor distances.
+    Improvement: -0.34%
+  Turn 88: P2 used innovation
+    Summary: Implemented edge penalties based on distance variance for better guidance.
+    Improvement: -0.06%
+  Turn 89: P2 used counter
+    Summary: Introduced a dual penalty system to better normalize the edge criticality.
+    Improvement: -0.37%
+[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_gls/F1.py:13: RuntimeWarning: divide by zero encountered in scalar divide
+  guide_matrix[i][j] = distance_matrix[i][j] / nearest_distance * (1 + centrality_penalty)
+  Turn 90: P2 used learning
+    Summary: Combined nearest distances and vertex centrality for edge penalization.
+    Improvement: -1.52%
+[BASELINE] Checking F1 results...
+[BASELINE] No improvement
+  Current baseline: 54.435961
+  Best achieved: 54.435961
+[SAVE] Saved best implementation for F1
+[REVERT] Reverted F1 to previous best
+
+==================== OUTER ITERATION 10/20 ====================
+[UCB] Selected: F1
+
+[STRATEGY] Running 10 iterations on F1
+  Current baseline: 54.435961
+  Turn 91: P2 used learning
+    Summary: Combined degree and variance metrics to improve guide matrix accuracy.
+    Improvement: -0.24%
+  Turn 92: P2 used innovation
+    Summary: Implemented edge-connected penalties to enhance weak paths.
+    Improvement: 0.00%
+  Turn 93: P2 used learning
+    Summary: Enhanced guide matrix combining neighbor and centrality penalties.
+    Improvement: -0.27%
+  Turn 94: P2 used innovation
+    Summary: Used triangle inequality and average distances for penalty calibration.
+    Improvement: -0.39%
+  Turn 95: P2 used learning
+    Summary: Enhanced guide matrix with centrality and nearest neighbor penalties.
+    Improvement: -1.52%
+  Turn 96: P2 used innovation
+    Summary: Introduced average distances for strategic edge penalization.
+    Improvement: -0.24%
+  Turn 97: P2 used counter
+    Summary: Enhanced guide matrix using balanced edge criticality and distance normalization.
+    Improvement: 0.00%
+  Turn 98: P2 used innovation
+    Summary: Introduced edge usage frequency to enhance penalty calculation.
+    Improvement: -0.48%
+  Turn 99: P2 used innovation
+    Summary: Implemented a scoring system combining distance and degree centrality.
+    Improvement: -0.11%
+  Turn 100: P1 used counter
+    Summary: Enhanced guide penalties using distance ratios and centrality metrics.
+    Improvement: -0.18%
+[BASELINE] Checking F1 results...
+[BASELINE] No improvement
+  Current baseline: 54.435961
+  Best achieved: 54.435961
+[SAVE] Saved best implementation for F1
+[REVERT] Reverted F1 to previous best
+
+==================== OUTER ITERATION 11/20 ====================
+[UCB] Selected: F1
+
+[STRATEGY] Running 10 iterations on F1
+  Current baseline: 54.435961
+  Turn 101: P2 used innovation
+    Summary: Implemented edge popularity penalties to guide the heuristic.
+    Improvement: -0.22%
+  Turn 102: P2 used counter
+    Summary: Modified weighting based on distance proximity to enhance edge selection.
+    Improvement: -0.21%
+  Turn 103: P2 used innovation
+    Summary: Introduced a new penalty system based on edge degree and proximity to improve path selection.
+    Improvement: -0.52%
+  Turn 104: P1 used learning
+    Summary: Combined criticality and average nearest neighbor distances for stronger penalty selection.
+    Improvement: -0.23%
+  Turn 105: P2 used innovation
+    Summary: Incorporated edge weight and clustering effects for enhanced guidance.
+    Improvement: 0.00%
+  Turn 106: P2 used innovation
+    Summary: Introduced edge scoring based on overall route contributions.
+    Improvement: -0.22%
+  Turn 107: P2 used innovation
+    Summary: Enhanced guide matrix by considering edge frequency in shortest paths.
+    Improvement: 0.00%
+  Turn 108: P1 used innovation
+    Summary: Adaptive penalties based on edge importance enhance the guide matrix.
+    Improvement: -0.19%
+  Turn 109: P2 used innovation
+    Summary: Introduced edge penalty based on average distances for criticality.
+    Improvement: -0.22%
+  Turn 110: P2 used learning
+    Summary: Combined edge criticality and distance normalization for enhanced penalties.
+    Improvement: -0.24%
+[BASELINE] Checking F1 results...
+[BASELINE] No improvement
+  Current baseline: 54.435961
+  Best achieved: 54.435961
+[SAVE] Saved best implementation for F1
+[REVERT] Reverted F1 to previous best
+
+==================== OUTER ITERATION 12/20 ====================
+[UCB] Selected: F1
+
+[STRATEGY] Running 10 iterations on F1
+  Current baseline: 54.435961
+  Turn 111: P2 used counter
+    Summary: Enhanced penalization of distant connections with nearest neighbor consideration.
+    Improvement: -0.41%
+  Turn 112: P2 used innovation
+    Summary: Combined distance and edge usage to create an improved guide matrix.
+    Improvement: 0.00%
+  Turn 113: P1 used learning
+    Summary: Enhanced edge penalties by incorporating criticality and average nearest distances.
+    Improvement: -0.64%
+  Turn 114: P2 used counter
+    Summary: Enhanced guide matrix using neighbor influence and average distances.
+    Improvement: -0.44%
+  Turn 115: P2 used counter
+    Summary: Adaptive penalties based on distance and neighbor status enhance edge selection.
+    Improvement: -0.72%
+  Turn 116: P2 used innovation
+    Summary: Introduced a distance-based hybrid penalty for edge guidance.
+    Improvement: -0.38%
+  Turn 117: P2 used counter
+    Summary: Optimized guide matrix using edge weights and distance penalties.
+    Improvement: 0.00%
+  Turn 118: P1 used innovation
+    Summary: Introduced a reward for shorter edges with penalties for longer edges.
+    Improvement: 0.00%
+  Turn 119: P1 used counter
+    Summary: Introduced adaptive penalties based on relative edge distances and local trends.
+    Improvement: -0.25%
+  Turn 120: P1 used counter
+    Summary: Enhanced penalties with mean and standard deviation for better edge assessment.
+    Improvement: 0.00%
+[BASELINE] Checking F1 results...
+[BASELINE] No improvement
+  Current baseline: 54.435961
+  Best achieved: 54.435961
+[SAVE] Saved best implementation for F1
+[REVERT] Reverted F1 to previous best
+
+==================== OUTER ITERATION 13/20 ====================
+[UCB] Selected: F1
+
+[STRATEGY] Running 10 iterations on F1
+  Current baseline: 54.435961
+  Turn 121: P1 used innovation
+    Summary: Enhanced guide matrix using distance spread and critical edge penalties.
+    Improvement: 0.00%
+  Turn 122: P2 used learning
+    Summary: Combined average distance norm with nearest neighbor penalties for refined guidance.
+    Improvement: 0.00%
+  Turn 123: P2 used counter
+    Summary: Implemented hybrid guiding matrix using both neighbor significance and percentile thresholds.
+    Improvement: -0.16%
+  Turn 124: P1 used innovation
+    Summary: Implemented hybrid heuristic using variance of nearest neighbors for penalty adjustments.
+    Improvement: -0.24%
+  Turn 125: P1 used counter
+    Summary: Enhanced penalties based on critical edge analysis improve guide matrix.
+    Improvement: -0.20%
+  Turn 126: P1 used counter
+    Summary: Introduced stronger penalties for edges disconnected from nearest neighbors.
+    Improvement: -0.32%
+  Turn 127: P2 used learning
+    Summary: Hybrid penalty approach using average distances enhances edge selection.
+    Improvement: -0.44%
+  Turn 128: P1 used counter
+    Summary: Normalized penalties based on average distances for better edge representation.
+    Improvement: 0.00%
+  Turn 129: P2 used counter
+    Summary: Enhanced penalization using both mean and max distances for better edge evaluation.
+    Improvement: -0.28%
+  Turn 130: P1 used learning
+    Summary: Enhanced guide matrix with criticality factor based on average and nearest distances.
+    Improvement: -0.20%
+[BASELINE] Checking F1 results...
+[BASELINE] No improvement
+  Current baseline: 54.435961
+  Best achieved: 54.435961
+[SAVE] Saved best implementation for F1
+[REVERT] Reverted F1 to previous best
+
+==================== OUTER ITERATION 14/20 ====================
+[UCB] Selected: F1
+
+[STRATEGY] Running 10 iterations on F1
+  Current baseline: 54.435961
+  Turn 131: P1 used counter
+    Summary: Introduced local clustering coefficients for penalties on weak edges.
+    Improvement: -0.24%
+  Turn 132: P1 used innovation
+    Summary: Implemented a decay factor to emphasize shorter edges dynamically.
+    Improvement: -0.14%
+  Turn 133: P1 used learning
+    Summary: Enhanced edge penalization with average nearby distance consideration.
+    Improvement: 0.00%
+  Turn 134: P1 used learning
+    Summary: Enhanced penalties using average and minimum nearest neighbor distances.
+    Improvement: -0.06%
+  Turn 135: P1 used counter
+    Summary: Enhanced penalty structure based on average distances improves edge selection.
+    Improvement: -0.43%
+  Turn 136: P1 used innovation
+    Summary: Introduced dynamic edge penalization using a distance ratio.
+    Improvement: -0.22%
+  Turn 137: P2 used counter
+    Summary: Introduced flexible penalty system for edge evaluation, enhancing performance.
+    Improvement: -1.52%
+  Turn 138: P2 used counter
+    Summary: Normalized distances with criticality weights for better edge penalties.
+    Improvement: -0.29%
+  Turn 139: P1 used counter
+    Summary: Introduced enhanced edge criticality penalties for better guidance.
+    Improvement: -0.90%
+  Turn 140: P1 used counter
+    Summary: Enhanced guide matrix with localized penalties based on edge density.
+    Improvement: -0.29%
+[BASELINE] Checking F1 results...
+[BASELINE] No improvement
+  Current baseline: 54.435961
+  Best achieved: 54.435961
+[SAVE] Saved best implementation for F1
+[REVERT] Reverted F1 to previous best
+
+==================== OUTER ITERATION 15/20 ====================
+[UCB] Selected: F1
+
+[STRATEGY] Running 10 iterations on F1
+  Current baseline: 54.435961
+  Turn 141: P1 used learning
+    Summary: Enhanced guide matrix by combining edge criticality and averaged penalties.
+    Improvement: -0.19%
+  Turn 142: P1 used counter
+    Summary: Enhanced edge selection with dynamic penalties for better guide matrix.
+    Improvement: 0.00%
+  Turn 143: P1 used learning
+    Summary: Enhanced guide matrix using neighbor variance for better edge selection.
+    Improvement: -0.12%
+  Turn 144: P1 used learning
+    Summary: Enhanced guide matrix with average nearby distance and distance normalization penalties.
+    Improvement: -0.20%
+  Turn 145: P1 used innovation
+    Summary: Introduced dual-penalty based on average and maximum distances to enhance guidance.
+    Improvement: -0.20%
+[EVAL WARNING] Traceback (most recent call last):
+  File "/home/fool/Local/MOTIF/problems/tsp_gls/eval.py", line 130, in <module>
+    main(mode)
+    ~~~~^^^^^^
+  File "/home/fool/Local/MOTIF/problems/tsp_gls/eval.py", line 119, in main
+    costs = process_file(path, PERTURBATION_MOVES, ITER_LIMIT)
+  File "/home/fool/Local/MOTIF/problems/tsp_gls/eval.py", line 73, in process_file
+    result = solve_instance(coordinates, perturbation_moves, iter_limit, int(seeds[i]))
+  File "/home/fool/Local/MOTIF/problems/tsp_gls/eval.py", line 35, in solve_instance
+    best_cost = run_tsp_gls(
+        distmat=dist_matrix,
+        perturbation_moves=perturbation_moves,
+        iter_limit=iter_limit
+    )
+  File "/home/fool/Local/MOTIF/problems/tsp_gls/gls.py", line 180, in run_tsp_gls
+    guide = generate_guide_matrix(distmat.copy())
+  File "/home/fool/Local/MOTIF/problems/tsp_gls/F1.py", line 13, in generate_guide_matrix
+    guide_matrix[i][j] = distance * (1 + (2 * (average_distance := (avg_nearby_distance / distance))) if average_distance > 1 else 0)
+                                                                                                         ^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'average_distance' where it is not associated with a value
+  Turn 146: P1 used learning
+    Summary: Combined nearest neighbor and average distances for edge penalization.
+    Improvement: 0.00%
+  Turn 147: P1 used learning
+    Summary: Enhanced guide matrix with combined penalties to improve path selection.
+    Improvement: -0.15%
+  Turn 148: P1 used innovation
+    Summary: Introduced critical edge weights based on average connection distances.
+    Improvement: -1.63%
+  Turn 149: P1 used learning
+    Summary: Created a more robust guide matrix using centrality and enhanced distance metrics.
+    Improvement: 0.00%
+  Turn 150: P1 used counter
+    Summary: Adjusted penalties to reduce over-penalization and improved edge weighting.
+    Improvement: -0.43%
+[BASELINE] Checking F1 results...
+[BASELINE] No improvement
+  Current baseline: 54.435961
+  Best achieved: 54.435961
+[SAVE] Saved best implementation for F1
+[REVERT] Reverted F1 to previous best
+
+==================== OUTER ITERATION 16/20 ====================
+[UCB] Selected: F1
+
+[STRATEGY] Running 10 iterations on F1
+  Current baseline: 54.435961
+  Turn 151: P1 used innovation
+    Summary: Enhanced guide matrix using edge-importance metrics and modified penalties.
+    Improvement: 0.00%
+  Turn 152: P1 used learning
+    Summary: Enhanced edge penalties using normalized distances and adaptive criticality.
+    Improvement: -1.52%
+  Turn 153: P1 used learning
+    Summary: Enhanced edge scoring based on nearest neighbors and average distances.
+    Improvement: 0.00%
+[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_gls/F1.py:13: RuntimeWarning: divide by zero encountered in scalar divide
+  penalty = (nearest_distance / avg_distance) + (distance / nearest_distance)
+  Turn 154: P1 used counter
+    Summary: Enhanced guide-matrix heuristic by incorporating comprehensive critical edge analysis.
+    Improvement: -1.52%
+  Turn 155: P1 used innovation
+    Summary: Implemented a decay factor for edge distances to enhance guidance.
+    Improvement: -0.25%
+  Turn 156: P1 used learning
+    Summary: Enhanced guide matrix utilizing edge penalties from average distances.
+    Improvement: -0.70%
+  Turn 157: P1 used counter
+    Summary: Simplified penalty calculation using nearest neighbors for better edge guidance.
+    Improvement: -0.48%
+  Turn 158: P1 used counter
+    Summary: Introduced edge usage penalties based on neighbor interactions for better optimization.
+    Improvement: -0.41%
+  Turn 159: P1 used learning
+    Summary: Enhanced guide matrix by combining edge penalties with strong nearest neighbor metrics.
+    Improvement: 0.00%
+  Turn 160: P1 used learning
+    Summary: Enhanced guide matrix using nearest neighbor distance penalties.
+    Improvement: -0.06%
+[BASELINE] Checking F1 results...
+[BASELINE] No improvement
+  Current baseline: 54.435961
+  Best achieved: 54.435961
+[SAVE] Saved best implementation for F1
+[REVERT] Reverted F1 to previous best
+
+==================== OUTER ITERATION 17/20 ====================
+[UCB] Selected: F1
+
+[STRATEGY] Running 10 iterations on F1
+  Current baseline: 54.435961
+  Turn 161: P1 used innovation
+    Summary: Implemented rank-based penalties for edge selection to enhance path optimization.
+    Improvement: -0.21%
+  Turn 162: P1 used innovation
+    Summary: Dynamic edge penalization based on average distances for improved guidance.
+    Improvement: -0.24%
+  Turn 163: P1 used counter
+    Summary: Enhanced edge weighting to diversify choices and improve tour optimization.
+    Improvement: 0.00%
+  Turn 164: P1 used learning
+    Summary: Enhanced edge penalties using average nearest neighbor distances and relative criticality.
+    Improvement: -0.22%
+  Turn 165: P1 used innovation
+    Summary: Enhanced penalties based on edge length and neighbor counts to optimize guide matrix.
+    Improvement: 0.00%
+  Turn 166: P1 used innovation
+    Summary: Introduced normalized distance influence for better edge penalization.
+    Improvement: -1.52%
+  Turn 167: P1 used learning
+    Summary: Enhanced guide matrix with improved penalties from nearest neighbors and average distances.
+    Improvement: 0.00%
+  Turn 168: P1 used learning
+    Summary: Enhanced guide matrix by integrating average distance and stronger edge penalties.
+    Improvement: 0.00%
+[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_gls/F1.py:6: RuntimeWarning: invalid value encountered in multiply
+  avg_distances = np.mean(distance_matrix + np.inf * (distance_matrix == np.inf), axis=1)
+  Turn 169: P1 used counter
+    Summary: Dynamic penalty system based on average critical edges and logarithmic adjustments.
+    Improvement: -1.52%
+  Turn 170: P1 used counter
+    Summary: Enhanced penalties with variance term for better edge selection.
+    Improvement: -0.17%
+[BASELINE] Checking F1 results...
+[BASELINE] No improvement
+  Current baseline: 54.435961
+  Best achieved: 54.435961
+[SAVE] Saved best implementation for F1
+[REVERT] Reverted F1 to previous best
+
+==================== OUTER ITERATION 18/20 ====================
+[UCB] Selected: F1
+
+[STRATEGY] Running 10 iterations on F1
+  Current baseline: 54.435961
+  Turn 171: P1 used counter
+    Summary: Enhanced edge penalization using broader neighbor considerations.
+    Improvement: -0.27%
+  Turn 172: P1 used counter
+    Summary: Introduced distance variance penalization to guide edges.
+    Improvement: -1.04%
+  Turn 173: P1 used counter
+    Summary: Improved edge penalties using median and 90th percentile for robust guidance.
+    Improvement: 0.00%
+  Turn 174: P1 used learning
+    Summary: Enhanced penalization based on average distances and critical edges.
+    Improvement: 0.00%
+  Turn 175: P1 used counter
+    Summary: Introduced scaling based on maximum distance for better penalization.
+    Improvement: -0.09%
+  Turn 176: P1 used innovation
+    Summary: Introduced a new penalty structure based on edge strength and inversely related distances.
+    Improvement: -1.76%
+  Turn 177: P1 used learning
+    Summary: Enhanced penalization using average distances and refined nearest neighbors.
+    Improvement: -0.20%
+  Turn 178: P1 used counter
+    Summary: Incorporated variance of nearest neighbors for dynamic penalty scaling.
+    Improvement: -0.19%
+  Turn 179: P1 used innovation
+    Summary: Enhanced guide matrix considering edge centrality and global metrics.
+    Improvement: -0.30%
+  Turn 180: P1 used innovation
+    Summary: Introduced edge penalty based on distance ratio to average distance.
+    Improvement: -0.22%
+[BASELINE] Checking F1 results...
+[BASELINE] No improvement
+  Current baseline: 54.435961
+  Best achieved: 54.435961
+[SAVE] Saved best implementation for F1
+[REVERT] Reverted F1 to previous best
+
+==================== OUTER ITERATION 19/20 ====================
+[UCB] Selected: F1
+
+[STRATEGY] Running 10 iterations on F1
+  Current baseline: 54.435961
+  Turn 181: P1 used learning
+    Summary: Combined penalties from nearest neighbors and distance variance for better guidance.
+    Improvement: -0.08%
+  Turn 182: P1 used innovation
+    Summary: Implemented adaptive penalties based on edge criticality and distance ratios.
+    Improvement: -0.28%
+  Turn 183: P1 used counter
+    Summary: Enhanced penalties using a wider neighborhood for improved edge selection.
+    Improvement: -0.25%
+  Turn 184: P1 used counter
+    Summary: Enhanced penalties using more neighbors for better edge guidance.
+    Improvement: -0.17%
+  Turn 185: P1 used innovation
+    Summary: Implemented a hybrid penalty method based on average and maximum distances of neighbors.
+    Improvement: -0.54%
+  Turn 186: P1 used learning
+    Summary: Enhanced guide matrix leveraging critical edges and penalty adjustments.
+    Improvement: -0.12%
+  Turn 187: P1 used learning
+    Summary: Improved guide matrix with refined penalties based on nearby distances.
+    Improvement: 0.00%
+  Turn 188: P1 used innovation
+    Summary: Introduced connectivity-based penalties to enhance edge selection in tour.
+    Improvement: -0.22%
+  Turn 189: P1 used innovation
+    Summary: Introduced aggressive penalties for longer edges based on nearest neighbors.
+    Improvement: 0.00%
+  Turn 190: P1 used innovation
+    Summary: Introduced harmonic mean for effective edge guiding.
+    Improvement: -0.26%
+[BASELINE] Checking F1 results...
+[BASELINE] No improvement
+  Current baseline: 54.435961
+  Best achieved: 54.435961
+[SAVE] Saved best implementation for F1
+[REVERT] Reverted F1 to previous best
+
+==================== OUTER ITERATION 20/20 ====================
+[UCB] Selected: F1
+
+[STRATEGY] Running 10 iterations on F1
+  Current baseline: 54.435961
+  Turn 191: P1 used innovation
+    Summary: Integrated relative distance and penalty based on average distances.
+    Improvement: -0.46%
+  Turn 192: P1 used counter
+    Summary: Enhanced edge penalties using average and critical distances for better edge selection.
+    Improvement: 0.00%
+  Turn 193: P1 used learning
+    Summary: Enhanced guide matrix using normalized penalties and adaptive scaling.
+    Improvement: -1.52%
+  Turn 194: P1 used learning
+    Summary: Combined strengths of average proximity and critical edge penalties.
+    Improvement: 0.00%
+  Turn 195: P1 used innovation
+    Summary: Implemented a new penalty based on average distances for better edge selection.
+    Improvement: -0.59%
+  Turn 196: P1 used innovation
+    Summary: Enhanced edge penalization based on overall connectivity in the distance matrix.
+    Improvement: -0.22%
+  Turn 197: P1 used counter
+    Summary: Enhanced edge penalization for longer edges improves selection.
+    Improvement: 0.00%
+  Turn 198: P1 used learning
+    Summary: Enhanced guide matrix using minimum and average nearby distances for edge penalties.
+    Improvement: 0.00%
+  Turn 199: P1 used innovation
+    Summary: Introduced hybrid penalties based on edge criticality and distance rankings.
+    Improvement: -0.46%
+  Turn 200: P1 used learning
+    Summary: Refined guide matrix by integrating edge usage and average neighbor distances.
+    Improvement: -0.68%
+[BASELINE] Checking F1 results...
+[BASELINE] No improvement
+  Current baseline: 54.435961
+  Best achieved: 54.435961
+[SAVE] Saved best implementation for F1
+[REVERT] Reverted F1 to previous best
+
+==================================================
+COMPETITIVE STATUS
+==================================================
+F1:
+  P1: 54.435961 (improvement: 0.00%)
+  P2: 54.435961 (improvement: 0.00%)
+  Winner: P1 with cost 54.435961
+  Turns: 200
+
+Current baseline: 54.435961
+==================================================
+
+==================================================
+ROUND 1 COMPLETED
+==================================================
+Initial baseline: 54.435961
+Final baseline: 54.435961
+Total improvement: 0.00%
+
+==================================================
+COMPETITIVE STATUS
+==================================================
+F1:
+  P1: 54.435961 (improvement: 0.00%)
+  P2: 54.435961 (improvement: 0.00%)
+  Winner: P1 with cost 54.435961
+  Turns: 200
+
+Current baseline: 54.435961
+==================================================
+
+Saving all best implementations...
+  Saved F1
+All implementations saved
+
+Round 1 completed!
+Round 1 Results Summary:
+  Initial baseline: 54.435961
+  Round 1 baseline: 54.435961
+  Round 1 improvement: 0.00%
+  Strategy winners:
+    F1: P1 wins with cost 54.435961
+
+Saving Round 1 strategies to results...
+  Saved F1 to 20260729_093949_tsp_gls_F1_round1_best.py
+Saved 1 Round 1 strategy files
+
+============================================================
+PHASE 2: FINAL ROUND - SEQUENTIAL OPTIMIZATION
+============================================================
+
+============================================================
+STARTING FINAL ROUND: SEQUENTIAL OPTIMIZATION
+============================================================
+Goal: System-aware strategy refinement
+Two players compete per strategy with fixed baseline
+Strategies optimized sequentially with baseline updates
+
+==================================================
+Final Round: Optimizing F1
+==================================================
+  Strategy baseline: 54.435961
+  Turn 1: P1 - Optimized penalty calculation and distance factor sensitivity.
+    Cost: 54.622959, Improvement: -0.34% (BELOW)
+  Turn 2: P2 - Enhanced penalty calculation to improve cost efficiency.
+    Cost: 54.566158, Improvement: -0.24% (BELOW)
+  Turn 3: P1 - Optimized penalty computation for improved distance guidance.
+    Cost: 54.537967, Improvement: -0.19% (BELOW)
+  Turn 4: P2 - Adjusted penalty calculation for improved responsiveness.
+    Cost: 54.566158, Improvement: -0.24% (BELOW)
+  Turn 5: P1 - Enhanced penalty calculation for better cost efficiency.
+    Cost: 54.533122, Improvement: -0.18% (BELOW)
+  Turn 6: P2 - Optimized penalty calculation for better performance.
+    Cost: 54.533477, Improvement: -0.18% (BELOW)
+  Turn 7: P1 - Updated penalty calculation; optimized hyperparameters.
+    Cost: 54.435961, Improvement: 0.00% (BELOW)
+  Turn 8: P2 - Enhanced penalty calculation and distance factor adjustments to improve guide matrix.
+    Cost: 54.506804, Improvement: -0.13% (BELOW)
+  Turn 9: P1 - Optimized penalties and added exponential decay for better distance handling.
+    Cost: 54.496832, Improvement: -0.11% (BELOW)
+  Turn 10: P2 - Refined penalty calculation for smoother scaling with distance.
+    Cost: 54.622959, Improvement: -0.34% (BELOW)
+
+  F1 Results:
+    P1 best: 54.435961
+    P2 best: 54.506804
+    Winner: P1
+    No improvement to global baseline
+
+============================================================
+FINAL ROUND COMPLETED
+============================================================
+Initial cost: 54.435961
+Final cost: 54.435961
+Total improvement: 0.00%
+
+Strategy Winners:
+  F1: P1 with 54.435961
+Best combination saved to files
+
+Saving Final Round strategies to results...
+  Saved F1 to 20260729_093949_tsp_gls_F1_final_best.py
+Saved 1 Final Round strategy files
+
+============================================================
+TWO-PHASE OPTIMIZATION COMPLETED
+============================================================
+Phase Summary:
+  Round 1: 0.00% improvement
+  Final Round: 0.00% total improvement
+  Results saved to: results
+  Log files:
+    Round 1: results/20260729_093949_tsp_gls_round_1.json
+    Final Round: results/20260729_093949_tsp_gls_round_2.json
+
+Optimization completed successfully!

@@ -1,0 +1,1178 @@
+Starting Two-Phase Competitive Optimization
+Problem: TSP using ACO
+Round 1: MCTS optimization (individual strategies)
+Final Round: Sequential optimization (system-aware)
+Two AI players compete in both phases
+
+Logging enabled:
+  Round 1: results/20260729_145726_tsp_aco_round_1.json
+  Final Round: results/20260729_145726_tsp_aco_round_2.json
+
+============================================================
+PHASE 1: ROUND 1 - MCTS OPTIMIZATION
+============================================================
+[BASELINE] Evaluating initial implementation...
+[BASELINE] Initial cost: 32.646054996155506
+
+==================================================
+INITIALIZING COMPETITIVE STRATEGY TREES
+==================================================
+  Initialized tree for F1 (initialize)
+  Initialized tree for F2 (compute_probabilities)
+  Initialized tree for F3 (update_pheromone)
+==================================================
+
+Initialized Controller with dynamic baseline
+
+==================================================
+STARTING ROUND 1: MCTS OPTIMIZATION
+Initial baseline: 32.646054996155506
+Outer iterations: 20
+==================================================
+
+==================== OUTER ITERATION 1/20 ====================
+[UCB] Selected: F1
+
+[STRATEGY] Running 10 iterations on F1
+  Current baseline: 32.646055
+  Turn 1: P1 used counter
+    Summary: Enhanced heuristic based on average distances for better edge selection.
+    Improvement: 4.52%
+  Turn 2: P1 used innovation
+    Summary: Enhanced heuristic by combining distance and city connectivity.
+    Improvement: -0.04%
+  Turn 3: P1 used learning
+    Summary: Enhanced heuristic using distance decay based on surrounding cities.
+    Improvement: 0.00%
+  Turn 4: P2 used innovation
+    Summary: Introduced a scaling factor to the heuristic based on distance range.
+    Improvement: -203.24%
+  Turn 5: P2 used counter
+    Summary: Enhanced heuristic with dynamic scaling for better edge selection.
+    Improvement: 8.05%
+  Turn 6: P2 used learning
+    Summary: Improved initialization heuristic using proximity weighting and distance decay.
+    Improvement: 7.85%
+  Turn 7: P2 used innovation
+    Summary: Innovated heuristic by incorporating distance normalization and connectivity.
+    Improvement: -62.20%
+  Turn 8: P2 used learning
+    Summary: Enhanced heuristics improve edge selection using average distances and exploration factors.
+    Improvement: 2.05%
+  Turn 9: P2 used learning
+    Summary: Enhanced heuristic with improved pheromone initialization.
+    Improvement: 2.71%
+  Turn 10: P1 used innovation
+    Summary: Enhanced initialization heuristic focusing on edge importance and proximity.
+    Improvement: -216.28%
+[BASELINE] Checking F1 results...
+[BASELINE] Found improvement!
+  Previous: 32.646055
+  New: 30.016521
+  Improvement: 8.05%
+[SAVE] Saved best implementation for F1
+[BASELINE] Propagating update to all trees...
+[BASELINE] All trees updated
+
+==================== OUTER ITERATION 2/20 ====================
+[UCB] Selected: F2
+
+[STRATEGY] Running 10 iterations on F2
+  Current baseline: 30.016521
+  Turn 1: P1 used innovation
+    Summary: Implemented dynamic adaptation for pheromone and heuristic parameters.
+    Improvement: -89.14%
+  Turn 2: P1 used counter
+    Summary: Dynamic adjustment to pheromone and heuristic weights based on iteration.
+    Improvement: 1.40%
+  Turn 3: P1 used learning
+    Summary: Dynamic adjustment of alpha and beta based on iteration count.
+    Improvement: -5.14%
+  Turn 4: P2 used innovation
+    Summary: Implemented dynamic sigmoid scaling for pheromone and heuristic influences.
+    Improvement: -0.08%
+  Turn 5: P2 used counter
+    Summary: Introduced exponential adjustments for pheromone and heuristic weights.
+    Improvement: 0.01%
+  Turn 6: P2 used innovation
+    Summary: Dynamic adjustment of pheromone and heuristic influences based on iteration.
+    Improvement: -2.30%
+  Turn 7: P2 used learning
+    Summary: Enhanced dynamic weights with normalization for improved stability and performance.
+    Improvement: 1.52%
+  Turn 8: P2 used counter
+    Summary: Improved dynamic scaling with exponential influence on pheromone and heuristic weights.
+    Improvement: -0.58%
+  Turn 9: P1 used innovation
+    Summary: Enhanced transition weights with adaptive exploration and exploitation factors.
+    Improvement: -11.75%
+  Turn 10: P2 used learning
+    Summary: Dynamic alpha/beta with exponential decay for stability and exploration.
+    Improvement: 1.40%
+[BASELINE] Checking F2 results...
+[BASELINE] Found improvement!
+  Previous: 30.016521
+  New: 29.560427
+  Improvement: 1.52%
+[SAVE] Saved best implementation for F2
+[BASELINE] Propagating update to all trees...
+[BASELINE] All trees updated
+
+==================== OUTER ITERATION 3/20 ====================
+[UCB] Selected: F3
+
+[STRATEGY] Running 10 iterations on F3
+  Current baseline: 29.560427
+  Turn 1: P1 used counter
+    Summary: Adaptive pheromone decay enhances exploration in later iterations.
+    Improvement: 0.50%
+  Turn 2: P1 used innovation
+    Summary: Implemented variable decay and squared deposit for stability and exploration.
+    Improvement: 0.07%
+  Turn 3: P1 used learning
+    Summary: Enhanced pheromone update with dynamic decay and stability in deposit values.
+    Improvement: 0.39%
+  Turn 4: P2 used innovation
+    Summary: Implemented a dynamic deposit scale to enhance pheromone update adaptability.
+    Improvement: 0.70%
+  Turn 5: P2 used learning
+    Summary: Enhanced pheromone update with a lower decay factor and improved deposit calculation.
+    Improvement: 0.70%
+  Turn 6: P2 used learning
+    Summary: Implemented adaptive decay and weighted pheromone deposit for improved exploration.
+    Improvement: 0.34%
+  Turn 7: P2 used learning
+    Summary: Enhanced pheromone deposit strategy and adaptive decay for better exploration.
+    Improvement: 0.71%
+  Turn 8: P2 used innovation
+    Summary: Dynamic deposit scaling based on iteration for enhanced exploration.
+    Improvement: 0.38%
+  Turn 9: P2 used counter
+    Summary: Enhanced variable decay and deposit scaling for better exploration.
+    Improvement: 0.39%
+  Turn 10: P2 used counter
+    Summary: Implemented adaptive deposit scaling based on mean costs.
+    Improvement: 0.34%
+[BASELINE] Checking F3 results...
+[BASELINE] Found improvement!
+  Previous: 29.560427
+  New: 29.350172
+  Improvement: 0.71%
+[SAVE] Saved best implementation for F3
+[BASELINE] Propagating update to all trees...
+[BASELINE] All trees updated
+
+==================== OUTER ITERATION 4/20 ====================
+[UCB] Selected: F1
+
+[STRATEGY] Running 10 iterations on F1
+  Current baseline: 29.350172
+  Turn 11: P1 used learning
+    Summary: Enhanced initialization combining variability and average distance for better edge selection.
+    Improvement: 0.16%
+  Turn 12: P2 used counter
+    Summary: Enhanced heuristic using average and maximum distances for improved edge selection.
+    Improvement: 0.54%
+  Turn 13: P2 used counter
+    Summary: Improved heuristic by integrating connectivity information with distance decay.
+    Improvement: 0.22%
+  Turn 14: P1 used learning
+    Summary: Improved heuristic combining average and max distance, uniform pheromone allocation.
+    Improvement: 0.46%
+  Turn 15: P1 used counter
+    Summary: Enhanced heuristic using minimum distances for better edge selection.
+    Improvement: 1.23%
+  Turn 16: P2 used innovation
+    Summary: Enhanced heuristic using proximity to average distances for better edge selection.
+    Improvement: 1.23%
+  Turn 17: P1 used innovation
+    Summary: Introduced connectivity factor into the heuristic calculation.
+    Improvement: -0.36%
+  Turn 18: P1 used counter
+    Summary: Enhanced heuristic combines average and minimum distance for better edge selection.
+    Improvement: 0.66%
+  Turn 19: P1 used innovation
+    Summary: Introduced a proximity factor squared to enhance heuristic edge selection.
+    Improvement: -4.17%
+  Turn 20: P1 used innovation
+    Summary: Enhanced heuristic combining distance inversions with city connectivity.
+    Improvement: -0.76%
+[BASELINE] Checking F1 results...
+[BASELINE] Found improvement!
+  Previous: 29.350172
+  New: 28.990511
+  Improvement: 1.23%
+[SAVE] Saved best implementation for F1
+[BASELINE] Propagating update to all trees...
+[BASELINE] All trees updated
+
+==================== OUTER ITERATION 5/20 ====================
+[UCB] Selected: F2
+
+[STRATEGY] Running 10 iterations on F2
+  Current baseline: 28.990511
+  Turn 11: P2 used learning
+    Summary: Enhanced dynamic adaptation of pheromone/heuristic influences with normalization.
+    Improvement: 0.00%
+  Turn 12: P1 used learning
+    Summary: Dynamic weight scaling yields improved transition probabilities for TSP.
+    Improvement: -0.44%
+  Turn 13: P2 used counter
+    Summary: Enhanced normalization and dynamic adjustments of alpha and beta.
+    Improvement: -1.05%
+  Turn 14: P1 used learning
+    Summary: Enhanced dynamic adjustment for pheromone and heuristic weights.
+    Improvement: -0.23%
+  Turn 15: P1 used counter
+    Summary: Normalized transition weights improve probability distribution for better optimization.
+    Improvement: 0.00%
+  Turn 16: P1 used counter
+    Summary: Enhanced alpha and beta calculations for stability and exploration.
+    Improvement: -19.66%
+  Turn 17: P2 used innovation
+    Summary: Dynamic adjustment of pheromone and heuristic influences based on iteration.
+    Improvement: -1.27%
+  Turn 18: P1 used learning
+    Summary: Enhanced pheromone and heuristic dynamic adjustments with normalization.
+    Improvement: -0.65%
+  Turn 19: P1 used innovation
+    Summary: Implemented logarithmic scaling for pheromone and heuristic contributions.
+    Improvement: -114.96%
+  Turn 20: P1 used learning
+    Summary: Enhanced exploration and stability via refined alpha/beta adjustment.
+    Improvement: -6.11%
+[BASELINE] Checking F2 results...
+[BASELINE] No improvement
+  Current baseline: 28.990511
+  Best achieved: 28.990511
+[SAVE] Saved best implementation for F2
+[REVERT] Reverted F2 to previous best
+
+==================== OUTER ITERATION 6/20 ====================
+[UCB] Selected: F3
+
+[STRATEGY] Running 10 iterations on F3
+  Current baseline: 28.990511
+  Turn 11: P1 used learning
+    Summary: Incorporated a calming factor on pheromone deposits to enhance exploration.
+    Improvement: -0.07%
+  Turn 12: P2 used innovation
+    Summary: Dynamic pheromone updating with exponential deposit for enhanced path exploration.
+    Improvement: -0.15%
+  Turn 13: P2 used counter
+    Summary: Introduced dynamic average cost adjustment in pheromone deposits.
+    Improvement: -0.13%
+  Turn 14: P1 used innovation
+    Summary: Implemented nonlinear decay and adjusted deposit strategy based on best-known cost.
+    Improvement: -0.89%
+  Turn 15: P1 used innovation
+    Summary: Dynamic decay and adaptive deposit scaling for pheromone updating.
+    Improvement: 0.21%
+  Turn 16: P1 used learning
+    Summary: Adaptive decay with weighted deposits combining min and avg costs.
+    Improvement: -0.30%
+  Turn 17: P1 used counter
+    Summary: Adjusted deposit scaling based on best cost to enhance pheromone reinforcement.
+    Improvement: -0.14%
+  Turn 18: P1 used learning
+    Summary: Enhanced pheromone update with dynamic decay and average cost-based deposits.
+    Improvement: -0.13%
+  Turn 19: P1 used counter
+    Summary: Utilized a weighted deposit based on mean and minimum costs for better robustness.
+    Improvement: -0.37%
+  Turn 20: P1 used learning
+    Summary: Improved pheromone update strategy using average and max costs.
+    Improvement: -0.69%
+[BASELINE] Checking F3 results...
+[BASELINE] Found improvement!
+  Previous: 28.990511
+  New: 28.929009
+  Improvement: 0.21%
+[SAVE] Saved best implementation for F3
+[BASELINE] Propagating update to all trees...
+[BASELINE] All trees updated
+
+==================== OUTER ITERATION 7/20 ====================
+[UCB] Selected: F1
+
+[STRATEGY] Running 10 iterations on F1
+  Current baseline: 28.929009
+  Turn 21: P1 used innovation
+    Summary: Enhanced heuristic using proximity and closeness, boosting edge selection.
+    Improvement: -250.87%
+  Turn 22: P1 used counter
+    Summary: Enhanced heuristic with minimum distance and connectivity factors.
+    Improvement: -0.59%
+  Turn 23: P1 used learning
+    Summary: Enhanced heuristic combining proximity and decay factor for edge selection.
+    Improvement: -0.60%
+[EVAL WARNING] Traceback (most recent call last):
+  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 52, in <module>
+    main(mode)
+    ~~~~^^^^^^
+  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 43, in main
+    costs = process_file(path, n_ants=N_ANTS, n_iter=N_ITER)
+  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 18, in process_file
+    results.append(eval_instance(data[i], n_ants, n_iter, int(seeds[i])))
+                   ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 9, in eval_instance
+    return run_tsp_aco(D, n_ants, n_iter, seed)
+  File "/home/fool/Local/MOTIF/problems/tsp_aco/aco.py", line 80, in run_tsp_aco
+    paths = constructive_path(n_cities, n_ants, probs, seed=rng_seed)
+  File "/home/fool/Local/MOTIF/problems/tsp_aco/aco.py", line 50, in constructive_path
+    paths[step] = next_city
+    ~~~~~^^^^^^
+ValueError: could not broadcast input array from shape (50,50) into shape (50,)
+  Turn 24: P1 used counter
+    Summary: Enhanced the heuristic with dynamic pheromone initialization and connectivity awareness.
+    Improvement: 0.00%
+  Turn 25: P1 used learning
+    Summary: Enhanced heuristic by combining proximity and pheromone based on average distances.
+    Improvement: -0.75%
+[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
+  transition_weights = np.power(pheromone, alpha) * np.power(heuristic, beta)
+  Turn 26: P2 used counter
+    Summary: Enhanced heuristic combines minimum and average distances for better edge selection.
+    Improvement: -256.91%
+  Turn 27: P1 used learning
+    Summary: Enhanced heuristic with distance decay and proximity for edge selection.
+    Improvement: -0.29%
+  Turn 28: P1 used innovation
+    Summary: Combined connectivity factor with distances to improve initial heuristics.
+    Improvement: -2.04%
+  Turn 29: P1 used innovation
+    Summary: Combined distance norms with weighted averages for enhanced heuristics.
+    Improvement: -2.88%
+  Turn 30: P1 used learning
+    Summary: Enhanced edge selection using average and minimum distance for better heuristics.
+    Improvement: 0.00%
+[BASELINE] Checking F1 results...
+[BASELINE] No improvement
+  Current baseline: 28.929009
+  Best achieved: 28.929009
+[SAVE] Saved best implementation for F1
+[REVERT] Reverted F1 to previous best
+
+==================== OUTER ITERATION 8/20 ====================
+[UCB] Selected: F3
+
+[STRATEGY] Running 10 iterations on F3
+  Current baseline: 28.929009
+  Turn 21: P1 used innovation
+    Summary: Introduced a tiered deposit strategy based on cost improvements.
+    Improvement: -0.43%
+  Turn 22: P1 used innovation
+    Summary: Introduced dynamic pheromone decay and enhanced deposit formula for better exploration.
+    Improvement: -0.77%
+  Turn 23: P1 used learning
+    Summary: Combined dynamic decay and enhanced deposit calculation for better performance.
+    Improvement: -0.40%
+  Turn 24: P1 used innovation
+    Summary: Implemented a hybrid pheromone update with enhanced stabilization and aggressive reinforcement.
+    Improvement: -0.46%
+  Turn 25: P1 used counter
+    Summary: Switched to using the worst cost for deposits to enhance exploration.
+    Improvement: -0.37%
+  Turn 26: P1 used learning
+    Summary: Enhanced pheromone update using squared deposit and stronger decay.
+    Improvement: -0.40%
+  Turn 27: P1 used innovation
+    Summary: Applied nonlinear decay and enhanced deposit scaling for shorter tours.
+    Improvement: -0.50%
+  Turn 28: P1 used innovation
+    Summary: Improved pheromone decay and deposit scaling for better exploration.
+    Improvement: -0.74%
+  Turn 29: P1 used innovation
+    Summary: Introduced total cost-based deposit to enhance pheromone updates.
+    Improvement: -0.37%
+  Turn 30: P1 used counter
+    Summary: Enhanced pheromone deposit based on best cost to improve performance.
+    Improvement: -0.41%
+[BASELINE] Checking F3 results...
+[BASELINE] No improvement
+  Current baseline: 28.929009
+  Best achieved: 28.929009
+[SAVE] Saved best implementation for F3
+[REVERT] Reverted F3 to previous best
+
+==================== OUTER ITERATION 9/20 ====================
+[UCB] Selected: F2
+
+[STRATEGY] Running 10 iterations on F2
+  Current baseline: 28.929009
+  Turn 21: P1 used innovation
+    Summary: Enhanced pheromone and heuristic balance with dynamic scaling.
+    Improvement: -2.02%
+  Turn 22: P1 used innovation
+    Summary: Implemented logarithmic scaling for pheromone and heuristic weights.
+    Improvement: -2.99%
+  Turn 23: P1 used innovation
+    Summary: Implemented nonlinear adjustment for pheromone and heuristic influences.
+    Improvement: -4.27%
+  Turn 24: P1 used learning
+    Summary: Improved transition weights with enhanced alpha and beta adaptation.
+    Improvement: 0.00%
+  Turn 25: P1 used counter
+    Summary: Enhanced dynamic adjustment of weights to improve exploration and stability.
+    Improvement: -1.57%
+  Turn 26: P1 used counter
+    Summary: Adjusted alpha and beta for enhanced numerical stability.
+    Improvement: -0.20%
+  Turn 27: P1 used counter
+    Summary: Introduced nonlinear adaptation for alpha and beta based on iteration.
+    Improvement: -1.96%
+  Turn 28: P2 used learning
+    Summary: Enhanced dynamic balance of pheromone and heuristic weights for improved performance.
+    Improvement: 0.00%
+  Turn 29: P1 used innovation
+    Summary: Enhanced transition weights using quadratic decay and sharper heuristic focus.
+    Improvement: -1.48%
+  Turn 30: P1 used innovation
+    Summary: Adjusted pheromone influence exponentially and enhanced heuristic scaling.
+    Improvement: -23.15%
+[BASELINE] Checking F2 results...
+[BASELINE] No improvement
+  Current baseline: 28.929009
+  Best achieved: 28.929009
+[SAVE] Saved best implementation for F2
+[REVERT] Reverted F2 to previous best
+
+==================== OUTER ITERATION 10/20 ====================
+[UCB] Selected: F1
+
+[STRATEGY] Running 10 iterations on F1
+  Current baseline: 28.929009
+  Turn 31: P1 used counter
+    Summary: Enhanced distance normalization for a more effective heuristic.
+    Improvement: -1.37%
+  Turn 32: P1 used counter
+    Summary: Refined heuristic using connectivity and distance ratios to enhance edge selection.
+    Improvement: -0.76%
+  Turn 33: P1 used innovation
+    Summary: Enhanced heuristic using distance and connectivity for promising edges.
+    Improvement: -3.33%
+  Turn 34: P2 used innovation
+    Summary: Implemented a new heuristic using weighted distance and standard deviation for edge selection.
+    Improvement: -21.61%
+  Turn 35: P1 used learning
+    Summary: Improved heuristic combining distance normalization and connectivity for better initialization.
+    Improvement: 0.00%
+  Turn 36: P1 used learning
+    Summary: Enhanced heuristic and pheromone based on distance normalization and connectivity.
+    Improvement: -0.62%
+  Turn 37: P2 used learning
+    Summary: Combined average and minimum distance insights for improved heuristic.
+    Improvement: 0.00%
+  Turn 38: P1 used innovation
+    Summary: Introduced connectivity factor for heuristic to enhance path selection.
+    Improvement: -2.50%
+  Turn 39: P1 used learning
+    Summary: Combined proximity, minimum distance, and connectivity for improved heuristics.
+    Improvement: -1.19%
+  Turn 40: P2 used innovation
+    Summary: Introduced distance scaling with degree of connectivity for edge selection.
+    Improvement: -0.23%
+[BASELINE] Checking F1 results...
+[BASELINE] No improvement
+  Current baseline: 28.929009
+  Best achieved: 28.929009
+[SAVE] Saved best implementation for F1
+[REVERT] Reverted F1 to previous best
+
+==================== OUTER ITERATION 11/20 ====================
+[UCB] Selected: F3
+
+[STRATEGY] Running 10 iterations on F3
+  Current baseline: 28.929009
+  Turn 31: P1 used learning
+    Summary: Implemented dynamic decay with enhanced deposit calculation to reinforce shorter paths.
+    Improvement: -0.40%
+  Turn 32: P1 used counter
+    Summary: Improved deposit strategy and pheromone stability to enhance exploration.
+    Improvement: -0.40%
+  Turn 33: P2 used counter
+    Summary: Enhanced pheromone update with adaptive decay and stronger deposit factors.
+    Improvement: -1.01%
+  Turn 34: P1 used counter
+    Summary: Optimized pheromone update with improved deposit calculation and decay strategy.
+    Improvement: -0.31%
+  Turn 35: P1 used counter
+    Summary: Dynamic decay and optimized deposit formula enhance exploration.
+    Improvement: -0.81%
+  Turn 36: P1 used counter
+    Summary: Dynamic pheromone decay based on the best cost improves exploration and updates.
+    Improvement: -0.87%
+  Turn 37: P1 used learning
+    Summary: Enhanced pheromone update by combining decay and squared adaptive deposit scaling.
+    Improvement: -0.14%
+  Turn 38: P1 used innovation
+    Summary: Implemented non-linear decay and variable deposit based on max cost.
+    Improvement: -0.74%
+  Turn 39: P2 used counter
+    Summary: Improved pheromone update using average cost for better exploration.
+    Improvement: -0.90%
+  Turn 40: P1 used counter
+    Summary: Improved pheromone deposit sensitivity and decay strategy.
+    Improvement: -0.31%
+[BASELINE] Checking F3 results...
+[BASELINE] No improvement
+  Current baseline: 28.929009
+  Best achieved: 28.929009
+[SAVE] Saved best implementation for F3
+[REVERT] Reverted F3 to previous best
+
+==================== OUTER ITERATION 12/20 ====================
+[UCB] Selected: F2
+
+[STRATEGY] Running 10 iterations on F2
+  Current baseline: 28.929009
+  Turn 31: P1 used learning
+    Summary: Enhanced alpha and beta adjustments for more effective transition weights.
+    Improvement: -1.19%
+  Turn 32: P2 used learning
+    Summary: Dynamic weight adjustments for pheromone and heuristic enhance transition stability.
+    Improvement: -0.44%
+  Turn 33: P1 used counter
+    Summary: Enhanced normalization and dynamic scaling for better transition weights.
+    Improvement: 0.00%
+  Turn 34: P1 used innovation
+    Summary: Introduced nonlinear scaling for alpha and beta to enhance exploration.
+    Improvement: -15.10%
+  Turn 35: P2 used counter
+    Summary: Enhanced dynamic adjustments using sigmoid scaling on alpha and beta.
+    Improvement: -0.41%
+  Turn 36: P1 used innovation
+    Summary: Introduced a dynamic scaling factor for pheromone and heuristic balance.
+    Improvement: -0.78%
+  Turn 37: P2 used innovation
+    Summary: Dynamic balance favors heuristic exploration initially, then shifts to pheromone.
+    Improvement: -4.34%
+  Turn 38: P1 used counter
+    Summary: Enhanced stability and normalization for transition weights.
+    Improvement: -0.87%
+  Turn 39: P2 used learning
+    Summary: Enhanced dynamic adjustments using logarithmic scaling for pheromone and heuristic weights.
+    Improvement: -2.99%
+  Turn 40: P1 used counter
+    Summary: Enhanced dynamic adaptation of pheromone/heuristic influences.
+    Improvement: -1.48%
+[BASELINE] Checking F2 results...
+[BASELINE] No improvement
+  Current baseline: 28.929009
+  Best achieved: 28.929009
+[SAVE] Saved best implementation for F2
+[REVERT] Reverted F2 to previous best
+
+==================== OUTER ITERATION 13/20 ====================
+[UCB] Selected: F1
+
+[STRATEGY] Running 10 iterations on F1
+  Current baseline: 28.929009
+  Turn 41: P1 used counter
+    Summary: Enhanced heuristic by combining distance weighting and proximity penalties.
+    Improvement: -73.54%
+  Turn 42: P2 used counter
+    Summary: Improved heuristic and pheromone initialization for better edge selection.
+    Improvement: -0.58%
+  Turn 43: P2 used counter
+    Summary: Incorporated standard deviation for enhanced edge selection variability.
+    Improvement: -0.71%
+  Turn 44: P2 used innovation
+    Summary: Enhanced heuristic by emphasizing relative distances and average distance dynamics.
+    Improvement: -0.72%
+[EVAL WARNING] Traceback (most recent call last):
+  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 52, in <module>
+    main(mode)
+    ~~~~^^^^^^
+  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 43, in main
+    costs = process_file(path, n_ants=N_ANTS, n_iter=N_ITER)
+  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 18, in process_file
+    results.append(eval_instance(data[i], n_ants, n_iter, int(seeds[i])))
+                   ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 9, in eval_instance
+    return run_tsp_aco(D, n_ants, n_iter, seed)
+  File "/home/fool/Local/MOTIF/problems/tsp_aco/aco.py", line 88, in run_tsp_aco
+    pheromone = update_pheromone(pheromone, paths, costs, it, n_iterations)
+  File "/home/fool/Local/MOTIF/problems/tsp_aco/F3.py", line 20, in update_pheromone
+    pheromone[c, n] += deposit
+    ~~~~~~~~~^^^^^^
+IndexError: index 16 is out of bounds for axis 1 with size 1
+  Turn 45: P1 used counter
+    Summary: Enhanced heuristic emphasizes promising edges and connectivity for better results.
+    Improvement: 0.00%
+  Turn 46: P2 used counter
+    Summary: Enhanced heuristic using minimum and average distances for better edge selection.
+    Improvement: 0.00%
+  Turn 47: P2 used counter
+    Summary: Enhanced heuristic by combining normalized inverse distances with edge connectivity.
+    Improvement: -1.36%
+  Turn 48: P2 used learning
+    Summary: Enhanced heuristic uses min and avg distances with variability for edge evaluation.
+    Improvement: -1.17%
+  Turn 49: P2 used counter
+    Summary: Enhanced heuristic using local and global distance metrics.
+    Improvement: -1.15%
+  Turn 50: P2 used learning
+    Summary: Improved heuristic by integrating connectivity factor with distance normalization.
+    Improvement: 0.00%
+[BASELINE] Checking F1 results...
+[BASELINE] No improvement
+  Current baseline: 28.929009
+  Best achieved: 28.929009
+[SAVE] Saved best implementation for F1
+[REVERT] Reverted F1 to previous best
+
+==================== OUTER ITERATION 14/20 ====================
+[UCB] Selected: F3
+
+[STRATEGY] Running 10 iterations on F3
+  Current baseline: 28.929009
+  Turn 41: P1 used learning
+    Summary: Enhanced pheromone update using min and avg costs for stronger path reinforcement.
+    Improvement: -0.58%
+[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
+  transition_weights = np.power(pheromone, alpha) * np.power(heuristic, beta)
+  Turn 42: P2 used learning
+    Summary: Enhanced dynamic decay with optimized deposit adjustments for better exploration.
+    Improvement: -22.97%
+  Turn 43: P2 used learning
+    Summary: Adaptive decay and dynamic pheromone deposit scaling implemented.
+    Improvement: -0.99%
+  Turn 44: P2 used learning
+    Summary: Improved pheromone updates using variable decay and dynamic deposits.
+    Improvement: -0.40%
+  Turn 45: P2 used learning
+    Summary: Enhanced pheromone updates for improved TSP performance.
+    Improvement: -0.27%
+  Turn 46: P2 used learning
+    Summary: Enhanced pheromone update with adaptive decay and numerical stability.
+    Improvement: 0.00%
+  Turn 47: P2 used innovation
+    Summary: Dynamic pheromone decay and squared deposits to enhance exploration.
+    Improvement: -0.22%
+  Turn 48: P2 used learning
+    Summary: Integrated dynamic decay and optimized deposit scaling from best tours.
+    Improvement: 0.00%
+  Turn 49: P2 used learning
+    Summary: Combined pheromone decay with adaptive deposit based on average cost.
+    Improvement: -0.98%
+  Turn 50: P2 used learning
+    Summary: Improved pheromone update with enhanced deposit scaling and decay strategy.
+    Improvement: -1.21%
+[BASELINE] Checking F3 results...
+[BASELINE] No improvement
+  Current baseline: 28.929009
+  Best achieved: 28.929009
+[SAVE] Saved best implementation for F3
+[REVERT] Reverted F3 to previous best
+
+==================== OUTER ITERATION 15/20 ====================
+[UCB] Selected: F2
+
+[STRATEGY] Running 10 iterations on F2
+  Current baseline: 28.929009
+  Turn 41: P1 used learning
+    Summary: Adjusted pheromone and heuristic influence dynamically to enhance solution quality.
+    Improvement: -1.35%
+  Turn 42: P1 used counter
+    Summary: Introduced adaptive alpha and beta to dynamically balance pheromone and heuristic influences.
+    Improvement: 0.00%
+  Turn 43: P2 used learning
+    Summary: Enhanced alpha/beta weighting with better balance improves tour length.
+    Improvement: -0.95%
+  Turn 44: P2 used learning
+    Summary: Enhanced dynamic adaptability in alpha and beta for improved transition weights.
+    Improvement: -1.55%
+  Turn 45: P2 used learning
+    Summary: Dynamic pheromone and heuristic adjustments with improved scaling for stability.
+    Improvement: 0.00%
+  Turn 46: P1 used learning
+    Summary: Enhanced transition probabilities with dynamic adaptations and stability.
+    Improvement: -0.45%
+  Turn 47: P1 used learning
+    Summary: Dynamic adjustment of pheromone and heuristic influences for improved transition weights.
+    Improvement: -1.31%
+[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F2.py:11: RuntimeWarning: divide by zero encountered in power
+  transition_weights = np.power(pheromone, alpha) * np.power(heuristic, beta)
+/home/fool/Local/MOTIF/problems/tsp_aco/F2.py:13: RuntimeWarning: invalid value encountered in divide
+  return transition_weights / (np.sum(transition_weights) + 1e-10)
+  Turn 48: P2 used innovation
+    Summary: Dynamic scaling of pheromone and heuristic weights using sigmoids.
+    Improvement: -3.13%
+  Turn 49: P2 used counter
+    Summary: Adjusted alpha/beta dynamics for enhanced exploration and stability.
+    Improvement: 0.05%
+  Turn 50: P2 used innovation
+    Summary: Dynamic scaling of pheromone and heuristic influences for improved exploration.
+    Improvement: -0.89%
+[BASELINE] Checking F2 results...
+[BASELINE] Found improvement!
+  Previous: 28.929009
+  New: 28.914541
+  Improvement: 0.05%
+[SAVE] Saved best implementation for F2
+[BASELINE] Propagating update to all trees...
+[BASELINE] All trees updated
+
+==================== OUTER ITERATION 16/20 ====================
+[UCB] Selected: F1
+
+[STRATEGY] Running 10 iterations on F1
+  Current baseline: 28.914541
+  Turn 51: P2 used learning
+    Summary: Enhanced heuristic integrating proximity, scaling and normalization.
+    Improvement: -0.28%
+[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
+  transition_weights = (pheromone ** alpha) * (heuristic ** beta)
+  Turn 52: P2 used innovation
+    Summary: Dynamic heuristic based on average distance and connectivity improves edge selection.
+    Improvement: -257.09%
+[EVAL WARNING] Traceback (most recent call last):
+  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 52, in <module>
+    main(mode)
+    ~~~~^^^^^^
+  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 43, in main
+    costs = process_file(path, n_ants=N_ANTS, n_iter=N_ITER)
+  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 18, in process_file
+    results.append(eval_instance(data[i], n_ants, n_iter, int(seeds[i])))
+                   ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 9, in eval_instance
+    return run_tsp_aco(D, n_ants, n_iter, seed)
+  File "/home/fool/Local/MOTIF/problems/tsp_aco/aco.py", line 88, in run_tsp_aco
+    pheromone = update_pheromone(pheromone, paths, costs, it, n_iterations)
+  File "/home/fool/Local/MOTIF/problems/tsp_aco/F3.py", line 20, in update_pheromone
+    pheromone[c, n] += deposit
+    ~~~~~~~~~^^^^^^
+IndexError: index 16 is out of bounds for axis 1 with size 1
+  Turn 53: P1 used counter
+    Summary: Enhanced heuristic and pheromone calculation using proximity and connectivity weightings.
+    Improvement: 0.00%
+  Turn 54: P2 used innovation
+    Summary: Introduced a new heuristic incorporating minimum distance and connectivity.
+    Improvement: -251.05%
+  Turn 55: P2 used learning
+    Summary: Enhanced heuristic by combining average proximity with distance variability.
+    Improvement: -1.10%
+  Turn 56: P2 used counter
+    Summary: Improved heuristic by incorporating edge connectivity into proximity calculations.
+    Improvement: -2.11%
+[EVAL WARNING] Traceback (most recent call last):
+  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 52, in <module>
+    main(mode)
+    ~~~~^^^^^^
+  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 43, in main
+    costs = process_file(path, n_ants=N_ANTS, n_iter=N_ITER)
+  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 18, in process_file
+    results.append(eval_instance(data[i], n_ants, n_iter, int(seeds[i])))
+                   ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 9, in eval_instance
+    return run_tsp_aco(D, n_ants, n_iter, seed)
+  File "/home/fool/Local/MOTIF/problems/tsp_aco/aco.py", line 80, in run_tsp_aco
+    paths = constructive_path(n_cities, n_ants, probs, seed=rng_seed)
+  File "/home/fool/Local/MOTIF/problems/tsp_aco/aco.py", line 50, in constructive_path
+    paths[step] = next_city
+    ~~~~~^^^^^^
+ValueError: could not broadcast input array from shape (50,50) into shape (50,)
+  Turn 57: P2 used innovation
+    Summary: Implemented a new heuristic using exponential decay and connectivity metrics.
+    Improvement: 0.00%
+  Turn 58: P2 used learning
+    Summary: Enhanced heuristic via distance decay and proximity to neighboring distances.
+    Improvement: -0.58%
+  Turn 59: P2 used counter
+    Summary: Improved heuristic and pheromone properties by incorporating city connectivity.
+    Improvement: -11.22%
+  Turn 60: P2 used counter
+    Summary: Combined min and avg distances for advanced edge selection.
+    Improvement: -44.63%
+[BASELINE] Checking F1 results...
+[BASELINE] No improvement
+  Current baseline: 28.914541
+  Best achieved: 28.929009
+[SAVE] Saved best implementation for F1
+[REVERT] Reverted F1 to previous best
+
+==================== OUTER ITERATION 17/20 ====================
+[UCB] Selected: F3
+
+[STRATEGY] Running 10 iterations on F3
+  Current baseline: 28.914541
+  Turn 51: P2 used innovation
+    Summary: Applied dynamic decay and enhanced deposit calculation for exploration.
+    Improvement: -0.06%
+  Turn 52: P2 used learning
+    Summary: Enhanced pheromone update with adaptive decay and combined deposit strategy.
+    Improvement: -0.20%
+  Turn 53: P2 used counter
+    Summary: Enhanced decay factor and deposit scaling for better performance.
+    Improvement: -0.00%
+  Turn 54: P2 used counter
+    Summary: Enhanced deposit scaling and evaporation rate for better exploration.
+    Improvement: -0.45%
+  Turn 55: P2 used learning
+    Summary: Adaptive decay combined with aggressive deposit strategy for optimality.
+    Improvement: 0.10%
+  Turn 56: P2 used innovation
+    Summary: Implemented adaptive pheromone deposit based on average costs for better exploration.
+    Improvement: -0.25%
+  Turn 57: P2 used counter
+    Summary: Enhanced deposit strategy and dynamic decay to improve pheromone updates.
+    Improvement: -0.27%
+  Turn 58: P2 used counter
+    Summary: Enhanced decay strategy and dynamic deposit calculations for improved pheromone updates.
+    Improvement: -0.02%
+  Turn 59: P2 used counter
+    Summary: Enhanced pheromone update using average cost and adaptive decay.
+    Improvement: -1.48%
+  Turn 60: P2 used learning
+    Summary: Enhanced pheromone update with improved dynamic decay and stable deposit calculation.
+    Improvement: -0.27%
+[BASELINE] Checking F3 results...
+[BASELINE] Found improvement!
+  Previous: 28.914541
+  New: 28.884722
+  Improvement: 0.10%
+[SAVE] Saved best implementation for F3
+[BASELINE] Propagating update to all trees...
+[BASELINE] All trees updated
+
+==================== OUTER ITERATION 18/20 ====================
+[UCB] Selected: F2
+
+[STRATEGY] Running 10 iterations on F2
+  Current baseline: 28.884722
+  Turn 51: P2 used counter
+    Summary: Increased dynamic scaling of alpha and beta for better exploration-exploitation balance.
+    Improvement: -2.68%
+  Turn 52: P2 used learning
+    Summary: Improved transition computation using dynamic adjustment for pheromone and heuristic weights.
+    Improvement: -1.62%
+  Turn 53: P2 used counter
+    Summary: Enhanced alpha/beta balance for improved exploration and stability.
+    Improvement: -0.15%
+  Turn 54: P2 used innovation
+    Summary: Used sigmoid functions to dynamically adjust pheromone and heuristic weights.
+    Improvement: -0.76%
+  Turn 55: P2 used counter
+    Summary: Enhanced pheromone influence and adaptive scaling improve transition weights.
+    Improvement: -0.91%
+  Turn 56: P2 used counter
+    Summary: Introduced dynamic scaling and improved normalization for more balanced exploration.
+    Improvement: -1.57%
+  Turn 57: P2 used counter
+    Summary: Utilized softmax normalization for improved stability and differentiation.
+    Improvement: -64.31%
+  Turn 58: P2 used counter
+    Summary: Increased adaptability of alpha and beta for improved exploration.
+    Improvement: -0.94%
+  Turn 59: P2 used innovation
+    Summary: Implemented sigmoid-based adjustment for pheromone and heuristic contributions.
+    Improvement: -1.28%
+  Turn 60: P2 used innovation
+    Summary: Implemented dynamic nonlinear scaling for pheromone and heuristic influences.
+    Improvement: -0.47%
+[BASELINE] Checking F2 results...
+[BASELINE] No improvement
+  Current baseline: 28.884722
+  Best achieved: 28.914541
+[SAVE] Saved best implementation for F2
+[REVERT] Reverted F2 to previous best
+
+==================== OUTER ITERATION 19/20 ====================
+[UCB] Selected: F3
+
+[STRATEGY] Running 10 iterations on F3
+  Current baseline: 28.884722
+  Turn 61: P2 used counter
+    Summary: Improved decay and deposit scaling for dynamic pheromone updating.
+    Improvement: -1.94%
+  Turn 62: P2 used counter
+    Summary: Dynamic decay adapts based on iterations; sharper deposit calculation.
+    Improvement: -1.03%
+  Turn 63: P2 used innovation
+    Summary: Introduced a dual update strategy using average cost for deposit calculations.
+    Improvement: -0.13%
+  Turn 64: P2 used innovation
+    Summary: Dynamic deposit based on cost standard deviation enhances exploration.
+    Improvement: -0.52%
+  Turn 65: P2 used innovation
+    Summary: Introduced an adaptive decay and adjusted deposit formula for better exploration.
+    Improvement: -0.02%
+  Turn 66: P2 used counter
+    Summary: Implemented smoother decay and enhanced deposit stability for exploration.
+    Improvement: -0.06%
+  Turn 67: P2 used learning
+    Summary: Enhanced pheromone update with dynamic decay and aggressive deposit scaling.
+    Improvement: -0.20%
+  Turn 68: P2 used innovation
+    Summary: Adapted decay and deposit calculations for better pheromone management.
+    Improvement: -0.15%
+  Turn 69: P2 used innovation
+    Summary: Introduced dynamic decay and square deposit for stronger pheromone updates.
+    Improvement: -0.02%
+  Turn 70: P2 used counter
+    Summary: Enhanced decay stability and aggressive deposit scaling for better pheromone updates.
+    Improvement: -0.33%
+[BASELINE] Checking F3 results...
+[BASELINE] No improvement
+  Current baseline: 28.884722
+  Best achieved: 28.884722
+[SAVE] Saved best implementation for F3
+[REVERT] Reverted F3 to previous best
+
+==================== OUTER ITERATION 20/20 ====================
+[UCB] Selected: F1
+
+[STRATEGY] Running 10 iterations on F1
+  Current baseline: 28.884722
+  Turn 61: P2 used innovation
+    Summary: Enhanced heuristic using inverse and minimum distance factors.
+    Improvement: -1.49%
+  Turn 62: P2 used learning
+    Summary: Enhanced initialization by combining distance normalization with connectivity factor.
+    Improvement: -1.83%
+  Turn 63: P2 used learning
+    Summary: Enhanced heuristic using proximity and decay for edge selection.
+    Improvement: -0.47%
+[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
+  transition_weights = (pheromone ** alpha) * (heuristic ** beta)
+  Turn 64: P2 used innovation
+    Summary: Hybrid heuristic based on distance and connectivity for better edge selection.
+    Improvement: -257.46%
+  Turn 65: P2 used innovation
+    Summary: Integrated exponential scaling for more effective edge prioritization.
+    Improvement: -1.68%
+  Turn 66: P2 used learning
+    Summary: Refined heuristic and pheromone based on distance and city connectivity.
+    Improvement: -0.08%
+  Turn 67: P2 used counter
+    Summary: Enhanced heuristic with dynamic normalization for better edge selection.
+    Improvement: -0.42%
+  Turn 68: P2 used learning
+    Summary: Enhanced heuristic combining proximity and distance decay for better edge selection.
+    Improvement: -1.12%
+  Turn 69: P2 used counter
+    Summary: Improved heuristic using average and median distances for better edge selection.
+    Improvement: -0.97%
+  Turn 70: P2 used innovation
+    Summary: Implemented a dual strategy using distance ranking and urban proximity penalties.
+    Improvement: -1.87%
+[BASELINE] Checking F1 results...
+[BASELINE] No improvement
+  Current baseline: 28.884722
+  Best achieved: 28.907365
+[SAVE] Saved best implementation for F1
+[REVERT] Reverted F1 to previous best
+
+==================================================
+COMPETITIVE STATUS
+==================================================
+F1:
+  P1: 28.929009 (improvement: -0.15%)
+  P2: 28.907365 (improvement: -0.08%)
+  Winner: P2 with cost 28.907365
+  Turns: 70
+
+F2:
+  P1: 28.929009 (improvement: -0.15%)
+  P2: 28.914541 (improvement: -0.10%)
+  Winner: P2 with cost 28.914541
+  Turns: 60
+
+F3:
+  P1: 28.929009 (improvement: -0.15%)
+  P2: 28.884722 (improvement: 0.00%)
+  Winner: P2 with cost 28.884722
+  Turns: 70
+
+Current baseline: 28.884722
+==================================================
+
+==================================================
+ROUND 1 COMPLETED
+==================================================
+Initial baseline: 32.646055
+Final baseline: 28.884722
+Total improvement: 11.52%
+
+==================================================
+COMPETITIVE STATUS
+==================================================
+F1:
+  P1: 28.929009 (improvement: -0.15%)
+  P2: 28.907365 (improvement: -0.08%)
+  Winner: P2 with cost 28.907365
+  Turns: 70
+
+F2:
+  P1: 28.929009 (improvement: -0.15%)
+  P2: 28.914541 (improvement: -0.10%)
+  Winner: P2 with cost 28.914541
+  Turns: 60
+
+F3:
+  P1: 28.929009 (improvement: -0.15%)
+  P2: 28.884722 (improvement: 0.00%)
+  Winner: P2 with cost 28.884722
+  Turns: 70
+
+Current baseline: 28.884722
+==================================================
+
+Saving all best implementations...
+  Saved F1
+  Saved F2
+  Saved F3
+All implementations saved
+
+Round 1 completed!
+Round 1 Results Summary:
+  Initial baseline: 32.646055
+  Round 1 baseline: 28.884722
+  Round 1 improvement: 11.52%
+  Strategy winners:
+    F1: P2 wins with cost 28.907365
+    F2: P2 wins with cost 28.914541
+    F3: P2 wins with cost 28.884722
+
+Saving Round 1 strategies to results...
+  Saved F1 to 20260729_145726_tsp_aco_F1_round1_best.py
+  Saved F2 to 20260729_145726_tsp_aco_F2_round1_best.py
+  Saved F3 to 20260729_145726_tsp_aco_F3_round1_best.py
+Saved 3 Round 1 strategy files
+
+============================================================
+PHASE 2: FINAL ROUND - SEQUENTIAL OPTIMIZATION
+============================================================
+
+============================================================
+STARTING FINAL ROUND: SEQUENTIAL OPTIMIZATION
+============================================================
+Goal: System-aware strategy refinement
+Two players compete per strategy with fixed baseline
+Strategies optimized sequentially with baseline updates
+
+==================================================
+Final Round: Optimizing F1
+==================================================
+  Strategy baseline: 28.884722
+  Turn 1: P1 - Improved heuristic and pheromone calculations for better exploration.
+    Cost: inf, Improvement: -100.00% (BELOW)
+  Turn 2: P2 - Enhanced heuristic and pheromone initialization for better convergence.
+    Cost: inf, Improvement: -100.00% (BELOW)
+  Turn 3: P1 - Enhanced heuristic scaling and pheromone initialization for improved performance.
+    Cost: inf, Improvement: -100.00% (BELOW)
+  Turn 4: P2 - Enhanced heuristic scaling and pheromone initialization for better results.
+    Cost: inf, Improvement: -100.00% (BELOW)
+  Turn 5: P1 - Improved heuristics and pheromone initialization for better exploration.
+    Cost: inf, Improvement: -100.00% (BELOW)
+  Turn 6: P2 - Improved heuristic and pheromone calculations for better optimization.
+    Cost: inf, Improvement: -100.00% (BELOW)
+  Turn 7: P1 - Enhanced heuristic and pheromone initialization for improved performance.
+    Cost: inf, Improvement: -100.00% (BELOW)
+  Turn 8: P2 - Enhanced heuristic and pheromone initialization for better cost performance.
+    Cost: inf, Improvement: -100.00% (BELOW)
+  Turn 9: P1 - Enhanced heuristic and pheromone for better cost reduction.
+    Cost: 28.937986, Improvement: -0.18% (BELOW)
+  Turn 10: P2 - Enhanced heuristic and pheromone formula for better performance.
+    Cost: 29.038764, Improvement: -0.53% (BELOW)
+
+  F1 Results:
+    P1 best: 28.937986
+    P2 best: 29.038764
+    Winner: P1
+    No improvement to global baseline
+
+==================================================
+Final Round: Optimizing F2
+==================================================
+  Strategy baseline: 28.884722
+  Turn 1: P1 - Enhanced alpha/beta dynamics and introduced temperature for better convergence.
+    Cost: 29.094041, Improvement: -0.72% (BELOW)
+  Turn 2: P2 - Enhanced alpha/beta tuning and incorporated dynamic pheromone threshold.
+    Cost: 29.022174, Improvement: -0.48% (BELOW)
+  Turn 3: P1 - Enhanced hyperparameters and introduced dynamic temperature for better exploration.
+    Cost: 29.306163, Improvement: -1.46% (BELOW)
+  Turn 4: P2 - Improved alpha/beta dynamics and temperature scaling for enhanced exploration.
+    Cost: 29.155143, Improvement: -0.94% (BELOW)
+  Turn 5: P1 - Tuned hyperparameters and introduced temperature factor for better exploration.
+    Cost: 29.299734, Improvement: -1.44% (BELOW)
+  Turn 6: P2 - Enhanced F2 with dynamic pheromone scaling and refined alpha, beta adjustments.
+    Cost: 29.287153, Improvement: -1.39% (BELOW)
+  Turn 7: P1 - Revamped compute_probabilities to enhance exploration and sensitivity.
+    Cost: 29.228914, Improvement: -1.19% (BELOW)
+  Turn 8: P2 - Enhanced pheromone scaling and refined alpha/beta parameters for better optimization.
+    Cost: 29.150669, Improvement: -0.92% (BELOW)
+  Turn 9: P1 - Optimized hyperparameters and introduced dynamic pheromone adjustments.
+    Cost: 29.533685, Improvement: -2.25% (BELOW)
+  Turn 10: P2 - Enhanced probability computation with temperature and tuned alpha/beta.
+    Cost: 29.242415, Improvement: -1.24% (BELOW)
+
+  F2 Results:
+    P1 best: 29.094041
+    P2 best: 29.022174
+    Winner: P2
+    No improvement to global baseline
+
+==================================================
+Final Round: Optimizing F3
+==================================================
+  Strategy baseline: 28.884722
+  Turn 1: P1 - Enhanced pheromone update strategy for better exploration and convergence.
+    Cost: 28.870787, Improvement: 0.05% (BEAT)
+  Turn 2: P2 - Improved pheromone update with adjusted decay and deposit formula.
+    Cost: 28.823545, Improvement: 0.21% (BEAT)
+  Turn 3: P1 - Enhanced pheromone update with optimized decay and deposit formulas.
+    Cost: 28.867810, Improvement: 0.06% (BEAT)
+  Turn 4: P2 - Improved pheromone update with a slower decay rate and adjusted deposit calculation.
+    Cost: 28.950487, Improvement: -0.23% (BELOW)
+  Turn 5: P1 - Improved pheromone decay rate and deposit calculation for enhanced optimization.
+    Cost: 28.867810, Improvement: 0.06% (BEAT)
+  Turn 6: P2 - Optimized pheromone logic with aggressive decay and stronger deposit formulation.
+    Cost: 28.950487, Improvement: -0.23% (BELOW)
+  Turn 7: P1 - Optimized pheromone update with adjusted decay and deposit calculations.
+    Cost: 28.933729, Improvement: -0.17% (BELOW)
+  Turn 8: P2 - Optimized decay rate and deposit formula for improved pheromone updates.
+    Cost: 28.950487, Improvement: -0.23% (BELOW)
+  Turn 9: P1 - Optimized pheromone decay and deposit formula for better exploration and exploitation.
+    Cost: 28.867810, Improvement: 0.06% (BEAT)
+  Turn 10: P2 - Improved pheromone decay and deposition strategy for better optimization.
+    Cost: 28.950487, Improvement: -0.23% (BELOW)
+
+  F3 Results:
+    P1 best: 28.867810
+    P2 best: 28.823545
+    Winner: P2
+    Global baseline updated: 28.884722 -> 28.823545 (0.21%)
+
+============================================================
+FINAL ROUND COMPLETED
+============================================================
+Initial cost: 28.884722
+Final cost: 28.823545
+Total improvement: 0.21%
+
+Strategy Winners:
+  F1: P1 with 28.937986
+  F2: P2 with 29.022174
+  F3: P2 with 28.823545
+Best combination saved to files
+
+Saving Final Round strategies to results...
+  Saved F1 to 20260729_145726_tsp_aco_F1_final_best.py
+  Saved F2 to 20260729_145726_tsp_aco_F2_final_best.py
+  Saved F3 to 20260729_145726_tsp_aco_F3_final_best.py
+Saved 3 Final Round strategy files
+
+============================================================
+TWO-PHASE OPTIMIZATION COMPLETED
+============================================================
+Phase Summary:
+  Round 1: 11.52% improvement
+  Final Round: 0.21% total improvement
+  Results saved to: results
+  Log files:
+    Round 1: results/20260729_145726_tsp_aco_round_1.json
+    Final Round: results/20260729_145726_tsp_aco_round_2.json
+
+Optimization completed successfully!

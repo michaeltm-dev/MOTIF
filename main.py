@@ -18,49 +18,49 @@ def load_prompts(solver_path):
     """Load prompts from solver's prompts.py file."""
     prompts = {}
     prompts_file = os.path.join(solver_path, "prompts.py")
-    
+
     if not os.path.exists(prompts_file):
         print(f"[ERROR] Required prompts file not found: {prompts_file}")
         sys.exit(1)
-    
+
     spec = importlib.util.spec_from_file_location("prompts", prompts_file)
     prompts_module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(prompts_module)
-    
+
     for attr_name in dir(prompts_module):
         if not attr_name.startswith('_'):
             attr_value = getattr(prompts_module, attr_name)
             if isinstance(attr_value, str):
                 prompts[attr_name] = attr_value
-    
+
     if not prompts:
         print(f"[ERROR] No prompts found in {prompts_file}")
         sys.exit(1)
-    
+
     return prompts
 
 
-def save_best_strategies(results, solver_config, results_dir):
+def save_best_strategies(results, solver_config, results_dir, prefix):
     """Save best strategies from Round 1 to results directory."""
     print(f"\nSaving Round 1 strategies to {results_dir}...")
-    
+
     os.makedirs(results_dir, exist_ok=True)
     saved_files = []
-    
+
     for strategy_id, result in results.items():
         strategy_info = None
         for func in solver_config.functions:
             if func.id == strategy_id:
                 strategy_info = func
                 break
-        
+
         if not strategy_info:
             print(f"  Warning: Strategy info not found for {strategy_id}")
             continue
-        
-        filename = f"{strategy_id}_round1_best.py"
+
+        filename = f"{prefix}_{strategy_id}_round1_best.py"
         filepath = os.path.join(results_dir, filename)
-        
+
         try:
             with open(filepath, 'w', encoding='utf-8') as f:
                 f.write(f"# Best Round 1 implementation for {strategy_info.name}\n")
@@ -70,51 +70,51 @@ def save_best_strategies(results, solver_config, results_dir):
                 f.write(f"# P1 cost: {result['p1_cost']:.6f}\n")
                 f.write(f"# P2 cost: {result['p2_cost']:.6f}\n\n")
                 f.write(result['best_code'])
-            
+
             saved_files.append(filepath)
             print(f"  Saved {strategy_id} to {filename}")
-            
+
         except Exception as e:
             print(f"  Failed to save {strategy_id}: {e}")
-    
+
     print(f"Saved {len(saved_files)} Round 1 strategy files")
     return saved_files
 
 
-def save_final_strategies(final_combination, solver_config, results_dir):
+def save_final_strategies(final_combination, solver_config, results_dir, prefix):
     """Save Final Round optimized strategies."""
     print(f"\nSaving Final Round strategies to {results_dir}...")
-    
+
     os.makedirs(results_dir, exist_ok=True)
     saved_files = []
-    
+
     for strategy_id, code in final_combination.items():
         strategy_info = None
         for func in solver_config.functions:
             if func.id == strategy_id:
                 strategy_info = func
                 break
-        
+
         if not strategy_info:
             print(f"  Warning: Strategy info not found for {strategy_id}")
             continue
-        
-        filename = f"{strategy_id}_final_best.py"
+
+        filename = f"{prefix}_{strategy_id}_final_best.py"
         filepath = os.path.join(results_dir, filename)
-        
+
         try:
             with open(filepath, 'w', encoding='utf-8') as f:
                 f.write(f"# Final Round optimized implementation for {strategy_info.name}\n")
                 f.write(f"# Strategy ID: {strategy_id}\n")
                 f.write(f"# Phase: Final Round (system-aware)\n\n")
                 f.write(code)
-            
+
             saved_files.append(filepath)
             print(f"  Saved {strategy_id} to {filename}")
-            
+
         except Exception as e:
             print(f"  Failed to save {strategy_id}: {e}")
-    
+
     print(f"Saved {len(saved_files)} Final Round strategy files")
     return saved_files
 
@@ -130,77 +130,79 @@ def main(cfg: DictConfig):
     problem_name = solver_config.problem
     algorithm_name = solver_config.algorithm
     final_iterations = cfg.mcts.final_iterations
-    
+
     print("Starting Two-Phase Competitive Optimization")
     print(f"Problem: {problem_name} using {algorithm_name}")
     print(f"Round 1: MCTS optimization (individual strategies)")
     print(f"Final Round: Sequential optimization (system-aware)")
     print("Two AI players compete in both phases")
-    
+
     # Initialize LLM client
     client = LLMClient(
         model=cfg.llm.model,
         temperature=cfg.llm.temperature
     )
-    
+
     # Load prompts
     solver_path = solver_config.base_path
     prompts = load_prompts(solver_path)
-    
+
     # Create results directory
     os.makedirs(cfg.paths.results_dir, exist_ok=True)
-    
+
+    cfg.paths.results_dir = os.path.relpath(cfg.paths.results_dir)
+
     # Initialize logger
     solver_name = f"{problem_name.lower()}_{algorithm_name.lower()}"
     logger = CompetitiveLogger(cfg.paths.results_dir, solver_name)
-    
+
     print(f"\nLogging enabled:")
     print(f"  Round 1: {logger.get_round1_file_path()}")
     print(f"  Final Round: {logger.get_round2_file_path()}")
-    
+
     # ============= ROUND 1: MCTS OPTIMIZATION =============
     print("\n" + "=" * 60)
     print("PHASE 1: ROUND 1 - MCTS OPTIMIZATION")
     print("=" * 60)
-    
+
     controller = Controller(
         client=client,
         prompts=prompts,
         cfg=cfg,
         logger=logger
     )
-    
+
     initial_baseline = controller.initial_baseline_cost
     round1_results = controller.run()
     round1_baseline = controller.current_baseline_cost
-    
+
     print("\nRound 1 completed!")
     print("Round 1 Results Summary:")
-    
+
     round1_improvement = (initial_baseline - round1_baseline) / abs(initial_baseline) * 100
     print(f"  Initial baseline: {initial_baseline:.6f}")
     print(f"  Round 1 baseline: {round1_baseline:.6f}")
     print(f"  Round 1 improvement: {round1_improvement:.2f}%")
     print("  Strategy winners:")
-    
+
     for strategy_id, result in round1_results.items():
         winner = result["winner"]
         best_cost = result["best_cost"]
         print(f"    {strategy_id}: {winner} wins with cost {best_cost:.6f}")
-    
+
     # Save Round 1 strategies
-    round1_files = save_best_strategies(round1_results, solver_config, cfg.paths.results_dir)
-    
+    round1_files = save_best_strategies(round1_results, solver_config, cfg.paths.results_dir, logger.prefix)
+
     # ============= FINAL ROUND: SEQUENTIAL OPTIMIZATION =============
     print("\n" + "=" * 60)
     print("PHASE 2: FINAL ROUND - SEQUENTIAL OPTIMIZATION")
     print("=" * 60)
-    
+
     # Extract best implementations from Round 1
     initial_combination = {}
     for strategy_id, result in round1_results.items():
         initial_combination[strategy_id] = result['best_code']
-    
+
     final_round = FinalRound(
         initial_combination=initial_combination,
         problem_config=solver_config,
@@ -208,24 +210,25 @@ def main(cfg: DictConfig):
         macro_baseline=round1_baseline,
         logger=logger
     )
-    
+
     final_results = final_round.run(final_iterations)
     final_round.save_best_combination()
-    
+
     # Save Final Round strategies
     final_files = save_final_strategies(
         final_results["best_combination"],
         solver_config,
-        cfg.paths.results_dir
+        cfg.paths.results_dir,
+        logger.prefix
     )
-    
+
     # ============= SUMMARY =============
     print("\n" + "=" * 60)
     print("TWO-PHASE OPTIMIZATION COMPLETED")
     print("=" * 60)
-    
+
     total_improvement = final_results['total_improvement']
-    
+
     print("Phase Summary:")
     print(f"  Round 1: {round1_improvement:.2f}% improvement")
     print(f"  Final Round: {total_improvement:.2f}% total improvement")

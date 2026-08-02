@@ -7,27 +7,29 @@ import threading
 
 class CompetitiveLogger:
     """Logger for competitive MCTS rounds with JSON output. Thread-safe."""
-    
+
     def __init__(self, results_dir: str, solver_name: str):
         self.results_dir = results_dir
         self.solver_name = solver_name
         self.timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        
+
         self.round1_lock = threading.Lock()
         self.round2_lock = threading.Lock()
-        
+
+        self.prefix = f"{self.timestamp}_{solver_name}"
+
         self.round1_file = os.path.join(
-            results_dir, f"{self.timestamp}_{solver_name}_round_1.json"
+            results_dir, f"{self.prefix}_round_1.json"
         )
         self.round2_file = os.path.join(
-            results_dir, f"{self.timestamp}_{solver_name}_round_2.json"
+            results_dir, f"{self.prefix}_round_2.json"
         )
-        
+
         self.round1_data = {"experiment_metadata": {}, "turns": []}
         self.round2_data = {"experiment_metadata": {}, "turns": []}
-        
+
         os.makedirs(results_dir, exist_ok=True)
-    
+
     def init_round1(self, problem: str, initial_baseline: float,
                     outer_iterations: int, inner_iterations: int):
         with self.round1_lock:
@@ -39,7 +41,7 @@ class CompetitiveLogger:
                 "inner_iterations": inner_iterations
             }
             self._save_round1()
-    
+
     def init_round2(self, problem: str, macro_baseline: float, final_iterations: int):
         with self.round2_lock:
             self.round2_data["experiment_metadata"] = {
@@ -49,7 +51,7 @@ class CompetitiveLogger:
                 "final_iterations": final_iterations
             }
             self._save_round2()
-    
+
     def log_round1_turn(self, outer_iteration: int, inner_turn: int,
                         selected_strategy: str, current_baseline: float,
                         player: str, operator: str, llm_code: str,
@@ -71,14 +73,14 @@ class CompetitiveLogger:
             "eval_success": eval_success,
             "baseline_updated": baseline_updated
         }
-        
+
         if new_baseline is not None:
             turn_data["new_baseline"] = new_baseline
-        
+
         with self.round1_lock:
             self.round1_data["turns"].append(turn_data)
             self._save_round1()
-    
+
     def log_round2_turn(self, strategy: str, strategy_baseline: float,
                         turn: int, player: str, llm_code: str,
                         llm_summary: str, eval_cost: Optional[float],
@@ -94,27 +96,27 @@ class CompetitiveLogger:
             "eval_improvement": eval_improvement,
             "eval_success": eval_success
         }
-        
+
         with self.round2_lock:
             self.round2_data["turns"].append(turn_data)
             self._save_round2()
-    
+
     def _save_round1(self):
         try:
             with open(self.round1_file, 'w', encoding='utf-8') as f:
                 json.dump(self.round1_data, f, indent=2, ensure_ascii=False)
         except Exception as e:
             print(f"[LOGGER ERROR] Failed to save Round 1 log: {e}")
-    
+
     def _save_round2(self):
         try:
             with open(self.round2_file, 'w', encoding='utf-8') as f:
                 json.dump(self.round2_data, f, indent=2, ensure_ascii=False)
         except Exception as e:
             print(f"[LOGGER ERROR] Failed to save Round 2 log: {e}")
-    
+
     def get_round1_file_path(self) -> str:
-        return self.round1_file
-    
+        return os.path.relpath(self.round1_file)
+
     def get_round2_file_path(self) -> str:
-        return self.round2_file
+        return os.path.relpath(self.round2_file)

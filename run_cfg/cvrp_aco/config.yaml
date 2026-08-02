@@ -1,6 +1,6 @@
 defaults:
   - _self_
-  - solver: tsp_aco
+  - solver: cvrp_aco
   - override hydra/job_logging: custom
   - override hydra/output: custom
 
@@ -17,7 +17,7 @@ hydra:
 
 # LLM client configuration
 llm:
-  model: gpt-5.4-mini
+  model: gpt-4o-mini-2024-07-18
   temperature: 1.0
 
 # Competitive MCTS configuration

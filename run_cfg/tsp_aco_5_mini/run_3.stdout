@@ -1,0 +1,1171 @@
+Starting Two-Phase Competitive Optimization
+Problem: TSP using ACO
+Round 1: MCTS optimization (individual strategies)
+Final Round: Sequential optimization (system-aware)
+Two AI players compete in both phases
+
+Logging enabled:
+  Round 1: results/20260730_173506_tsp_aco_round_1.json
+  Final Round: results/20260730_173506_tsp_aco_round_2.json
+
+============================================================
+PHASE 1: ROUND 1 - MCTS OPTIMIZATION
+============================================================
+[BASELINE] Evaluating initial implementation...
+[BASELINE] Initial cost: 32.646054996155506
+
+==================================================
+INITIALIZING COMPETITIVE STRATEGY TREES
+==================================================
+  Initialized tree for F1 (initialize)
+  Initialized tree for F2 (compute_probabilities)
+  Initialized tree for F3 (update_pheromone)
+==================================================
+
+Initialized Controller with dynamic baseline
+
+==================================================
+STARTING ROUND 1: MCTS OPTIMIZATION
+Initial baseline: 32.646054996155506
+Outer iterations: 20
+==================================================
+
+==================== OUTER ITERATION 1/20 ====================
+[UCB] Selected: F1
+
+[STRATEGY] Running 10 iterations on F1
+  Current baseline: 32.646055
+  Turn 1: P1 used learning
+    Summary: Stable inverse-distance heuristic with centrality bias and normalized pheromone init
+    Improvement: -7.28%
+  Turn 2: P1 used counter
+    Summary: Stabilized inverse-distance heuristic with row/column attractiveness and informed pheromone init.
+    Improvement: 0.81%
+  Turn 3: P1 used innovation
+    Summary: Centrality-weighted inverse-distance heuristic with normalized pheromone
+    Improvement: 1.31%
+  Turn 4: P2 used innovation
+    Summary: Added local-selectivity and rank-based edge attractiveness initialization
+    Improvement: 5.58%
+  Turn 5: P2 used innovation
+    Summary: Added triangle-consistency and centrality-based initialization.
+    Improvement: 3.12%
+  Turn 6: P2 used counter
+    Summary: Added robust local-rank and mild centrality weighting for sharper edge initialization
+    Improvement: -59.76%
+  Turn 7: P2 used counter
+    Summary: Hybrid normalized heuristic with centrality and smoothed pheromone initialization
+    Improvement: 1.26%
+  Turn 8: P2 used counter
+    Summary: Added scale-normalized, mutual-nearest-neighbor-aware initialization with stable pheromone
+    Improvement: 7.07%
+  Turn 9: P2 used learning
+    Summary: Robust centrality-rank heuristic with normalized pheromone initialization
+    Improvement: 3.35%
+  Turn 10: P2 used learning
+    Summary: Added stabilized centrality plus local edge-strength heuristic and informed pheromone seeding.
+    Improvement: 5.27%
+[BASELINE] Checking F1 results...
+[BASELINE] Found improvement!
+  Previous: 32.646055
+  New: 30.339164
+  Improvement: 7.07%
+[SAVE] Saved best implementation for F1
+[BASELINE] Propagating update to all trees...
+[BASELINE] All trees updated
+
+==================== OUTER ITERATION 2/20 ====================
+[UCB] Selected: F2
+
+[STRATEGY] Running 10 iterations on F2
+  Current baseline: 30.339164
+  Turn 1: P1 used counter
+    Summary: Adaptive stable blend of pheromone and heuristic with annealing
+    Improvement: 2.63%
+  Turn 2: P1 used learning
+    Summary: Added safe normalization and time-varying pheromone/heuristic balance.
+    Improvement: 2.81%
+  Turn 3: P1 used innovation
+    Summary: Time-varying log-space blend of pheromone and heuristic with stable weights.
+    Improvement: 2.35%
+  Turn 4: P2 used counter
+    Summary: Robust normalized, time-adaptive transition weights with soft saturation
+    Improvement: 2.68%
+  Turn 5: P2 used counter
+    Summary: Adaptive stable blend with stronger early heuristic and later pheromone emphasis.
+    Improvement: 3.68%
+  Turn 6: P2 used innovation
+    Summary: Adaptive log-blend with mean normalization and rank-based edge boost
+    Improvement: -3.19%
+  Turn 7: P2 used counter
+    Summary: Added robust scaling and adaptive log-space blending with annealed temperature.
+    Improvement: -25.76%
+  Turn 8: P2 used learning
+    Summary: Adaptive normalized weighting with stronger heuristic-to-pheromone schedule
+    Improvement: -3.38%
+  Turn 9: P2 used innovation
+    Summary: Adaptive soft-gated blend with robust normalization and annealing
+    Improvement: -3.02%
+  Turn 10: P2 used learning
+    Summary: Adaptive log-space blend with stable normalization and agreement boosting
+    Improvement: 2.54%
+[BASELINE] Checking F2 results...
+[BASELINE] Found improvement!
+  Previous: 30.339164
+  New: 29.224027
+  Improvement: 3.68%
+[SAVE] Saved best implementation for F2
+[BASELINE] Propagating update to all trees...
+[BASELINE] All trees updated
+
+==================== OUTER ITERATION 3/20 ====================
+[UCB] Selected: F3
+
+[STRATEGY] Running 10 iterations on F3
+  Current baseline: 29.224027
+  Turn 1: P1 used counter
+    Summary: Adaptive evaporation with elite, normalized pheromone reinforcement.
+    Improvement: -0.04%
+  Turn 2: P1 used innovation
+    Summary: Adaptive evaporation with top-k rank-based reinforcement and clipping
+    Improvement: 0.76%
+  Turn 3: P1 used learning
+    Summary: Adaptive evaporation with elite and best-tour reinforcement, plus clipping for stability.
+    Improvement: 0.78%
+  Turn 4: P2 used innovation
+    Summary: Rank-based adaptive evaporation with bounded elite/best reinforcement
+    Improvement: -0.69%
+  Turn 5: P2 used innovation
+    Summary: Adaptive consensus-based pheromone update with elite reinforcement and clipping
+    Improvement: -0.09%
+  Turn 6: P2 used innovation
+    Summary: Rank-based elite pheromone update with adaptive evaporation and clipping
+    Improvement: 0.11%
+  Turn 7: P2 used counter
+    Summary: Rank-based elite pheromone update with adaptive evaporation and stable clipping
+    Improvement: 0.15%
+  Turn 8: P2 used learning
+    Summary: Adaptive evaporation with elite-best rank reinforcement and stable clipping
+    Improvement: -0.04%
+  Turn 9: P2 used learning
+    Summary: Adaptive elite+best pheromone update with stronger late intensification
+    Improvement: -0.00%
+  Turn 10: P2 used learning
+    Summary: Adaptive evaporation with elite-plus-best reinforcement and stable clipping
+    Improvement: 0.22%
+[BASELINE] Checking F3 results...
+[BASELINE] Found improvement!
+  Previous: 29.224027
+  New: 28.994844
+  Improvement: 0.78%
+[SAVE] Saved best implementation for F3
+[BASELINE] Propagating update to all trees...
+[BASELINE] All trees updated
+
+==================== OUTER ITERATION 4/20 ====================
+[UCB] Selected: F1
+
+[STRATEGY] Running 10 iterations on F1
+  Current baseline: 28.994844
+  Turn 11: P2 used innovation
+    Summary: Composite local-support heuristic with normalized pheromone initialization
+    Improvement: -0.55%
+  Turn 12: P1 used innovation
+    Summary: Added two-hop bridge and mutual-neighbor edge scoring with safe normalization.
+    Improvement: 0.02%
+  Turn 13: P1 used innovation
+    Summary: Added geometric local-support heuristic with shared-neighbor, rank, and two-hop signals.
+    Improvement: -0.82%
+  Turn 14: P1 used learning
+    Summary: Robust mutual-NN + rank + centrality heuristic with stable pheromone seeding
+    Improvement: -0.37%
+  Turn 15: P1 used learning
+    Summary: Added mutual k-NN, rank closeness, and stronger balance-aware edge scoring.
+    Improvement: -0.04%
+  Turn 16: P1 used learning
+    Summary: Added rank, mutual-NN, and centrality-weighted edge scoring with softened pheromone seeding.
+    Improvement: -0.78%
+  Turn 17: P1 used innovation
+    Summary: Added locality, mutual-neighbor, uniqueness, and two-hop edge scoring with stable normalization
+    Improvement: -0.30%
+  Turn 18: P2 used learning
+    Summary: Stronger inverse-distance initializer with centrality, mutual-neighbor, two-hop, and bridge biases.
+    Improvement: -1.41%
+  Turn 19: P1 used innovation
+    Summary: Added rank-balanced, mutual-neighbor heuristic with stable pheromone seeding
+    Improvement: -1.24%
+  Turn 20: P1 used learning
+    Summary: Added robust centrality, mutual-neighbor, and rank-based edge scoring with tempered pheromone.
+    Improvement: -0.18%
+[BASELINE] Checking F1 results...
+[BASELINE] Found improvement!
+  Previous: 28.994844
+  New: 28.988746
+  Improvement: 0.02%
+[SAVE] Saved best implementation for F1
+[BASELINE] Propagating update to all trees...
+[BASELINE] All trees updated
+
+==================== OUTER ITERATION 5/20 ====================
+[UCB] Selected: F2
+
+[STRATEGY] Running 10 iterations on F2
+  Current baseline: 28.988746
+  Turn 11: P2 used learning
+    Summary: Adaptive log-blended pheromone/heuristic weights with stable normalization
+    Improvement: -0.99%
+  Turn 12: P2 used innovation
+    Summary: Adaptive log-synergy weighting with median scaling and time-varying emphasis.
+    Improvement: -0.20%
+  Turn 13: P1 used innovation
+    Summary: Robust sigmoid-based heuristic blend with time-varying gate and synergy boost
+    Improvement: -104.44%
+  Turn 14: P1 used learning
+    Summary: Robust centered log-blend with adaptive annealing and interaction boost
+    Improvement: -1.15%
+  Turn 15: P1 used counter
+    Summary: Robust median/MAD scaling with smoother adaptive pheromone-heuristic weighting.
+    Improvement: -1.58%
+  Turn 16: P1 used innovation
+    Summary: Rank-based adaptive blend with annealed temperature and synergy scaling
+    Improvement: -71.96%
+  Turn 17: P1 used learning
+    Summary: Stronger robust adaptive blend with centered log-scores and late pheromone boost
+    Improvement: -0.82%
+  Turn 18: P1 used innovation
+    Summary: Rank-based adaptive transition weights with stable softmax blending.
+    Improvement: -311.24%
+  Turn 19: P1 used learning
+    Summary: Stabilized median-scaled log blend with adaptive heuristic-to-pheromone annealing.
+    Improvement: -0.55%
+  Turn 20: P1 used learning
+    Summary: Robust median-scaled, time-adaptive log-space blend with agreement boosting
+    Improvement: -0.66%
+[BASELINE] Checking F2 results...
+[BASELINE] No improvement
+  Current baseline: 28.988746
+  Best achieved: 29.048038
+[SAVE] Saved best implementation for F2
+[REVERT] Reverted F2 to previous best
+
+==================== OUTER ITERATION 6/20 ====================
+[UCB] Selected: F3
+
+[STRATEGY] Running 10 iterations on F3
+  Current baseline: 28.988746
+  Turn 11: P2 used counter
+    Summary: Adaptive rank-based pheromone update with iteration-aware evaporation
+    Improvement: -0.04%
+  Turn 12: P2 used counter
+    Summary: Adaptive rank-based pheromone update with stronger elite/best reinforcement and stable normalization.
+    Improvement: -0.17%
+  Turn 13: P1 used innovation
+    Summary: Added consensus-based evaporation, elite reinforcement, and mild pheromone smoothing.
+    Improvement: -0.81%
+  Turn 14: P1 used innovation
+    Summary: Adaptive elite + consensus pheromone update with stable evaporation and clipping
+    Improvement: -1.28%
+  Turn 15: P1 used learning
+    Summary: Rank-based elite update with stronger adaptive best-tour reinforcement
+    Improvement: 0.17%
+  Turn 16: P1 used counter
+    Summary: Adaptive elite-rank pheromone update with bounded decay and balanced best-tour reinforcement
+    Improvement: -0.45%
+  Turn 17: P1 used innovation
+    Summary: Rank-based adaptive evaporation with bounded, spread-normalized reinforcement
+    Improvement: -0.59%
+  Turn 18: P1 used counter
+    Summary: Balanced elite reinforcement with adaptive evaporation and stronger best-tour bonus
+    Improvement: 0.29%
+  Turn 19: P1 used learning
+    Summary: Rank-based adaptive evaporation with stronger normalized elite and best reinforcement
+    Improvement: 0.53%
+  Turn 20: P1 used innovation
+    Summary: Added consensus-based elite pheromone reinforcement with adaptive evaporation.
+    Improvement: -0.17%
+[BASELINE] Checking F3 results...
+[BASELINE] Found improvement!
+  Previous: 28.988746
+  New: 28.834781
+  Improvement: 0.53%
+[SAVE] Saved best implementation for F3
+[BASELINE] Propagating update to all trees...
+[BASELINE] All trees updated
+
+==================== OUTER ITERATION 7/20 ====================
+[UCB] Selected: F3
+
+[STRATEGY] Running 10 iterations on F3
+  Current baseline: 28.834781
+  Turn 21: P1 used innovation
+    Summary: Adaptive evaporation with robust normalized elite and best-tour reinforcement
+    Improvement: -1.15%
+[EVAL WARNING] Traceback (most recent call last):
+  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 52, in <module>
+    main(mode)
+    ~~~~^^^^^^
+  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 43, in main
+    costs = process_file(path, n_ants=N_ANTS, n_iter=N_ITER)
+  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 18, in process_file
+    results.append(eval_instance(data[i], n_ants, n_iter, int(seeds[i])))
+                   ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 9, in eval_instance
+    return run_tsp_aco(D, n_ants, n_iter, seed)
+  File "/home/fool/Local/MOTIF/problems/tsp_aco/aco.py", line 88, in run_tsp_aco
+    pheromone = update_pheromone(pheromone, paths, costs, it, n_iterations)
+  File "/home/fool/Local/MOTIF/problems/tsp_aco/F3.py", line 69, in update_pheromone
+    add_tour(paths[:, idx], amount)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fool/Local/MOTIF/problems/tsp_aco/F3.py", line 56, in add_tour
+    tour = np.asarray(tour, dtype=np.int64, copy=False)
+TypeError: asarray() got an unexpected keyword argument 'copy'
+  Turn 22: P1 used counter
+    Summary: Adaptive elite pheromone update with diversity-preserving reinforcement
+    Improvement: 0.00%
+  Turn 23: P1 used learning
+    Summary: Adaptive evaporation with rank-based elite and stronger best-tour reinforcement.
+    Improvement: -0.85%
+  Turn 24: P1 used innovation
+    Summary: Added consensus-edge boosting with rank-based elite updates and symmetric stabilization.
+    Improvement: -0.49%
+  Turn 25: P1 used innovation
+    Summary: Consensus-based rank pheromone update with adaptive evaporation and stabilization
+    Improvement: -1.59%
+  Turn 26: P1 used innovation
+    Summary: Adaptive evaporation with frequency-biased rank and elite pheromone reinforcement
+    Improvement: -1.07%
+  Turn 27: P1 used counter
+    Summary: Adaptive rank-based pheromone update with stronger best-tour reinforcement.
+    Improvement: -0.32%
+  Turn 28: P1 used learning
+    Summary: Adaptive rank-based pheromone update with stronger elite/global-best reinforcement
+    Improvement: -0.56%
+  Turn 29: P1 used learning
+    Summary: Adaptive evaporation with elite, best, and mild early local reinforcement.
+    Improvement: -0.15%
+  Turn 30: P1 used counter
+    Summary: Adaptive robust rank-based pheromone update with balanced best-tour reinforcement
+    Improvement: -0.79%
+[BASELINE] Checking F3 results...
+[BASELINE] No improvement
+  Current baseline: 28.834781
+  Best achieved: 28.834781
+[SAVE] Saved best implementation for F3
+[REVERT] Reverted F3 to previous best
+
+==================== OUTER ITERATION 8/20 ====================
+[UCB] Selected: F1
+
+[STRATEGY] Running 10 iterations on F1
+  Current baseline: 28.834781
+  Turn 21: P1 used counter
+    Summary: Added inverse-distance, mutual kNN, 2-hop bridge, and centrality-based initialization.
+    Improvement: -0.26%
+  Turn 22: P1 used learning
+    Summary: Rank-based bridge heuristic with mutual-neighbor and centrality priors
+    Improvement: -0.37%
+  Turn 23: P1 used counter
+    Summary: Added bridge-aware mutual-neighbor heuristic with robust centrality and stable normalization
+    Improvement: -0.07%
+  Turn 24: P1 used innovation
+    Summary: Added local-geometry edge scoring with mutual kNN, shared ranks, and two-hop bridging.
+    Improvement: -0.95%
+  Turn 25: P1 used counter
+    Summary: Added bridge-aware normalized heuristic with centrality and mutual-neighbor support.
+    Improvement: 0.00%
+  Turn 26: P1 used innovation
+    Summary: Added rank, compactness, and triangle-consistency edge scoring.
+    Improvement: -1.02%
+  Turn 27: P1 used counter
+    Summary: Added robust scaled inverse distance plus shared-neighbor and bridge cues.
+    Improvement: -0.88%
+  Turn 28: P1 used counter
+    Summary: Added mutual-neighbor and two-hop support to inverse-distance initialization.
+    Improvement: -0.44%
+  Turn 29: P1 used counter
+    Summary: Balanced inverse-distance, mutual-neighbor, and 2-hop support heuristic with smooth pheromone init
+    Improvement: -0.73%
+  Turn 30: P2 used innovation
+    Summary: MST-backbone heuristic with shared-neighbor and local-cycle edge scoring
+    Improvement: -7.78%
+[BASELINE] Checking F1 results...
+[BASELINE] No improvement
+  Current baseline: 28.834781
+  Best achieved: 28.834781
+[SAVE] Saved best implementation for F1
+[REVERT] Reverted F1 to previous best
+
+==================== OUTER ITERATION 9/20 ====================
+[UCB] Selected: F2
+
+[STRATEGY] Running 10 iterations on F2
+  Current baseline: 28.834781
+  Turn 21: P1 used innovation
+    Summary: Rank-based adaptive blend with consensus boost for stable transition weights
+    Improvement: -157.18%
+  Turn 22: P1 used innovation
+    Summary: Rank-based adaptive transition weights with synergy boost
+    Improvement: -153.11%
+  Turn 23: P1 used counter
+    Summary: Robust scaled log-blend with nonlinear time-varying pheromone/heuristic balance
+    Improvement: 0.19%
+  Turn 24: P1 used learning
+    Summary: Adaptive log-space blend with robust scaling and mild diversity reinforcement.
+    Improvement: -1.30%
+  Turn 25: P1 used innovation
+    Summary: Robust rank-shaped blend with time-varying pheromone/heuristic emphasis and mild exploration floor.
+    Improvement: -44.14%
+  Turn 26: P1 used innovation
+    Summary: Rank-based adaptive fusion with robust scaling and stable softmax weights
+    Improvement: -3.17%
+  Turn 27: P1 used learning
+    Summary: Robust log-space adaptive pheromone/heuristic mix with bounded synergy
+    Improvement: -2.13%
+  Turn 28: P1 used counter
+    Summary: Adaptive percentile scaling with stronger contrast and time-varying blend.
+    Improvement: -16.24%
+  Turn 29: P1 used counter
+    Summary: Robust percentile-scaled adaptive blend with stronger late pheromone exploitation
+    Improvement: -1.02%
+  Turn 30: P1 used counter
+    Summary: Robustly scaled, time-adaptive pheromone/heuristic blend with synergy boost
+    Improvement: -2.62%
+[BASELINE] Checking F2 results...
+[BASELINE] Found improvement!
+  Previous: 28.834781
+  New: 28.778659
+  Improvement: 0.19%
+[SAVE] Saved best implementation for F2
+[BASELINE] Propagating update to all trees...
+[BASELINE] All trees updated
+
+==================== OUTER ITERATION 10/20 ====================
+[UCB] Selected: F3
+
+[STRATEGY] Running 10 iterations on F3
+  Current baseline: 28.778659
+  Turn 31: P1 used learning
+    Summary: Adaptive elite pheromone update with stronger best-tour reinforcement
+    Improvement: -0.43%
+  Turn 32: P1 used learning
+    Summary: Adaptive elite-and-consensus pheromone update with stable clipping
+    Improvement: -0.45%
+  Turn 33: P1 used counter
+    Summary: Adaptive rank-based pheromone update with bounded evaporation and stable elite reinforcement.
+    Improvement: -0.06%
+  Turn 34: P1 used counter
+    Summary: Adaptive rank-based pheromone update with stronger best-tour reinforcement.
+    Improvement: -0.11%
+  Turn 35: P1 used learning
+    Summary: Adaptive evaporation with elite-best reinforced rank updates and stable clipping
+    Improvement: 0.06%
+  Turn 36: P1 used counter
+    Summary: Added robust rank-based elite updating with stronger best-tour intensification
+    Improvement: 0.02%
+  Turn 37: P2 used innovation
+    Summary: Consensus-weighted elite pheromone update with adaptive evaporation
+    Improvement: -0.26%
+  Turn 38: P1 used learning
+    Summary: Adaptive elite pheromone update with consensus weighting and stronger best-tour reinforcement
+    Improvement: -0.38%
+  Turn 39: P1 used counter
+    Summary: Adaptive rank-based pheromone update with strong elitism and stable clipping
+    Improvement: -0.31%
+  Turn 40: P1 used innovation
+    Summary: Adaptive elite-best update with consensus edge reinforcement
+    Improvement: -0.76%
+[BASELINE] Checking F3 results...
+[BASELINE] Found improvement!
+  Previous: 28.778659
+  New: 28.760226
+  Improvement: 0.06%
+[SAVE] Saved best implementation for F3
+[BASELINE] Propagating update to all trees...
+[BASELINE] All trees updated
+
+==================== OUTER ITERATION 11/20 ====================
+[UCB] Selected: F2
+
+[STRATEGY] Running 10 iterations on F2
+  Current baseline: 28.760226
+  Turn 31: P1 used counter
+    Summary: Robust normalized blend with entropy-aware annealing and synergy boost
+    Improvement: -2.26%
+  Turn 32: P1 used learning
+    Summary: Adaptive log-centered pheromone/heuristic weights with stronger time-varying balance
+    Improvement: -0.03%
+  Turn 33: P1 used learning
+    Summary: Adaptive robust log-blend with median/MAD scaling and rank-style boost.
+    Improvement: -3.67%
+  Turn 34: P1 used counter
+    Summary: Robust percentile scaling with adaptive log-space blending and synergy boost
+    Improvement: 0.05%
+  Turn 35: P1 used counter
+    Summary: Robust percentile/MAD scaling with adaptive pheromone-heuristic weighting and annealed temperature.
+    Improvement: -13.22%
+  Turn 36: P1 used counter
+    Summary: Robust quantile-z blend with smoother annealing and stable weights
+    Improvement: -35.35%
+  Turn 37: P1 used innovation
+    Summary: Rank-based adaptive transition weights with temperature sharpening
+    Improvement: -202.90%
+  Turn 38: P2 used innovation
+    Summary: Rank-based adaptive blend with interaction bonuses and stable exponentiation
+    Improvement: -4.68%
+  Turn 39: P1 used learning
+    Summary: Robust median-scaled log blending with adaptive schedule and temperature
+    Improvement: -0.20%
+  Turn 40: P1 used innovation
+    Summary: Rank-normalized adaptive softmax blending pheromone and heuristic
+    Improvement: -149.40%
+[BASELINE] Checking F2 results...
+[BASELINE] Found improvement!
+  Previous: 28.760226
+  New: 28.745423
+  Improvement: 0.05%
+[SAVE] Saved best implementation for F2
+[BASELINE] Propagating update to all trees...
+[BASELINE] All trees updated
+
+==================== OUTER ITERATION 12/20 ====================
+[UCB] Selected: F1
+
+[STRATEGY] Running 10 iterations on F1
+  Current baseline: 28.745423
+  Turn 31: P1 used innovation
+    Summary: Rank-, triangle-, and spread-based initialization with normalized pheromone
+    Improvement: -1.00%
+  Turn 32: P1 used counter
+    Summary: Added robust scaled inverse plus mutual kNN, rank, and two-hop bridge support.
+    Improvement: -0.69%
+[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F1.py:53: RuntimeWarning: invalid value encountered in subtract
+  improv = np.maximum(0.0, (a + b - dd[None, :, :]) / np.maximum(scale, eps))
+  Turn 33: P2 used counter
+    Summary: Robust edge prior with shared-neighbor, centrality, and 2-opt support signals
+    Improvement: -48.43%
+  Turn 34: P1 used counter
+    Summary: Added bridge-aware heuristic with centrality and mutual-neighbor support.
+    Improvement: 0.00%
+  Turn 35: P1 used learning
+    Summary: Added stronger two-hop bridge and local-support features with stable normalization.
+    Improvement: -0.09%
+  Turn 36: P1 used counter
+    Summary: Added robust mutual-neighbor and two-hop structure to sharpen edge initialization
+    Improvement: -0.57%
+  Turn 37: P2 used counter
+    Summary: Added robust rank- and bridge-aware edge scoring with stable pheromone seeding
+    Improvement: -0.10%
+  Turn 38: P1 used innovation
+    Summary: Added MST/shared-neighbor bridge prior with stable inverse-distance scoring.
+    Improvement: -0.70%
+  Turn 39: P1 used learning
+    Summary: Added rank, mutual-neighbor, two-hop, and triangle-closeness edge scoring.
+    Improvement: -0.27%
+  Turn 40: P2 used counter
+    Summary: Added robust global/local edge scoring with mutual-neighbor and bridge signals.
+    Improvement: -0.18%
+[BASELINE] Checking F1 results...
+[BASELINE] No improvement
+  Current baseline: 28.745423
+  Best achieved: 28.745423
+[SAVE] Saved best implementation for F1
+[REVERT] Reverted F1 to previous best
+
+==================== OUTER ITERATION 13/20 ====================
+[UCB] Selected: F3
+
+[STRATEGY] Running 10 iterations on F3
+  Current baseline: 28.745423
+  Turn 41: P2 used innovation
+    Summary: Adaptive min-max pheromone update with elite consensus reinforcement
+    Improvement: -0.03%
+  Turn 42: P2 used counter
+    Summary: Balanced exploration-exploitation pheromone update with normalized rank deposits
+    Improvement: -0.51%
+  Turn 43: P2 used learning
+    Summary: Added consensus edge reinforcement atop adaptive rank-based pheromone updates.
+    Improvement: -0.30%
+  Turn 44: P2 used innovation
+    Summary: Ranked elite reinforcement with edge-frequency bias and stable evaporation
+    Improvement: -1.44%
+  Turn 45: P2 used innovation
+    Summary: Age-aware rank pheromone update with best-tour and 2-step reinforcement
+    Improvement: -0.11%
+  Turn 46: P2 used learning
+    Summary: Adaptive elite-best pheromone update with stronger consensus smoothing
+    Improvement: -0.82%
+  Turn 47: P2 used innovation
+    Summary: Blended elite, best-tour, and consensus pheromone reinforcement with adaptive evaporation
+    Improvement: -0.25%
+  Turn 48: P2 used counter
+    Summary: Rank-and-cost blended pheromone update with adaptive evaporation and stable clipping
+    Improvement: -0.18%
+  Turn 49: P2 used learning
+    Summary: Adaptive rank-based pheromone update with stronger best/iteration-best reinforcement
+    Improvement: 0.17%
+  Turn 50: P2 used counter
+    Summary: Adaptive rank-based pheromone update with stronger best-tour reinforcement
+    Improvement: 0.07%
+[BASELINE] Checking F3 results...
+[BASELINE] Found improvement!
+  Previous: 28.745423
+  New: 28.696272
+  Improvement: 0.17%
+[SAVE] Saved best implementation for F3
+[BASELINE] Propagating update to all trees...
+[BASELINE] All trees updated
+
+==================== OUTER ITERATION 14/20 ====================
+[UCB] Selected: F2
+
+[STRATEGY] Running 10 iterations on F2
+  Current baseline: 28.696272
+  Turn 41: P2 used learning
+    Summary: Stronger adaptive log-blend with robust scaling and consensus boosting
+    Improvement: -0.36%
+  Turn 42: P2 used counter
+    Summary: Robust scale-matched blend with time-adaptive exponents and contrast preservation
+    Improvement: -0.89%
+  Turn 43: P2 used learning
+    Summary: Stronger adaptive blend with robust scaling, synergy, and rank boost.
+    Improvement: -0.62%
+  Turn 44: P2 used learning
+    Summary: Adaptive robust log-blend with confidence gating and annealed pheromone boost
+    Improvement: -1.07%
+  Turn 45: P2 used innovation
+    Summary: Robust rank-zscore blend with time-varying softmax transition weights
+    Improvement: -253.07%
+  Turn 46: P2 used learning
+    Summary: Robust percentile scaling with time-adaptive log-space blending and synergy term.
+    Improvement: -63.93%
+  Turn 47: P2 used innovation
+    Summary: Rank-based adaptive fusion with contrast sharpening
+    Improvement: -54.93%
+  Turn 48: P2 used counter
+    Summary: Robust adaptive weighting with percentile scaling and anti-noise novelty term
+    Improvement: -5.94%
+  Turn 49: P2 used learning
+    Summary: Stronger adaptive log-space blend with robust scaling and synergy boost
+    Improvement: -0.94%
+  Turn 50: P2 used counter
+    Summary: Robust percentile scaling with annealed geometric blending and consensus boost
+    Improvement: -94.52%
+[BASELINE] Checking F2 results...
+[BASELINE] No improvement
+  Current baseline: 28.696272
+  Best achieved: 28.745423
+[SAVE] Saved best implementation for F2
+[REVERT] Reverted F2 to previous best
+
+==================== OUTER ITERATION 15/20 ====================
+[UCB] Selected: F3
+
+[STRATEGY] Running 10 iterations on F3
+  Current baseline: 28.696272
+  Turn 51: P2 used learning
+    Summary: Adaptive rank-based pheromone update with best/second-best reinforcement and stable clipping
+    Improvement: -0.30%
+  Turn 52: P2 used innovation
+    Summary: Added bounded rank-based elite, best, and consensus pheromone update
+    Improvement: -0.79%
+  Turn 53: P2 used counter
+    Summary: Added balanced rank, best/second-best, and consensus pheromone reinforcement with stable evaporation.
+    Improvement: 0.12%
+  Turn 54: P2 used counter
+    Summary: Added adaptive rank+best pheromone update with sparse diversity reinforcement.
+    Improvement: -0.88%
+  Turn 55: P2 used learning
+    Summary: Adaptive rank-based pheromone update with stronger best-tour reinforcement and diversity deposits.
+    Improvement: -1.00%
+  Turn 56: P2 used counter
+    Summary: Added bounded rank-based deposits from all elites with mild diversity reinforcement.
+    Improvement: -0.54%
+  Turn 57: P2 used learning
+    Summary: Adaptive rank-based pheromone update with elite consensus reinforcement.
+    Improvement: -0.39%
+  Turn 58: P2 used counter
+    Summary: Rank-based adaptive pheromone update with broader reinforcement and stable clipping
+    Improvement: -0.34%
+  Turn 59: P2 used innovation
+    Summary: Added max-min style evaporation with bounded rank-based elite and best-tour reinforcement.
+    Improvement: -0.28%
+  Turn 60: P2 used innovation
+    Summary: Added consensus-based pheromone reinforcement with adaptive evaporation.
+    Improvement: -0.56%
+[BASELINE] Checking F3 results...
+[BASELINE] Found improvement!
+  Previous: 28.696272
+  New: 28.662233
+  Improvement: 0.12%
+[SAVE] Saved best implementation for F3
+[BASELINE] Propagating update to all trees...
+[BASELINE] All trees updated
+
+==================== OUTER ITERATION 16/20 ====================
+[UCB] Selected: F3
+
+[STRATEGY] Running 10 iterations on F3
+  Current baseline: 28.662233
+  Turn 61: P2 used counter
+    Summary: Adaptive evaporation with normalized elite deposits and consensus reinforcement
+    Improvement: -0.23%
+  Turn 62: P2 used learning
+    Summary: Adaptive elite, consensus, and best-tour pheromone reinforcement with stable evaporation.
+    Improvement: 0.02%
+  Turn 63: P2 used innovation
+    Summary: Adaptive evaporation with elite reinforcement and consensus-based pheromone smoothing
+    Improvement: -0.23%
+  Turn 64: P2 used learning
+    Summary: Adaptive rank-based pheromone update with stronger best-tour and consensus reinforcement.
+    Improvement: -0.44%
+  Turn 65: P2 used counter
+    Summary: Adaptive evaporation with rank-based elite and consensus pheromone reinforcement.
+    Improvement: -0.42%
+  Turn 66: P2 used innovation
+    Summary: Consensus-based pheromone reinforcement with adaptive evaporation
+    Improvement: -0.06%
+  Turn 67: P2 used counter
+    Summary: Adaptive rank-based pheromone update with consensus reinforcement and stable clipping.
+    Improvement: -0.21%
+  Turn 68: P1 used learning
+    Summary: Adaptive elite pheromone update with consensus reinforcement and smoothing.
+    Improvement: 0.03%
+  Turn 69: P2 used learning
+    Summary: Adaptive elite pheromone update with stronger consensus and best-tour smoothing
+    Improvement: -0.34%
+  Turn 70: P2 used innovation
+    Summary: Adaptive elite-consensus pheromone update with stable normalization.
+    Improvement: -0.21%
+[BASELINE] Checking F3 results...
+[BASELINE] Found improvement!
+  Previous: 28.662233
+  New: 28.652231
+  Improvement: 0.03%
+[SAVE] Saved best implementation for F3
+[BASELINE] Propagating update to all trees...
+[BASELINE] All trees updated
+
+==================== OUTER ITERATION 17/20 ====================
+[UCB] Selected: F1
+
+[STRATEGY] Running 10 iterations on F1
+  Current baseline: 28.652231
+  Turn 41: P1 used learning
+    Summary: Stronger heuristic with mutual-neighbor, rank, two-hop, and centrality fusion
+    Improvement: -3.72%
+  Turn 42: P2 used learning
+    Summary: Added stronger bridge/locality scoring with stable normalization and pheromone init.
+    Improvement: 0.09%
+  Turn 43: P2 used learning
+    Summary: Added stronger normalized edge scoring with shared-neighbor, rank, and selectivity cues.
+    Improvement: -0.14%
+[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F1.py:54: RuntimeWarning: invalid value encountered in divide
+  edge_regret = (dd - row_best[:, None]) / np.maximum(dd + row_best[:, None], eps)
+  Turn 44: P1 used innovation
+    Summary: Added kNN-regret edge scoring with structural support and robust normalization.
+    Improvement: -0.12%
+[EVAL WARNING] Traceback (most recent call last):
+  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 52, in <module>
+    main(mode)
+    ~~~~^^^^^^
+  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 43, in main
+    costs = process_file(path, n_ants=N_ANTS, n_iter=N_ITER)
+  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 18, in process_file
+    results.append(eval_instance(data[i], n_ants, n_iter, int(seeds[i])))
+                   ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 9, in eval_instance
+    return run_tsp_aco(D, n_ants, n_iter, seed)
+  File "/home/fool/Local/MOTIF/problems/tsp_aco/aco.py", line 72, in run_tsp_aco
+    heuristic, pheromone = initialize(distances.copy())
+                           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/home/fool/Local/MOTIF/problems/tsp_aco/F1.py", line 54, in initialize
+    tri[i] = np.minimum(dd[i][:, None] + dd, tri[i])
+    ~~~^^^
+ValueError: could not broadcast input array from shape (50,50) into shape (50,)
+  Turn 45: P2 used innovation
+    Summary: Triangle-consistency heuristic with mutual-neighbor and peripheral node weighting.
+    Improvement: 0.00%
+  Turn 46: P2 used innovation
+    Summary: Added backbone-overlap and local-chain edge scoring with robust normalization.
+    Improvement: 0.09%
+  Turn 47: P1 used learning
+    Summary: Added robust inverse-distance heuristic with centrality, kNN, bridge, and MST-style bias.
+    Improvement: -0.17%
+[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F1.py:63: RuntimeWarning: invalid value encountered in divide
+  edge_regret = (dd - row_best[:, None]) / np.maximum(dd + row_best[:, None], eps)
+  Turn 48: P2 used innovation
+    Summary: Added a new local-structure heuristic with 2-step support and triangle-tightness
+    Improvement: -0.13%
+  Turn 49: P2 used counter
+    Summary: Added robust shared-neighbor and sparsity penalties to improve edge initialization.
+    Improvement: 0.20%
+[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F1.py:49: RuntimeWarning: invalid value encountered in divide
+  alt_ratio = dd / np.maximum(best_alt, eps)
+  Turn 50: P2 used innovation
+    Summary: Triangle-consistency heuristic with bottleneck and two-hop support
+    Improvement: -0.15%
+[BASELINE] Checking F1 results...
+[BASELINE] Found improvement!
+  Previous: 28.652231
+  New: 28.595391
+  Improvement: 0.20%
+[SAVE] Saved best implementation for F1
+[BASELINE] Propagating update to all trees...
+[BASELINE] All trees updated
+
+==================== OUTER ITERATION 18/20 ====================
+[UCB] Selected: F2
+
+[STRATEGY] Running 10 iterations on F2
+  Current baseline: 28.595391
+  Turn 51: P2 used counter
+    Summary: Robust quantile-normalized blend with smoother annealing and temperature control
+    Improvement: -164.04%
+  Turn 52: P2 used innovation
+    Summary: Added robust rank- and temperature-based adaptive transition weights
+    Improvement: -2.14%
+  Turn 53: P2 used innovation
+    Summary: Robust quantile-scaled, time-gated softmax blend with diversity bonus
+    Improvement: -0.28%
+  Turn 54: P2 used counter
+    Summary: Robust annealed log-blend with MAD scaling and controlled exponentiation
+    Improvement: -76.71%
+  Turn 55: P2 used learning
+    Summary: Adaptive robust blend with stronger time-varying contrast sharpening
+    Improvement: -0.37%
+  Turn 56: P2 used innovation
+    Summary: Rank-based multiplicative blend with time-varying emphasis and synergy
+    Improvement: -59.15%
+  Turn 57: P2 used learning
+    Summary: Robust percentile-scaled adaptive pheromone/heuristic blend
+    Improvement: -0.16%
+  Turn 58: P2 used learning
+    Summary: Stronger adaptive blend with robust scaling, synergy, and stable log-space weights.
+    Improvement: -47.91%
+  Turn 59: P2 used innovation
+    Summary: Rank-based annealed fusion with agreement boosting
+    Improvement: -1.35%
+  Turn 60: P2 used counter
+    Summary: Robust percentile scaling with entropy-aware adaptive pheromone/heuristic blending
+    Improvement: -1.12%
+[BASELINE] Checking F2 results...
+[BASELINE] No improvement
+  Current baseline: 28.595391
+  Best achieved: 28.640336
+[SAVE] Saved best implementation for F2
+[REVERT] Reverted F2 to previous best
+
+==================== OUTER ITERATION 19/20 ====================
+[UCB] Selected: F1
+
+[STRATEGY] Running 10 iterations on F1
+  Current baseline: 28.595391
+[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F1.py:66: RuntimeWarning: invalid value encountered in divide
+  detour = (dd - np.minimum(best[:, None], best[None, :])) / np.maximum(dd + np.minimum(best[:, None], best[None, :]), eps)
+  Turn 51: P2 used innovation
+    Summary: Triangle-consistency heuristic with shared-neighbor support and stable pheromone init
+    Improvement: -0.19%
+[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F1.py:82: RuntimeWarning: invalid value encountered in divide
+  regret = (dd - np.minimum(best[:, None], best[None, :])) / np.maximum(dd + np.minimum(best[:, None], best[None, :]), eps)
+  Turn 52: P2 used counter
+    Summary: Balanced edge scoring with triangle closure, kNN support, and stable normalization
+    Improvement: -0.49%
+  Turn 53: P1 used innovation
+    Summary: Added triangle-consistency and neighborhood-path based TSP initialization heuristic.
+    Improvement: -0.42%
+[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F1.py:82: RuntimeWarning: invalid value encountered in divide
+  edge_regret = (dd - nn1[:, None]) / np.maximum(dd + nn1[:, None], eps)
+  Turn 54: P2 used learning
+    Summary: Added robust centrality, regret, mutual k-NN, and two-hop support scoring.
+    Improvement: -1.43%
+[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F1.py:62: RuntimeWarning: invalid value encountered in subtract
+  a = di[:, None] + dd - di[None, :]
+  Turn 55: P2 used innovation
+    Summary: Triangle-consistency and confidence-based initialization with reciprocal kNN backbone.
+    Improvement: -0.05%
+[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F1.py:54: RuntimeWarning: invalid value encountered in divide
+  edge_regret = (dd - nearest) / np.maximum(dd + nearest, eps)
+/home/fool/Local/MOTIF/problems/tsp_aco/F1.py:75: RuntimeWarning: invalid value encountered in divide
+  slack = (dd - row_min[:, None]) / np.maximum(dd + row_min[:, None], eps)
+  Turn 56: P2 used learning
+    Summary: Robust multi-factor edge heuristic with regret and support-based pheromone seeding
+    Improvement: -0.40%
+[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F1.py:76: RuntimeWarning: invalid value encountered in divide
+  edge_regret = (dd - nn1[:, None]) / np.maximum(dd + nn1[:, None], eps)
+  Turn 57: P2 used learning
+    Summary: Added stronger node/edge scoring with mutual kNN, regret, and two-hop support
+    Improvement: -0.48%
+  Turn 58: P2 used counter
+    Summary: Added triangle, rank, and regret cues to strengthen edge initialization.
+    Improvement: -0.25%
+[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F1.py:57: RuntimeWarning: invalid value encountered in divide
+  edge_regret = (dd - row_best[:, None]) / np.maximum(dd + row_best[:, None], eps)
+  Turn 59: P2 used learning
+    Summary: Stronger stabilized edge scoring with mutual kNN, shared neighbors, regret, and seeded pheromone.
+    Improvement: -0.31%
+  Turn 60: P2 used counter
+    Summary: Added backbone, regret, and multi-scale neighbor support to improve edge initialization.
+    Improvement: -0.22%
+[BASELINE] Checking F1 results...
+[BASELINE] No improvement
+  Current baseline: 28.595391
+  Best achieved: 28.595391
+[SAVE] Saved best implementation for F1
+[REVERT] Reverted F1 to previous best
+
+==================== OUTER ITERATION 20/20 ====================
+[UCB] Selected: F3
+
+[STRATEGY] Running 10 iterations on F3
+  Current baseline: 28.595391
+  Turn 71: P1 used counter
+    Summary: Adaptive rank-based pheromone update with bounded elite reinforcement
+    Improvement: -0.17%
+  Turn 72: P1 used learning
+    Summary: Adaptive elite pheromone update with stronger best-tour and consensus reinforcement
+    Improvement: 0.05%
+  Turn 73: P1 used learning
+    Summary: Stronger best/elite reinforcement with adaptive evaporation and stable consensus smoothing
+    Improvement: -0.25%
+  Turn 74: P1 used innovation
+    Summary: Added rank-decayed elite update with consensus and two-step smoothing
+    Improvement: -0.52%
+  Turn 75: P1 used innovation
+    Summary: Edge-frequency consensus pheromone update with adaptive evaporation
+    Improvement: -0.04%
+  Turn 76: P1 used counter
+    Summary: Adaptive rank pheromone update with stronger best-tour and bounded local reinforcement
+    Improvement: -0.23%
+  Turn 77: P1 used counter
+    Summary: Stabilized rank-based reinforcement with gentler evaporation and best-tour two-step bias
+    Improvement: -0.55%
+  Turn 78: P1 used learning
+    Summary: Stronger adaptive rank-based update with boosted best-tour and consensus reinforcement
+    Improvement: -0.02%
+  Turn 79: P1 used counter
+    Summary: Adaptive elite update with robust scaling, consensus, and stable clipping
+    Improvement: -0.13%
+  Turn 80: P2 used counter
+    Summary: Balanced elite, best, and consensus pheromone reinforcement with adaptive evaporation.
+    Improvement: -0.16%
+[BASELINE] Checking F3 results...
+[BASELINE] Found improvement!
+  Previous: 28.595391
+  New: 28.582407
+  Improvement: 0.05%
+[SAVE] Saved best implementation for F3
+[BASELINE] Propagating update to all trees...
+[BASELINE] All trees updated
+
+==================================================
+COMPETITIVE STATUS
+==================================================
+F1:
+  P1: 28.686309 (improvement: -0.36%)
+  P2: 28.595391 (improvement: -0.05%)
+  Winner: P2 with cost 28.595391
+  Turns: 60
+
+F2:
+  P1: 28.745423 (improvement: -0.57%)
+  P2: 28.640336 (improvement: -0.20%)
+  Winner: P2 with cost 28.640336
+  Turns: 60
+
+F3:
+  P1: 28.582407 (improvement: 0.00%)
+  P2: 28.640694 (improvement: -0.20%)
+  Winner: P1 with cost 28.582407
+  Turns: 80
+
+Current baseline: 28.582407
+==================================================
+
+==================================================
+ROUND 1 COMPLETED
+==================================================
+Initial baseline: 32.646055
+Final baseline: 28.582407
+Total improvement: 12.45%
+
+==================================================
+COMPETITIVE STATUS
+==================================================
+F1:
+  P1: 28.686309 (improvement: -0.36%)
+  P2: 28.595391 (improvement: -0.05%)
+  Winner: P2 with cost 28.595391
+  Turns: 60
+
+F2:
+  P1: 28.745423 (improvement: -0.57%)
+  P2: 28.640336 (improvement: -0.20%)
+  Winner: P2 with cost 28.640336
+  Turns: 60
+
+F3:
+  P1: 28.582407 (improvement: 0.00%)
+  P2: 28.640694 (improvement: -0.20%)
+  Winner: P1 with cost 28.582407
+  Turns: 80
+
+Current baseline: 28.582407
+==================================================
+
+Saving all best implementations...
+  Saved F1
+  Saved F2
+  Saved F3
+All implementations saved
+
+Round 1 completed!
+Round 1 Results Summary:
+  Initial baseline: 32.646055
+  Round 1 baseline: 28.582407
+  Round 1 improvement: 12.45%
+  Strategy winners:
+    F1: P2 wins with cost 28.595391
+    F2: P2 wins with cost 28.640336
+    F3: P1 wins with cost 28.582407
+
+Saving Round 1 strategies to results...
+  Saved F1 to 20260730_173506_tsp_aco_F1_round1_best.py
+  Saved F2 to 20260730_173506_tsp_aco_F2_round1_best.py
+  Saved F3 to 20260730_173506_tsp_aco_F3_round1_best.py
+Saved 3 Round 1 strategy files
+
+============================================================
+PHASE 2: FINAL ROUND - SEQUENTIAL OPTIMIZATION
+============================================================
+
+============================================================
+STARTING FINAL ROUND: SEQUENTIAL OPTIMIZATION
+============================================================
+Goal: System-aware strategy refinement
+Two players compete per strategy with fixed baseline
+Strategies optimized sequentially with baseline updates
+
+==================================================
+Final Round: Optimizing F1
+==================================================
+  Strategy baseline: 28.582407
+  Turn 1: P1 - Robustified F1 initialization with richer local structure and safer priors.
+    Cost: 28.629674, Improvement: -0.17% (BELOW)
+  Turn 2: P2 - Robustified F1 initialization with tuned locality and softer pheromone seeding.
+    Cost: 28.650048, Improvement: -0.24% (BELOW)
+  Turn 3: P1 - Sharpened F1 initialization with stronger local structure and safer normalization.
+    Cost: 28.622916, Improvement: -0.14% (BELOW)
+  Turn 4: P2 - Strengthened F1 initialization with percentile scaling and refined edge scoring
+    Cost: 28.622916, Improvement: -0.14% (BELOW)
+  Turn 5: P1 - Robust F1 initialization with quantile scaling and softer, denser edge priors
+    Cost: 28.627393, Improvement: -0.16% (BELOW)
+  Turn 6: P2 - Refined F1 initialization with quantile-based scaling and smoother neighborhood signals.
+    Cost: 28.621292, Improvement: -0.14% (BELOW)
+  Turn 7: P1 - Refined F1 initialization with stronger locality, rank, and consensus bias.
+    Cost: 28.707478, Improvement: -0.44% (BELOW)
+  Turn 8: P2 - More robust F1 initialization with stronger local structure and smoother exploitation
+    Cost: 28.618856, Improvement: -0.13% (BELOW)
+  Turn 9: P1 - Improved F1 initialization with percentile scaling, softer penalties, and richer locality cues.
+    Cost: 28.618856, Improvement: -0.13% (BELOW)
+  Turn 10: P2 - Refined F1 initialization with robust scaling and smoother structure-aware weighting.
+    Cost: 28.618856, Improvement: -0.13% (BELOW)
+
+  F1 Results:
+    P1 best: 28.618856
+    P2 best: 28.618856
+    Winner: P1
+    No improvement to global baseline
+
+==================================================
+Final Round: Optimizing F2
+==================================================
+  Strategy baseline: 28.582407
+  Turn 1: P1 - Added robust normalization, row/column coupling, and smoother adaptive mixing for F2.
+    Cost: 32.551616, Improvement: -13.89% (BELOW)
+  Turn 2: P2 - Robust, context-aware probability mixing with row normalization
+    Cost: 32.407209, Improvement: -13.38% (BELOW)
+  Turn 3: P1 - Adaptive robust probability blending with context and entropy control
+    Cost: 32.053591, Improvement: -12.14% (BELOW)
+  Turn 4: P2 - Robustly rebalanced F2 with context-aware mixing and gentler annealing.
+    Cost: 32.089233, Improvement: -12.27% (BELOW)
+  Turn 5: P1 - Stronger robust scaling with context blending and annealed pheromone/heuristic weighting.
+    Cost: 32.371849, Improvement: -13.26% (BELOW)
+  Turn 6: P2 - Robustified F2 with contextual scaling, adaptive mixing, and diagonal suppression.
+    Cost: 31.424225, Improvement: -9.94% (BELOW)
+  Turn 7: P1 - Adaptive, context-aware probability model with stronger stability and diagonal control.
+    Cost: 31.363980, Improvement: -9.73% (BELOW)
+  Turn 8: P2 - Added robust context-aware adaptive probability shaping with stable normalization.
+    Cost: 30.666135, Improvement: -7.29% (BELOW)
+  Turn 9: P1 - Adjusted F2 with stronger context-aware, robustly normalized probability scoring.
+    Cost: 30.300646, Improvement: -6.01% (BELOW)
+  Turn 10: P2 - Refined F2 with robust scaling, adaptive mixing, and stabilized normalization.
+    Cost: 32.111965, Improvement: -12.35% (BELOW)
+
+  F2 Results:
+    P1 best: 30.300646
+    P2 best: 30.666135
+    Winner: P1
+    No improvement to global baseline
+
+==================================================
+Final Round: Optimizing F3
+==================================================
+  Strategy baseline: 28.582407
+  Turn 1: P1 - Adaptive elite pheromone update with robust scaling and stronger best-tour reinforcement.
+    Cost: 28.657604, Improvement: -0.26% (BELOW)
+  Turn 2: P2 - Refined F3 pheromone update with stronger robust elitism and adaptive reinforcement.
+    Cost: 28.657604, Improvement: -0.26% (BELOW)
+  Turn 3: P1 - Adaptive elite pheromone update with robust scaling and stronger structured reinforcement
+    Cost: 28.657604, Improvement: -0.26% (BELOW)
+  Turn 4: P2 - Robustified elite pheromone update with smoother annealing and stronger consensus/local reinforcement.
+    Cost: 28.681077, Improvement: -0.35% (BELOW)
+  Turn 5: P1 - Refined F3 with stronger robust elite updates and smoother phased reinforcement.
+    Cost: 28.741023, Improvement: -0.55% (BELOW)
+  Turn 6: P2 - Adaptive elite pheromone update with robust scaling and stronger balanced reinforcement.
+    Cost: 28.657604, Improvement: -0.26% (BELOW)
+  Turn 7: P1 - Adaptive elitist pheromone update with robust scaling and consensus reinforcement
+    Cost: 28.622325, Improvement: -0.14% (BELOW)
+  Turn 8: P2 - Rebalanced F3 pheromone updates with stronger elite/consensus reinforcement and stable symmetry.
+    Cost: 28.622325, Improvement: -0.14% (BELOW)
+  Turn 9: P1 - Refined F3 pheromone update with better adaptive scaling and elite reinforcement.
+    Cost: 28.679689, Improvement: -0.34% (BELOW)
+  Turn 10: P2 - Adaptive elite pheromone update with stronger exploitation and stable consensus
+    Cost: 28.622325, Improvement: -0.14% (BELOW)
+
+  F3 Results:
+    P1 best: 28.622325
+    P2 best: 28.622325
+    Winner: P1
+    No improvement to global baseline
+
+============================================================
+FINAL ROUND COMPLETED
+============================================================
+Initial cost: 28.582407
+Final cost: 28.582407
+Total improvement: 0.00%
+
+Strategy Winners:
+  F1: P1 with 28.618856
+  F2: P1 with 30.300646
+  F3: P1 with 28.622325
+Best combination saved to files
+
+Saving Final Round strategies to results...
+  Saved F1 to 20260730_173506_tsp_aco_F1_final_best.py
+  Saved F2 to 20260730_173506_tsp_aco_F2_final_best.py
+  Saved F3 to 20260730_173506_tsp_aco_F3_final_best.py
+Saved 3 Final Round strategy files
+
+============================================================
+TWO-PHASE OPTIMIZATION COMPLETED
+============================================================
+Phase Summary:
+  Round 1: 12.45% improvement
+  Final Round: 0.00% total improvement
+  Results saved to: results
+  Log files:
+    Round 1: results/20260730_173506_tsp_aco_round_1.json
+    Final Round: results/20260730_173506_tsp_aco_round_2.json
+
+Optimization completed successfully!
