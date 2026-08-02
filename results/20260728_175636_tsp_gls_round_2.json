@@ -1,0 +1,120 @@
+{
+  "experiment_metadata": {
+    "timestamp": "2026-07-28T19:01:18.824652",
+    "problem": "TSP_GLS",
+    "macro_baseline": 54.43596134614174,
+    "final_iterations": 10
+  },
+  "turns": [
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.43596134614174,
+      "turn": 1,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    guide_matrix = np.zeros((n, n))\n    criticality = np.sum(distance_matrix, axis=1)\n    nearest_neighbors = np.partition(distance_matrix, 2)[:, :3]\n    for i in range(n):\n        for j in range(n):\n            if i != j:\n                adj_criticality = criticality[i] - distance_matrix[i, j] + 1e-6\n                edge_penalty = distance_matrix[i, j] / adj_criticality\n                nearest_penalty = (distance_matrix[i, j] / (nearest_neighbors[i][0] + 1e-6)) * 0.3\n                guide_matrix[i, j] = edge_penalty + nearest_penalty\n    guide_matrix -= np.min(guide_matrix)\n    max_val = np.max(guide_matrix) + 1e-6\n    normalized_matrix = guide_matrix / max_val if max_val > 0 else guide_matrix\n    return normalized_matrix",
+      "llm_summary": "Enhanced penalties and normalization to achieve a better cost.",
+      "eval_cost": 54.43596134614174,
+      "eval_improvement": 0.0,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.43596134614174,
+      "turn": 2,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    guide_matrix = np.zeros((n, n))\n    criticality = np.sum(distance_matrix, axis=1)\n    nearest_neighbors = np.partition(distance_matrix, 2)[:, :3]\n    for i in range(n):\n        for j in range(n):\n            if i != j:\n                adj_criticality = criticality[i] - distance_matrix[i, j] + 1e-6\n                edge_penalty = distance_matrix[i, j] / adj_criticality\n                nearest_penalty = (distance_matrix[i, j] / (nearest_neighbors[i][0] + 1e-6)) * 0.4\n                guide_matrix[i, j] = edge_penalty + nearest_penalty\n    guide_matrix -= np.min(guide_matrix)\n    normalized_matrix = guide_matrix / (np.max(guide_matrix) + 1e-6) if np.max(guide_matrix) > 0 else guide_matrix\n    return normalized_matrix",
+      "llm_summary": "Increased weight on nearest penalty and refined edge penalty handling.",
+      "eval_cost": 54.43596134614174,
+      "eval_improvement": 0.0,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.43596134614174,
+      "turn": 3,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    guide_matrix = np.zeros((n, n))\n    criticality = np.sum(distance_matrix, axis=1)\n    nearest_neighbors = np.partition(distance_matrix, 2)[:, :3]\n    for i in range(n):\n        for j in range(n):\n            if i != j:\n                adj_criticality = criticality[i] - distance_matrix[i, j] + 1e-6\n                edge_penalty = distance_matrix[i, j] / adj_criticality\n                nearest_penalty = (distance_matrix[i, j] / (nearest_neighbors[i][0] + 1e-6)) * 0.3\n                guide_matrix[i, j] = edge_penalty + nearest_penalty\n    guide_matrix -= np.min(guide_matrix)\n    normalized_matrix = guide_matrix / (np.max(guide_matrix) + 1e-6) if np.max(guide_matrix) > 0 else guide_matrix\n    return normalized_matrix",
+      "llm_summary": "Enhanced edge penalty and adjusted nearest penalty to improve optimization.",
+      "eval_cost": 54.43596134614174,
+      "eval_improvement": 0.0,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.43596134614174,
+      "turn": 4,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    guide_matrix = np.zeros((n, n))\n    criticality = np.sum(distance_matrix, axis=1)\n    nearest_neighbors = np.partition(distance_matrix, 3)[:, :3]  # Extended neighbors for robustness\n    for i in range(n):\n        for j in range(n):\n            if i != j:\n                adj_criticality = criticality[i] - distance_matrix[i, j] + 1e-6\n                edge_penalty = distance_matrix[i, j] / adj_criticality\n                nearest_penalty = (distance_matrix[i, j] / (nearest_neighbors[i][0] + 1e-6)) * 0.4\n                guide_matrix[i, j] = edge_penalty + nearest_penalty\n    guide_matrix -= np.min(guide_matrix)\n    normalized_matrix = guide_matrix / (np.max(guide_matrix) + 1e-6) if np.max(guide_matrix) > 0 else guide_matrix\n    return normalized_matrix",
+      "llm_summary": "Adjusted penalties and neighbor considerations for improved guide matrix.",
+      "eval_cost": 54.75143398634333,
+      "eval_improvement": -0.5795298409365758,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.43596134614174,
+      "turn": 5,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    guide_matrix = np.zeros((n, n))\n    criticality = np.sum(distance_matrix, axis=1)\n    nearest_neighbors = np.partition(distance_matrix, 3)[:, :3]  # Updated to consider up to 3 nearest\n    for i in range(n):\n        for j in range(n):\n            if i != j:\n                adj_criticality = criticality[i] - distance_matrix[i, j] + 1e-6\n                edge_penalty = distance_matrix[i, j] / adj_criticality\n                nearest_penalty = (distance_matrix[i, j] / (nearest_neighbors[i][0] + 1e-6)) * 0.35  # Updated weight\n                guide_matrix[i, j] = edge_penalty + nearest_penalty\n    guide_matrix -= np.min(guide_matrix)\n    if np.max(guide_matrix) > 0:\n        normalized_matrix = guide_matrix / (np.max(guide_matrix) + 1e-6)\n    else:\n        normalized_matrix = guide_matrix  \n    return normalized_matrix",
+      "llm_summary": "Adjusted penalties and neighbor influence for improved performance.",
+      "eval_cost": 54.75143398634333,
+      "eval_improvement": -0.5795298409365758,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.43596134614174,
+      "turn": 6,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    guide_matrix = np.zeros((n, n))\n    criticality = np.sum(distance_matrix, axis=1)\n    nearest_neighbors = np.partition(distance_matrix, 2)[:, :3]\n    for i in range(n):\n        for j in range(n):\n            if i != j:\n                edge_penalty = distance_matrix[i, j] / (criticality[i] - distance_matrix[i, j] + 1e-6)\n                nearest_penalty = (distance_matrix[i, j] / (nearest_neighbors[i][0] + 1e-6)) * 0.4\n                guide_matrix[i, j] = edge_penalty + nearest_penalty\n    guide_matrix -= np.min(guide_matrix)\n    normalized_matrix = guide_matrix / (np.max(guide_matrix) + 1e-6) if np.max(guide_matrix) > 0 else guide_matrix\n    return normalized_matrix\n",
+      "llm_summary": "Adjusted nearest penalty coefficient and optimized edge penalty formula.",
+      "eval_cost": 54.43596134614174,
+      "eval_improvement": 0.0,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.43596134614174,
+      "turn": 7,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    guide_matrix = np.zeros((n, n))\n    criticality = np.sum(distance_matrix, axis=1)\n    nearest_neighbors = np.partition(distance_matrix, 2)[:, :3]\n    for i in range(n):\n        for j in range(n):\n            if i != j:\n                edge_penalty = distance_matrix[i, j] / (criticality[i] - distance_matrix[i, j] + 1e-6)\n                nearest_penalty = (distance_matrix[i, j] / (nearest_neighbors[i][0] + 1e-6)) * 0.3\n                guide_matrix[i, j] = edge_penalty + nearest_penalty\n    guide_matrix -= np.min(guide_matrix)\n    normalized_matrix = guide_matrix / (np.max(guide_matrix) + 1e-6) if np.max(guide_matrix) > 0 else guide_matrix\n    return normalized_matrix",
+      "llm_summary": "Reduced nearest penalty scaling and improved the edge penalty calculation.",
+      "eval_cost": 54.43596134614174,
+      "eval_improvement": 0.0,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.43596134614174,
+      "turn": 8,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    guide_matrix = np.zeros((n, n))\n    criticality = np.sum(distance_matrix, axis=1)\n    nearest_neighbors = np.partition(distance_matrix, 2)[:, :3]\n    for i in range(n):\n        for j in range(n):\n            if i != j:\n                edge_penalty = distance_matrix[i, j] / (criticality[i] - distance_matrix[i, j] + 1e-6)\n                nearest_penalty = (distance_matrix[i, j] / (nearest_neighbors[i][0] + 1e-6)) * 0.4\n                guide_matrix[i, j] = edge_penalty + nearest_penalty\n    guide_matrix_method = guide_matrix - np.min(guide_matrix)  # stable with adjustment\n    max_value = np.max(guide_matrix_method) + 1e-6\n    normalized_matrix = guide_matrix_method / max_value if max_value > 0 else guide_matrix\n    return normalized_matrix",
+      "llm_summary": "Adjusted nearest penalty and normalization for improved coherence.",
+      "eval_cost": 54.43596134614174,
+      "eval_improvement": 0.0,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.43596134614174,
+      "turn": 9,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    guide_matrix = np.zeros((n, n))\n    criticality = np.sum(distance_matrix, axis=1)\n    nearest_neighbors = np.partition(distance_matrix, 2)[:, :3]\n    for i in range(n):\n        for j in range(n):\n            if i != j:\n                edge_penalty = distance_matrix[i, j] / (criticality[i] - distance_matrix[i, j] + 1e-6)\n                nearest_penalty = (distance_matrix[i, j] / (nearest_neighbors[i][0] + 1e-6)) * 0.6\n                guide_matrix[i, j] = edge_penalty + nearest_penalty\n    guide_matrix -= np.min(guide_matrix)\n    max_value = np.max(guide_matrix) + 1e-6\n    normalized_matrix = guide_matrix / max_value if max_value > 0 else guide_matrix\n    return normalized_matrix",
+      "llm_summary": "Adjusted nearest neighbor penalty and enhanced normalization approach.",
+      "eval_cost": 54.43596134614174,
+      "eval_improvement": 0.0,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.43596134614174,
+      "turn": 10,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    guide_matrix = np.zeros((n, n))\n    criticality = np.sum(distance_matrix, axis=1)\n    nearest_neighbors = np.partition(distance_matrix, 2)[:, :3]\n    for i in range(n):\n        for j in range(n):\n            if i != j:\n                edge_penalty = distance_matrix[i, j] / (criticality[i] - distance_matrix[i, j] + 1e-6)\n                nearest_penalty = (distance_matrix[i, j] / (nearest_neighbors[i][0] + 1e-6)) * 0.7\n                guide_matrix[i, j] = edge_penalty + nearest_penalty\n    guide_matrix -= np.min(guide_matrix)\n    normalized_matrix = guide_matrix / (np.max(guide_matrix) + 1e-8) if np.max(guide_matrix) > 0 else guide_matrix\n    return normalized_matrix",
+      "llm_summary": "Enhanced nearest neighbor penalty and adjusted normalization for better performance.",
+      "eval_cost": 54.43596134614174,
+      "eval_improvement": 0.0,
+      "eval_success": true
+    }
+  ]
+}

@@ -1,0 +1,340 @@
+{
+  "experiment_metadata": {
+    "timestamp": "2026-07-29T13:46:38.780700",
+    "problem": "TSP_ACO",
+    "macro_baseline": 28.88665025883994,
+    "final_iterations": 10
+  },
+  "turns": [
+    {
+      "strategy": "F1",
+      "strategy_baseline": 28.88665025883994,
+      "turn": 1,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef initialize(distances: np.ndarray) -> tuple[np.ndarray, np.ndarray]:\n    min_distances = np.min(distances, axis=1).reshape(-1, 1)\n    heuristic = (1.0 / (distances + 1e-10)**2) * (min_distances / (distances + 1e-10))\n    pheromone = np.ones_like(distances) * 1.0\n    return heuristic, pheromone",
+      "llm_summary": "Enhanced heuristic and increased initial pheromone to improve search dynamics.",
+      "eval_cost": 29.247048184466433,
+      "eval_improvement": -1.247627961003211,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 28.88665025883994,
+      "turn": 2,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef initialize(distances: np.ndarray) -> tuple[np.ndarray, np.ndarray]:\n    min_distances = np.min(distances, axis=1).reshape(-1, 1)\n    heuristic = (1.0 / (distances + 1e-10)**1.5) * (min_distances / (distances + 1e-10))\n    pheromone = np.ones_like(distances) * 0.75\n    return heuristic, pheromone",
+      "llm_summary": "Improved heuristic formula and increased initial pheromone value.",
+      "eval_cost": 29.14116755464241,
+      "eval_improvement": -0.8810896851031884,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 28.88665025883994,
+      "turn": 3,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef initialize(distances: np.ndarray) -> tuple[np.ndarray, np.ndarray]:\n    min_distances = np.min(distances, axis=1).reshape(-1, 1)\n    heuristic = (1.0 / (distances + 1e-10)**1.2) * (min_distances / (distances + 1e-10))\n    pheromone = np.ones_like(distances) * 0.6\n    return heuristic, pheromone\n",
+      "llm_summary": "Enhanced heuristic scaling and pheromone initialization.",
+      "eval_cost": 29.115986396553303,
+      "eval_improvement": -0.7939173827992826,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 28.88665025883994,
+      "turn": 4,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef initialize(distances: np.ndarray) -> tuple[np.ndarray, np.ndarray]:\n    min_distances = np.min(distances, axis=1).reshape(-1, 1)\n    heuristic = (1.0 / (distances + 1e-10)**1.5) * (min_distances / (distances + 1e-10))\n    pheromone = np.ones_like(distances) * 0.7\n    return heuristic, pheromone",
+      "llm_summary": "Enhanced initialization parameters for improved path exploration.",
+      "eval_cost": 29.11653699363087,
+      "eval_improvement": -0.7958234434627133,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 28.88665025883994,
+      "turn": 5,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef initialize(distances: np.ndarray) -> tuple[np.ndarray, np.ndarray]:\n    min_distances = np.min(distances, axis=1).reshape(-1, 1)\n    heuristic = (1.0 / (distances + 1e-10)**2) * (min_distances / (distances + 1e-10))\n    pheromone = np.ones_like(distances) * 1.0\n    return heuristic, pheromone",
+      "llm_summary": "Improved heuristic and increased pheromone levels to enhance optimization.",
+      "eval_cost": 29.247048184466433,
+      "eval_improvement": -1.247627961003211,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 28.88665025883994,
+      "turn": 6,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef initialize(distances: np.ndarray) -> tuple[np.ndarray, np.ndarray]:\n    min_distances = np.min(distances, axis=1).reshape(-1, 1)\n    heuristic = (1.0 / (distances + 1e-10)**1.5) * (min_distances / (distances + 1e-10))  \n    pheromone = np.ones_like(distances) * 0.7\n    return heuristic, pheromone",
+      "llm_summary": "Enhanced heuristic formula and adjusted pheromone initial value.",
+      "eval_cost": 29.11653699363087,
+      "eval_improvement": -0.7958234434627133,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 28.88665025883994,
+      "turn": 7,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef initialize(distances: np.ndarray) -> tuple[np.ndarray, np.ndarray]:\n    min_distances = np.min(distances, axis=1).reshape(-1, 1)\n    heuristic = (1.0 / (distances + 1e-10)**1.5) * (min_distances / (distances + 1e-10)**1.5)  \n    pheromone = np.ones_like(distances) * 0.7\n    return heuristic, pheromone",
+      "llm_summary": "Improved heuristic formula and increased initial pheromone level.",
+      "eval_cost": 29.08098718652625,
+      "eval_improvement": -0.6727568823139689,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 28.88665025883994,
+      "turn": 8,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef initialize(distances: np.ndarray) -> tuple[np.ndarray, np.ndarray]:\n    min_distances = np.min(distances, axis=1).reshape(-1, 1)\n    heuristic = (1.0 / (distances + 1e-10)**1.3) * (min_distances / (distances + 1e-10)**1.3)\n    pheromone = np.ones_like(distances) * 0.6\n    return heuristic, pheromone\n",
+      "llm_summary": "Updated heuristic scaling and pheromone initialization for better performance.",
+      "eval_cost": 29.155360373339278,
+      "eval_improvement": -0.930222480251435,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 28.88665025883994,
+      "turn": 9,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef initialize(distances: np.ndarray) -> tuple[np.ndarray, np.ndarray]:\n    min_distances = np.min(distances, axis=1).reshape(-1, 1)\n    heuristic = (1.0 / (distances + 1e-10)**1.2) * (min_distances / (distances + 1e-10))  \n    pheromone = np.ones_like(distances) * 0.6\n    return heuristic, pheromone",
+      "llm_summary": "Enhanced heuristic and adjusted pheromone values for better performance.",
+      "eval_cost": 29.115986396553303,
+      "eval_improvement": -0.7939173827992826,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 28.88665025883994,
+      "turn": 10,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef initialize(distances: np.ndarray) -> tuple[np.ndarray, np.ndarray]:\n    min_distances = np.min(distances, axis=1).reshape(-1, 1)\n    heuristic = (1.0 / (distances + 1e-10)**1.2) * (min_distances / (distances + 1e-10)**1.2)\n    pheromone = np.ones_like(distances) * 0.6\n    return heuristic, pheromone",
+      "llm_summary": "Enhanced heuristic scaling and pheromone initialization.",
+      "eval_cost": 29.088691467179288,
+      "eval_improvement": -0.6994276128555952,
+      "eval_success": true
+    },
+    {
+      "strategy": "F2",
+      "strategy_baseline": 28.88665025883994,
+      "turn": 1,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef compute_probabilities(\n    pheromone: np.ndarray,\n    heuristic: np.ndarray,\n    iteration: int,\n    n_iterations: int\n) -> np.ndarray:\n    alpha = 1.5 + (0.5 * (iteration / n_iterations))\n    beta = 1.0 + (0.5 * (1 - iteration / n_iterations))\n    weights = np.power(pheromone, alpha) * np.power(heuristic, beta)\n    weights += 1e-10\n    return weights / np.sum(weights)",
+      "llm_summary": "Enhanced exploration and exploitation in probability computation.",
+      "eval_cost": 29.567259023747795,
+      "eval_improvement": -2.356135996417842,
+      "eval_success": true
+    },
+    {
+      "strategy": "F2",
+      "strategy_baseline": 28.88665025883994,
+      "turn": 2,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef compute_probabilities(\n    pheromone: np.ndarray,\n    heuristic: np.ndarray,\n    iteration: int,\n    n_iterations: int\n) -> np.ndarray:\n    alpha = 2.0 + (0.2 * (iteration / n_iterations))  # Increased initial exploration\n    beta = 0.8 + (0.2 * (1 - iteration / n_iterations))  # Gradual focus tightening\n    weights = np.power(pheromone, alpha) * np.power(heuristic, beta)\n    weights += 1e-10\n    return weights / np.sum(weights)  # Normalize",
+      "llm_summary": "Enhanced exploration and exploitation in compute_probabilities to improve outcomes.",
+      "eval_cost": 29.723993154489758,
+      "eval_improvement": -2.8987192635586876,
+      "eval_success": true
+    },
+    {
+      "strategy": "F2",
+      "strategy_baseline": 28.88665025883994,
+      "turn": 3,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef compute_probabilities(\n    pheromone: np.ndarray,\n    heuristic: np.ndarray,\n    iteration: int,\n    n_iterations: int\n) -> np.ndarray:\n    alpha = 2.5 - 0.5 * (iteration / n_iterations)  # Increased initial exploration, reducing over time\n    beta = 1.5 + (0.5 * (1 - iteration / n_iterations))  # Promoting heuristic focus gradually\n    weights = np.power(pheromone, alpha) * np.power(heuristic, beta)\n    weights += 1e-10  # Numerical stability\n    return weights / np.sum(weights)  # Normalize\n",
+      "llm_summary": "Enhanced exploration with better alpha and beta tuning.",
+      "eval_cost": 30.172256509712383,
+      "eval_improvement": -4.450520359241103,
+      "eval_success": true
+    },
+    {
+      "strategy": "F2",
+      "strategy_baseline": 28.88665025883994,
+      "turn": 4,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef compute_probabilities(\n    pheromone: np.ndarray,\n    heuristic: np.ndarray,\n    iteration: int,\n    n_iterations: int\n) -> np.ndarray:\n    alpha = 1.2 + (0.4 * (iteration / n_iterations))  # Increase exploration flexibility\n    beta = 1.0 + (0.6 * (1 - iteration / n_iterations))  # Enhanced focus on heuristics later\n    weights = np.power(pheromone, alpha) * np.power(heuristic, beta)\n    weights += 1e-10  # Numerical stability\n    return weights / np.sum(weights)  # Normalize\n",
+      "llm_summary": "Tuned alpha and beta to improve exploration and heuristic focus.",
+      "eval_cost": 29.59012040780579,
+      "eval_improvement": -2.435277689390708,
+      "eval_success": true
+    },
+    {
+      "strategy": "F2",
+      "strategy_baseline": 28.88665025883994,
+      "turn": 5,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef compute_probabilities(\n    pheromone: np.ndarray,\n    heuristic: np.ndarray,\n    iteration: int,\n    n_iterations: int\n) -> np.ndarray:\n    alpha = 1.3 + (0.4 * (iteration / n_iterations))\n    beta = 1.0 + (0.5 * (1 - iteration / n_iterations))\n    weights = np.power(pheromone, alpha) * np.power(heuristic, beta)\n    weights += 1e-10\n    return weights / np.sum(weights)",
+      "llm_summary": "Enhanced exploration and heuristic tuning for improved performance.",
+      "eval_cost": 29.391674549456475,
+      "eval_improvement": -1.7482964832933077,
+      "eval_success": true
+    },
+    {
+      "strategy": "F2",
+      "strategy_baseline": 28.88665025883994,
+      "turn": 6,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef compute_probabilities(\n    pheromone: np.ndarray,\n    heuristic: np.ndarray,\n    iteration: int,\n    n_iterations: int\n) -> np.ndarray:\n    alpha = 1.5 + (0.3 * (iteration / n_iterations))\n    beta = 1.0 + (0.6 * (1 - iteration / n_iterations))\n    weights = np.power(pheromone, alpha) * np.power(heuristic, beta)\n    weights += 1e-10\n    return weights / np.sum(weights) # Normalize\n",
+      "llm_summary": "Enhanced alpha/beta tuning for better performance.",
+      "eval_cost": 29.64313483862772,
+      "eval_improvement": -2.618803402295772,
+      "eval_success": true
+    },
+    {
+      "strategy": "F2",
+      "strategy_baseline": 28.88665025883994,
+      "turn": 7,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef compute_probabilities(\n    pheromone: np.ndarray,\n    heuristic: np.ndarray,\n    iteration: int,\n    n_iterations: int\n) -> np.ndarray:\n    alpha = 1.5 + (0.4 * (iteration / n_iterations))  # Further increases exploration\n    beta = 1.2 + (0.3 * (1 - iteration / n_iterations))  # Strengthens heuristic reliance\n    weights = np.power(pheromone, alpha) * np.power(heuristic, beta)\n    weights += 1e-10  # Numerical stability\n    return weights / np.sum(weights)  # Normalize",
+      "llm_summary": "Enhanced F2 to improve exploration and heuristic balance.",
+      "eval_cost": 29.582087265180583,
+      "eval_improvement": -2.407468502263688,
+      "eval_success": true
+    },
+    {
+      "strategy": "F2",
+      "strategy_baseline": 28.88665025883994,
+      "turn": 8,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef compute_probabilities(\n    pheromone: np.ndarray,\n    heuristic: np.ndarray,\n    iteration: int,\n    n_iterations: int\n) -> np.ndarray:\n    alpha = 1.2 + (0.5 * (iteration / n_iterations))\n    beta = 1.5 + (0.5 * (1 - iteration / n_iterations))\n    weights = np.power(pheromone, alpha) * np.power(heuristic, beta)\n    weights += 1e-10\n    return weights / np.sum(weights)",
+      "llm_summary": "Enhanced hyperparameters for better exploration and exploitation.",
+      "eval_cost": 29.627766485010547,
+      "eval_improvement": -2.565601132460175,
+      "eval_success": true
+    },
+    {
+      "strategy": "F2",
+      "strategy_baseline": 28.88665025883994,
+      "turn": 9,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef compute_probabilities(\n    pheromone: np.ndarray,\n    heuristic: np.ndarray,\n    iteration: int,\n    n_iterations: int\n) -> np.ndarray:\n    alpha = 1.5 + (0.2 * (iteration / n_iterations))  # Increased exploration earlier\n    beta = 1.0 + (0.5 * (1 - iteration / n_iterations))  # Enhanced heuristic focus\n    weights = np.power(pheromone, alpha) * np.power(heuristic, beta)\n    weights += 1e-10  # Numerical stability\n    weights_sum = np.sum(weights)\n    return weights / weights_sum if weights_sum > 0 else weights  # Avoid division by zero",
+      "llm_summary": "Enhanced exploration and heuristic bias in compute_probabilities.",
+      "eval_cost": 29.763119182634455,
+      "eval_improvement": -3.0341660107381165,
+      "eval_success": true
+    },
+    {
+      "strategy": "F2",
+      "strategy_baseline": 28.88665025883994,
+      "turn": 10,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef compute_probabilities(\n    pheromone: np.ndarray,\n    heuristic: np.ndarray,\n    iteration: int,\n    n_iterations: int\n) -> np.ndarray:\n    alpha = 1.4 + (0.2 * (iteration / n_iterations))\n    beta = 1.5 - (0.5 * (iteration / n_iterations))\n    weights = np.power(pheromone, alpha) * np.power(heuristic, beta)\n    weights += 1e-10  # Numerical stability\n    return weights / np.sum(weights)  # Normalize\n",
+      "llm_summary": "Enhanced hyperparameters for improved exploration-exploitation balance.",
+      "eval_cost": 29.44547908283546,
+      "eval_improvement": -1.9345573785403012,
+      "eval_success": true
+    },
+    {
+      "strategy": "F3",
+      "strategy_baseline": 28.88665025883994,
+      "turn": 1,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef update_pheromone(\n    pheromone: np.ndarray,\n    paths: np.ndarray,\n    costs: np.ndarray,\n    iteration: int,\n    n_iterations: int,\n) -> np.ndarray:\n    decay = 0.85 - 0.5 * (iteration / n_iterations)**2\n    pheromone *= decay\n    pheromone = np.clip(pheromone, 1e-10, None)\n\n    n_cities, n_ants = paths.shape\n    best_cost = np.min(costs)\n    deposition_factor = 2.0  # Increased for stronger reinforcement\n    for ant in range(n_ants):\n        tour = paths[:, ant]\n        deposit = deposition_factor * (best_cost / costs[ant])**2  # Adjusted for higher sensitivity\n        for i in range(n_cities):\n            c = tour[i]\n            n = tour[(i + 1) % n_cities]\n            pheromone[c, n] += deposit\n            pheromone[n, c] += deposit\n    return pheromone",
+      "llm_summary": "Enhanced pheromone update for stronger reinforcement and sensitivity adjustments.",
+      "eval_cost": 29.048779983275868,
+      "eval_improvement": -0.5612617696519282,
+      "eval_success": true
+    },
+    {
+      "strategy": "F3",
+      "strategy_baseline": 28.88665025883994,
+      "turn": 2,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef update_pheromone(\n    pheromone: np.ndarray,\n    paths: np.ndarray,\n    costs: np.ndarray,\n    iteration: int,\n    n_iterations: int,\n) -> np.ndarray:\n    decay = 0.85 - 0.4 * (iteration / n_iterations) ** 2\n    pheromone *= decay\n    pheromone = np.clip(pheromone, 1e-10, None)\n\n    n_cities, n_ants = paths.shape\n    best_cost = np.min(costs)\n    deposition_factor = 2.5  # Increased for stronger reinforcement\n    for ant in range(n_ants):\n        tour = paths[:, ant]\n        deposit = deposition_factor * (best_cost / costs[ant]) ** 2.5  # More sensitive to cost\n        for i in range(n_cities):\n            c = tour[i]\n            n = tour[(i + 1) % n_cities]\n            pheromone[c, n] += deposit\n            pheromone[n, c] += deposit\n    return pheromone",
+      "llm_summary": "Enhanced pheromone update with stronger decay and increased deposition sensitivity.",
+      "eval_cost": 28.979765416511157,
+      "eval_improvement": -0.32234667861055377,
+      "eval_success": true
+    },
+    {
+      "strategy": "F3",
+      "strategy_baseline": 28.88665025883994,
+      "turn": 3,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef update_pheromone(\n    pheromone: np.ndarray,\n    paths: np.ndarray,\n    costs: np.ndarray,\n    iteration: int,\n    n_iterations: int,\n) -> np.ndarray:\n    decay = 0.85 - 0.5 * (iteration / n_iterations) ** 2\n    pheromone *= decay\n    pheromone = np.clip(pheromone, 1e-10, None)\n\n    n_cities, n_ants = paths.shape\n    best_cost = np.min(costs)\n    deposition_factor = 3.0  # Increased for stronger reinforcement\n    for ant in range(n_ants):\n        tour = paths[:, ant]\n        deposit = deposition_factor * (best_cost / costs[ant]) ** 3.0  # Enhanced sensitivity to cost\n        for i in range(n_cities):\n            c = tour[i]\n            n = tour[(i + 1) % n_cities]\n            pheromone[c, n] += deposit\n            pheromone[n, c] += deposit\n    return pheromone",
+      "llm_summary": "Enhanced pheromone decay and sensitivity to costs for better optimization.",
+      "eval_cost": 29.031416050289952,
+      "eval_improvement": -0.5011511897462435,
+      "eval_success": true
+    },
+    {
+      "strategy": "F3",
+      "strategy_baseline": 28.88665025883994,
+      "turn": 4,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef update_pheromone(\n    pheromone: np.ndarray,\n    paths: np.ndarray,\n    costs: np.ndarray,\n    iteration: int,\n    n_iterations: int,\n) -> np.ndarray:\n    decay = 0.85 - 0.6 * (iteration / n_iterations)\n    pheromone *= decay\n    pheromone = np.clip(pheromone, 1e-10, None)\n\n    n_cities, n_ants = paths.shape\n    best_cost = np.min(costs)\n    deposition_factor = 4.0  # Increased for stronger reinforcement\n    for ant in range(n_ants):\n        tour = paths[:, ant]\n        deposit = deposition_factor * (best_cost / costs[ant]) ** 2.5  # Enhanced sensitivity\n        for i in range(n_cities):\n            c = tour[i]\n            n = tour[(i + 1) % n_cities]\n            pheromone[c, n] += deposit\n            pheromone[n, c] += deposit\n    return pheromone",
+      "llm_summary": "Adjusted pheromone decay and deposit formula for improved exploration.",
+      "eval_cost": 29.052484034718137,
+      "eval_improvement": -0.5740844798280117,
+      "eval_success": true
+    },
+    {
+      "strategy": "F3",
+      "strategy_baseline": 28.88665025883994,
+      "turn": 5,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef update_pheromone(\n    pheromone: np.ndarray,\n    paths: np.ndarray,\n    costs: np.ndarray,\n    iteration: int,\n    n_iterations: int,\n) -> np.ndarray:\n    decay = 0.88 - 0.5 * (iteration / n_iterations) ** 2\n    pheromone *= decay\n    pheromone = np.clip(pheromone, 1e-10, None)\n\n    n_cities, n_ants = paths.shape\n    best_cost = np.min(costs)\n    deposition_factor = 2.0  # Increased for better reinforcement\n    for ant in range(n_ants):\n        tour = paths[:, ant]\n        deposit = deposition_factor * (best_cost / costs[ant]) ** 3.0  # Enhanced sensitivity to costs\n        for i in range(n_cities):\n            c = tour[i]\n            n = tour[(i + 1) % n_cities]\n            pheromone[c, n] += deposit\n            pheromone[n, c] += deposit\n    return pheromone\n",
+      "llm_summary": "Enhanced pheromone deposition and decay rate for better cost sensitivity.",
+      "eval_cost": 29.087110247001018,
+      "eval_improvement": -0.693953734215803,
+      "eval_success": true
+    },
+    {
+      "strategy": "F3",
+      "strategy_baseline": 28.88665025883994,
+      "turn": 6,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef update_pheromone(\n    pheromone: np.ndarray,\n    paths: np.ndarray,\n    costs: np.ndarray,\n    iteration: int,\n    n_iterations: int,\n) -> np.ndarray:\n    decay = 0.85 - 0.5 * (iteration / n_iterations)**2\n    pheromone *= decay\n    pheromone = np.clip(pheromone, 1e-10, None)\n\n    n_cities, n_ants = paths.shape\n    best_cost = np.min(costs)\n    deposition_factor = 4.0\n    for ant in range(n_ants):\n        tour = paths[:, ant]\n        deposit = deposition_factor * (best_cost / costs[ant]) ** 2.5\n        for i in range(n_cities):\n            c = tour[i]\n            n = tour[(i + 1) % n_cities]\n            pheromone[c, n] += deposit\n            pheromone[n, c] += deposit\n    return pheromone\n",
+      "llm_summary": "Optimized pheromone update with enhanced deposition sensitivity and decay.",
+      "eval_cost": 29.028843289443017,
+      "eval_improvement": -0.49224478895597784,
+      "eval_success": true
+    },
+    {
+      "strategy": "F3",
+      "strategy_baseline": 28.88665025883994,
+      "turn": 7,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef update_pheromone(\n    pheromone: np.ndarray,\n    paths: np.ndarray,\n    costs: np.ndarray,\n    iteration: int,\n    n_iterations: int,\n) -> np.ndarray:\n    decay = 0.88 - 0.5 * (iteration / n_iterations)**2\n    pheromone *= decay\n    pheromone = np.clip(pheromone, 1e-10, None)\n\n    n_cities, n_ants = paths.shape\n    best_cost = np.min(costs)\n    deposition_factor = 3.0\n    for ant in range(n_ants):\n        tour = paths[:, ant]\n        deposit = deposition_factor * (best_cost / costs[ant])**3.0\n        for i in range(n_cities):\n            c = tour[i]\n            n = tour[(i + 1) % n_cities]\n            pheromone[c, n] += deposit\n            pheromone[n, c] += deposit\n    return pheromone",
+      "llm_summary": "Enhanced pheromone update strategy with optimized factors.",
+      "eval_cost": 29.11388684408341,
+      "eval_improvement": -0.7866491379488756,
+      "eval_success": true
+    },
+    {
+      "strategy": "F3",
+      "strategy_baseline": 28.88665025883994,
+      "turn": 8,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef update_pheromone(\n    pheromone: np.ndarray,\n    paths: np.ndarray,\n    costs: np.ndarray,\n    iteration: int,\n    n_iterations: int,\n) -> np.ndarray:\n    decay = 0.85 - 0.6 * (iteration / n_iterations) ** 2\n    pheromone *= decay\n    pheromone = np.clip(pheromone, 1e-10, None)\n\n    n_cities, n_ants = paths.shape\n    best_cost = np.min(costs)\n    deposition_factor = 4.0  # Further increased for stronger reinforcement\n    for ant in range(n_ants):\n        tour = paths[:, ant]\n        deposit = deposition_factor * (best_cost / costs[ant]) ** 2.5  # Increased sensitivity to cost\n        for i in range(n_cities):\n            c = tour[i]\n            n = tour[(i + 1) % n_cities]\n            pheromone[c, n] += deposit\n            pheromone[n, c] += deposit\n    return pheromone",
+      "llm_summary": "Enhanced decay and deposition factors to improve pheromone updates.",
+      "eval_cost": 28.97541411972065,
+      "eval_improvement": -0.30728333013810494,
+      "eval_success": true
+    },
+    {
+      "strategy": "F3",
+      "strategy_baseline": 28.88665025883994,
+      "turn": 9,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef update_pheromone(\n    pheromone: np.ndarray,\n    paths: np.ndarray,\n    costs: np.ndarray,\n    iteration: int,\n    n_iterations: int,\n) -> np.ndarray:\n    decay = 0.88 - 0.65 * (iteration / n_iterations)**2\n    pheromone *= decay\n    pheromone = np.clip(pheromone, 1e-10, None)\n\n    n_cities, n_ants = paths.shape\n    best_cost = np.min(costs)\n    deposition_factor = 5.0  # Further increased for stronger reinforcement\n    for ant in range(n_ants):\n        tour = paths[:, ant]\n        deposit = deposition_factor * (best_cost / costs[ant])**3.0  # Increased sensitivity to cost\n        for i in range(n_cities):\n            c = tour[i]\n            n = tour[(i + 1) % n_cities]\n            pheromone[c, n] += deposit\n            pheromone[n, c] += deposit\n    return pheromone",
+      "llm_summary": "Enhanced pheromone update with optimized decay and deposition factors.",
+      "eval_cost": 28.960739622045235,
+      "eval_improvement": -0.2564830554647746,
+      "eval_success": true
+    },
+    {
+      "strategy": "F3",
+      "strategy_baseline": 28.88665025883994,
+      "turn": 10,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef update_pheromone(\n    pheromone: np.ndarray,\n    paths: np.ndarray,\n    costs: np.ndarray,\n    iteration: int,\n    n_iterations: int,\n) -> np.ndarray:\n    decay = 0.85 - 0.5 * (iteration / n_iterations)**2  # Increased decay rate\n    pheromone *= decay\n    pheromone = np.clip(pheromone, 1e-10, None)\n\n    n_cities, n_ants = paths.shape\n    best_cost = np.min(costs)\n    deposition_factor = 6.0  # Further increased for stronger reinforcement\n    for ant in range(n_ants):\n        tour = paths[:, ant]\n        deposit = deposition_factor * (best_cost / costs[ant])**4.0  # Further increased sensitivity to cost\n        for i in range(n_cities):\n            c = tour[i]\n            n = tour[(i + 1) % n_cities]\n            pheromone[c, n] += deposit\n            pheromone[n, c] += deposit\n    return pheromone",
+      "llm_summary": "Improved pheromone update with enhanced deposition sensitivity and decay rate.",
+      "eval_cost": 29.065272615514985,
+      "eval_improvement": -0.6183560747767335,
+      "eval_success": true
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "experiment_metadata": {
+    "timestamp": "2026-07-29T17:01:24.282792",
+    "problem": "TSP_ACO",
+    "initial_baseline": null,
+    "outer_iterations": 20,
+    "inner_iterations": 10
+  },
+  "turns": []
+}

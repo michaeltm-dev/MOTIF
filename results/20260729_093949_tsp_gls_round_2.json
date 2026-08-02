@@ -1,0 +1,120 @@
+{
+  "experiment_metadata": {
+    "timestamp": "2026-07-29T10:29:16.320965",
+    "problem": "TSP_GLS",
+    "macro_baseline": 54.43596134614174,
+    "final_iterations": 10
+  },
+  "turns": [
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.43596134614174,
+      "turn": 1,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    guide_matrix = np.zeros_like(distance_matrix)\n    for i in range(n):\n        nearby_distances = distance_matrix[i][distance_matrix[i] < np.inf]\n        if len(nearby_distances) > 0:\n            avg_nearby_distance = np.mean(nearby_distances)\n            nearest_penalty = np.min(distance_matrix[i, np.argsort(distance_matrix[i])[:3]])\n            for j in range(n):\n                if i != j:\n                    distance = distance_matrix[i][j]\n                    distance_factor = nearest_penalty / (distance + 1e-10)\n                    penalty = 1 + (distance - avg_nearby_distance) / (avg_nearby_distance + 1e-10)\n                    guide_matrix[i][j] = distance * (distance_factor + penalty)\n    return guide_matrix\n",
+      "llm_summary": "Optimized penalty calculation and distance factor sensitivity.",
+      "eval_cost": 54.62295894461017,
+      "eval_improvement": -0.34351850108675275,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.43596134614174,
+      "turn": 2,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    guide_matrix = np.zeros_like(distance_matrix)\n    for i in range(n):\n        nearby_distances = distance_matrix[i][distance_matrix[i] < np.inf]\n        if len(nearby_distances) > 0:\n            avg_nearby_distance = np.mean(nearby_distances)\n            nearest_penalty = np.min(distance_matrix[i, np.argsort(distance_matrix[i])[:3]])\n            for j in range(n):\n                if i != j:\n                    distance = distance_matrix[i][j]\n                    distance_factor = nearest_penalty / (distance + 1e-10)\n                    penalty = 1 + 0.5 * (distance - avg_nearby_distance) / (avg_nearby_distance + 1e-10)\n                    guide_matrix[i][j] = distance * (distance_factor + penalty)\n    return guide_matrix",
+      "llm_summary": "Enhanced penalty calculation to improve cost efficiency.",
+      "eval_cost": 54.5661580174354,
+      "eval_improvement": -0.23917400937549232,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.43596134614174,
+      "turn": 3,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    guide_matrix = np.zeros_like(distance_matrix)\n    for i in range(n):\n        nearby_distances = distance_matrix[i][distance_matrix[i] < np.inf]\n        if len(nearby_distances) > 0:\n            avg_nearby_distance = np.mean(nearby_distances)\n            nearest_penalty = np.min(distance_matrix[i, np.argsort(distance_matrix[i])[:3]])\n            for j in range(n):\n                if i != j:\n                    distance = distance_matrix[i][j]\n                    distance_factor = nearest_penalty / (distance + 1e-10)\n                    penalty = 1 + 0.7 * (distance - avg_nearby_distance) / (avg_nearby_distance + 1e-10)\n                    guide_matrix[i][j] = distance * (distance_factor + penalty)\n    return guide_matrix",
+      "llm_summary": "Optimized penalty computation for improved distance guidance.",
+      "eval_cost": 54.53796720063036,
+      "eval_improvement": -0.18738688904564346,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.43596134614174,
+      "turn": 4,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    guide_matrix = np.zeros_like(distance_matrix)\n    for i in range(n):\n        nearby_distances = distance_matrix[i][distance_matrix[i] < np.inf]\n        if len(nearby_distances) > 0:\n            avg_nearby_distance = np.mean(nearby_distances)\n            nearest_penalty = np.min(distance_matrix[i, np.argsort(distance_matrix[i])[:3]])\n            for j in range(n):\n                if i != j:\n                    distance = distance_matrix[i][j]\n                    distance_factor = nearest_penalty / (distance + 1e-10)\n                    penalty = 1 + 0.5 * (distance - avg_nearby_distance) / (avg_nearby_distance + 1e-10)\n                    guide_matrix[i][j] = distance * (distance_factor + penalty)\n    return guide_matrix",
+      "llm_summary": "Adjusted penalty calculation for improved responsiveness.",
+      "eval_cost": 54.5661580174354,
+      "eval_improvement": -0.23917400937549232,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.43596134614174,
+      "turn": 5,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    guide_matrix = np.zeros_like(distance_matrix)\n    for i in range(n):\n        nearby_distances = distance_matrix[i][distance_matrix[i] < np.inf]\n        if len(nearby_distances) > 0:\n            avg_nearby_distance = np.mean(nearby_distances)\n            nearest_penalty = np.min(distance_matrix[i, np.argsort(distance_matrix[i])[:3]])\n            for j in range(n):\n                if i != j:\n                    distance = distance_matrix[i][j]\n                    distance_factor = nearest_penalty / (distance + 1e-10)\n                    penalty = 1 + 0.2 * (distance - avg_nearby_distance) / (avg_nearby_distance + 1e-10)\n                    guide_matrix[i][j] = distance * (distance_factor + penalty)\n    return guide_matrix",
+      "llm_summary": "Enhanced penalty calculation for better cost efficiency.",
+      "eval_cost": 54.533122435560806,
+      "eval_improvement": -0.1784869542419756,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.43596134614174,
+      "turn": 6,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    guide_matrix = np.zeros_like(distance_matrix)\n    for i in range(n):\n        nearby_distances = distance_matrix[i][distance_matrix[i] < np.inf]\n        if len(nearby_distances) > 0:\n            avg_nearby_distance = np.mean(nearby_distances)\n            nearest_penalty = np.min(distance_matrix[i, np.argsort(distance_matrix[i])[:3]])\n            for j in range(n):\n                if i != j:\n                    distance = distance_matrix[i][j]\n                    distance_factor = nearest_penalty / (distance + 1e-10)\n                    penalty = 1 + 0.3 * (distance - avg_nearby_distance) / (avg_nearby_distance + 1e-10)\n                    guide_matrix[i][j] = distance * (distance_factor + penalty)\n    return guide_matrix",
+      "llm_summary": "Optimized penalty calculation for better performance.",
+      "eval_cost": 54.53347744246826,
+      "eval_improvement": -0.17913910935906366,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.43596134614174,
+      "turn": 7,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    guide_matrix = np.zeros_like(distance_matrix)\n    for i in range(n):\n        nearby_distances = distance_matrix[i][distance_matrix[i] < np.inf]\n        if len(nearby_distances) > 0:\n            avg_nearby_distance = np.mean(nearby_distances)\n            nearest_penalty = np.min(distance_matrix[i, np.argsort(distance_matrix[i])[:3]])\n            for j in range(n):\n                if i != j:\n                    distance = distance_matrix[i][j]\n                    distance_factor = nearest_penalty / (distance + 1e-10)\n                    if distance < avg_nearby_distance:\n                        penalty = 1\n                    else:\n                        penalty = 1 + 0.5 * (distance - avg_nearby_distance) / (avg_nearby_distance + 1e-10)\n                    guide_matrix[i][j] = distance * (distance_factor + penalty)\n    return guide_matrix",
+      "llm_summary": "Updated penalty calculation; optimized hyperparameters.",
+      "eval_cost": 54.43596134614174,
+      "eval_improvement": 0.0,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.43596134614174,
+      "turn": 8,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    guide_matrix = np.zeros_like(distance_matrix)\n    for i in range(n):\n        nearby_distances = distance_matrix[i][distance_matrix[i] < np.inf]\n        if len(nearby_distances) > 0:\n            avg_nearby_distance = np.mean(nearby_distances)\n            nearest_penalty = np.min(distance_matrix[i, np.argsort(distance_matrix[i])[:3]])\n            for j in range(n):\n                if i != j:\n                    distance = distance_matrix[i][j]\n                    distance_factor = nearest_penalty / (distance + 1e-10)\n                    penalty = 1 + (0.5 * (distance - avg_nearby_distance) / (avg_nearby_distance + 1e-10)) if distance >= avg_nearby_distance else 1\n                    guide_matrix[i][j] = distance * (distance_factor + penalty + 0.1 * np.log1p(distance))\n    return guide_matrix\n",
+      "llm_summary": "Enhanced penalty calculation and distance factor adjustments to improve guide matrix.",
+      "eval_cost": 54.50680422595771,
+      "eval_improvement": -0.1301398525241463,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.43596134614174,
+      "turn": 9,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    guide_matrix = np.zeros_like(distance_matrix)\n    for i in range(n):\n        nearby_distances = distance_matrix[i][distance_matrix[i] < np.inf]\n        if len(nearby_distances) > 0:\n            avg_nearby_distance = np.mean(nearby_distances)\n            nearest_penalty = np.min(distance_matrix[i, np.argsort(distance_matrix[i])[:3]])\n            for j in range(n):\n                if i != j:\n                    distance = distance_matrix[i][j]\n                    distance_factor = nearest_penalty / (distance + 1e-10)\n                    penalty = (1 + (distance / avg_nearby_distance - 1) * 0.5) if distance >= avg_nearby_distance else 1\n                    guide_matrix[i][j] = distance * (distance_factor + penalty + 0.1 * np.exp(distance))\n    return guide_matrix\n",
+      "llm_summary": "Optimized penalties and added exponential decay for better distance handling.",
+      "eval_cost": 54.496831885737095,
+      "eval_improvement": -0.11182045487963208,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.43596134614174,
+      "turn": 10,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    guide_matrix = np.zeros_like(distance_matrix)\n    for i in range(n):\n        nearby_distances = distance_matrix[i][distance_matrix[i] < np.inf]\n        if len(nearby_distances) > 0:\n            avg_nearby_distance = np.mean(nearby_distances)\n            nearest_penalty = np.min(distance_matrix[i, np.argsort(distance_matrix[i])[:3]])\n            for j in range(n):\n                if i != j:\n                    distance = distance_matrix[i][j]\n                    distance_factor = nearest_penalty / (distance + 1e-10)\n                    penalty = 1 + (distance - avg_nearby_distance) / (avg_nearby_distance + 1e-10)\n                    guide_matrix[i][j] = distance * (distance_factor + penalty)\n    return guide_matrix",
+      "llm_summary": "Refined penalty calculation for smoother scaling with distance.",
+      "eval_cost": 54.62295894461017,
+      "eval_improvement": -0.34351850108675275,
+      "eval_success": true
+    }
+  ]
+}

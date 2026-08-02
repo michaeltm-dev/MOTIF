@@ -1,0 +1,120 @@
+{
+  "experiment_metadata": {
+    "timestamp": "2026-07-29T08:07:34.856191",
+    "problem": "TSP_GLS",
+    "macro_baseline": 54.41478417905249,
+    "final_iterations": 10
+  },
+  "turns": [
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.41478417905249,
+      "turn": 1,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    guide_matrix = np.zeros_like(distance_matrix)\n    total_distances = np.sum(distance_matrix, axis=1)\n    neighbor_weights = np.sum(distance_matrix < np.inf, axis=1)\n    for i in range(n):\n        for j in range(n):\n            if i != j and distance_matrix[i, j] < np.inf:\n                relative_distance = distance_matrix[i, j] / total_distances[i]\n                criticality = 1 / (neighbor_weights[j] + 1)\n                penalty = np.exp(relative_distance) * criticality  # Exponential transformation\n                guide_matrix[i, j] = distance_matrix[i, j] * penalty\n    return (guide_matrix - np.min(guide_matrix)) / (np.max(guide_matrix) - np.min(guide_matrix))",
+      "llm_summary": "Enhanced penalty calculation for better distance guidance.",
+      "eval_cost": 54.511284292712176,
+      "eval_improvement": -0.17734171901178925,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.41478417905249,
+      "turn": 2,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    guide_matrix = np.zeros_like(distance_matrix)\n    total_distances = np.sum(distance_matrix, axis=1)\n    neighbor_weights = np.sum(distance_matrix < np.inf, axis=1)\n    max_distance = np.nanmax(distance_matrix)  # Maximum distance to handle scaling\n    for i in range(n):\n        for j in range(n):\n            if i != j and distance_matrix[i, j] < np.inf:\n                relative_distance = distance_matrix[i, j] / total_distances[i]  \n                criticality = 1 / (neighbor_weights[j] + 1)\n                penalty = (1 + relative_distance ** 2) ** (1.5) * criticality  # Adjusted scaling factor\n                guide_matrix[i, j] = distance_matrix[i, j] * penalty / max_distance  # Normalizing with max\n    return guide_matrix / np.max(guide_matrix)",
+      "llm_summary": "Enhanced penalty formula and normalization for better optimization.",
+      "eval_cost": 54.50255211946576,
+      "eval_improvement": -0.16129429113321597,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.41478417905249,
+      "turn": 3,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    guide_matrix = np.zeros_like(distance_matrix)\n    total_distances = np.sum(distance_matrix, axis=1)\n    neighbor_weights = np.sum(distance_matrix < np.inf, axis=1)\n    max_distance = np.nanmax(distance_matrix)\n    for i in range(n):\n        for j in range(n):\n            if i != j and distance_matrix[i, j] < np.inf:\n                relative_distance = distance_matrix[i, j] / total_distances[i]\n                criticality = 1 / (neighbor_weights[j] + 1)\n                penalty = (1 + relative_distance ** 2) ** 1.2 * criticality\n                guide_matrix[i, j] = distance_matrix[i, j] * penalty / max_distance\n    return guide_matrix / np.max(guide_matrix)",
+      "llm_summary": "Enhanced penalty and normalization to optimize guide matrix.",
+      "eval_cost": 54.50255211946576,
+      "eval_improvement": -0.16129429113321597,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.41478417905249,
+      "turn": 4,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    guide_matrix = np.zeros_like(distance_matrix)\n    total_distances = np.sum(distance_matrix, axis=1)\n    neighbor_weights = np.sum(distance_matrix < np.inf, axis=1)\n    max_distance = np.nanmax(distance_matrix)\n    for i in range(n):\n        for j in range(n):\n            if i != j and distance_matrix[i, j] < np.inf:\n                relative_distance = distance_matrix[i, j] / total_distances[i]\n                criticality = 1 / (neighbor_weights[j] + 1)\n                penalty = (1 + relative_distance ** 2) ** 1.5 * criticality\n                guide_matrix[i, j] = distance_matrix[i, j] * penalty / max_distance\n    return guide_matrix / np.max(guide_matrix)",
+      "llm_summary": "Adjusted penalty and normalization method for improved performance.",
+      "eval_cost": 54.50255211946576,
+      "eval_improvement": -0.16129429113321597,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.41478417905249,
+      "turn": 5,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    guide_matrix = np.zeros_like(distance_matrix)\n    total_distances = np.sum(distance_matrix, axis=1)\n    neighbor_weights = np.sum(distance_matrix < np.inf, axis=1)\n    max_distance = np.nanmax(distance_matrix) \n    for i in range(n):\n        for j in range(n):\n            if i != j and distance_matrix[i, j] < np.inf:\n                relative_distance = distance_matrix[i, j] / total_distances[i]\n                criticality = 1 / (neighbor_weights[j] + 1)\n                penalty = (1 + relative_distance ** 2) ** 1.5 * criticality\n                guide_matrix[i, j] = distance_matrix[i, j] * penalty / (max_distance + 1)  # Prevent division by zero\n    return guide_matrix / np.max(guide_matrix)",
+      "llm_summary": "Updated penalty calculation and normalization for optimal guide matrix.",
+      "eval_cost": 54.50255211946576,
+      "eval_improvement": -0.16129429113321597,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.41478417905249,
+      "turn": 6,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    guide_matrix = np.zeros_like(distance_matrix)\n    total_distances = np.sum(distance_matrix, axis=1)\n    neighbor_weights = np.sum(distance_matrix < np.inf, axis=1)\n    max_distance = np.nanmax(distance_matrix)\n    for i in range(n):\n        for j in range(n):\n            if i != j and distance_matrix[i, j] < np.inf:\n                relative_distance = distance_matrix[i, j] / total_distances[i]\n                criticality = 1 / (neighbor_weights[j] + 1)\n                penalty = (1 + relative_distance ** 2) ** 1.4 * criticality\n                guide_matrix[i, j] = distance_matrix[i, j] * penalty / (max_distance + 1)\n    return guide_matrix / np.max(guide_matrix)",
+      "llm_summary": "Adjusted penalty formula and normalization for improved sensitivity.",
+      "eval_cost": 54.50255211946576,
+      "eval_improvement": -0.16129429113321597,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.41478417905249,
+      "turn": 7,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    guide_matrix = np.zeros_like(distance_matrix)\n    total_distances = np.sum(distance_matrix, axis=1)\n    neighbor_weights = np.sum(distance_matrix < np.inf, axis=1)\n    max_distance = np.nanmax(distance_matrix)\n    for i in range(n):\n        for j in range(n):\n            if i != j and distance_matrix[i, j] < np.inf:\n                relative_distance = distance_matrix[i, j] / total_distances[i]\n                criticality = 1 / (neighbor_weights[j] + 1)\n                penalty = (1 + relative_distance ** 3) * criticality\n                guide_matrix[i, j] = distance_matrix[i, j] * penalty / (max_distance + 1)\n    return guide_matrix / np.max(guide_matrix)",
+      "llm_summary": "Enhanced penalty formula with cubic term for improved distance sensitivity.",
+      "eval_cost": 54.43596134614174,
+      "eval_improvement": -0.038918039295286304,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.41478417905249,
+      "turn": 8,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    guide_matrix = np.zeros_like(distance_matrix)\n    total_distances = np.sum(distance_matrix, axis=1)\n    neighbor_weights = np.sum(distance_matrix < np.inf, axis=1)\n    max_distance = np.nanmax(distance_matrix)  \n    for i in range(n):\n        for j in range(n):\n            if i != j and distance_matrix[i, j] < np.inf:\n                relative_distance = distance_matrix[i, j] / total_distances[i]\n                criticality = 1 / (neighbor_weights[j] + 1)\n                penalty = (1 + relative_distance ** 3) * criticality\n                guide_matrix[i, j] = distance_matrix[i, j] * penalty / (max_distance + 1)\n    return guide_matrix / np.max(guide_matrix)",
+      "llm_summary": "Optimized penalty calculation and normalization strategy.",
+      "eval_cost": 54.43596134614174,
+      "eval_improvement": -0.038918039295286304,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.41478417905249,
+      "turn": 9,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    guide_matrix = np.zeros_like(distance_matrix)\n    total_distances = np.sum(distance_matrix, axis=1)\n    neighbor_weights = np.sum(distance_matrix < np.inf, axis=1)\n    max_distance = np.nanmax(distance_matrix)\n    for i in range(n):\n        for j in range(n):\n            if i != j and distance_matrix[i, j] < np.inf:\n                relative_distance = distance_matrix[i, j] / total_distances[i]\n                criticality = 1 / (neighbor_weights[j] + 1)\n                penalty = (1 + relative_distance ** 3) * criticality * (1 + 0.5 * relative_distance)\n                guide_matrix[i, j] = distance_matrix[i, j] * penalty / (max_distance + 1)\n    return guide_matrix / np.max(guide_matrix)",
+      "llm_summary": "Enhanced penalty structure and normalization for better optimization.",
+      "eval_cost": 54.55434338328444,
+      "eval_improvement": -0.25647295369715967,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.41478417905249,
+      "turn": 10,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    guide_matrix = np.zeros_like(distance_matrix)\n    total_distances = np.sum(distance_matrix, axis=1)\n    neighbor_weights = np.sum(distance_matrix < np.inf, axis=1)\n    max_distance = np.nanmax(distance_matrix)\n    for i in range(n):\n        for j in range(n):\n            if i != j and distance_matrix[i, j] < np.inf:\n                relative_distance = distance_matrix[i, j] / total_distances[i]\n                criticality = 1 / (neighbor_weights[j] + 1)\n                penalty = (1 + relative_distance ** 3) * criticality\n                guide_matrix[i, j] = distance_matrix[i, j] * penalty / (max_distance + 1)\n    return guide_matrix / np.max(guide_matrix)",
+      "llm_summary": "Increased penalty power and adjusted normalization for improved performance.",
+      "eval_cost": 54.43596134614174,
+      "eval_improvement": -0.038918039295286304,
+      "eval_success": true
+    }
+  ]
+}

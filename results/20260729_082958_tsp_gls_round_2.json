@@ -1,0 +1,120 @@
+{
+  "experiment_metadata": {
+    "timestamp": "2026-07-29T09:29:37.469465",
+    "problem": "TSP_GLS",
+    "macro_baseline": 54.4296094478672,
+    "final_iterations": 10
+  },
+  "turns": [
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.4296094478672,
+      "turn": 1,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    valid_distances = distance_matrix[distance_matrix != 0]\n    avg_distance = np.mean(valid_distances)\n    variance = np.var(valid_distances)\n    nearest_neighbors = np.min(distance_matrix + np.eye(n) * np.max(valid_distances), axis=1)\n    weights = np.zeros((n, n))\n    for i in range(n):\n        for j in range(n):\n            if i != j:\n                weights[i, j] = (avg_distance + nearest_neighbors[i] - distance_matrix[i, j] + variance) / (avg_distance + variance)\n    guide_matrix = distance_matrix * np.clip(weights, 0.6, 1.8)\n    return guide_matrix\n",
+      "llm_summary": "Improved weight calculation for more effective guide matrix.",
+      "eval_cost": 54.40388128626533,
+      "eval_improvement": 0.047268686773347585,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.4296094478672,
+      "turn": 2,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    valid_distances = distance_matrix[distance_matrix != 0]\n    avg_distance = np.mean(valid_distances)\n    nearest_neighbors = np.min(distance_matrix + np.eye(n) * np.max(valid_distances), axis=1)\n    weights = np.zeros((n, n))\n    for i in range(n):\n        for j in range(n):\n            if i != j:\n                adjusted_distance = distance_matrix[i, j] + avg_distance\n                weights[i, j] = (avg_distance - adjusted_distance) / (avg_distance + 1) + 1\n    guide_matrix = distance_matrix * np.clip(weights, 0.7, 1.9)\n    return guide_matrix",
+      "llm_summary": "Enhanced weight calculation and variance inclusion for better guidance.",
+      "eval_cost": 54.50426040091979,
+      "eval_improvement": -0.1371513663424146,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.4296094478672,
+      "turn": 3,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    valid_distances = distance_matrix[distance_matrix != 0]\n    avg_distance = np.mean(valid_distances)\n    nearest_neighbors = np.min(distance_matrix + np.eye(n) * np.max(valid_distances), axis=1)\n    weights = np.zeros((n, n))\n    for i in range(n):\n        for j in range(n):\n            if i != j:\n                adjusted_distance = distance_matrix[i, j] - avg_distance\n                weights[i, j] = 1 - adjusted_distance / (avg_distance + 1)\n    guide_matrix = distance_matrix * np.clip(weights, 0.6, 1.8)\n    return guide_matrix",
+      "llm_summary": "Refined weight calculations and clipping adjustments to enhance performance.",
+      "eval_cost": 54.50394186589325,
+      "eval_improvement": -0.1365661425464548,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.4296094478672,
+      "turn": 4,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    valid_distances = distance_matrix[distance_matrix != 0]\n    avg_distance = np.mean(valid_distances)\n    variance = np.var(valid_distances)\n    nearest_neighbors = np.min(distance_matrix + np.eye(n) * np.max(valid_distances), axis=1)\n    weights = np.zeros((n, n))\n    for i in range(n):\n        for j in range(n):\n            if i != j:\n                weights[i, j] = (avg_distance + nearest_neighbors[i] - distance_matrix[i, j] + variance) / (avg_distance + 1.5 * variance)\n    guide_matrix = distance_matrix * np.clip(weights, 0.55, 1.85)\n    return guide_matrix",
+      "llm_summary": "Optimized weight calculations and clipping to improve performance.",
+      "eval_cost": 54.5008786624115,
+      "eval_improvement": -0.13093831696985309,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.4296094478672,
+      "turn": 5,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    valid_distances = distance_matrix[distance_matrix != 0]\n    avg_distance = np.mean(valid_distances)\n    variance = np.var(valid_distances)\n    nearest_neighbors = np.min(distance_matrix + np.eye(n) * np.max(valid_distances), axis=1)\n    weights = np.zeros((n, n))\n    for i in range(n):\n        for j in range(n):\n            if i != j:\n                weights[i, j] = (avg_distance + nearest_neighbors[i] - distance_matrix[i, j] + 0.5 * variance) / (avg_distance + 0.5 * variance)\n    guide_matrix = distance_matrix * np.clip(weights, 0.6, 1.9)\n    return guide_matrix",
+      "llm_summary": "Enhanced weight calculations and variance adaptation for improved guide matrix.",
+      "eval_cost": 54.69735885475135,
+      "eval_improvement": -0.4919186626547462,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.4296094478672,
+      "turn": 6,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    valid_distances = distance_matrix[distance_matrix != 0]\n    avg_distance = np.mean(valid_distances)\n    variance = np.var(valid_distances)\n    nearest_neighbors = np.min(distance_matrix + np.eye(n) * np.max(valid_distances), axis=1)\n    weights = np.zeros((n, n))\n    for i in range(n):\n        for j in range(n):\n            if i != j:\n                weights[i, j] = (avg_distance + nearest_neighbors[i] - distance_matrix[i, j] + variance) / (avg_distance + variance)\n    guide_matrix = distance_matrix * np.clip(weights, 0.65, 1.75)\n    return guide_matrix",
+      "llm_summary": "Improved weight calculation with variance and adjusted clipping range.",
+      "eval_cost": 54.51330697978555,
+      "eval_improvement": -0.15377206040493877,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.4296094478672,
+      "turn": 7,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    valid_distances = distance_matrix[distance_matrix != 0]\n    avg_distance = np.mean(valid_distances)\n    variance = np.var(valid_distances)\n    nearest_neighbors = np.min(distance_matrix + np.eye(n) * np.max(valid_distances), axis=1)\n    weights = np.zeros((n, n))\n    for i in range(n):\n        for j in range(n):\n            if i != j:\n                weights[i, j] = (avg_distance + nearest_neighbors[i] - distance_matrix[i, j] + 0.5 * variance) / (avg_distance + 1.5 * variance)\n    guide_matrix = distance_matrix * np.clip(weights, 0.6, 1.8)\n    return guide_matrix",
+      "llm_summary": "Improved weight calculation and adjusted clipping for enhanced guide matrix effectiveness.",
+      "eval_cost": 54.5903726534204,
+      "eval_improvement": -0.29535983664770105,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.4296094478672,
+      "turn": 8,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    valid_distances = distance_matrix[distance_matrix != 0]\n    avg_distance = np.mean(valid_distances)\n    variance = np.var(valid_distances)\n    nearest_neighbors = np.min(distance_matrix + np.eye(n) * np.max(valid_distances), axis=1)\n    weights = np.zeros((n, n))\n    for i in range(n):\n        for j in range(n):\n            if i != j:\n                weights[i, j] = (avg_distance + nearest_neighbors[i] - distance_matrix[i, j] + 0.5 * variance) / (avg_distance + 0.5 * variance)\n    guide_matrix = distance_matrix * np.clip(weights, 0.65, 1.75)\n    return guide_matrix",
+      "llm_summary": "Improved weight calculation, variance incorporation, and adjusted clipping for guide matrix.",
+      "eval_cost": 54.39814838272628,
+      "eval_improvement": 0.05780137954333537,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.4296094478672,
+      "turn": 9,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    valid_distances = distance_matrix[distance_matrix != 0]\n    avg_distance = np.mean(valid_distances)\n    variance = np.var(valid_distances)\n    nearest_neighbors = np.min(distance_matrix + np.eye(n) * np.max(valid_distances), axis=1)\n    weights = np.zeros((n, n))\n    for i in range(n):\n        for j in range(n):\n            if i != j:\n                weights[i, j] = (avg_distance + nearest_neighbors[i] - distance_matrix[i, j] + 0.3 * variance) / (avg_distance + 0.3 * variance)\n    guide_matrix = distance_matrix * np.clip(weights, 0.6, 1.9)\n    return guide_matrix\n",
+      "llm_summary": "Enhanced weights with adjusted variance and clipping to beat opponent performance.",
+      "eval_cost": 54.548401481841935,
+      "eval_improvement": -0.21824891852019315,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.4296094478672,
+      "turn": 10,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    valid_distances = distance_matrix[distance_matrix != 0]\n    avg_distance = np.mean(valid_distances)\n    variance = np.var(valid_distances)\n    nearest_neighbors = np.min(distance_matrix + np.eye(n) * np.max(valid_distances), axis=1)\n    weights = np.zeros((n, n))\n    for i in range(n):\n        for j in range(n):\n            if i != j:\n                weights[i, j] = (avg_distance + nearest_neighbors[i] - distance_matrix[i, j] + 0.5 * variance) / (avg_distance + variance)\n    guide_matrix = distance_matrix * np.clip(weights, 0.55, 1.85)\n    return guide_matrix",
+      "llm_summary": "Enhanced weight calculation, variance adjustment, and refined clipping range.",
+      "eval_cost": 54.612436082408266,
+      "eval_improvement": -0.3358955472869545,
+      "eval_success": true
+    }
+  ]
+}

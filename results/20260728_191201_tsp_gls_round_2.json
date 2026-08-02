@@ -1,0 +1,120 @@
+{
+  "experiment_metadata": {
+    "timestamp": "2026-07-28T20:15:55.757231",
+    "problem": "TSP_GLS",
+    "macro_baseline": 54.414367159489906,
+    "final_iterations": 10
+  },
+  "turns": [
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.414367159489906,
+      "turn": 1,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    guide_matrix = np.zeros((n, n))\n    for i in range(n):\n        nearest_distances = np.partition(distance_matrix[i], 2)[:2]\n        median_distance = np.median(distance_matrix[i][distance_matrix[i] != 0])\n        for j in range(n):\n            if i != j:\n                distance_diff = distance_matrix[i, j] - median_distance\n                criticality = distance_diff / (nearest_distances[1] - median_distance + 1e-10)\n                penalty = 1 + max(0.5, criticality ** 2)  # Squared criticality\n                normalized_distance = nearest_distances[0] / (distance_matrix[i, j] + 1e-10)\n                guide_matrix[i, j] = distance_matrix[i, j] * penalty * (0.85 + 0.15 * normalized_distance)  # Adjusted weights\n    return guide_matrix",
+      "llm_summary": "Enhanced penalties and normalization improve sensitivity to distance variances.",
+      "eval_cost": 54.532139059011534,
+      "eval_improvement": -0.21643530131745478,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.414367159489906,
+      "turn": 2,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    guide_matrix = np.zeros((n, n))\n    for i in range(n):\n        nearest_distances = np.partition(distance_matrix[i], 3)[:3]  # Using top 3 nearest distances\n        median_distance = np.median(distance_matrix[i][distance_matrix[i] != 0])\n        for j in range(n):\n            if i != j:\n                distance_diff = distance_matrix[i, j] - median_distance\n                criticality = distance_diff / (nearest_distances[2] - median_distance + 1e-10)  # Using 3rd nearest distance\n                penalty = 1 + 0.6 * np.tanh(criticality)  # Smoothened penalty with hyperbolic tangent\n                normalized_distance = nearest_distances[0] / (distance_matrix[i, j] + 1e-10)\n                guide_matrix[i, j] = distance_matrix[i, j] * penalty * (0.8 + 0.2 * normalized_distance)  # Further adjusted weights\n    return guide_matrix",
+      "llm_summary": "Improved penalty calculation and adjusted weights for distance normalization.",
+      "eval_cost": 54.56499920340746,
+      "eval_improvement": -0.27682402972003245,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.414367159489906,
+      "turn": 3,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    guide_matrix = np.zeros((n, n))\n    for i in range(n):\n        nearest_distances = np.partition(distance_matrix[i], 3)[:3]\n        median_distance = np.median(distance_matrix[i][distance_matrix[i] != 0])\n        for j in range(n):\n            if i != j:\n                distance_diff = distance_matrix[i,j] - median_distance\n                criticality = distance_diff / (nearest_distances[2] - median_distance + 1e-10)\n                penalty = 1 + np.log1p(np.abs(criticality))  # Smoothening with log1p\n                weight_factor = (0.8 * nearest_distances[1] + 0.2 * nearest_distances[0]) / (distance_matrix[i,j] + 1e-10)\n                guide_matrix[i,j] = distance_matrix[i,j] * penalty * weight_factor\n    return guide_matrix",
+      "llm_summary": "Enhanced penalty computation and distance weighting to optimize results.",
+      "eval_cost": 54.73076504828393,
+      "eval_improvement": -0.5814602012491507,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.414367159489906,
+      "turn": 4,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    guide_matrix = np.zeros((n, n))\n    for i in range(n):\n        nearest_distances = np.partition(distance_matrix[i], 2)[:2]\n        median_distance = np.median(distance_matrix[i][distance_matrix[i] != 0])\n        for j in range(n):\n            if i != j:\n                distance_diff = distance_matrix[i, j] - median_distance\n                criticality = distance_diff / (nearest_distances[1] - median_distance + 1e-10)\n                penalty = 1 + (0.75 * abs(criticality) + 0.25 * (criticality ** 2))\n                normalized_distance = nearest_distances[0] / (distance_matrix[i, j] + 1e-10)\n                guide_matrix[i, j] = distance_matrix[i, j] * penalty * (0.85 + 0.15 * normalized_distance)\n    return guide_matrix",
+      "llm_summary": "Enhanced penalty calculation and adjusted weight coefficients.",
+      "eval_cost": 54.56153412570088,
+      "eval_improvement": -0.27045608337155613,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.414367159489906,
+      "turn": 5,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    guide_matrix = np.zeros((n, n))\n    for i in range(n):\n        nearest_distances = np.partition(distance_matrix[i], 2)[:2]\n        median_distance = np.median(distance_matrix[i][distance_matrix[i] != 0])\n        for j in range(n):\n            if i != j:\n                distance_diff = distance_matrix[i, j] - median_distance\n                criticality = distance_diff / (nearest_distances[1] - median_distance + 1e-10)\n                penalty = 1 + 0.5 * (np.abs(criticality) + (criticality ** 2) * 0.5)\n                normalized_distance = nearest_distances[0] / (distance_matrix[i, j] + 1e-10)\n                guide_matrix[i, j] = distance_matrix[i, j] * penalty * (0.8 + 0.2 * normalized_distance)\n    return guide_matrix",
+      "llm_summary": "Enhanced penalty calculation and normalization for better response to distance variations.",
+      "eval_cost": 54.565543637978365,
+      "eval_improvement": -0.2778245643202225,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.414367159489906,
+      "turn": 6,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    guide_matrix = np.zeros((n, n))\n    for i in range(n):\n        nearest_distances = np.partition(distance_matrix[i], 2)[:2]\n        median_distance = np.median(distance_matrix[i][distance_matrix[i] != 0])\n        for j in range(n):\n            if i != j:\n                distance_diff = distance_matrix[i, j] - median_distance\n                criticality = distance_diff / (nearest_distances[1] - median_distance + 1e-10)\n                penalty = 1 + max(0.5, criticality ** 3)  # Cubed criticality for more sensitivity\n                normalized_distance = nearest_distances[0] / (distance_matrix[i, j] + 1e-10)\n                guide_matrix[i, j] = distance_matrix[i, j] * penalty * (0.85 + 0.15 * normalized_distance)  # Adjusted weights\n    return guide_matrix",
+      "llm_summary": "Enhanced criticality sensitivity and weight tuning for distance normalization.",
+      "eval_cost": 54.564199605815915,
+      "eval_improvement": -0.27535456929388935,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.414367159489906,
+      "turn": 7,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    guide_matrix = np.zeros((n, n))\n    for i in range(n):\n        nearest_distances = np.partition(distance_matrix[i], 2)[:2]\n        median_distance = np.median(distance_matrix[i][distance_matrix[i] != 0])\n        for j in range(n):\n            if i != j:\n                distance_diff = distance_matrix[i, j] - median_distance\n                criticality = distance_diff / (nearest_distances[1] - median_distance + 1e-10)\n                penalty = 1 + (0.6 * abs(criticality) + 0.4 * (criticality ** 2))\n                normalized_distance = nearest_distances[0] / (distance_matrix[i, j] + 1e-10)\n                guide_matrix[i, j] = distance_matrix[i, j] * penalty * (0.85 + 0.15 * normalized_distance)\n    return guide_matrix",
+      "llm_summary": "Adjusted penalty formula and normalization for better optimization.",
+      "eval_cost": 54.48642953184166,
+      "eval_improvement": -0.13243262048887802,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.414367159489906,
+      "turn": 8,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    guide_matrix = np.zeros((n, n))\n    for i in range(n):\n        nearest_distances = np.partition(distance_matrix[i], 2)[:2]\n        median_distance = np.median(distance_matrix[i][distance_matrix[i] != 0])\n        for j in range(n):\n            if i != j:\n                distance_diff = distance_matrix[i, j] - median_distance\n                criticality = distance_diff / (nearest_distances[1] - median_distance + 1e-10)\n                penalty = 1 + 0.5 * np.clip(criticality, 0, None) ** 1.5\n                normalized_distance = nearest_distances[0] / (distance_matrix[i, j] + 1e-10)\n                guide_matrix[i, j] = distance_matrix[i, j] * penalty * (0.9 + 0.1 * (1 - normalized_distance))\n    return guide_matrix",
+      "llm_summary": "Enhanced penalty and normalization for improved performance on the distance matrix.",
+      "eval_cost": 54.536005425170025,
+      "eval_improvement": -0.22354071549448296,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.414367159489906,
+      "turn": 9,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    guide_matrix = np.zeros((n, n))\n    for i in range(n):\n        nearest_distances = np.partition(distance_matrix[i], 2)[:2]\n        median_distance = np.median(distance_matrix[i][distance_matrix[i] != 0])\n        for j in range(n):\n            if i != j:\n                distance_diff = distance_matrix[i, j] - median_distance\n                criticality = distance_diff / (nearest_distances[1] - median_distance + 1e-10)\n                penalty = 1 + 0.5 * np.clip(criticality, -0.5, None)**2\n                normalized_distance = nearest_distances[0] / (distance_matrix[i, j] + 1e-10)\n                guide_matrix[i, j] = distance_matrix[i, j] * penalty * (0.95 - 0.05 * normalized_distance)\n    return guide_matrix",
+      "llm_summary": "Optimized penalty and normalization for increased coherence and performance.",
+      "eval_cost": 54.55915879210385,
+      "eval_improvement": -0.26609081419537034,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 54.414367159489906,
+      "turn": 10,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef generate_guide_matrix(distance_matrix: np.ndarray) -> np.ndarray:\n    n = distance_matrix.shape[0]\n    guide_matrix = np.zeros((n, n))\n    for i in range(n):\n        nearest_distances = np.partition(distance_matrix[i], 2)[:2]\n        median_distance = np.median(distance_matrix[i][distance_matrix[i] != 0])\n        for j in range(n):\n            if i != j:\n                distance_diff = distance_matrix[i, j] - median_distance\n                criticality = distance_diff / (nearest_distances[1] - median_distance + 1e-10)\n                penalty = 1 + 0.8 * np.exp(-0.5 * (criticality ** 2))\n                normalized_distance = nearest_distances[0] / (distance_matrix[i, j] + 1e-10)\n                guide_matrix[i, j] = distance_matrix[i, j] * penalty * (0.85 + 0.15 * normalized_distance)\n    return guide_matrix",
+      "llm_summary": "Adjusted penalty calculation and normalization for better performance.",
+      "eval_cost": 54.58039504179228,
+      "eval_improvement": -0.30511773079293764,
+      "eval_success": true
+    }
+  ]
+}

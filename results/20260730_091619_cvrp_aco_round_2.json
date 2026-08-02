@@ -1,0 +1,340 @@
+{
+  "experiment_metadata": {
+    "timestamp": "2026-07-30T10:38:44.490800",
+    "problem": "CVRP_ACO",
+    "macro_baseline": 87.22401686401714,
+    "final_iterations": 10
+  },
+  "turns": [
+    {
+      "strategy": "F1",
+      "strategy_baseline": 87.22401686401714,
+      "turn": 1,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef initialize(distances, demands, coords, capacity):\n    n = len(demands)\n    heuristic = np.zeros((n, n))\n    for i in range(n):\n        for j in range(n):\n            if i != j:\n                distance = distances[i, j] if distances[i, j] > 0 else 1e-10\n                if demands[j] <= capacity:\n                    normalized_demand = demands[j] / capacity\n                    capacity_pressure = (1 - normalized_demand) ** 2 # Squared term for stronger pressure\n                    heuristic[i, j] = capacity_pressure / distance\n    pheromone = np.ones((n, n))\n    return heuristic, pheromone",
+      "llm_summary": "Enhanced heuristic calculation for better performance on route selection.",
+      "eval_cost": 88.00826405144139,
+      "eval_improvement": -0.8991184029587732,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 87.22401686401714,
+      "turn": 2,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef initialize(distances, demands, coords, capacity):\n    n = len(demands)\n    heuristic = np.zeros((n, n))\n    for i in range(n):\n        for j in range(n):\n            if i != j:\n                distance = distances[i, j] if distances[i, j] > 0 else 1e-10\n                if demands[j] <= capacity:\n                    normalized_demand = demands[j] / capacity\n                    capacity_pressure = (1 - normalized_demand)**2\n                    heuristic[i, j] = capacity_pressure / distance ** 2\n    pheromone = np.ones((n, n))\n    return heuristic, pheromone",
+      "llm_summary": "Enhanced capacity pressure and distance normalization in heuristic calculation.",
+      "eval_cost": 90.08438772323782,
+      "eval_improvement": -3.2793386065675216,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 87.22401686401714,
+      "turn": 3,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef initialize(distances, demands, coords, capacity):\n    n = len(demands)\n    heuristic = np.zeros((n, n))\n    for i in range(n):\n        for j in range(n):\n            if i != j:\n                distance = distances[i, j] if distances[i, j] > 0 else 1e-10\n                if demands[j] <= capacity:\n                    normalized_demand = demands[j] / capacity\n                    capacity_pressure = (1 - normalized_demand) ** 2\n                    heuristic[i, j] = capacity_pressure / (distance ** 2)\n    pheromone = np.ones((n, n))\n    return heuristic, pheromone\n",
+      "llm_summary": "Improved heuristic formula for better demand routing.",
+      "eval_cost": 90.08438772323782,
+      "eval_improvement": -3.2793386065675216,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 87.22401686401714,
+      "turn": 4,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef initialize(distances, demands, coords, capacity):\n    n = len(demands)\n    heuristic = np.zeros((n, n))\n    for i in range(n):\n        for j in range(n):\n            if i != j:\n                distance = distances[i, j] if distances[i, j] > 0 else 1e-10\n                if demands[j] <= capacity:\n                    normalized_demand = demands[j] / capacity\n                    capacity_pressure = (1 - normalized_demand) ** 2  # Squared term for stronger pressure\n                    heuristic[i, j] = capacity_pressure / distance\n    pheromone = np.ones((n, n))\n    return heuristic, pheromone",
+      "llm_summary": "Enhanced capacity pressure with squared terms for better heuristic evaluation.",
+      "eval_cost": 88.00826405144139,
+      "eval_improvement": -0.8991184029587732,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 87.22401686401714,
+      "turn": 5,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef initialize(distances, demands, coords, capacity):\n    n = len(demands)\n    heuristic = np.zeros((n, n))\n    for i in range(n):\n        for j in range(n):\n            if i != j:\n                distance = distances[i, j] if distances[i, j] > 0 else 1e-10\n                if demands[j] <= capacity:\n                    normalized_demand = demands[j] / capacity\n                    capacity_pressure = (1 - normalized_demand) ** 2\n                    heuristic[i, j] = capacity_pressure / distance ** 2  # Improve distance handling\n    pheromone = np.ones((n, n))\n    return heuristic, pheromone",
+      "llm_summary": "Updated heuristic to enhance demand pressure and better distance handling.",
+      "eval_cost": 90.08438772323782,
+      "eval_improvement": -3.2793386065675216,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 87.22401686401714,
+      "turn": 6,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef initialize(distances, demands, coords, capacity):\n    n = len(demands)\n    heuristic = np.zeros((n, n))\n    for i in range(n):\n        for j in range(n):\n            if i != j:\n                distance = distances[i, j] if distances[i, j] > 0 else 1e-10\n                if demands[j] <= capacity:\n                    normalized_demand = demands[j] / capacity\n                    capacity_pressure = (1 - normalized_demand) ** 3\n                    heuristic[i, j] = capacity_pressure / distance\n    pheromone = np.ones((n, n)) * 1.5  # Increased initial pheromone\n    return heuristic, pheromone",
+      "llm_summary": "Enhanced capacity pressure and pheromone initialization for better heuristic performance.",
+      "eval_cost": 90.7848399495819,
+      "eval_improvement": -4.082388330172981,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 87.22401686401714,
+      "turn": 7,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef initialize(distances, demands, coords, capacity):\n    n = len(demands)\n    heuristic = np.zeros((n, n))\n    for i in range(n):\n        for j in range(n):\n            if i != j:\n                distance = distances[i, j] if distances[i, j] > 0 else 1e-10\n                if demands[j] <= capacity:\n                    normalized_demand = demands[j] / capacity\n                    capacity_pressure = (1 - normalized_demand)**2 * (1 + normalized_demand)\n                    heuristic[i, j] = capacity_pressure / distance\n    pheromone = np.ones((n, n))\n    return heuristic, pheromone",
+      "llm_summary": "Enhanced capacity pressure and distance normalization for better heuristics.",
+      "eval_cost": 87.94434393048209,
+      "eval_improvement": -0.8258356956753569,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 87.22401686401714,
+      "turn": 8,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef initialize(distances, demands, coords, capacity):\n    n = len(demands)\n    heuristic = np.zeros((n, n))\n    for i in range(n):\n        for j in range(n):\n            if i != j:\n                distance = distances[i, j] if distances[i, j] > 0 else 1e-10\n                if demands[j] <= capacity:\n                    normalized_demand = demands[j] / capacity\n                    capacity_pressure = (1 - normalized_demand)**2 * (1 + normalized_demand) * 1.5\n                    heuristic[i, j] = capacity_pressure / (distance ** 0.75)\n    pheromone = np.ones((n, n))\n    return heuristic, pheromone",
+      "llm_summary": "Enhanced heuristic with modified capacity pressure and distance scaling.",
+      "eval_cost": 89.71862005350879,
+      "eval_improvement": -2.859995766281603,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 87.22401686401714,
+      "turn": 9,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef initialize(distances, demands, coords, capacity):\n    n = len(demands)\n    heuristic = np.zeros((n, n))\n    for i in range(n):\n        for j in range(n):\n            if i != j:\n                distance = distances[i, j] if distances[i, j] > 0 else 1e-10\n                if demands[j] <= capacity:\n                    normalized_demand = demands[j] / capacity\n                    capacity_pressure = (1 - normalized_demand) ** 2\n                    heuristic[i, j] = capacity_pressure / distance ** 1.5  # Enhanced differentiation\n    pheromone = np.ones((n, n))\n    return heuristic, pheromone",
+      "llm_summary": "Improved heuristic by enhancing capacity pressure and distance handling.",
+      "eval_cost": 89.32385013687005,
+      "eval_improvement": -2.407402626419464,
+      "eval_success": true
+    },
+    {
+      "strategy": "F1",
+      "strategy_baseline": 87.22401686401714,
+      "turn": 10,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef initialize(distances, demands, coords, capacity):\n    n = len(demands)\n    heuristic = np.zeros((n, n))\n    for i in range(n):\n        for j in range(n):\n            if i != j:\n                distance = distances[i, j] if distances[i, j] > 0 else 1e-10\n                if demands[j] <= capacity:\n                    normalized_demand = demands[j] / capacity\n                    capacity_pressure = (1 - normalized_demand**2) * (1 + normalized_demand)\n                    heuristic[i, j] = capacity_pressure / distance**0.5  \n    pheromone = np.ones((n, n))\n    return heuristic, pheromone",
+      "llm_summary": "Enhanced demand normalization and distance factors in heuristic calculations.",
+      "eval_cost": 91.51781254931268,
+      "eval_improvement": -4.922721791166294,
+      "eval_success": true
+    },
+    {
+      "strategy": "F2",
+      "strategy_baseline": 87.22401686401714,
+      "turn": 1,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef compute_probabilities(pheromone, heuristic, iteration, n_iterations):\n    alpha = 0.9 + 0.1 * (1 - iteration / n_iterations)\n    beta = 3.0 - 0.5 * (iteration / n_iterations)\n    scores = np.exp(alpha * np.log(pheromone + 1e-10)) * np.exp(beta * np.log(heuristic + 1e-10))\n    probabilities = scores / np.sum(scores)\n    return probabilities",
+      "llm_summary": "Enhanced probability computation for improved strategy performance.",
+      "eval_cost": 87.52917335718786,
+      "eval_improvement": -0.3498537491645844,
+      "eval_success": true
+    },
+    {
+      "strategy": "F2",
+      "strategy_baseline": 87.22401686401714,
+      "turn": 2,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef compute_probabilities(pheromone, heuristic, iteration, n_iterations):\n    alpha = 0.85 + 0.15 * (1 - iteration / n_iterations)\n    beta = 2.7 - 0.2 * (iteration / n_iterations)\n    scores = np.power(pheromone + 1e-10, alpha) * np.power(heuristic + 1e-10, beta)\n    probabilities = scores / np.sum(scores)\n    return probabilities",
+      "llm_summary": "Enhanced F2 with refined alpha/beta and formula adjustments.",
+      "eval_cost": 89.80321930911282,
+      "eval_improvement": -2.9569865477723516,
+      "eval_success": true
+    },
+    {
+      "strategy": "F2",
+      "strategy_baseline": 87.22401686401714,
+      "turn": 3,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef compute_probabilities(pheromone, heuristic, iteration, n_iterations):\n    alpha = 0.85 + 0.15 * (1 - iteration / n_iterations)\n    beta = 2.7 - 0.25 * (iteration / n_iterations)\n    scores = np.power(pheromone + 1e-10, alpha) * np.power(heuristic + 1e-10, beta)\n    probabilities = scores / np.sum(scores)\n    return probabilities",
+      "llm_summary": "Enhanced probabilities calculation to improve performance against baseline and opponent.",
+      "eval_cost": 89.12463552483698,
+      "eval_improvement": -2.1790084074927534,
+      "eval_success": true
+    },
+    {
+      "strategy": "F2",
+      "strategy_baseline": 87.22401686401714,
+      "turn": 4,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef compute_probabilities(pheromone, heuristic, iteration, n_iterations):\n    alpha = 0.85 + 0.15 * (1 - iteration / n_iterations)\n    beta = 2.0 + 1.0 * (iteration / n_iterations)\n    scores = np.exp(alpha * np.log(pheromone + 1e-10)) * np.exp(beta * np.log(heuristic + 1e-10))\n    probabilities = scores / np.sum(scores)\n    return probabilities",
+      "llm_summary": "Enhanced hyperparameters and scoring method for improved performance.",
+      "eval_cost": 89.56599477876885,
+      "eval_improvement": -2.6850149751792207,
+      "eval_success": true
+    },
+    {
+      "strategy": "F2",
+      "strategy_baseline": 87.22401686401714,
+      "turn": 5,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef compute_probabilities(pheromone, heuristic, iteration, n_iterations):\n    alpha = 0.85 + 0.15 * (1 - iteration / n_iterations)\n    beta = 2.2 + 0.8 * (iteration / n_iterations)\n    scores = np.power(pheromone + 1e-10, alpha) * np.power(heuristic + 1e-10, beta)\n    scores /= np.sum(scores)\n    return scores / np.sum(scores)",
+      "llm_summary": "Enhanced scoring and tuned hyperparameters for improved route selection.",
+      "eval_cost": 90.51243222658654,
+      "eval_improvement": -3.7700801691993364,
+      "eval_success": true
+    },
+    {
+      "strategy": "F2",
+      "strategy_baseline": 87.22401686401714,
+      "turn": 6,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef compute_probabilities(pheromone, heuristic, iteration, n_iterations):\n    alpha = 0.7 + 0.3 * (1 - iteration / n_iterations)\n    beta = 2.0 + 1.0 * (iteration / n_iterations)\n    scores = np.exp(alpha * np.log(pheromone + 1e-10)) * np.exp(beta * np.log(heuristic + 1e-10))\n    probabilities = scores / np.sum(scores)\n    return probabilities",
+      "llm_summary": "Enhanced alpha and beta with exponential adjustments for better exploration.",
+      "eval_cost": 87.71968844722045,
+      "eval_improvement": -0.5682741990386198,
+      "eval_success": true
+    },
+    {
+      "strategy": "F2",
+      "strategy_baseline": 87.22401686401714,
+      "turn": 7,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef compute_probabilities(pheromone, heuristic, iteration, n_iterations):\n    alpha = 0.75 + 0.25 * (1 - iteration / n_iterations)\n    beta = 2.2 + 0.8 * (iteration / n_iterations)\n    scores = np.exp(alpha * np.log(pheromone + 1e-10)) * np.exp(beta * np.log(heuristic + 1e-10))\n    probabilities = scores / np.sum(scores)\n    return probabilities",
+      "llm_summary": "Adjusted hyperparameters and applied logarithmic scaling for improved performance.",
+      "eval_cost": 89.87681233302006,
+      "eval_improvement": -3.041358979303415,
+      "eval_success": true
+    },
+    {
+      "strategy": "F2",
+      "strategy_baseline": 87.22401686401714,
+      "turn": 8,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef compute_probabilities(pheromone, heuristic, iteration, n_iterations):\n    alpha = 0.85 + 0.15 * (1 - iteration / n_iterations)\n    beta = 2.0 + 1.0 * (1 - iteration / n_iterations)\n    scores = np.exp(alpha * np.log(pheromone + 1e-10)) * np.exp(beta * np.log(heuristic + 1e-10))\n    probabilities = scores / np.sum(scores)\n    return probabilities\n",
+      "llm_summary": "Improved hyperparameters and formula for probabilities calculation.",
+      "eval_cost": 90.25810200897256,
+      "eval_improvement": -3.4784973841385596,
+      "eval_success": true
+    },
+    {
+      "strategy": "F2",
+      "strategy_baseline": 87.22401686401714,
+      "turn": 9,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef compute_probabilities(pheromone, heuristic, iteration, n_iterations):\n    alpha = 0.75 + 0.25 * (1 - iteration / n_iterations)\n    beta = 2.2 + 1.0 * (iteration / n_iterations)\n    scores = pheromone ** alpha * heuristic ** beta + 1e-10\n    probabilities = scores / np.sum(scores)\n    return probabilities",
+      "llm_summary": "Optimized alpha and beta for better score balance and system synergy.",
+      "eval_cost": 90.43465623741905,
+      "eval_improvement": -3.680912079992043,
+      "eval_success": true
+    },
+    {
+      "strategy": "F2",
+      "strategy_baseline": 87.22401686401714,
+      "turn": 10,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef compute_probabilities(pheromone, heuristic, iteration, n_iterations):\n    alpha = 0.85 + 0.15 * (1 - iteration / n_iterations)\n    beta = 2.8 - 0.3 * (iteration / n_iterations)\n    scores = np.exp(alpha * np.log(pheromone + 1e-10)) * np.exp(beta * np.log(heuristic + 1e-10))\n    probabilities = scores / np.sum(scores)\n    return probabilities",
+      "llm_summary": "Enhanced F2 with logarithmic scoring and dynamic tuning of parameters.",
+      "eval_cost": 87.56969137818395,
+      "eval_improvement": -0.39630657540767844,
+      "eval_success": true
+    },
+    {
+      "strategy": "F3",
+      "strategy_baseline": 87.22401686401714,
+      "turn": 1,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef update_pheromone(pheromone, solutions, costs, iteration, n_iterations):\n    decay = 0.8 + 0.15 * (iteration / n_iterations)\n    pheromone *= decay\n    min_deposit = 1e-3\n    best_cost = min(costs) + 1e-10\n    avg_cost = np.mean(costs)\n    better_than_avg = np.where(costs < avg_cost, 1, 0)\n\n    for i, solution in enumerate(solutions):\n        cost = costs[i]\n        deposit = (best_cost / cost) ** 1.5 if cost < best_cost else min_deposit\n        for route in solution:\n            route_length = len(route)\n            for j in range(route_length - 1):\n                increment = deposit * (1.5 if route[j] == 0 else 1.0) * better_than_avg[i] * (1 - (route_length / len(solutions)))\n                pheromone[route[j], route[j + 1]] += increment\n    pheromone = np.maximum(pheromone, 1e-10)\n    return pheromone",
+      "llm_summary": "Enhanced pheromone update with new decay and deposit strategy.",
+      "eval_cost": 90.7692894168513,
+      "eval_improvement": -4.064560060747092,
+      "eval_success": true
+    },
+    {
+      "strategy": "F3",
+      "strategy_baseline": 87.22401686401714,
+      "turn": 2,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef update_pheromone(pheromone, solutions, costs, iteration, n_iterations):\n    decay = 0.8 + 0.15 * (iteration / n_iterations)\n    pheromone *= decay\n    min_deposit = 1e-3\n    best_cost = min(costs) + 1e-10\n    avg_cost = np.mean(costs)\n    better_than_avg = np.where(costs < avg_cost, 1, 0)\n\n    for i, solution in enumerate(solutions):\n        cost = costs[i]\n        deposit = (best_cost / cost) ** 1.5 if cost < best_cost else min_deposit\n        scaling_factor = 2 if len(solutions) < 5 else 1\n        for route in solution:\n            route_length = len(route)\n            for j in range(route_length - 1):\n                increment = deposit * (1.5 if route[j] == 0 else 1.0) * better_than_avg[i] * scaling_factor * (1 - (route_length / len(solutions)))\n                pheromone[route[j], route[j + 1]] += increment\n    pheromone = np.maximum(pheromone, 1e-10)\n    return pheromone",
+      "llm_summary": "Increased decay rate and refined pheromone deposit calculation.",
+      "eval_cost": 90.7692894168513,
+      "eval_improvement": -4.064560060747092,
+      "eval_success": true
+    },
+    {
+      "strategy": "F3",
+      "strategy_baseline": 87.22401686401714,
+      "turn": 3,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef update_pheromone(pheromone, solutions, costs, iteration, n_iterations):\n    decay = 0.8 + 0.15 * (iteration / n_iterations)\n    pheromone *= decay\n    min_deposit = 1e-3\n    best_cost = min(costs) + 1e-10\n    avg_cost = np.mean(costs)\n\n    for i, solution in enumerate(solutions):\n        cost = costs[i]\n        deposit = (best_cost / cost) ** 1.75 if cost < best_cost else min_deposit\n        scaling_factor = 2 if len(solutions) < 5 else 1\n        for route in solution:\n            route_length = len(route)\n            for j in range(route_length - 1):\n                increment = deposit * (1.5 if route[j] == 0 else 1.0) * (1 if cost < avg_cost else 0) * scaling_factor * (1 - (route_length / len(solutions)))\n                pheromone[route[j], route[j + 1]] += increment\n    pheromone = np.maximum(pheromone, 1e-10)\n    return pheromone",
+      "llm_summary": "Enhanced pheromone update with higher deposit sensitivity and better decay adjustment.",
+      "eval_cost": 90.7692894168513,
+      "eval_improvement": -4.064560060747092,
+      "eval_success": true
+    },
+    {
+      "strategy": "F3",
+      "strategy_baseline": 87.22401686401714,
+      "turn": 4,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef update_pheromone(pheromone, solutions, costs, iteration, n_iterations):\n    decay = 0.8 + 0.15 * (iteration / n_iterations)\n    pheromone *= decay\n    min_deposit = 1e-3\n    best_cost = min(costs) + 1e-10\n    avg_cost = np.mean(costs)\n\n    for i, solution in enumerate(solutions):\n        cost = costs[i]\n        deposit = (best_cost / cost) ** 2.0 if cost < best_cost else min_deposit\n        scaling_factor = 2 if len(solutions) < 5 else 1\n        for route in solution:\n            route_length = len(route)\n            for j in range(route_length - 1):\n                increment = deposit * (1.5 if route[j] == 0 else 1.0) * (1 if cost < avg_cost else 0) * scaling_factor * (1 - (route_length / len(solutions)))\n                pheromone[route[j], route[j + 1]] += increment\n    pheromone = np.maximum(pheromone, 1e-10)\n    return pheromone",
+      "llm_summary": "Enhanced pheromone update with optimized deposit and decay mechanics.",
+      "eval_cost": 90.7692894168513,
+      "eval_improvement": -4.064560060747092,
+      "eval_success": true
+    },
+    {
+      "strategy": "F3",
+      "strategy_baseline": 87.22401686401714,
+      "turn": 5,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef update_pheromone(pheromone, solutions, costs, iteration, n_iterations):\n    decay = 0.82 + 0.13 * (iteration / n_iterations)\n    pheromone *= decay\n    min_deposit = 1e-3\n    best_cost = min(costs) + 1e-10\n    avg_cost = np.mean(costs)\n\n    for i, solution in enumerate(solutions):\n        cost = costs[i]\n        deposit = (best_cost / cost) ** 2 if cost < best_cost else min_deposit\n        scaling_factor = 2.5 if len(solutions) < 3 else 1.0\n        for route in solution:\n            route_length = len(route)\n            for j in range(route_length - 1):\n                condition_multiplier = scaling_factor if cost < avg_cost else 1.0\n                pheromone[route[j], route[j + 1]] += deposit * condition_multiplier * (1 - (route_length / max(len(solutions), 1))) * (1.5 if route[j] == 0 else 1.0)\n    pheromone = np.maximum(pheromone, 1e-10)\n    return pheromone",
+      "llm_summary": "Enhanced pheromone update with new decay and deposit strategies.",
+      "eval_cost": 89.600554550215,
+      "eval_improvement": -2.724636827839388,
+      "eval_success": true
+    },
+    {
+      "strategy": "F3",
+      "strategy_baseline": 87.22401686401714,
+      "turn": 6,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef update_pheromone(pheromone, solutions, costs, iteration, n_iterations):\n    decay = 0.8 + 0.15 * (iteration / n_iterations)\n    pheromone *= decay\n    min_deposit = 1e-3\n    best_cost = min(costs) + 1e-10\n    avg_cost = np.mean(costs)\n\n    for i, solution in enumerate(solutions):\n        cost = costs[i]\n        deposit = (best_cost / cost) ** 2 if cost < best_cost else min_deposit\n        scaling_factor = 2.5 if len(solutions) < 3 else 1.0\n        for route in solution:\n            route_length = len(route)\n            for j in range(route_length - 1):\n                condition_multiplier = scaling_factor if cost < avg_cost else 1.0\n                pheromone[route[j], route[j + 1]] += deposit * condition_multiplier * (1 - (route_length / len(solutions))) * (1.7 if route[j] == 0 else 1.0)\n    pheromone = np.maximum(pheromone, 1e-10)\n    return pheromone",
+      "llm_summary": "Enhanced pheromone update mechanism to increase adaptive scaling.",
+      "eval_cost": 91.23102850304598,
+      "eval_improvement": -4.593931560473523,
+      "eval_success": true
+    },
+    {
+      "strategy": "F3",
+      "strategy_baseline": 87.22401686401714,
+      "turn": 7,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef update_pheromone(pheromone, solutions, costs, iteration, n_iterations):\n    decay = 0.8 + 0.1 * (iteration / n_iterations)\n    pheromone *= decay\n    min_deposit = 1e-3\n    best_cost = min(costs) + 1e-10\n    avg_cost = np.mean(costs)\n\n    for i, solution in enumerate(solutions):\n        cost = costs[i]\n        deposit = (best_cost / cost) ** 2.5 if cost < best_cost else min_deposit\n        scaling_factor = 2 if len(solutions) < 5 else 1\n        for route in solution:\n            route_length = len(route)\n            for j in range(route_length - 1):\n                increment = deposit * (1.5 if route[j] == 0 else 1.0) * (1 if cost < avg_cost else 0.5) * scaling_factor * (1 - (route_length / len(solutions)))\n                pheromone[route[j], route[j + 1]] += increment\n    pheromone = np.maximum(pheromone, 1e-10)\n    return pheromone",
+      "llm_summary": "Enhanced pheromone update with better decay and adaptive deposit strategies.",
+      "eval_cost": 90.23073403479069,
+      "eval_improvement": -3.447120734488798,
+      "eval_success": true
+    },
+    {
+      "strategy": "F3",
+      "strategy_baseline": 87.22401686401714,
+      "turn": 8,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef update_pheromone(pheromone, solutions, costs, iteration, n_iterations):\n    decay = 0.83 + 0.12 * (iteration / n_iterations)\n    pheromone *= decay\n    min_deposit = 1e-3\n    best_cost = min(costs) + 1e-10\n    avg_cost = np.mean(costs)\n\n    for i, solution in enumerate(solutions):\n        cost = costs[i]\n        deposit = (best_cost / cost) ** 2 if cost < best_cost else min_deposit\n        scaling_factor = 2.0\n        for route in solution:\n            route_length = len(route)\n            for j in range(route_length - 1):\n                condition_multiplier = scaling_factor if cost < avg_cost else 1.0\n                pheromone[route[j], route[j + 1]] += deposit * condition_multiplier * (1 - (route_length / max(len(solutions), 1))) * (1.5 if route[j] == 0 else 1.0)\n    pheromone = np.maximum(pheromone, 1e-10)\n    return pheromone",
+      "llm_summary": "Optimized pheromone update rules to improve convergence and exploration.",
+      "eval_cost": 91.20879128350157,
+      "eval_improvement": -4.568437183644861,
+      "eval_success": true
+    },
+    {
+      "strategy": "F3",
+      "strategy_baseline": 87.22401686401714,
+      "turn": 9,
+      "player": "P1",
+      "llm_code": "import numpy as np\n\ndef update_pheromone(pheromone, solutions, costs, iteration, n_iterations):\n    decay = 0.8 + 0.2 * (iteration / n_iterations)\n    pheromone *= decay\n    min_deposit = 1e-4\n    best_cost = min(costs) + 1e-10\n    avg_cost = np.mean(costs)\n\n    for i, solution in enumerate(solutions):\n        cost = costs[i]\n        deposit = (best_cost / cost) ** 2 if cost < best_cost else min_deposit\n        scaling_factor = 2 if len(solutions) < 5 else 1\n        for route in solution:\n            route_length = len(route)\n            for j in range(route_length - 1):\n                increment = deposit * (1.5 if route[j] == 0 else 1.0) * (1 if cost < avg_cost else 0) * scaling_factor * (1 - (route_length / len(solutions)))\n                pheromone[route[j], route[j + 1]] += increment\n    pheromone = np.maximum(pheromone, 1e-10)\n    return pheromone",
+      "llm_summary": "Adjusted decay and deposit strategy, enhancing exploration and adapting to solution quality.",
+      "eval_cost": 89.75750491924595,
+      "eval_improvement": -2.9045762237464103,
+      "eval_success": true
+    },
+    {
+      "strategy": "F3",
+      "strategy_baseline": 87.22401686401714,
+      "turn": 10,
+      "player": "P2",
+      "llm_code": "import numpy as np\n\ndef update_pheromone(pheromone, solutions, costs, iteration, n_iterations):\n    decay = 0.84 + 0.08 * (iteration / n_iterations)\n    pheromone *= decay\n    min_deposit = 1e-4  \n    best_cost = min(costs) + 1e-10\n    avg_cost = np.mean(costs)\n\n    unique_solutions = len(set(tuple(sol) for sol in solutions))\n\n    for i, solution in enumerate(solutions):\n        cost = costs[i]\n        deposit = max((best_cost / cost) ** 1.5, min_deposit) if cost < best_cost else min_deposit\n        scaling_factor = 2.0 if unique_solutions < 3 else 1.0\n        for route in solution:\n            route_length = len(route)\n            for j in range(route_length - 1):\n                condition_multiplier = scaling_factor if cost < avg_cost else 1.0\n                pheromone[route[j], route[j + 1]] += deposit * condition_multiplier * (1 - (route_length / max(len(solutions), 1))) * (1.5 if route[j] == 0 else 1.0)\n    pheromone = np.maximum(pheromone, 1e-10)\n    return pheromone",
+      "llm_summary": "Optimized pheromone update with adaptive deposit and decay adjustments.",
+      "eval_cost": null,
+      "eval_improvement": -100.0,
+      "eval_success": false
+    }
+  ]
+}
