@@ -301,22 +301,22 @@ Outer iterations: 20
     Summary: Adaptive evaporation with robust normalized elite and best-tour reinforcement
     Improvement: -1.15%
 [EVAL WARNING] Traceback (most recent call last):
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 52, in <module>
+  File "problems/tsp_aco/eval.py", line 52, in <module>
     main(mode)
     ~~~~^^^^^^
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 43, in main
+  File "problems/tsp_aco/eval.py", line 43, in main
     costs = process_file(path, n_ants=N_ANTS, n_iter=N_ITER)
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 18, in process_file
+  File "problems/tsp_aco/eval.py", line 18, in process_file
     results.append(eval_instance(data[i], n_ants, n_iter, int(seeds[i])))
                    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 9, in eval_instance
+  File "problems/tsp_aco/eval.py", line 9, in eval_instance
     return run_tsp_aco(D, n_ants, n_iter, seed)
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/aco.py", line 88, in run_tsp_aco
+  File "problems/tsp_aco/aco.py", line 88, in run_tsp_aco
     pheromone = update_pheromone(pheromone, paths, costs, it, n_iterations)
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/F3.py", line 69, in update_pheromone
+  File "problems/tsp_aco/F3.py", line 69, in update_pheromone
     add_tour(paths[:, idx], amount)
     ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/F3.py", line 56, in add_tour
+  File "problems/tsp_aco/F3.py", line 56, in add_tour
     tour = np.asarray(tour, dtype=np.int64, copy=False)
 TypeError: asarray() got an unexpected keyword argument 'copy'
   Turn 22: P1 used counter
@@ -538,7 +538,7 @@ TypeError: asarray() got an unexpected keyword argument 'copy'
   Turn 32: P1 used counter
     Summary: Added robust scaled inverse plus mutual kNN, rank, and two-hop bridge support.
     Improvement: -0.69%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F1.py:53: RuntimeWarning: invalid value encountered in subtract
+[EVAL WARNING] problems/tsp_aco/F1.py:53: RuntimeWarning: invalid value encountered in subtract
   improv = np.maximum(0.0, (a + b - dd[None, :, :]) / np.maximum(scale, eps))
   Turn 33: P2 used counter
     Summary: Robust edge prior with shared-neighbor, centrality, and 2-opt support signals
@@ -759,26 +759,26 @@ TypeError: asarray() got an unexpected keyword argument 'copy'
   Turn 43: P2 used learning
     Summary: Added stronger normalized edge scoring with shared-neighbor, rank, and selectivity cues.
     Improvement: -0.14%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F1.py:54: RuntimeWarning: invalid value encountered in divide
+[EVAL WARNING] problems/tsp_aco/F1.py:54: RuntimeWarning: invalid value encountered in divide
   edge_regret = (dd - row_best[:, None]) / np.maximum(dd + row_best[:, None], eps)
   Turn 44: P1 used innovation
     Summary: Added kNN-regret edge scoring with structural support and robust normalization.
     Improvement: -0.12%
 [EVAL WARNING] Traceback (most recent call last):
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 52, in <module>
+  File "problems/tsp_aco/eval.py", line 52, in <module>
     main(mode)
     ~~~~^^^^^^
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 43, in main
+  File "problems/tsp_aco/eval.py", line 43, in main
     costs = process_file(path, n_ants=N_ANTS, n_iter=N_ITER)
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 18, in process_file
+  File "problems/tsp_aco/eval.py", line 18, in process_file
     results.append(eval_instance(data[i], n_ants, n_iter, int(seeds[i])))
                    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 9, in eval_instance
+  File "problems/tsp_aco/eval.py", line 9, in eval_instance
     return run_tsp_aco(D, n_ants, n_iter, seed)
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/aco.py", line 72, in run_tsp_aco
+  File "problems/tsp_aco/aco.py", line 72, in run_tsp_aco
     heuristic, pheromone = initialize(distances.copy())
                            ~~~~~~~~~~^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/F1.py", line 54, in initialize
+  File "problems/tsp_aco/F1.py", line 54, in initialize
     tri[i] = np.minimum(dd[i][:, None] + dd, tri[i])
     ~~~^^^
 ValueError: could not broadcast input array from shape (50,50) into shape (50,)
@@ -791,7 +791,7 @@ ValueError: could not broadcast input array from shape (50,50) into shape (50,)
   Turn 47: P1 used learning
     Summary: Added robust inverse-distance heuristic with centrality, kNN, bridge, and MST-style bias.
     Improvement: -0.17%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F1.py:63: RuntimeWarning: invalid value encountered in divide
+[EVAL WARNING] problems/tsp_aco/F1.py:63: RuntimeWarning: invalid value encountered in divide
   edge_regret = (dd - row_best[:, None]) / np.maximum(dd + row_best[:, None], eps)
   Turn 48: P2 used innovation
     Summary: Added a new local-structure heuristic with 2-step support and triangle-tightness
@@ -799,7 +799,7 @@ ValueError: could not broadcast input array from shape (50,50) into shape (50,)
   Turn 49: P2 used counter
     Summary: Added robust shared-neighbor and sparsity penalties to improve edge initialization.
     Improvement: 0.20%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F1.py:49: RuntimeWarning: invalid value encountered in divide
+[EVAL WARNING] problems/tsp_aco/F1.py:49: RuntimeWarning: invalid value encountered in divide
   alt_ratio = dd / np.maximum(best_alt, eps)
   Turn 50: P2 used innovation
     Summary: Triangle-consistency heuristic with bottleneck and two-hop support
@@ -860,12 +860,12 @@ ValueError: could not broadcast input array from shape (50,50) into shape (50,)
 
 [STRATEGY] Running 10 iterations on F1
   Current baseline: 28.595391
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F1.py:66: RuntimeWarning: invalid value encountered in divide
+[EVAL WARNING] problems/tsp_aco/F1.py:66: RuntimeWarning: invalid value encountered in divide
   detour = (dd - np.minimum(best[:, None], best[None, :])) / np.maximum(dd + np.minimum(best[:, None], best[None, :]), eps)
   Turn 51: P2 used innovation
     Summary: Triangle-consistency heuristic with shared-neighbor support and stable pheromone init
     Improvement: -0.19%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F1.py:82: RuntimeWarning: invalid value encountered in divide
+[EVAL WARNING] problems/tsp_aco/F1.py:82: RuntimeWarning: invalid value encountered in divide
   regret = (dd - np.minimum(best[:, None], best[None, :])) / np.maximum(dd + np.minimum(best[:, None], best[None, :]), eps)
   Turn 52: P2 used counter
     Summary: Balanced edge scoring with triangle closure, kNN support, and stable normalization
@@ -873,24 +873,24 @@ ValueError: could not broadcast input array from shape (50,50) into shape (50,)
   Turn 53: P1 used innovation
     Summary: Added triangle-consistency and neighborhood-path based TSP initialization heuristic.
     Improvement: -0.42%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F1.py:82: RuntimeWarning: invalid value encountered in divide
+[EVAL WARNING] problems/tsp_aco/F1.py:82: RuntimeWarning: invalid value encountered in divide
   edge_regret = (dd - nn1[:, None]) / np.maximum(dd + nn1[:, None], eps)
   Turn 54: P2 used learning
     Summary: Added robust centrality, regret, mutual k-NN, and two-hop support scoring.
     Improvement: -1.43%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F1.py:62: RuntimeWarning: invalid value encountered in subtract
+[EVAL WARNING] problems/tsp_aco/F1.py:62: RuntimeWarning: invalid value encountered in subtract
   a = di[:, None] + dd - di[None, :]
   Turn 55: P2 used innovation
     Summary: Triangle-consistency and confidence-based initialization with reciprocal kNN backbone.
     Improvement: -0.05%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F1.py:54: RuntimeWarning: invalid value encountered in divide
+[EVAL WARNING] problems/tsp_aco/F1.py:54: RuntimeWarning: invalid value encountered in divide
   edge_regret = (dd - nearest) / np.maximum(dd + nearest, eps)
-/home/fool/Local/MOTIF/problems/tsp_aco/F1.py:75: RuntimeWarning: invalid value encountered in divide
+problems/tsp_aco/F1.py:75: RuntimeWarning: invalid value encountered in divide
   slack = (dd - row_min[:, None]) / np.maximum(dd + row_min[:, None], eps)
   Turn 56: P2 used learning
     Summary: Robust multi-factor edge heuristic with regret and support-based pheromone seeding
     Improvement: -0.40%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F1.py:76: RuntimeWarning: invalid value encountered in divide
+[EVAL WARNING] problems/tsp_aco/F1.py:76: RuntimeWarning: invalid value encountered in divide
   edge_regret = (dd - nn1[:, None]) / np.maximum(dd + nn1[:, None], eps)
   Turn 57: P2 used learning
     Summary: Added stronger node/edge scoring with mutual kNN, regret, and two-hop support
@@ -898,7 +898,7 @@ ValueError: could not broadcast input array from shape (50,50) into shape (50,)
   Turn 58: P2 used counter
     Summary: Added triangle, rank, and regret cues to strengthen edge initialization.
     Improvement: -0.25%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F1.py:57: RuntimeWarning: invalid value encountered in divide
+[EVAL WARNING] problems/tsp_aco/F1.py:57: RuntimeWarning: invalid value encountered in divide
   edge_regret = (dd - row_best[:, None]) / np.maximum(dd + row_best[:, None], eps)
   Turn 59: P2 used learning
     Summary: Stronger stabilized edge scoring with mutual kNN, shared neighbors, regret, and seeded pheromone.

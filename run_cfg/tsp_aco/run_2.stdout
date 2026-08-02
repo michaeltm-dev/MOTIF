@@ -86,28 +86,28 @@ Outer iterations: 20
     Summary: Dynamic adjustment of pheromone influence based on iteration.
     Improvement: -4.40%
 [EVAL WARNING] Traceback (most recent call last):
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 52, in <module>
+  File "problems/tsp_aco/eval.py", line 52, in <module>
     main(mode)
     ~~~~^^^^^^
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 43, in main
+  File "problems/tsp_aco/eval.py", line 43, in main
     costs = process_file(path, n_ants=N_ANTS, n_iter=N_ITER)
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 18, in process_file
+  File "problems/tsp_aco/eval.py", line 18, in process_file
     results.append(eval_instance(data[i], n_ants, n_iter, int(seeds[i])))
                    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 9, in eval_instance
+  File "problems/tsp_aco/eval.py", line 9, in eval_instance
     return run_tsp_aco(D, n_ants, n_iter, seed)
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/aco.py", line 80, in run_tsp_aco
+  File "problems/tsp_aco/aco.py", line 80, in run_tsp_aco
     paths = constructive_path(n_cities, n_ants, probs, seed=rng_seed)
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/aco.py", line 34, in constructive_path
+  File "problems/tsp_aco/aco.py", line 34, in constructive_path
     probs = probabilities[current] * mask
             ~~~~~~~~~~~~~^^^^^^^^^
 TypeError: only integer scalar arrays can be converted to a scalar index
   Turn 3: P1 used learning
     Summary: Adapted pheromone and heuristic influences for dynamic adjustment.
     Improvement: 0.00%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F2.py:11: RuntimeWarning: divide by zero encountered in power
+[EVAL WARNING] problems/tsp_aco/F2.py:11: RuntimeWarning: divide by zero encountered in power
   transition_weights = np.power(pheromone, alpha) * np.power(heuristic, beta)
-/home/fool/Local/MOTIF/problems/tsp_aco/F2.py:12: RuntimeWarning: invalid value encountered in divide
+problems/tsp_aco/F2.py:12: RuntimeWarning: invalid value encountered in divide
   return transition_weights / np.sum(transition_weights) if np.sum(transition_weights) > 0 else transition_weights
   Turn 4: P2 used innovation
     Summary: Dynamic logarithmic influence on pheromone and heuristic weights.
@@ -194,7 +194,7 @@ TypeError: only integer scalar arrays can be converted to a scalar index
   Turn 12: P2 used learning
     Summary: Enhanced initialization by adjusting heuristics and pheromone levels more dynamically.
     Improvement: -0.15%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
+[EVAL WARNING] problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
   transition_weights = np.power(pheromone, alpha) * np.power(heuristic, beta)
   Turn 13: P2 used counter
     Summary: Enhanced initialization by balancing edge selection metrics.
@@ -214,12 +214,12 @@ TypeError: only integer scalar arrays can be converted to a scalar index
   Turn 18: P1 used counter
     Summary: Enhanced edge selection with refined scaling and improved pheromone initialization.
     Improvement: 0.20%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
+[EVAL WARNING] problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
   transition_weights = np.power(pheromone, alpha) * np.power(heuristic, beta)
   Turn 19: P1 used innovation
     Summary: Implemented a new heuristic based on normalized edge variance.
     Improvement: -254.42%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
+[EVAL WARNING] problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
   transition_weights = np.power(pheromone, alpha) * np.power(heuristic, beta)
   Turn 20: P1 used learning
     Summary: Enhanced initialization with better distance weighting and pheromone strategy.
@@ -253,22 +253,22 @@ TypeError: only integer scalar arrays can be converted to a scalar index
   Turn 15: P2 used counter
     Summary: Enhanced dynamic adjustment of transition weights for better exploration.
     Improvement: -252.12%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
+[EVAL WARNING] problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
   weights = np.log(pheromone + 1e-10) ** alpha * np.log(heuristic + 1e-10) ** beta
 Traceback (most recent call last):
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 52, in <module>
+  File "problems/tsp_aco/eval.py", line 52, in <module>
     main(mode)
     ~~~~^^^^^^
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 43, in main
+  File "problems/tsp_aco/eval.py", line 43, in main
     costs = process_file(path, n_ants=N_ANTS, n_iter=N_ITER)
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 18, in process_file
+  File "problems/tsp_aco/eval.py", line 18, in process_file
     results.append(eval_instance(data[i], n_ants, n_iter, int(seeds[i])))
                    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 9, in eval_instance
+  File "problems/tsp_aco/eval.py", line 9, in eval_instance
     return run_tsp_aco(D, n_ants, n_iter, seed)
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/aco.py", line 80, in run_tsp_aco
+  File "problems/tsp_aco/aco.py", line 80, in run_tsp_aco
     paths = constructive_path(n_cities, n_ants, probs, seed=rng_seed)
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/aco.py", line 34, in constructive_path
+  File "problems/tsp_aco/aco.py", line 34, in constructive_path
     probs = probabilities[current] * mask
             ~~~~~~~~~~~~~^^^^^^^^^
 TypeError: only integer scalar arrays can be converted to a scalar index
@@ -281,22 +281,22 @@ TypeError: only integer scalar arrays can be converted to a scalar index
   Turn 18: P1 used counter
     Summary: Improved dynamic balancing of pheromone and heuristic influences for better stability.
     Improvement: -1.90%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
+[EVAL WARNING] problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
   weights = np.log(pheromone + 1e-10) ** alpha * np.log(heuristic + 1e-10) ** beta
 Traceback (most recent call last):
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 52, in <module>
+  File "problems/tsp_aco/eval.py", line 52, in <module>
     main(mode)
     ~~~~^^^^^^
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 43, in main
+  File "problems/tsp_aco/eval.py", line 43, in main
     costs = process_file(path, n_ants=N_ANTS, n_iter=N_ITER)
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 18, in process_file
+  File "problems/tsp_aco/eval.py", line 18, in process_file
     results.append(eval_instance(data[i], n_ants, n_iter, int(seeds[i])))
                    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 9, in eval_instance
+  File "problems/tsp_aco/eval.py", line 9, in eval_instance
     return run_tsp_aco(D, n_ants, n_iter, seed)
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/aco.py", line 80, in run_tsp_aco
+  File "problems/tsp_aco/aco.py", line 80, in run_tsp_aco
     paths = constructive_path(n_cities, n_ants, probs, seed=rng_seed)
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/aco.py", line 34, in constructive_path
+  File "problems/tsp_aco/aco.py", line 34, in constructive_path
     probs = probabilities[current] * mask
             ~~~~~~~~~~~~~^^^^^^^^^
 TypeError: only integer scalar arrays can be converted to a scalar index
@@ -361,26 +361,26 @@ TypeError: only integer scalar arrays can be converted to a scalar index
 [STRATEGY] Running 10 iterations on F1
   Current baseline: 29.075606
 [EVAL WARNING] Traceback (most recent call last):
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 52, in <module>
+  File "problems/tsp_aco/eval.py", line 52, in <module>
     main(mode)
     ~~~~^^^^^^
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 43, in main
+  File "problems/tsp_aco/eval.py", line 43, in main
     costs = process_file(path, n_ants=N_ANTS, n_iter=N_ITER)
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 18, in process_file
+  File "problems/tsp_aco/eval.py", line 18, in process_file
     results.append(eval_instance(data[i], n_ants, n_iter, int(seeds[i])))
                    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 9, in eval_instance
+  File "problems/tsp_aco/eval.py", line 9, in eval_instance
     return run_tsp_aco(D, n_ants, n_iter, seed)
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/aco.py", line 80, in run_tsp_aco
+  File "problems/tsp_aco/aco.py", line 80, in run_tsp_aco
     paths = constructive_path(n_cities, n_ants, probs, seed=rng_seed)
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/aco.py", line 50, in constructive_path
+  File "problems/tsp_aco/aco.py", line 50, in constructive_path
     paths[step] = next_city
     ~~~~~^^^^^^
 ValueError: could not broadcast input array from shape (50,50) into shape (50,)
   Turn 21: P2 used innovation
     Summary: Introduced a new heuristic combining distance normalization and connectivity.
     Improvement: 0.00%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
+[EVAL WARNING] problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
   transition_weights = np.power(pheromone, alpha) * np.power(heuristic, beta)
   Turn 22: P1 used learning
     Summary: Enhanced heuristic using average distances and diversity penalty for edge selection.
@@ -407,12 +407,12 @@ ValueError: could not broadcast input array from shape (50,50) into shape (50,)
     Summary: Introduced distance normalization and variance-based fitness for improved heuristics.
     Improvement: -0.71%
 [EVAL WARNING] Traceback (most recent call last):
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 5, in <module>
+  File "problems/tsp_aco/eval.py", line 5, in <module>
     from aco import run_tsp_aco
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/aco.py", line 2, in <module>
+  File "problems/tsp_aco/aco.py", line 2, in <module>
     from F1 import initialize
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/F1.py", line 6
-    heuristic = (1.0 / (distances + 1e-10)) * 
+  File "problems/tsp_aco/F1.py", line 6
+    heuristic = (1.0 / (distances + 1e-10)) *
                                               ^
 SyntaxError: invalid syntax
   Turn 30: P1 used counter
@@ -452,22 +452,22 @@ SyntaxError: invalid syntax
     Summary: Dynamic alpha and beta adjustments with normalization to enhance path quality.
     Improvement: -2.57%
 [EVAL WARNING] Traceback (most recent call last):
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 52, in <module>
+  File "problems/tsp_aco/eval.py", line 52, in <module>
     main(mode)
     ~~~~^^^^^^
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 43, in main
+  File "problems/tsp_aco/eval.py", line 43, in main
     costs = process_file(path, n_ants=N_ANTS, n_iter=N_ITER)
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 18, in process_file
+  File "problems/tsp_aco/eval.py", line 18, in process_file
     results.append(eval_instance(data[i], n_ants, n_iter, int(seeds[i])))
                    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 9, in eval_instance
+  File "problems/tsp_aco/eval.py", line 9, in eval_instance
     return run_tsp_aco(D, n_ants, n_iter, seed)
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/aco.py", line 79, in run_tsp_aco
+  File "problems/tsp_aco/aco.py", line 79, in run_tsp_aco
     probs = compute_probabilities(pheromone, heuristic, it, n_iterations)
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/F2.py", line 9, in compute_probabilities
+  File "problems/tsp_aco/F2.py", line 9, in compute_probabilities
     scale_factor = 1 + np.sigmoid(iteration / n_iterations)
                        ^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/.venv/lib/python3.13/site-packages/numpy/__init__.py", line 333, in __getattr__
+  File ".venv/lib/python3.13/site-packages/numpy/__init__.py", line 333, in __getattr__
     raise AttributeError("module {!r} has no attribute "
                          "{!r}".format(__name__, attr))
 AttributeError: module 'numpy' has no attribute 'sigmoid'
@@ -537,7 +537,7 @@ AttributeError: module 'numpy' has no attribute 'sigmoid'
   Turn 31: P2 used learning
     Summary: Combined opponent's diversity penalty enhancement with effective heuristics.
     Improvement: -0.28%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
+[EVAL WARNING] problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
   transition_weights = np.power(pheromone, alpha) * np.power(heuristic, beta)
   Turn 32: P1 used innovation
     Summary: Introduced logarithmic scaling in heuristic for improved edge selection.
@@ -545,7 +545,7 @@ AttributeError: module 'numpy' has no attribute 'sigmoid'
   Turn 33: P2 used learning
     Summary: Strengthened heuristics with better diversity penalties and higher pheromone levels.
     Improvement: -0.20%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
+[EVAL WARNING] problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
   transition_weights = np.power(pheromone, alpha) * np.power(heuristic, beta)
   Turn 34: P1 used innovation
     Summary: Introduced dynamic distance penalties and enhanced pheromone intensities.
@@ -607,9 +607,9 @@ AttributeError: module 'numpy' has no attribute 'sigmoid'
   Turn 39: P1 used counter
     Summary: Enhanced dynamic adjustment and stability in weight calculation.
     Improvement: -4.49%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F2.py:13: RuntimeWarning: invalid value encountered in divide
+[EVAL WARNING] problems/tsp_aco/F2.py:13: RuntimeWarning: invalid value encountered in divide
   return transition_weights / np.sum(transition_weights)
-/home/fool/Local/MOTIF/problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
+problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
   transition_weights = np.log(pheromone + 1e-10) ** alpha * np.power(heuristic, beta)
   Turn 40: P1 used innovation
     Summary: Applied logarithmic scaling on pheromone and adjusted beta dynamically.
@@ -632,7 +632,7 @@ AttributeError: module 'numpy' has no attribute 'sigmoid'
   Turn 42: P2 used innovation
     Summary: Introduced dynamic heuristic and pheromone decay to improve edge selection.
     Improvement: -4.08%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
+[EVAL WARNING] problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
   transition_weights = np.power(pheromone, alpha) * np.power(heuristic, beta)
   Turn 43: P1 used innovation
     Summary: Dynamic scaling based on city density and distance variance for better edge selection.
@@ -694,7 +694,7 @@ AttributeError: module 'numpy' has no attribute 'sigmoid'
   Turn 38: P2 used learning
     Summary: Enhanced pheromone update with dynamic decay and capped non-linear deposit.
     Improvement: -0.26%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
+[EVAL WARNING] problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
   transition_weights = np.power(pheromone, alpha) * np.power(heuristic, beta)
   Turn 39: P2 used learning
     Summary: Improved pheromone update with logarithmic deposit strategy.
@@ -727,11 +727,11 @@ AttributeError: module 'numpy' has no attribute 'sigmoid'
     Summary: Adjusted pheromone and heuristic influence for improved transition weight calculations.
     Improvement: -22.18%
 [EVAL WARNING] Traceback (most recent call last):
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 5, in <module>
+  File "problems/tsp_aco/eval.py", line 5, in <module>
     from aco import run_tsp_aco
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/aco.py", line 3, in <module>
+  File "problems/tsp_aco/aco.py", line 3, in <module>
     from F2 import compute_probabilities
-ImportError: cannot import name 'compute_probabilities' from 'F2' (/home/fool/Local/MOTIF/problems/tsp_aco/F2.py)
+ImportError: cannot import name 'compute_probabilities' from 'F2' (problems/tsp_aco/F2.py)
   Turn 45: P2 used counter
     Summary: Use softmax for normalization to improve probability distribution stability.
     Improvement: 0.00%
@@ -768,7 +768,7 @@ ImportError: cannot import name 'compute_probabilities' from 'F2' (/home/fool/Lo
   Turn 52: P1 used innovation
     Summary: Enhanced heuristic using average distances for better edge selection.
     Improvement: -0.49%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
+[EVAL WARNING] problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
   transition_weights = np.power(pheromone, alpha) * np.power(heuristic, beta)
   Turn 53: P2 used counter
     Summary: Adjusted heuristics to incorporate standard deviation for better edge selection.
@@ -791,7 +791,7 @@ ImportError: cannot import name 'compute_probabilities' from 'F2' (/home/fool/Lo
   Turn 59: P2 used counter
     Summary: Enhanced heuristic and dynamic pheromone levels for improved TSP initialization.
     Improvement: -1.18%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
+[EVAL WARNING] problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
   transition_weights = np.power(pheromone, alpha) * np.power(heuristic, beta)
   Turn 60: P2 used innovation
     Summary: Improved heuristic considers edge distance and connectivity.
@@ -938,9 +938,9 @@ ImportError: cannot import name 'compute_probabilities' from 'F2' (/home/fool/Lo
 
 [STRATEGY] Running 10 iterations on F2
   Current baseline: 28.828920
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F2.py:12: RuntimeWarning: divide by zero encountered in power
+[EVAL WARNING] problems/tsp_aco/F2.py:12: RuntimeWarning: divide by zero encountered in power
   transition_weights = np.power(pheromone, alpha) * np.power(heuristic, beta)
-/home/fool/Local/MOTIF/problems/tsp_aco/F2.py:13: RuntimeWarning: invalid value encountered in subtract
+problems/tsp_aco/F2.py:13: RuntimeWarning: invalid value encountered in subtract
   transition_weights = np.exp(transition_weights - np.max(transition_weights))  # Softmax for stability
   Turn 51: P2 used counter
     Summary: Enhanced normalization of transition weights using softmax for better balance.
@@ -989,7 +989,7 @@ ImportError: cannot import name 'compute_probabilities' from 'F2' (/home/fool/Lo
   Turn 61: P2 used learning
     Summary: Refined heuristics with adjusted diversity penalties and pheromone levels.
     Improvement: -0.13%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
+[EVAL WARNING] problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
   transition_weights = np.power(pheromone, alpha) * np.power(heuristic, beta)
   Turn 62: P2 used learning
     Summary: Enhanced initialization by combining average distances and diversity penalties.
@@ -1000,7 +1000,7 @@ ImportError: cannot import name 'compute_probabilities' from 'F2' (/home/fool/Lo
   Turn 64: P2 used learning
     Summary: Improved heuristic formulation with pheromone weighting.
     Improvement: 0.25%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
+[EVAL WARNING] problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
   transition_weights = np.power(pheromone, alpha) * np.power(heuristic, beta)
   Turn 65: P1 used innovation
     Summary: Enhanced heuristic normalizes edge desirability based on average distances.

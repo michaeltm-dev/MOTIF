@@ -221,9 +221,9 @@ Outer iterations: 20
   Turn 14: P1 used learning
     Summary: Improved alpha and beta adjustments using sigmoid function for better convergence.
     Improvement: -1.53%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F2.py:13: RuntimeWarning: overflow encountered in exp
+[EVAL WARNING] problems/tsp_aco/F2.py:13: RuntimeWarning: overflow encountered in exp
   exp_weights = np.exp(weights)  # Softmax to improve stability
-/home/fool/Local/MOTIF/problems/tsp_aco/F2.py:14: RuntimeWarning: invalid value encountered in divide
+problems/tsp_aco/F2.py:14: RuntimeWarning: invalid value encountered in divide
   return exp_weights / np.sum(exp_weights)  # Normalize
   Turn 15: P1 used learning
     Summary: Enhanced pheromone and heuristic influence with softmax normalization.
@@ -303,7 +303,7 @@ Outer iterations: 20
   Turn 22: P1 used innovation
     Summary: Incorporated average distances for a better heuristic evaluation.
     Improvement: -2.84%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
+[EVAL WARNING] problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
   weights = np.power(pheromone, alpha) * np.power(heuristic, beta)
   Turn 23: P1 used innovation
     Summary: Enhanced heuristic by normalizing distances and increasing pheromone levels.
@@ -445,20 +445,20 @@ Outer iterations: 20
 The above exception was the direct cause of the following exception:
 
 Traceback (most recent call last):
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 52, in <module>
+  File "problems/tsp_aco/eval.py", line 52, in <module>
     main(mode)
     ~~~~^^^^^^
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 43, in main
+  File "problems/tsp_aco/eval.py", line 43, in main
     costs = process_file(path, n_ants=N_ANTS, n_iter=N_ITER)
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 18, in process_file
+  File "problems/tsp_aco/eval.py", line 18, in process_file
     results.append(eval_instance(data[i], n_ants, n_iter, int(seeds[i])))
                    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 9, in eval_instance
+  File "problems/tsp_aco/eval.py", line 9, in eval_instance
     return run_tsp_aco(D, n_ants, n_iter, seed)
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/aco.py", line 72, in run_tsp_aco
+  File "problems/tsp_aco/aco.py", line 72, in run_tsp_aco
     heuristic, pheromone = initialize(distances.copy())
                            ~~~~~~~~~~^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/F1.py", line 10, in initialize
+  File "problems/tsp_aco/F1.py", line 10, in initialize
     heuristic[i, j] = (scaling[i] * (n - j) / (1 + j))
     ~~~~~~~~~^^^^^^
 ValueError: setting an array element with a sequence.
@@ -747,7 +747,7 @@ ValueError: setting an array element with a sequence.
   Turn 52: P2 used learning
     Summary: Implemented sinusoidal adjustment for alpha and beta for better optimization.
     Improvement: -1.93%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
+[EVAL WARNING] problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
   weights = np.log(pheromone + 1e-10) ** alpha * np.log(heuristic + 1e-10) ** beta  # Log for stability
   Turn 53: P2 used counter
     Summary: Enhanced weighting strategy using logarithmic scales for improved stability and sensitivity.
@@ -841,7 +841,7 @@ ValueError: setting an array element with a sequence.
   Turn 64: P2 used counter
     Summary: Introduced a mix of best and average cost for pheromone deposit calculation.
     Improvement: -0.89%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
+[EVAL WARNING] problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
   weights = np.power(pheromone, alpha) * np.power(heuristic, beta)
   Turn 65: P2 used innovation
     Summary: Implemented logarithmic pheromone deposition to enhance exploratory behavior.

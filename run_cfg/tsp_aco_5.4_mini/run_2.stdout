@@ -352,20 +352,20 @@ Outer iterations: 20
     Summary: Added robust symmetric edge scoring with mutual-nearest and candidate boosts.
     Improvement: -2.19%
 [EVAL WARNING] Traceback (most recent call last):
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 52, in <module>
+  File "problems/tsp_aco/eval.py", line 52, in <module>
     main(mode)
     ~~~~^^^^^^
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 43, in main
+  File "problems/tsp_aco/eval.py", line 43, in main
     costs = process_file(path, n_ants=N_ANTS, n_iter=N_ITER)
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 18, in process_file
+  File "problems/tsp_aco/eval.py", line 18, in process_file
     results.append(eval_instance(data[i], n_ants, n_iter, int(seeds[i])))
                    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 9, in eval_instance
+  File "problems/tsp_aco/eval.py", line 9, in eval_instance
     return run_tsp_aco(D, n_ants, n_iter, seed)
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/aco.py", line 72, in run_tsp_aco
+  File "problems/tsp_aco/aco.py", line 72, in run_tsp_aco
     heuristic, pheromone = initialize(distances.copy())
                            ~~~~~~~~~~^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/F1.py", line 42, in initialize
+  File "problems/tsp_aco/F1.py", line 42, in initialize
     local[valid] = np.sqrt(np.maximum((row_min[valid[:, 0]] / (d[valid] + eps)) * (col_min[:, valid[0]].T if False else 1.0), 0.0))
     ~~~~~^^^^^^^
 TypeError: NumPy boolean array indexing assignment requires a 0 or 1-dimensional input, input has 2 dimensions
@@ -540,23 +540,23 @@ TypeError: NumPy boolean array indexing assignment requires a 0 or 1-dimensional
   Turn 35: P1 used innovation
     Summary: Robust multi-factor initializer with 2-opt-style endpoint potential
     Improvement: -1.63%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F1.py:59: RuntimeWarning: invalid value encountered in subtract
+[EVAL WARNING] problems/tsp_aco/F1.py:59: RuntimeWarning: invalid value encountered in subtract
   slack[i] = np.min(via - dd[i][None, :], axis=0)
 Traceback (most recent call last):
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 52, in <module>
+  File "problems/tsp_aco/eval.py", line 52, in <module>
     main(mode)
     ~~~~^^^^^^
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 43, in main
+  File "problems/tsp_aco/eval.py", line 43, in main
     costs = process_file(path, n_ants=N_ANTS, n_iter=N_ITER)
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 18, in process_file
+  File "problems/tsp_aco/eval.py", line 18, in process_file
     results.append(eval_instance(data[i], n_ants, n_iter, int(seeds[i])))
                    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 9, in eval_instance
+  File "problems/tsp_aco/eval.py", line 9, in eval_instance
     return run_tsp_aco(D, n_ants, n_iter, seed)
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/aco.py", line 72, in run_tsp_aco
+  File "problems/tsp_aco/aco.py", line 72, in run_tsp_aco
     heuristic, pheromone = initialize(distances.copy())
                            ~~~~~~~~~~^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/F1.py", line 59, in initialize
+  File "problems/tsp_aco/F1.py", line 59, in initialize
     slack[i] = np.min(via - dd[i][None, :], axis=0)
     ~~~~~^^^
 ValueError: could not broadcast input array from shape (50,50) into shape (50,)

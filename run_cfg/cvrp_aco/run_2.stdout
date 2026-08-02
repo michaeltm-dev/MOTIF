@@ -38,7 +38,7 @@ Outer iterations: 20
   Turn 1: P1 used learning
     Summary: Enhanced heuristic includes demand and capacity factors in transition scoring.
     Improvement: -0.56%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/cvrp_aco/F1.py:9: RuntimeWarning: divide by zero encountered in scalar divide
+[EVAL WARNING] problems/cvrp_aco/F1.py:9: RuntimeWarning: divide by zero encountered in scalar divide
   heuristic[i][j] = (1.0 / distances[i][j]) * (capacity / demands[j])
   Turn 2: P1 used counter
     Summary: Enhanced heuristic using demand and capacity for better route scoring.
@@ -62,20 +62,20 @@ Outer iterations: 20
     Summary: Enhanced heuristic integrates demand and distance with a stronger load factor.
     Improvement: 0.54%
 [EVAL WARNING] Traceback (most recent call last):
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 110, in <module>
+  File "problems/cvrp_aco/eval.py", line 110, in <module>
     main(mode)
     ~~~~^^^^^^
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 102, in main
+  File "problems/cvrp_aco/eval.py", line 102, in main
     costs = process_file(path, n_ants=N_ANTS, n_iter=N_ITERATIONS)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 72, in process_file
+  File "problems/cvrp_aco/eval.py", line 72, in process_file
     results.append(eval_instance(node_positions[i], demands[i], CAPACITY, n_ants, n_iter, int(seeds[i])))
                    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 43, in eval_instance
+  File "problems/cvrp_aco/eval.py", line 43, in eval_instance
     return run_cvrp_aco(dist_mat, demands, coords, capacity, n_ants, n_iter)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/aco.py", line 95, in run_cvrp_aco
+  File "problems/cvrp_aco/aco.py", line 95, in run_cvrp_aco
     heuristic, pheromone = initialize(distances.copy(), demands.copy(), coords.copy(), capacity)
                            ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/F1.py", line 9, in initialize
+  File "problems/cvrp_aco/F1.py", line 9, in initialize
     capacity_remaining = capacity - np.sum(demands[np.arange(1, n) != j])
                                            ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
 IndexError: boolean index did not match indexed array along dimension 0; dimension is 51 but corresponding boolean dimension is 50
@@ -144,19 +144,19 @@ IndexError: boolean index did not match indexed array along dimension 0; dimensi
 [STRATEGY] Running 10 iterations on F3
   Current baseline: 92.101708
 [EVAL WARNING] Traceback (most recent call last):
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 110, in <module>
+  File "problems/cvrp_aco/eval.py", line 110, in <module>
     main(mode)
     ~~~~^^^^^^
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 102, in main
+  File "problems/cvrp_aco/eval.py", line 102, in main
     costs = process_file(path, n_ants=N_ANTS, n_iter=N_ITERATIONS)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 72, in process_file
+  File "problems/cvrp_aco/eval.py", line 72, in process_file
     results.append(eval_instance(node_positions[i], demands[i], CAPACITY, n_ants, n_iter, int(seeds[i])))
                    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 43, in eval_instance
+  File "problems/cvrp_aco/eval.py", line 43, in eval_instance
     return run_cvrp_aco(dist_mat, demands, coords, capacity, n_ants, n_iter)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/aco.py", line 131, in run_cvrp_aco
+  File "problems/cvrp_aco/aco.py", line 131, in run_cvrp_aco
     pheromone = update_pheromone(pheromone, solutions, costs.tolist(), iteration, n_iterations)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/F3.py", line 8, in update_pheromone
+  File "problems/cvrp_aco/F3.py", line 8, in update_pheromone
     deposit = 1.0 / cost * (1 + np.log1p(n_iterations/iteration))  # Enhanced reinforcement
                                          ~~~~~~~~~~~~^~~~~~~~~~
 ZeroDivisionError: division by zero
@@ -308,19 +308,19 @@ ZeroDivisionError: division by zero
     Summary: Improved pheromone deposit strategy and aggressive decay for better exploration.
     Improvement: -18.48%
 [EVAL WARNING] Traceback (most recent call last):
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 110, in <module>
+  File "problems/cvrp_aco/eval.py", line 110, in <module>
     main(mode)
     ~~~~^^^^^^
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 102, in main
+  File "problems/cvrp_aco/eval.py", line 102, in main
     costs = process_file(path, n_ants=N_ANTS, n_iter=N_ITERATIONS)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 72, in process_file
+  File "problems/cvrp_aco/eval.py", line 72, in process_file
     results.append(eval_instance(node_positions[i], demands[i], CAPACITY, n_ants, n_iter, int(seeds[i])))
                    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 43, in eval_instance
+  File "problems/cvrp_aco/eval.py", line 43, in eval_instance
     return run_cvrp_aco(dist_mat, demands, coords, capacity, n_ants, n_iter)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/aco.py", line 131, in run_cvrp_aco
+  File "problems/cvrp_aco/aco.py", line 131, in run_cvrp_aco
     pheromone = update_pheromone(pheromone, solutions, costs.tolist(), iteration, n_iterations)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/F3.py", line 7, in update_pheromone
+  File "problems/cvrp_aco/F3.py", line 7, in update_pheromone
     pheromone_increment = np.mean(1.0 / costs)  # Average deposit per solution
                                   ~~~~^~~~~~~
 TypeError: unsupported operand type(s) for /: 'float' and 'list'
@@ -459,20 +459,20 @@ TypeError: unsupported operand type(s) for /: 'float' and 'list'
     Summary: Enhanced heuristic with normalized demand, spatial decay, and penalties for capacity overages.
     Improvement: -3.00%
 [EVAL WARNING] Traceback (most recent call last):
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 110, in <module>
+  File "problems/cvrp_aco/eval.py", line 110, in <module>
     main(mode)
     ~~~~^^^^^^
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 102, in main
+  File "problems/cvrp_aco/eval.py", line 102, in main
     costs = process_file(path, n_ants=N_ANTS, n_iter=N_ITERATIONS)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 72, in process_file
+  File "problems/cvrp_aco/eval.py", line 72, in process_file
     results.append(eval_instance(node_positions[i], demands[i], CAPACITY, n_ants, n_iter, int(seeds[i])))
                    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 43, in eval_instance
+  File "problems/cvrp_aco/eval.py", line 43, in eval_instance
     return run_cvrp_aco(dist_mat, demands, coords, capacity, n_ants, n_iter)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/aco.py", line 95, in run_cvrp_aco
+  File "problems/cvrp_aco/aco.py", line 95, in run_cvrp_aco
     heuristic, pheromone = initialize(distances.copy(), demands.copy(), coords.copy(), capacity)
                            ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/F1.py", line 12, in initialize
+  File "problems/cvrp_aco/F1.py", line 12, in initialize
     remaining_capacity = capacity - np.sum(demands[np.arange(1, n) != j])
                                            ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
 IndexError: boolean index did not match indexed array along dimension 0; dimension is 51 but corresponding boolean dimension is 50
@@ -513,19 +513,19 @@ IndexError: boolean index did not match indexed array along dimension 0; dimensi
     Summary: Introduced adaptive pheromone deposition based on min costs.
     Improvement: -4.98%
 [EVAL WARNING] Traceback (most recent call last):
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 110, in <module>
+  File "problems/cvrp_aco/eval.py", line 110, in <module>
     main(mode)
     ~~~~^^^^^^
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 102, in main
+  File "problems/cvrp_aco/eval.py", line 102, in main
     costs = process_file(path, n_ants=N_ANTS, n_iter=N_ITERATIONS)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 72, in process_file
+  File "problems/cvrp_aco/eval.py", line 72, in process_file
     results.append(eval_instance(node_positions[i], demands[i], CAPACITY, n_ants, n_iter, int(seeds[i])))
                    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 43, in eval_instance
+  File "problems/cvrp_aco/eval.py", line 43, in eval_instance
     return run_cvrp_aco(dist_mat, demands, coords, capacity, n_ants, n_iter)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/aco.py", line 131, in run_cvrp_aco
+  File "problems/cvrp_aco/aco.py", line 131, in run_cvrp_aco
     pheromone = update_pheromone(pheromone, solutions, costs.tolist(), iteration, n_iterations)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/F3.py", line 11, in update_pheromone
+  File "problems/cvrp_aco/F3.py", line 11, in update_pheromone
     pheromone[solution[j], solution[j + 1]] += deposit / length
     ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 IndexError: shape mismatch: indexing arrays could not be broadcast together with shapes (13,) (12,)
@@ -635,19 +635,19 @@ IndexError: shape mismatch: indexing arrays could not be broadcast together with
 [STRATEGY] Running 10 iterations on F3
   Current baseline: 92.035802
 [EVAL WARNING] Traceback (most recent call last):
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 110, in <module>
+  File "problems/cvrp_aco/eval.py", line 110, in <module>
     main(mode)
     ~~~~^^^^^^
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 102, in main
+  File "problems/cvrp_aco/eval.py", line 102, in main
     costs = process_file(path, n_ants=N_ANTS, n_iter=N_ITERATIONS)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 72, in process_file
+  File "problems/cvrp_aco/eval.py", line 72, in process_file
     results.append(eval_instance(node_positions[i], demands[i], CAPACITY, n_ants, n_iter, int(seeds[i])))
                    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 43, in eval_instance
+  File "problems/cvrp_aco/eval.py", line 43, in eval_instance
     return run_cvrp_aco(dist_mat, demands, coords, capacity, n_ants, n_iter)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/aco.py", line 131, in run_cvrp_aco
+  File "problems/cvrp_aco/aco.py", line 131, in run_cvrp_aco
     pheromone = update_pheromone(pheromone, solutions, costs.tolist(), iteration, n_iterations)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/F3.py", line 6, in update_pheromone
+  File "problems/cvrp_aco/F3.py", line 6, in update_pheromone
     total_deposit = np.sum(1.0 / costs)  # Normalize with respect to all solutions
                            ~~~~^~~~~~~
 TypeError: unsupported operand type(s) for /: 'float' and 'list'
@@ -655,19 +655,19 @@ TypeError: unsupported operand type(s) for /: 'float' and 'list'
     Summary: Introduced a normalized deposit based on total cost, improving route longevity.
     Improvement: 0.00%
 [EVAL WARNING] Traceback (most recent call last):
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 110, in <module>
+  File "problems/cvrp_aco/eval.py", line 110, in <module>
     main(mode)
     ~~~~^^^^^^
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 102, in main
+  File "problems/cvrp_aco/eval.py", line 102, in main
     costs = process_file(path, n_ants=N_ANTS, n_iter=N_ITERATIONS)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 72, in process_file
+  File "problems/cvrp_aco/eval.py", line 72, in process_file
     results.append(eval_instance(node_positions[i], demands[i], CAPACITY, n_ants, n_iter, int(seeds[i])))
                    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 43, in eval_instance
+  File "problems/cvrp_aco/eval.py", line 43, in eval_instance
     return run_cvrp_aco(dist_mat, demands, coords, capacity, n_ants, n_iter)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/aco.py", line 131, in run_cvrp_aco
+  File "problems/cvrp_aco/aco.py", line 131, in run_cvrp_aco
     pheromone = update_pheromone(pheromone, solutions, costs.tolist(), iteration, n_iterations)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/F3.py", line 13, in update_pheromone
+  File "problems/cvrp_aco/F3.py", line 13, in update_pheromone
     pheromone[solution[0], solution[1]] += deposit * 2  # Depot reinforcement
     ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
 IndexError: shape mismatch: indexing arrays could not be broadcast together with shapes (13,) (12,)
@@ -798,19 +798,19 @@ IndexError: shape mismatch: indexing arrays could not be broadcast together with
     Summary: Introduced enhanced decay, adaptive deposit strategies, and usage counting.
     Improvement: -4.00%
 [EVAL WARNING] Traceback (most recent call last):
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 110, in <module>
+  File "problems/cvrp_aco/eval.py", line 110, in <module>
     main(mode)
     ~~~~^^^^^^
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 102, in main
+  File "problems/cvrp_aco/eval.py", line 102, in main
     costs = process_file(path, n_ants=N_ANTS, n_iter=N_ITERATIONS)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 72, in process_file
+  File "problems/cvrp_aco/eval.py", line 72, in process_file
     results.append(eval_instance(node_positions[i], demands[i], CAPACITY, n_ants, n_iter, int(seeds[i])))
                    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 43, in eval_instance
+  File "problems/cvrp_aco/eval.py", line 43, in eval_instance
     return run_cvrp_aco(dist_mat, demands, coords, capacity, n_ants, n_iter)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/aco.py", line 131, in run_cvrp_aco
+  File "problems/cvrp_aco/aco.py", line 131, in run_cvrp_aco
     pheromone = update_pheromone(pheromone, solutions, costs.tolist(), iteration, n_iterations)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/F3.py", line 25, in update_pheromone
+  File "problems/cvrp_aco/F3.py", line 25, in update_pheromone
     pheromone[route[0], route[1]] += 2 * pheromone_increment / costs[i]
                                                                ~~~~~^^^
 IndexError: list index out of range
@@ -910,7 +910,7 @@ IndexError: list index out of range
   Turn 65: P2 used learning
     Summary: Refined initialization heuristic combining load factors and saturation penalties.
     Improvement: 0.00%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/cvrp_aco/F1.py:11: RuntimeWarning: divide by zero encountered in scalar divide
+[EVAL WARNING] problems/cvrp_aco/F1.py:11: RuntimeWarning: divide by zero encountered in scalar divide
   saturation_penalty = np.exp(-max(0, load_factor - 1)**2) * np.clip(capacity / demands[j], 0, 1)
   Turn 66: P1 used learning
     Summary: Merged load factor with proximity and saturation for improved heuristic.
@@ -984,7 +984,7 @@ IndexError: list index out of range
   Turn 51: P2 used counter
     Summary: Enhanced decay and dynamic deposit strategy for effective pheromone updates.
     Improvement: -1.75%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/cvrp_aco/F3.py:16: RuntimeWarning: divide by zero encountered in divide
+[EVAL WARNING] problems/cvrp_aco/F3.py:16: RuntimeWarning: divide by zero encountered in divide
   pheromone += np.where(route_count > 0, deposit / route_count, 0)
   Turn 52: P1 used counter
     Summary: Implemented dynamic deposit scaling and refined pheromone updates.

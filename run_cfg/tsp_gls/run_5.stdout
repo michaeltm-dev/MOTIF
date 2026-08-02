@@ -178,11 +178,11 @@ Outer iterations: 20
     Summary: Enhanced penalties based on critical paths from nearest neighbors.
     Improvement: -0.33%
 [EVAL WARNING] Traceback (most recent call last):
-  File "/home/fool/Local/MOTIF/problems/tsp_gls/eval.py", line 6, in <module>
+  File "problems/tsp_gls/eval.py", line 6, in <module>
     from gls import run_tsp_gls
-  File "/home/fool/Local/MOTIF/problems/tsp_gls/gls.py", line 4, in <module>
+  File "problems/tsp_gls/gls.py", line 4, in <module>
     from F1 import generate_guide_matrix
-  File "/home/fool/Local/MOTIF/problems/tsp_gls/F1.py", line 11
+  File "problems/tsp_gls/F1.py", line 11
     return guide_matrix.
                         ^
 SyntaxError: invalid syntax
@@ -217,27 +217,27 @@ SyntaxError: invalid syntax
     Summary: Improved penalization by considering neighbor distances more comprehensively.
     Improvement: -1.03%
 [EVAL WARNING] Traceback (most recent call last):
-  File "/home/fool/Local/MOTIF/problems/tsp_gls/eval.py", line 130, in <module>
+  File "problems/tsp_gls/eval.py", line 130, in <module>
     main(mode)
     ~~~~^^^^^^
-  File "/home/fool/Local/MOTIF/problems/tsp_gls/eval.py", line 119, in main
+  File "problems/tsp_gls/eval.py", line 119, in main
     costs = process_file(path, PERTURBATION_MOVES, ITER_LIMIT)
-  File "/home/fool/Local/MOTIF/problems/tsp_gls/eval.py", line 73, in process_file
+  File "problems/tsp_gls/eval.py", line 73, in process_file
     result = solve_instance(coordinates, perturbation_moves, iter_limit, int(seeds[i]))
-  File "/home/fool/Local/MOTIF/problems/tsp_gls/eval.py", line 35, in solve_instance
+  File "problems/tsp_gls/eval.py", line 35, in solve_instance
     best_cost = run_tsp_gls(
         distmat=dist_matrix,
         perturbation_moves=perturbation_moves,
         iter_limit=iter_limit
     )
-  File "/home/fool/Local/MOTIF/problems/tsp_gls/gls.py", line 180, in run_tsp_gls
+  File "problems/tsp_gls/gls.py", line 180, in run_tsp_gls
     guide = generate_guide_matrix(distmat.copy())
-  File "/home/fool/Local/MOTIF/problems/tsp_gls/F1.py", line 6, in generate_guide_matrix
+  File "problems/tsp_gls/F1.py", line 6, in generate_guide_matrix
     min_distances = np.min(distance_matrix[distance_matrix > 0], axis=1)
-  File "/home/fool/Local/MOTIF/.venv/lib/python3.13/site-packages/numpy/core/fromnumeric.py", line 2953, in min
+  File ".venv/lib/python3.13/site-packages/numpy/core/fromnumeric.py", line 2953, in min
     return _wrapreduction(a, np.minimum, 'min', axis, None, out,
                           keepdims=keepdims, initial=initial, where=where)
-  File "/home/fool/Local/MOTIF/.venv/lib/python3.13/site-packages/numpy/core/fromnumeric.py", line 88, in _wrapreduction
+  File ".venv/lib/python3.13/site-packages/numpy/core/fromnumeric.py", line 88, in _wrapreduction
     return ufunc.reduce(obj, axis, dtype, out, **passkwargs)
            ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 numpy.exceptions.AxisError: axis 1 is out of bounds for array of dimension 1
@@ -309,22 +309,22 @@ numpy.exceptions.AxisError: axis 1 is out of bounds for array of dimension 1
 The above exception was the direct cause of the following exception:
 
 Traceback (most recent call last):
-  File "/home/fool/Local/MOTIF/problems/tsp_gls/eval.py", line 130, in <module>
+  File "problems/tsp_gls/eval.py", line 130, in <module>
     main(mode)
     ~~~~^^^^^^
-  File "/home/fool/Local/MOTIF/problems/tsp_gls/eval.py", line 119, in main
+  File "problems/tsp_gls/eval.py", line 119, in main
     costs = process_file(path, PERTURBATION_MOVES, ITER_LIMIT)
-  File "/home/fool/Local/MOTIF/problems/tsp_gls/eval.py", line 73, in process_file
+  File "problems/tsp_gls/eval.py", line 73, in process_file
     result = solve_instance(coordinates, perturbation_moves, iter_limit, int(seeds[i]))
-  File "/home/fool/Local/MOTIF/problems/tsp_gls/eval.py", line 35, in solve_instance
+  File "problems/tsp_gls/eval.py", line 35, in solve_instance
     best_cost = run_tsp_gls(
         distmat=dist_matrix,
         perturbation_moves=perturbation_moves,
         iter_limit=iter_limit
     )
-  File "/home/fool/Local/MOTIF/problems/tsp_gls/gls.py", line 180, in run_tsp_gls
+  File "problems/tsp_gls/gls.py", line 180, in run_tsp_gls
     guide = generate_guide_matrix(distmat.copy())
-  File "/home/fool/Local/MOTIF/problems/tsp_gls/F1.py", line 12, in generate_guide_matrix
+  File "problems/tsp_gls/F1.py", line 12, in generate_guide_matrix
     guide_matrix[i][j] = distance_matrix[i][j] * (1 + normalized_degree[j]) * (1 - neighbor_importance * 0.5)
     ~~~~~~~~~~~~~~~^^^
 ValueError: setting an array element with a sequence.
@@ -375,22 +375,22 @@ ValueError: setting an array element with a sequence.
 The above exception was the direct cause of the following exception:
 
 Traceback (most recent call last):
-  File "/home/fool/Local/MOTIF/problems/tsp_gls/eval.py", line 130, in <module>
+  File "problems/tsp_gls/eval.py", line 130, in <module>
     main(mode)
     ~~~~^^^^^^
-  File "/home/fool/Local/MOTIF/problems/tsp_gls/eval.py", line 119, in main
+  File "problems/tsp_gls/eval.py", line 119, in main
     costs = process_file(path, PERTURBATION_MOVES, ITER_LIMIT)
-  File "/home/fool/Local/MOTIF/problems/tsp_gls/eval.py", line 73, in process_file
+  File "problems/tsp_gls/eval.py", line 73, in process_file
     result = solve_instance(coordinates, perturbation_moves, iter_limit, int(seeds[i]))
-  File "/home/fool/Local/MOTIF/problems/tsp_gls/eval.py", line 35, in solve_instance
+  File "problems/tsp_gls/eval.py", line 35, in solve_instance
     best_cost = run_tsp_gls(
         distmat=dist_matrix,
         perturbation_moves=perturbation_moves,
         iter_limit=iter_limit
     )
-  File "/home/fool/Local/MOTIF/problems/tsp_gls/gls.py", line 180, in run_tsp_gls
+  File "problems/tsp_gls/gls.py", line 180, in run_tsp_gls
     guide = generate_guide_matrix(distmat.copy())
-  File "/home/fool/Local/MOTIF/problems/tsp_gls/F1.py", line 15, in generate_guide_matrix
+  File "problems/tsp_gls/F1.py", line 15, in generate_guide_matrix
     guide_matrix[i][j] = distance_matrix[i][j] * (1 + centrality_penalty)  # penalize far edges
     ~~~~~~~~~~~~~~~^^^
 ValueError: setting an array element with a sequence.
@@ -459,22 +459,22 @@ ValueError: setting an array element with a sequence.
 The above exception was the direct cause of the following exception:
 
 Traceback (most recent call last):
-  File "/home/fool/Local/MOTIF/problems/tsp_gls/eval.py", line 130, in <module>
+  File "problems/tsp_gls/eval.py", line 130, in <module>
     main(mode)
     ~~~~^^^^^^
-  File "/home/fool/Local/MOTIF/problems/tsp_gls/eval.py", line 119, in main
+  File "problems/tsp_gls/eval.py", line 119, in main
     costs = process_file(path, PERTURBATION_MOVES, ITER_LIMIT)
-  File "/home/fool/Local/MOTIF/problems/tsp_gls/eval.py", line 73, in process_file
+  File "problems/tsp_gls/eval.py", line 73, in process_file
     result = solve_instance(coordinates, perturbation_moves, iter_limit, int(seeds[i]))
-  File "/home/fool/Local/MOTIF/problems/tsp_gls/eval.py", line 35, in solve_instance
+  File "problems/tsp_gls/eval.py", line 35, in solve_instance
     best_cost = run_tsp_gls(
         distmat=dist_matrix,
         perturbation_moves=perturbation_moves,
         iter_limit=iter_limit
     )
-  File "/home/fool/Local/MOTIF/problems/tsp_gls/gls.py", line 180, in run_tsp_gls
+  File "problems/tsp_gls/gls.py", line 180, in run_tsp_gls
     guide = generate_guide_matrix(distmat.copy())
-  File "/home/fool/Local/MOTIF/problems/tsp_gls/F1.py", line 11, in generate_guide_matrix
+  File "problems/tsp_gls/F1.py", line 11, in generate_guide_matrix
     guide_matrix[i][j] = distance_matrix[i][j] * (1 + strengths[j] / np.mean(connectivity))
     ~~~~~~~~~~~~~~~^^^
 ValueError: setting an array element with a sequence.
@@ -502,7 +502,7 @@ ValueError: setting an array element with a sequence.
   Turn 89: P2 used counter
     Summary: Introduced a dual penalty system to better normalize the edge criticality.
     Improvement: -0.37%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_gls/F1.py:13: RuntimeWarning: divide by zero encountered in scalar divide
+[EVAL WARNING] problems/tsp_gls/F1.py:13: RuntimeWarning: divide by zero encountered in scalar divide
   guide_matrix[i][j] = distance_matrix[i][j] / nearest_distance * (1 + centrality_penalty)
   Turn 90: P2 used learning
     Summary: Combined nearest distances and vertex centrality for edge penalization.
@@ -745,22 +745,22 @@ ValueError: setting an array element with a sequence.
     Summary: Introduced dual-penalty based on average and maximum distances to enhance guidance.
     Improvement: -0.20%
 [EVAL WARNING] Traceback (most recent call last):
-  File "/home/fool/Local/MOTIF/problems/tsp_gls/eval.py", line 130, in <module>
+  File "problems/tsp_gls/eval.py", line 130, in <module>
     main(mode)
     ~~~~^^^^^^
-  File "/home/fool/Local/MOTIF/problems/tsp_gls/eval.py", line 119, in main
+  File "problems/tsp_gls/eval.py", line 119, in main
     costs = process_file(path, PERTURBATION_MOVES, ITER_LIMIT)
-  File "/home/fool/Local/MOTIF/problems/tsp_gls/eval.py", line 73, in process_file
+  File "problems/tsp_gls/eval.py", line 73, in process_file
     result = solve_instance(coordinates, perturbation_moves, iter_limit, int(seeds[i]))
-  File "/home/fool/Local/MOTIF/problems/tsp_gls/eval.py", line 35, in solve_instance
+  File "problems/tsp_gls/eval.py", line 35, in solve_instance
     best_cost = run_tsp_gls(
         distmat=dist_matrix,
         perturbation_moves=perturbation_moves,
         iter_limit=iter_limit
     )
-  File "/home/fool/Local/MOTIF/problems/tsp_gls/gls.py", line 180, in run_tsp_gls
+  File "problems/tsp_gls/gls.py", line 180, in run_tsp_gls
     guide = generate_guide_matrix(distmat.copy())
-  File "/home/fool/Local/MOTIF/problems/tsp_gls/F1.py", line 13, in generate_guide_matrix
+  File "problems/tsp_gls/F1.py", line 13, in generate_guide_matrix
     guide_matrix[i][j] = distance * (1 + (2 * (average_distance := (avg_nearby_distance / distance))) if average_distance > 1 else 0)
                                                                                                          ^^^^^^^^^^^^^^^^
 UnboundLocalError: cannot access local variable 'average_distance' where it is not associated with a value
@@ -800,7 +800,7 @@ UnboundLocalError: cannot access local variable 'average_distance' where it is n
   Turn 153: P1 used learning
     Summary: Enhanced edge scoring based on nearest neighbors and average distances.
     Improvement: 0.00%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_gls/F1.py:13: RuntimeWarning: divide by zero encountered in scalar divide
+[EVAL WARNING] problems/tsp_gls/F1.py:13: RuntimeWarning: divide by zero encountered in scalar divide
   penalty = (nearest_distance / avg_distance) + (distance / nearest_distance)
   Turn 154: P1 used counter
     Summary: Enhanced guide-matrix heuristic by incorporating comprehensive critical edge analysis.
@@ -859,7 +859,7 @@ UnboundLocalError: cannot access local variable 'average_distance' where it is n
   Turn 168: P1 used learning
     Summary: Enhanced guide matrix by integrating average distance and stronger edge penalties.
     Improvement: 0.00%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_gls/F1.py:6: RuntimeWarning: invalid value encountered in multiply
+[EVAL WARNING] problems/tsp_gls/F1.py:6: RuntimeWarning: invalid value encountered in multiply
   avg_distances = np.mean(distance_matrix + np.inf * (distance_matrix == np.inf), axis=1)
   Turn 169: P1 used counter
     Summary: Dynamic penalty system based on average critical edges and logarithmic adjustments.

@@ -307,19 +307,19 @@ Outer iterations: 20
     Summary: Enhanced heuristic combining proximity and decay factor for edge selection.
     Improvement: -0.60%
 [EVAL WARNING] Traceback (most recent call last):
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 52, in <module>
+  File "problems/tsp_aco/eval.py", line 52, in <module>
     main(mode)
     ~~~~^^^^^^
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 43, in main
+  File "problems/tsp_aco/eval.py", line 43, in main
     costs = process_file(path, n_ants=N_ANTS, n_iter=N_ITER)
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 18, in process_file
+  File "problems/tsp_aco/eval.py", line 18, in process_file
     results.append(eval_instance(data[i], n_ants, n_iter, int(seeds[i])))
                    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 9, in eval_instance
+  File "problems/tsp_aco/eval.py", line 9, in eval_instance
     return run_tsp_aco(D, n_ants, n_iter, seed)
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/aco.py", line 80, in run_tsp_aco
+  File "problems/tsp_aco/aco.py", line 80, in run_tsp_aco
     paths = constructive_path(n_cities, n_ants, probs, seed=rng_seed)
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/aco.py", line 50, in constructive_path
+  File "problems/tsp_aco/aco.py", line 50, in constructive_path
     paths[step] = next_city
     ~~~~~^^^^^^
 ValueError: could not broadcast input array from shape (50,50) into shape (50,)
@@ -329,7 +329,7 @@ ValueError: could not broadcast input array from shape (50,50) into shape (50,)
   Turn 25: P1 used learning
     Summary: Enhanced heuristic by combining proximity and pheromone based on average distances.
     Improvement: -0.75%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
+[EVAL WARNING] problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
   transition_weights = np.power(pheromone, alpha) * np.power(heuristic, beta)
   Turn 26: P2 used counter
     Summary: Enhanced heuristic combines minimum and average distances for better edge selection.
@@ -581,19 +581,19 @@ ValueError: could not broadcast input array from shape (50,50) into shape (50,)
     Summary: Enhanced heuristic by emphasizing relative distances and average distance dynamics.
     Improvement: -0.72%
 [EVAL WARNING] Traceback (most recent call last):
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 52, in <module>
+  File "problems/tsp_aco/eval.py", line 52, in <module>
     main(mode)
     ~~~~^^^^^^
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 43, in main
+  File "problems/tsp_aco/eval.py", line 43, in main
     costs = process_file(path, n_ants=N_ANTS, n_iter=N_ITER)
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 18, in process_file
+  File "problems/tsp_aco/eval.py", line 18, in process_file
     results.append(eval_instance(data[i], n_ants, n_iter, int(seeds[i])))
                    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 9, in eval_instance
+  File "problems/tsp_aco/eval.py", line 9, in eval_instance
     return run_tsp_aco(D, n_ants, n_iter, seed)
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/aco.py", line 88, in run_tsp_aco
+  File "problems/tsp_aco/aco.py", line 88, in run_tsp_aco
     pheromone = update_pheromone(pheromone, paths, costs, it, n_iterations)
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/F3.py", line 20, in update_pheromone
+  File "problems/tsp_aco/F3.py", line 20, in update_pheromone
     pheromone[c, n] += deposit
     ~~~~~~~~~^^^^^^
 IndexError: index 16 is out of bounds for axis 1 with size 1
@@ -630,7 +630,7 @@ IndexError: index 16 is out of bounds for axis 1 with size 1
   Turn 41: P1 used learning
     Summary: Enhanced pheromone update using min and avg costs for stronger path reinforcement.
     Improvement: -0.58%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
+[EVAL WARNING] problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
   transition_weights = np.power(pheromone, alpha) * np.power(heuristic, beta)
   Turn 42: P2 used learning
     Summary: Enhanced dynamic decay with optimized deposit adjustments for better exploration.
@@ -692,9 +692,9 @@ IndexError: index 16 is out of bounds for axis 1 with size 1
   Turn 47: P1 used learning
     Summary: Dynamic adjustment of pheromone and heuristic influences for improved transition weights.
     Improvement: -1.31%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F2.py:11: RuntimeWarning: divide by zero encountered in power
+[EVAL WARNING] problems/tsp_aco/F2.py:11: RuntimeWarning: divide by zero encountered in power
   transition_weights = np.power(pheromone, alpha) * np.power(heuristic, beta)
-/home/fool/Local/MOTIF/problems/tsp_aco/F2.py:13: RuntimeWarning: invalid value encountered in divide
+problems/tsp_aco/F2.py:13: RuntimeWarning: invalid value encountered in divide
   return transition_weights / (np.sum(transition_weights) + 1e-10)
   Turn 48: P2 used innovation
     Summary: Dynamic scaling of pheromone and heuristic weights using sigmoids.
@@ -722,25 +722,25 @@ IndexError: index 16 is out of bounds for axis 1 with size 1
   Turn 51: P2 used learning
     Summary: Enhanced heuristic integrating proximity, scaling and normalization.
     Improvement: -0.28%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
+[EVAL WARNING] problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
   transition_weights = (pheromone ** alpha) * (heuristic ** beta)
   Turn 52: P2 used innovation
     Summary: Dynamic heuristic based on average distance and connectivity improves edge selection.
     Improvement: -257.09%
 [EVAL WARNING] Traceback (most recent call last):
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 52, in <module>
+  File "problems/tsp_aco/eval.py", line 52, in <module>
     main(mode)
     ~~~~^^^^^^
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 43, in main
+  File "problems/tsp_aco/eval.py", line 43, in main
     costs = process_file(path, n_ants=N_ANTS, n_iter=N_ITER)
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 18, in process_file
+  File "problems/tsp_aco/eval.py", line 18, in process_file
     results.append(eval_instance(data[i], n_ants, n_iter, int(seeds[i])))
                    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 9, in eval_instance
+  File "problems/tsp_aco/eval.py", line 9, in eval_instance
     return run_tsp_aco(D, n_ants, n_iter, seed)
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/aco.py", line 88, in run_tsp_aco
+  File "problems/tsp_aco/aco.py", line 88, in run_tsp_aco
     pheromone = update_pheromone(pheromone, paths, costs, it, n_iterations)
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/F3.py", line 20, in update_pheromone
+  File "problems/tsp_aco/F3.py", line 20, in update_pheromone
     pheromone[c, n] += deposit
     ~~~~~~~~~^^^^^^
 IndexError: index 16 is out of bounds for axis 1 with size 1
@@ -757,19 +757,19 @@ IndexError: index 16 is out of bounds for axis 1 with size 1
     Summary: Improved heuristic by incorporating edge connectivity into proximity calculations.
     Improvement: -2.11%
 [EVAL WARNING] Traceback (most recent call last):
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 52, in <module>
+  File "problems/tsp_aco/eval.py", line 52, in <module>
     main(mode)
     ~~~~^^^^^^
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 43, in main
+  File "problems/tsp_aco/eval.py", line 43, in main
     costs = process_file(path, n_ants=N_ANTS, n_iter=N_ITER)
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 18, in process_file
+  File "problems/tsp_aco/eval.py", line 18, in process_file
     results.append(eval_instance(data[i], n_ants, n_iter, int(seeds[i])))
                    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 9, in eval_instance
+  File "problems/tsp_aco/eval.py", line 9, in eval_instance
     return run_tsp_aco(D, n_ants, n_iter, seed)
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/aco.py", line 80, in run_tsp_aco
+  File "problems/tsp_aco/aco.py", line 80, in run_tsp_aco
     paths = constructive_path(n_cities, n_ants, probs, seed=rng_seed)
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/aco.py", line 50, in constructive_path
+  File "problems/tsp_aco/aco.py", line 50, in constructive_path
     paths[step] = next_city
     ~~~~~^^^^^^
 ValueError: could not broadcast input array from shape (50,50) into shape (50,)
@@ -934,7 +934,7 @@ ValueError: could not broadcast input array from shape (50,50) into shape (50,)
   Turn 63: P2 used learning
     Summary: Enhanced heuristic using proximity and decay for edge selection.
     Improvement: -0.47%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
+[EVAL WARNING] problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
   transition_weights = (pheromone ** alpha) * (heuristic ** beta)
   Turn 64: P2 used innovation
     Summary: Hybrid heuristic based on distance and connectivity for better edge selection.

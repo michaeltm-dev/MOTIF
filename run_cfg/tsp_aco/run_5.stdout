@@ -435,7 +435,7 @@ Outer iterations: 20
   Turn 36: P1 used learning
     Summary: Combined inverse distances with connectivity and a scaling factor.
     Improvement: -1.92%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F1.py:5: RuntimeWarning: invalid value encountered in multiply
+[EVAL WARNING] problems/tsp_aco/F1.py:5: RuntimeWarning: invalid value encountered in multiply
   min_distances = np.min(distances + np.eye(n) * np.inf, axis=1)  # Avoid self-loop
   Turn 37: P2 used innovation
     Summary: Introduced a new heuristic based on inverse distances and minimum city proximity.
@@ -513,26 +513,26 @@ Outer iterations: 20
     Summary: Enhanced heuristic by incorporating edge centrality for better initialization.
     Improvement: -1.92%
 [EVAL WARNING] Traceback (most recent call last):
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 52, in <module>
+  File "problems/tsp_aco/eval.py", line 52, in <module>
     main(mode)
     ~~~~^^^^^^
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 43, in main
+  File "problems/tsp_aco/eval.py", line 43, in main
     costs = process_file(path, n_ants=N_ANTS, n_iter=N_ITER)
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 18, in process_file
+  File "problems/tsp_aco/eval.py", line 18, in process_file
     results.append(eval_instance(data[i], n_ants, n_iter, int(seeds[i])))
                    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 9, in eval_instance
+  File "problems/tsp_aco/eval.py", line 9, in eval_instance
     return run_tsp_aco(D, n_ants, n_iter, seed)
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/aco.py", line 72, in run_tsp_aco
+  File "problems/tsp_aco/aco.py", line 72, in run_tsp_aco
     heuristic, pheromone = initialize(distances.copy())
                            ~~~~~~~~~~^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/F1.py", line 5, in initialize
+  File "problems/tsp_aco/F1.py", line 5, in initialize
     min_distances = np.min(distances[np.isfinite(distances)], axis=1) + 1e-10
                     ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/.venv/lib/python3.13/site-packages/numpy/core/fromnumeric.py", line 2953, in min
+  File ".venv/lib/python3.13/site-packages/numpy/core/fromnumeric.py", line 2953, in min
     return _wrapreduction(a, np.minimum, 'min', axis, None, out,
                           keepdims=keepdims, initial=initial, where=where)
-  File "/home/fool/Local/MOTIF/.venv/lib/python3.13/site-packages/numpy/core/fromnumeric.py", line 88, in _wrapreduction
+  File ".venv/lib/python3.13/site-packages/numpy/core/fromnumeric.py", line 88, in _wrapreduction
     return ufunc.reduce(obj, axis, dtype, out, **passkwargs)
            ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 numpy.exceptions.AxisError: axis 1 is out of bounds for array of dimension 1
@@ -549,20 +549,20 @@ numpy.exceptions.AxisError: axis 1 is out of bounds for array of dimension 1
     Summary: Introduced a distance normalization and connectivity-based heuristic.
     Improvement: -1.45%
 [EVAL WARNING] Traceback (most recent call last):
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 52, in <module>
+  File "problems/tsp_aco/eval.py", line 52, in <module>
     main(mode)
     ~~~~^^^^^^
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 43, in main
+  File "problems/tsp_aco/eval.py", line 43, in main
     costs = process_file(path, n_ants=N_ANTS, n_iter=N_ITER)
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 18, in process_file
+  File "problems/tsp_aco/eval.py", line 18, in process_file
     results.append(eval_instance(data[i], n_ants, n_iter, int(seeds[i])))
                    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 9, in eval_instance
+  File "problems/tsp_aco/eval.py", line 9, in eval_instance
     return run_tsp_aco(D, n_ants, n_iter, seed)
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/aco.py", line 72, in run_tsp_aco
+  File "problems/tsp_aco/aco.py", line 72, in run_tsp_aco
     heuristic, pheromone = initialize(distances.copy())
                            ~~~~~~~~~~^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/F1.py", line 7, in initialize
+  File "problems/tsp_aco/F1.py", line 7, in initialize
     weighted_influence = average_distances / (connectivity + 1e-9)
                          ^^^^^^^^^^^^^^^^^
 NameError: name 'average_distances' is not defined. Did you mean: 'avg_distance'?
@@ -594,11 +594,11 @@ NameError: name 'average_distances' is not defined. Did you mean: 'avg_distance'
     Summary: Dynamic decay based on tour quality and enhanced pheromone deposit strategy.
     Improvement: -1.43%
 [EVAL WARNING] Traceback (most recent call last):
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 5, in <module>
+  File "problems/tsp_aco/eval.py", line 5, in <module>
     from aco import run_tsp_aco
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/aco.py", line 4, in <module>
+  File "problems/tsp_aco/aco.py", line 4, in <module>
     from F3 import update_pheromone
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/F3.py", line 12
+  File "problems/tsp_aco/F3.py", line 12
     pheromone *= decay
 IndentationError: unexpected indent
   Turn 33: P1 used innovation
@@ -651,7 +651,7 @@ IndentationError: unexpected indent
   Turn 44: P2 used learning
     Summary: Improved transition weight normalization using max values and refined parameters.
     Improvement: -0.95%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
+[EVAL WARNING] problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
   weights = np.log(pheromone + 1e-10) ** alpha * np.log(heuristic + 1e-10) ** beta
   Turn 45: P2 used innovation
     Summary: Applied logarithmic transformation to pheromone and heuristic values.
@@ -740,7 +740,7 @@ IndentationError: unexpected indent
   Turn 55: P2 used learning
     Summary: Enhanced edge selection through squared connectivity and distance integration.
     Improvement: -3.26%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
+[EVAL WARNING] problems/tsp_aco/F2.py:11: RuntimeWarning: invalid value encountered in power
   transition_weights = np.power(pheromone, alpha) * np.power(heuristic, beta)
   Turn 56: P2 used innovation
     Summary: Introduced enhanced heuristic with inverse distance and logarithmic scale.
@@ -863,20 +863,20 @@ IndentationError: unexpected indent
     Summary: Enhanced heuristic combines squared inverse distances with connectivity and normalizes pheromone.
     Improvement: -3.30%
 [EVAL WARNING] Traceback (most recent call last):
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 52, in <module>
+  File "problems/tsp_aco/eval.py", line 52, in <module>
     main(mode)
     ~~~~^^^^^^
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 43, in main
+  File "problems/tsp_aco/eval.py", line 43, in main
     costs = process_file(path, n_ants=N_ANTS, n_iter=N_ITER)
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 18, in process_file
+  File "problems/tsp_aco/eval.py", line 18, in process_file
     results.append(eval_instance(data[i], n_ants, n_iter, int(seeds[i])))
                    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/eval.py", line 9, in eval_instance
+  File "problems/tsp_aco/eval.py", line 9, in eval_instance
     return run_tsp_aco(D, n_ants, n_iter, seed)
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/aco.py", line 72, in run_tsp_aco
+  File "problems/tsp_aco/aco.py", line 72, in run_tsp_aco
     heuristic, pheromone = initialize(distances.copy())
                            ~~~~~~~~~~^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/problems/tsp_aco/F1.py", line 6, in initialize
+  File "problems/tsp_aco/F1.py", line 6, in initialize
     local_density = np.sum(df[distances < np.inf], axis=1)
                            ^^
 NameError: name 'df' is not defined

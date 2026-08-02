@@ -44,9 +44,9 @@ Outer iterations: 20
   Turn 3: P1 used innovation
     Summary: Enhanced heuristic combines demand and distance for better route optimization.
     Improvement: -136.58%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/cvrp_aco/F1.py:5: RuntimeWarning: divide by zero encountered in divide
+[EVAL WARNING] problems/cvrp_aco/F1.py:5: RuntimeWarning: divide by zero encountered in divide
   heuristic = (capacity / demands) / distances
-/home/fool/Local/MOTIF/problems/cvrp_aco/F1.py:7: RuntimeWarning: invalid value encountered in divide
+problems/cvrp_aco/F1.py:7: RuntimeWarning: invalid value encountered in divide
   heuristic = heuristic / np.max(heuristic)  # Normalize heuristic
   Turn 4: P2 used innovation
     Summary: Introduced demand-capacity ratio for improved route desirability.
@@ -194,19 +194,19 @@ Outer iterations: 20
     Summary: Dynamic pheromone decay and adaptive deposit improve exploration.
     Improvement: -2.21%
 [EVAL WARNING] Traceback (most recent call last):
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 110, in <module>
+  File "problems/cvrp_aco/eval.py", line 110, in <module>
     main(mode)
     ~~~~^^^^^^
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 102, in main
+  File "problems/cvrp_aco/eval.py", line 102, in main
     costs = process_file(path, n_ants=N_ANTS, n_iter=N_ITERATIONS)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 72, in process_file
+  File "problems/cvrp_aco/eval.py", line 72, in process_file
     results.append(eval_instance(node_positions[i], demands[i], CAPACITY, n_ants, n_iter, int(seeds[i])))
                    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 43, in eval_instance
+  File "problems/cvrp_aco/eval.py", line 43, in eval_instance
     return run_cvrp_aco(dist_mat, demands, coords, capacity, n_ants, n_iter)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/aco.py", line 131, in run_cvrp_aco
+  File "problems/cvrp_aco/aco.py", line 131, in run_cvrp_aco
     pheromone = update_pheromone(pheromone, solutions, costs.tolist(), iteration, n_iterations)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/F3.py", line 6, in update_pheromone
+  File "problems/cvrp_aco/F3.py", line 6, in update_pheromone
     total_deposit = np.sum(1.0 / costs)
                            ~~~~^~~~~~~
 TypeError: unsupported operand type(s) for /: 'float' and 'list'
@@ -228,35 +228,35 @@ TypeError: unsupported operand type(s) for /: 'float' and 'list'
 
 [STRATEGY] Running 10 iterations on F2
   Current baseline: 91.328266
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/cvrp_aco/F2.py:9: RuntimeWarning: divide by zero encountered in divide
+[EVAL WARNING] problems/cvrp_aco/F2.py:9: RuntimeWarning: divide by zero encountered in divide
   dynamic_heuristic = heuristic / exploration_factor
-/home/fool/Local/MOTIF/problems/cvrp_aco/F2.py:11: RuntimeWarning: invalid value encountered in divide
+problems/cvrp_aco/F2.py:11: RuntimeWarning: invalid value encountered in divide
   probabilities /= np.sum(probabilities)  # Normalize probabilities
 Traceback (most recent call last):
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 110, in <module>
+  File "problems/cvrp_aco/eval.py", line 110, in <module>
     main(mode)
     ~~~~^^^^^^
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 102, in main
+  File "problems/cvrp_aco/eval.py", line 102, in main
     costs = process_file(path, n_ants=N_ANTS, n_iter=N_ITERATIONS)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 72, in process_file
+  File "problems/cvrp_aco/eval.py", line 72, in process_file
     results.append(eval_instance(node_positions[i], demands[i], CAPACITY, n_ants, n_iter, int(seeds[i])))
                    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 43, in eval_instance
+  File "problems/cvrp_aco/eval.py", line 43, in eval_instance
     return run_cvrp_aco(dist_mat, demands, coords, capacity, n_ants, n_iter)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/aco.py", line 115, in run_cvrp_aco
+  File "problems/cvrp_aco/aco.py", line 115, in run_cvrp_aco
     solutions = construct_solutions(
         distances, demands, heuristic, pheromone, capacity, n_ants, iteration, n_iterations
     )
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/aco.py", line 55, in construct_solutions
+  File "problems/cvrp_aco/aco.py", line 55, in construct_solutions
     next_node = np.random.choice(feasible_indices, p=normalized_probs)
   File "numpy/random/mtrand.pyx", line 971, in numpy.random.mtrand.RandomState.choice
 ValueError: probabilities contain NaN
   Turn 11: P1 used counter
     Summary: Enhanced exploration with logarithmic adjustment for heuristic scaling.
     Improvement: 0.00%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/cvrp_aco/F2.py:10: RuntimeWarning: overflow encountered in power
+[EVAL WARNING] problems/cvrp_aco/F2.py:10: RuntimeWarning: overflow encountered in power
   probabilities = np.power(adjusted_pheromone, alpha) * np.power(dynamic_heuristic, beta)
-/home/fool/Local/MOTIF/problems/cvrp_aco/F2.py:11: RuntimeWarning: invalid value encountered in divide
+problems/cvrp_aco/F2.py:11: RuntimeWarning: invalid value encountered in divide
   probabilities /= np.sum(probabilities)  # Normalize probabilities
   Turn 12: P2 used learning
     Summary: Implemented dynamic alpha and beta to enhance stability and exploration.
@@ -304,20 +304,20 @@ ValueError: probabilities contain NaN
     Summary: Introduced a new heuristic based on distance and capacity utilization.
     Improvement: -1.71%
 [EVAL WARNING] Traceback (most recent call last):
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 110, in <module>
+  File "problems/cvrp_aco/eval.py", line 110, in <module>
     main(mode)
     ~~~~^^^^^^
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 102, in main
+  File "problems/cvrp_aco/eval.py", line 102, in main
     costs = process_file(path, n_ants=N_ANTS, n_iter=N_ITERATIONS)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 72, in process_file
+  File "problems/cvrp_aco/eval.py", line 72, in process_file
     results.append(eval_instance(node_positions[i], demands[i], CAPACITY, n_ants, n_iter, int(seeds[i])))
                    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 43, in eval_instance
+  File "problems/cvrp_aco/eval.py", line 43, in eval_instance
     return run_cvrp_aco(dist_mat, demands, coords, capacity, n_ants, n_iter)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/aco.py", line 95, in run_cvrp_aco
+  File "problems/cvrp_aco/aco.py", line 95, in run_cvrp_aco
     heuristic, pheromone = initialize(distances.copy(), demands.copy(), coords.copy(), capacity)
                            ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/F1.py", line 11, in initialize
+  File "problems/cvrp_aco/F1.py", line 11, in initialize
     heuristic[i, j] = (1.0 / distances[i, j]) * (capacity - demand_sum) * 0.5 + (1.0 / distance[i]) * (1.0 / distance[j])
                                                                                        ^^^^^^^^
 NameError: name 'distance' is not defined. Did you mean: 'distances'?
@@ -333,7 +333,7 @@ NameError: name 'distance' is not defined. Did you mean: 'distances'?
   Turn 16: P1 used innovation
     Summary: Introduced a heuristic combining demand and average distance for better node prioritization.
     Improvement: -141.77%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/cvrp_aco/F1.py:10: RuntimeWarning: divide by zero encountered in scalar divide
+[EVAL WARNING] problems/cvrp_aco/F1.py:10: RuntimeWarning: divide by zero encountered in scalar divide
   heuristic[i, j] = score / demands[j]
   Turn 17: P1 used innovation
     Summary: Enhanced heuristic by incorporating remaining capacity and proximity weighting.
@@ -470,7 +470,7 @@ NameError: name 'distance' is not defined. Did you mean: 'distances'?
   Turn 29: P1 used counter
     Summary: Enhanced heuristic incorporating demand-to-capacity ratio for better scoring.
     Improvement: -128.75%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/cvrp_aco/F1.py:8: RuntimeWarning: divide by zero encountered in scalar divide
+[EVAL WARNING] problems/cvrp_aco/F1.py:8: RuntimeWarning: divide by zero encountered in scalar divide
   heuristic[i, j] = (1.0 / distances[i, j]) * (1 / max(demands[i], demands[j]))
   Turn 30: P1 used learning
     Summary: Enhanced initialization heuristic by incorporating demand ratios.
@@ -660,26 +660,26 @@ NameError: name 'distance' is not defined. Did you mean: 'distances'?
   Turn 41: P2 used learning
     Summary: Balanced pheromone decay with dynamic heuristic scaling improved probabilities.
     Improvement: -3.01%
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/cvrp_aco/F2.py:11: RuntimeWarning: overflow encountered in exp
+[EVAL WARNING] problems/cvrp_aco/F2.py:11: RuntimeWarning: overflow encountered in exp
   probabilities = np.exp(scores) / np.sum(np.exp(scores))  # Softmax normalization
-/home/fool/Local/MOTIF/problems/cvrp_aco/F2.py:11: RuntimeWarning: invalid value encountered in divide
+problems/cvrp_aco/F2.py:11: RuntimeWarning: invalid value encountered in divide
   probabilities = np.exp(scores) / np.sum(np.exp(scores))  # Softmax normalization
 Traceback (most recent call last):
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 110, in <module>
+  File "problems/cvrp_aco/eval.py", line 110, in <module>
     main(mode)
     ~~~~^^^^^^
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 102, in main
+  File "problems/cvrp_aco/eval.py", line 102, in main
     costs = process_file(path, n_ants=N_ANTS, n_iter=N_ITERATIONS)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 72, in process_file
+  File "problems/cvrp_aco/eval.py", line 72, in process_file
     results.append(eval_instance(node_positions[i], demands[i], CAPACITY, n_ants, n_iter, int(seeds[i])))
                    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 43, in eval_instance
+  File "problems/cvrp_aco/eval.py", line 43, in eval_instance
     return run_cvrp_aco(dist_mat, demands, coords, capacity, n_ants, n_iter)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/aco.py", line 115, in run_cvrp_aco
+  File "problems/cvrp_aco/aco.py", line 115, in run_cvrp_aco
     solutions = construct_solutions(
         distances, demands, heuristic, pheromone, capacity, n_ants, iteration, n_iterations
     )
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/aco.py", line 55, in construct_solutions
+  File "problems/cvrp_aco/aco.py", line 55, in construct_solutions
     next_node = np.random.choice(feasible_indices, p=normalized_probs)
   File "numpy/random/mtrand.pyx", line 971, in numpy.random.mtrand.RandomState.choice
 ValueError: probabilities contain NaN
@@ -738,19 +738,19 @@ ValueError: probabilities contain NaN
     Summary: Implemented an adaptive decay and aggressive deposit based on best solution.
     Improvement: -2.05%
 [EVAL WARNING] Traceback (most recent call last):
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 110, in <module>
+  File "problems/cvrp_aco/eval.py", line 110, in <module>
     main(mode)
     ~~~~^^^^^^
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 102, in main
+  File "problems/cvrp_aco/eval.py", line 102, in main
     costs = process_file(path, n_ants=N_ANTS, n_iter=N_ITERATIONS)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 72, in process_file
+  File "problems/cvrp_aco/eval.py", line 72, in process_file
     results.append(eval_instance(node_positions[i], demands[i], CAPACITY, n_ants, n_iter, int(seeds[i])))
                    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 43, in eval_instance
+  File "problems/cvrp_aco/eval.py", line 43, in eval_instance
     return run_cvrp_aco(dist_mat, demands, coords, capacity, n_ants, n_iter)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/aco.py", line 131, in run_cvrp_aco
+  File "problems/cvrp_aco/aco.py", line 131, in run_cvrp_aco
     pheromone = update_pheromone(pheromone, solutions, costs.tolist(), iteration, n_iterations)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/F3.py", line 7, in update_pheromone
+  File "problems/cvrp_aco/F3.py", line 7, in update_pheromone
     norm_costs = min_cost / (costs + 1e-10)
                              ~~~~~~^~~~~~~
 TypeError: can only concatenate list (not "float") to list
@@ -785,11 +785,11 @@ TypeError: can only concatenate list (not "float") to list
     Summary: Enhanced pheromone update with strong depot reinforcement and optimized decay.
     Improvement: -1.70%
 [EVAL WARNING] Traceback (most recent call last):
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 5, in <module>
+  File "problems/cvrp_aco/eval.py", line 5, in <module>
     from aco import run_cvrp_aco
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/aco.py", line 4, in <module>
+  File "problems/cvrp_aco/aco.py", line 4, in <module>
     from F3 import update_pheromone
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/F3.py", line 8
+  File "problems/cvrp_aco/F3.py", line 8
     deposit = (1.0 / (cost + 1e-10)) * (1 + (np.std(costs) / (np.mean(costs) + 1e-10))) * (len(solution) / len(solutions)))
                                                                                                                           ^
 SyntaxError: unmatched ')'
@@ -890,19 +890,19 @@ SyntaxError: unmatched ')'
     Summary: Enhanced heuristic prioritizes nodes using demand-adjusted distance factors.
     Improvement: -27.49%
 [EVAL WARNING] Traceback (most recent call last):
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 110, in <module>
+  File "problems/cvrp_aco/eval.py", line 110, in <module>
     main(mode)
     ~~~~^^^^^^
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 102, in main
+  File "problems/cvrp_aco/eval.py", line 102, in main
     costs = process_file(path, n_ants=N_ANTS, n_iter=N_ITERATIONS)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 72, in process_file
+  File "problems/cvrp_aco/eval.py", line 72, in process_file
     results.append(eval_instance(node_positions[i], demands[i], CAPACITY, n_ants, n_iter, int(seeds[i])))
                    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 43, in eval_instance
+  File "problems/cvrp_aco/eval.py", line 43, in eval_instance
     return run_cvrp_aco(dist_mat, demands, coords, capacity, n_ants, n_iter)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/aco.py", line 131, in run_cvrp_aco
+  File "problems/cvrp_aco/aco.py", line 131, in run_cvrp_aco
     pheromone = update_pheromone(pheromone, solutions, costs.tolist(), iteration, n_iterations)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/F3.py", line 13, in update_pheromone
+  File "problems/cvrp_aco/F3.py", line 13, in update_pheromone
     pheromone[route[j], route[j + 1]] += deposit
     ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
 IndexError: invalid index to scalar variable.
@@ -958,19 +958,19 @@ IndexError: invalid index to scalar variable.
     Summary: Improved evaporation and deposit scaling for better exploration and exploitation.
     Improvement: -2.95%
 [EVAL WARNING] Traceback (most recent call last):
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 110, in <module>
+  File "problems/cvrp_aco/eval.py", line 110, in <module>
     main(mode)
     ~~~~^^^^^^
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 102, in main
+  File "problems/cvrp_aco/eval.py", line 102, in main
     costs = process_file(path, n_ants=N_ANTS, n_iter=N_ITERATIONS)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 72, in process_file
+  File "problems/cvrp_aco/eval.py", line 72, in process_file
     results.append(eval_instance(node_positions[i], demands[i], CAPACITY, n_ants, n_iter, int(seeds[i])))
                    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 43, in eval_instance
+  File "problems/cvrp_aco/eval.py", line 43, in eval_instance
     return run_cvrp_aco(dist_mat, demands, coords, capacity, n_ants, n_iter)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/aco.py", line 131, in run_cvrp_aco
+  File "problems/cvrp_aco/aco.py", line 131, in run_cvrp_aco
     pheromone = update_pheromone(pheromone, solutions, costs.tolist(), iteration, n_iterations)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/F3.py", line 8, in update_pheromone
+  File "problems/cvrp_aco/F3.py", line 8, in update_pheromone
     cost = np.sum(costs) / costs.size
                            ^^^^^^^^^^
 AttributeError: 'list' object has no attribute 'size'

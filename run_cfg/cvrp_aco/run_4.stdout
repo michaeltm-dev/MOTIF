@@ -165,26 +165,26 @@ Outer iterations: 20
 
 [STRATEGY] Running 10 iterations on F2
   Current baseline: 91.710974
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/cvrp_aco/F2.py:9: RuntimeWarning: overflow encountered in exp
+[EVAL WARNING] problems/cvrp_aco/F2.py:9: RuntimeWarning: overflow encountered in exp
   probabilities = np.exp(scores) / np.sum(np.exp(scores))  # Softmax normalization
-/home/fool/Local/MOTIF/problems/cvrp_aco/F2.py:9: RuntimeWarning: invalid value encountered in divide
+problems/cvrp_aco/F2.py:9: RuntimeWarning: invalid value encountered in divide
   probabilities = np.exp(scores) / np.sum(np.exp(scores))  # Softmax normalization
 Traceback (most recent call last):
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 110, in <module>
+  File "problems/cvrp_aco/eval.py", line 110, in <module>
     main(mode)
     ~~~~^^^^^^
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 102, in main
+  File "problems/cvrp_aco/eval.py", line 102, in main
     costs = process_file(path, n_ants=N_ANTS, n_iter=N_ITERATIONS)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 72, in process_file
+  File "problems/cvrp_aco/eval.py", line 72, in process_file
     results.append(eval_instance(node_positions[i], demands[i], CAPACITY, n_ants, n_iter, int(seeds[i])))
                    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 43, in eval_instance
+  File "problems/cvrp_aco/eval.py", line 43, in eval_instance
     return run_cvrp_aco(dist_mat, demands, coords, capacity, n_ants, n_iter)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/aco.py", line 115, in run_cvrp_aco
+  File "problems/cvrp_aco/aco.py", line 115, in run_cvrp_aco
     solutions = construct_solutions(
         distances, demands, heuristic, pheromone, capacity, n_ants, iteration, n_iterations
     )
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/aco.py", line 55, in construct_solutions
+  File "problems/cvrp_aco/aco.py", line 55, in construct_solutions
     next_node = np.random.choice(feasible_indices, p=normalized_probs)
   File "numpy/random/mtrand.pyx", line 971, in numpy.random.mtrand.RandomState.choice
 ValueError: probabilities contain NaN
@@ -230,26 +230,26 @@ ValueError: probabilities contain NaN
 
 [STRATEGY] Running 10 iterations on F3
   Current baseline: 91.710974
-[EVAL WARNING] /home/fool/Local/MOTIF/problems/cvrp_aco/F2.py:7: RuntimeWarning: overflow encountered in multiply
+[EVAL WARNING] problems/cvrp_aco/F2.py:7: RuntimeWarning: overflow encountered in multiply
   scores = np.power(pheromone, alpha) * np.power(heuristic, beta) * decay
-/home/fool/Local/MOTIF/problems/cvrp_aco/F2.py:8: RuntimeWarning: invalid value encountered in divide
+problems/cvrp_aco/F2.py:8: RuntimeWarning: invalid value encountered in divide
   probabilities = scores / np.sum(scores)
 Traceback (most recent call last):
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 110, in <module>
+  File "problems/cvrp_aco/eval.py", line 110, in <module>
     main(mode)
     ~~~~^^^^^^
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 102, in main
+  File "problems/cvrp_aco/eval.py", line 102, in main
     costs = process_file(path, n_ants=N_ANTS, n_iter=N_ITERATIONS)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 72, in process_file
+  File "problems/cvrp_aco/eval.py", line 72, in process_file
     results.append(eval_instance(node_positions[i], demands[i], CAPACITY, n_ants, n_iter, int(seeds[i])))
                    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 43, in eval_instance
+  File "problems/cvrp_aco/eval.py", line 43, in eval_instance
     return run_cvrp_aco(dist_mat, demands, coords, capacity, n_ants, n_iter)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/aco.py", line 115, in run_cvrp_aco
+  File "problems/cvrp_aco/aco.py", line 115, in run_cvrp_aco
     solutions = construct_solutions(
         distances, demands, heuristic, pheromone, capacity, n_ants, iteration, n_iterations
     )
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/aco.py", line 55, in construct_solutions
+  File "problems/cvrp_aco/aco.py", line 55, in construct_solutions
     next_node = np.random.choice(feasible_indices, p=normalized_probs)
   File "numpy/random/mtrand.pyx", line 971, in numpy.random.mtrand.RandomState.choice
 ValueError: probabilities contain NaN
@@ -260,11 +260,11 @@ ValueError: probabilities contain NaN
     Summary: Implemented stronger decay and enhanced depot transition pheromone deposits.
     Improvement: -1.77%
 [EVAL WARNING] Traceback (most recent call last):
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 5, in <module>
+  File "problems/cvrp_aco/eval.py", line 5, in <module>
     from aco import run_cvrp_aco
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/aco.py", line 4, in <module>
+  File "problems/cvrp_aco/aco.py", line 4, in <module>
     from F3 import update_pheromone
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/F3.py", line 6
+  File "problems/cvrp_aco/F3.py", line 6
     pheromone *= decay
 IndentationError: unexpected indent
   Turn 13: P1 used counter
@@ -412,19 +412,19 @@ IndentationError: unexpected indent
     Summary: Enhanced pheromone update with dynamic decay and optimized deposit calculation.
     Improvement: -2.28%
 [EVAL WARNING] Traceback (most recent call last):
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 110, in <module>
+  File "problems/cvrp_aco/eval.py", line 110, in <module>
     main(mode)
     ~~~~^^^^^^
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 102, in main
+  File "problems/cvrp_aco/eval.py", line 102, in main
     costs = process_file(path, n_ants=N_ANTS, n_iter=N_ITERATIONS)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 72, in process_file
+  File "problems/cvrp_aco/eval.py", line 72, in process_file
     results.append(eval_instance(node_positions[i], demands[i], CAPACITY, n_ants, n_iter, int(seeds[i])))
                    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 43, in eval_instance
+  File "problems/cvrp_aco/eval.py", line 43, in eval_instance
     return run_cvrp_aco(dist_mat, demands, coords, capacity, n_ants, n_iter)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/aco.py", line 131, in run_cvrp_aco
+  File "problems/cvrp_aco/aco.py", line 131, in run_cvrp_aco
     pheromone = update_pheromone(pheromone, solutions, costs.tolist(), iteration, n_iterations)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/F3.py", line 11, in update_pheromone
+  File "problems/cvrp_aco/F3.py", line 11, in update_pheromone
     diversity_factor = (1 + (len(set(solution)) / max_route_length))
                                  ~~~^^^^^^^^^^
 TypeError: unhashable type: 'list'
@@ -587,19 +587,19 @@ TypeError: unhashable type: 'list'
     Summary: Improved pheromone update with balanced decay and increased deposit stability.
     Improvement: -5.24%
 [EVAL WARNING] Traceback (most recent call last):
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 110, in <module>
+  File "problems/cvrp_aco/eval.py", line 110, in <module>
     main(mode)
     ~~~~^^^^^^
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 102, in main
+  File "problems/cvrp_aco/eval.py", line 102, in main
     costs = process_file(path, n_ants=N_ANTS, n_iter=N_ITERATIONS)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 72, in process_file
+  File "problems/cvrp_aco/eval.py", line 72, in process_file
     results.append(eval_instance(node_positions[i], demands[i], CAPACITY, n_ants, n_iter, int(seeds[i])))
                    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/eval.py", line 43, in eval_instance
+  File "problems/cvrp_aco/eval.py", line 43, in eval_instance
     return run_cvrp_aco(dist_mat, demands, coords, capacity, n_ants, n_iter)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/aco.py", line 131, in run_cvrp_aco
+  File "problems/cvrp_aco/aco.py", line 131, in run_cvrp_aco
     pheromone = update_pheromone(pheromone, solutions, costs.tolist(), iteration, n_iterations)
-  File "/home/fool/Local/MOTIF/problems/cvrp_aco/F3.py", line 15, in update_pheromone
+  File "problems/cvrp_aco/F3.py", line 15, in update_pheromone
     pheromone[solution[j], solution[j + 1]] += deposit * (1.5 if solution[j] == 0 else 1.0)
     ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 IndexError: shape mismatch: indexing arrays could not be broadcast together with shapes (14,) (12,)
