@@ -1,178 +1,93 @@
-# [AAAI 2026 Oral] MOTIF: <ins>M</ins>ulti-strategy <ins>O</ins>ptimization via <ins>T</ins>urn-based <ins>I</ins>nteractive <ins>F</ins>ramework
+# MOTIF Reproducibility Audit (Critical Report)
 
-<div align="center">
+This repository README was rewritten as a reproducibility audit based on the local run artifacts in [run_cfg](run_cfg) and [results](results).
 
-[![arXiv](https://img.shields.io/badge/arXiv-2508.03929-b31b1b?style=for-the-badge&logo=arxiv)](https://arxiv.org/abs/2508.03929)
-[![Python](https://img.shields.io/badge/Python-3.10+-blue?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
-[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
+The short version: local reruns do not match the magnitude or behavior claimed by the paper figures/tables for the tested settings, and the optimization pipeline appears dominated by Phase 1 with minimal useful contribution from Phase 2.
 
-*A competitive multi-agent framework that evolves combinatorial optimization strategies through LLM-powered turn-based interactions.*
+## Scope
 
-</div>
+This report summarizes only what is observable in this workspace:
 
----
+- Run logs in [run_cfg/tsp_gls](run_cfg/tsp_gls), [run_cfg/tsp_aco](run_cfg/tsp_aco), [run_cfg/cvrp_aco](run_cfg/cvrp_aco), [run_cfg/tsp_aco_5.4_mini](run_cfg/tsp_aco_5.4_mini)
+- JSON logs in [results](results)
+- Current baseline implementations in [problems/tsp_aco](problems/tsp_aco) and [problems/cvrp_aco](problems/cvrp_aco)
+- Current execution flow in [src/controller.py](src/controller.py) and [src/final_round.py](src/final_round.py)
 
-## 📰 1. News
+## Main Findings
 
-<div align="center">
+1. Experimental setting mismatch versus paper narrative.
+- Local artifacts show 5 logged reruns for multiple tracks (for example [run_cfg/tsp_gls](run_cfg/tsp_gls), [run_cfg/tsp_aco](run_cfg/tsp_aco), [run_cfg/cvrp_aco](run_cfg/cvrp_aco)), while the referenced table/figure text is presented as 3-run summaries.
+- Optimization is evaluated in train mode (see subprocess call with train argument in [src/controller.py](src/controller.py) and [src/final_round.py](src/final_round.py)).
+- TSP train dataset generators currently hardcode 5 training instances in [problems/tsp_aco/generator.py](problems/tsp_aco/generator.py) and [problems/tsp_gls/generator.py](problems/tsp_gls/generator.py).
 
-| Date | Update |
-|:----:|:-------|
-| 🎉 **Dec. 2025** | Refactored codebase for better modularity and extensibility |
-| 🏆 **Nov. 2025** | Paper accepted for **oral presentation** at AAAI 2026! |
-| 🚀 **Aug. 2025** | Released first version of MOTIF |
+2. TSP-GLS table behavior is near-zero in local reruns.
+- Across [run_cfg/tsp_gls/run_1.stdout](run_cfg/tsp_gls/run_1.stdout), [run_cfg/tsp_gls/run_2.stdout](run_cfg/tsp_gls/run_2.stdout), [run_cfg/tsp_gls/run_3.stdout](run_cfg/tsp_gls/run_3.stdout), [run_cfg/tsp_gls/run_4.stdout](run_cfg/tsp_gls/run_4.stdout), [run_cfg/tsp_gls/run_5.stdout](run_cfg/tsp_gls/run_5.stdout), Round 1 gains are ~0.00% to 0.04%, and Final Round is usually 0.00% (one run shows 0.06%).
+- This is inconsistent with any narrative that implies broad meaningful GLS gains across sizes.
 
-</div>
+3. Figure-style improvement magnitudes are not reproduced for ACO-TSP and ACO-CVRP.
+- TSP ACO with gpt-4o-mini config: Round 1 is around 11.49% to 11.95% in [run_cfg/tsp_aco](run_cfg/tsp_aco), often below a 12% threshold.
+- TSP ACO with gpt-5.4-mini config: Round 1 is around 12.11% to 12.45% in [run_cfg/tsp_aco_5.4_mini](run_cfg/tsp_aco_5.4_mini), but Final Round remains 0.00%.
+- CVRP ACO: Round 1 is around 1.50% to 6.65% in [run_cfg/cvrp_aco](run_cfg/cvrp_aco), far from high-improvement curves such as 50% to 30% decline patterns shown in the provided figure.
 
----
+4. Phase 2 contribution is typically negligible.
+- Final Round improvements are overwhelmingly 0.00%, with rare tiny values (for example 0.01%, 0.11%, 0.21%) in [run_cfg/tsp_aco](run_cfg/tsp_aco) and [run_cfg/cvrp_aco](run_cfg/cvrp_aco).
+- This aligns with the claim that the two-phase narrative is weak in practice: most measurable gain comes from Phase 1.
 
-## 🔍 2. Overview
+5. ACO baselines are extremely naive and likely bottleneck meaningful differentiation.
+- TSP ACO baseline code in [problems/tsp_aco/F1.py](problems/tsp_aco/F1.py), [problems/tsp_aco/F2.py](problems/tsp_aco/F2.py), [problems/tsp_aco/F3.py](problems/tsp_aco/F3.py) uses simple inverse-distance heuristic, fixed alpha/beta, and basic evaporation/deposit.
+- CVRP ACO baseline code in [problems/cvrp_aco/F1.py](problems/cvrp_aco/F1.py), [problems/cvrp_aco/F2.py](problems/cvrp_aco/F2.py), [problems/cvrp_aco/F3.py](problems/cvrp_aco/F3.py) is similarly simplistic.
+- If the baseline is this weak and coarse, large claims such as expert-level strategic superiority require stronger controls and significantly better ablations.
 
-**MOTIF** is a turn-based, multi-agent framework for improving combinatorial optimization solvers by jointly evolving multiple algorithmic strategies rather than tuning a single heuristic.
+6. Model upgrade signal is weak relative to claimed framework effect.
+- Config switch from gpt-4o-mini to gpt-5.4-mini is visible in [run_cfg/tsp_aco/config.yaml](run_cfg/tsp_aco/config.yaml) and [run_cfg/tsp_aco_5.4_mini/config.yaml](run_cfg/tsp_aco_5.4_mini/config.yaml).
+- Local outcomes remain very similar in structure (Round 1 around low-teens, Phase 2 near zero), suggesting limited practical sensitivity in this setup.
 
-<div align="center">
-<img src="./assets/overview.png" alt="MOTIF Overview"/>
-</div>
+## Extracted Run Summaries
 
-### Key Features
+### TSP GLS (5 reruns)
 
-- 🎮 **Competitive-Collaborative Learning**: Two LLM agents take alternating turns to refine components
-- 📊 **Dynamic Baselines**: Performance guided by adaptive baseline comparisons
-- 🔄 **Opponent Feedback**: Each agent learns from the other's improvements
-- 🧩 **Structured Operators**: Modular prompts enable targeted strategy refinement
-- 🌐 **Broad Search Space**: Competitive dynamics encourage diverse adaptations
+- [run_cfg/tsp_gls/run_1.stdout](run_cfg/tsp_gls/run_1.stdout): Round 1 0.00%, Final Round 0.00%
+- [run_cfg/tsp_gls/run_2.stdout](run_cfg/tsp_gls/run_2.stdout): Round 1 0.04%, Final Round 0.00%
+- [run_cfg/tsp_gls/run_3.stdout](run_cfg/tsp_gls/run_3.stdout): Round 1 0.04%, Final Round 0.00%
+- [run_cfg/tsp_gls/run_4.stdout](run_cfg/tsp_gls/run_4.stdout): Round 1 0.01%, Final Round 0.06%
+- [run_cfg/tsp_gls/run_5.stdout](run_cfg/tsp_gls/run_5.stdout): Round 1 0.00%, Final Round 0.00%
 
----
+### TSP ACO with gpt-4o-mini (5 reruns)
 
-## 🚀 3. Quick Start
+- [run_cfg/tsp_aco/run_1.stdout](run_cfg/tsp_aco/run_1.stdout): Round 1 11.52%, Final Round 0.00%
+- [run_cfg/tsp_aco/run_2.stdout](run_cfg/tsp_aco/run_2.stdout): Round 1 11.95%, Final Round 0.01%
+- [run_cfg/tsp_aco/run_3.stdout](run_cfg/tsp_aco/run_3.stdout): Round 1 11.52%, Final Round 0.21%
+- [run_cfg/tsp_aco/run_4.stdout](run_cfg/tsp_aco/run_4.stdout): Round 1 11.84%, Final Round 0.00%
+- [run_cfg/tsp_aco/run_5.stdout](run_cfg/tsp_aco/run_5.stdout): Round 1 11.49%, Final Round 0.00%
 
-### Step 1. Set Up Environment Variables
+### TSP ACO with gpt-5.4-mini (3 reruns)
 
-Create a `.env` file in the project root:
+- [run_cfg/tsp_aco_5.4_mini/run_1.stdout](run_cfg/tsp_aco_5.4_mini/run_1.stdout): Round 1 12.16%, Final Round 0.00%
+- [run_cfg/tsp_aco_5.4_mini/run_2.stdout](run_cfg/tsp_aco_5.4_mini/run_2.stdout): Round 1 12.11%, Final Round 0.00%
+- [run_cfg/tsp_aco_5.4_mini/run_3.stdout](run_cfg/tsp_aco_5.4_mini/run_3.stdout): Round 1 12.45%, Final Round 0.00%
 
-```bash
-OPENAI_API_KEY="your-openai-api-key-here"
-```
+### CVRP ACO (5 reruns)
 
-### Step 2. Install Dependencies
+- [run_cfg/cvrp_aco/run_1.stdout](run_cfg/cvrp_aco/run_1.stdout): Round 1 3.72%, Final Round 0.00%
+- [run_cfg/cvrp_aco/run_2.stdout](run_cfg/cvrp_aco/run_2.stdout): Round 1 1.50%, Final Round 0.00%
+- [run_cfg/cvrp_aco/run_3.stdout](run_cfg/cvrp_aco/run_3.stdout): Round 1 3.14%, Final Round 0.00%
+- [run_cfg/cvrp_aco/run_4.stdout](run_cfg/cvrp_aco/run_4.stdout): Round 1 6.65%, Final Round 0.00%
+- [run_cfg/cvrp_aco/run_5.stdout](run_cfg/cvrp_aco/run_5.stdout): Round 1 2.62%, Final Round 0.11%
 
-```bash
-pip install -r requirements.txt
-```
+## Bottom Line
 
-### Step 3. Run Default Experiment
+Based on the current code and run artifacts in this repository:
 
-```bash
-python main.py
-```
+- Claimed figure/table magnitudes are not reproduced by these reruns.
+- Phase 2 contribution is mostly negligible.
+- Baseline ACO formulation is too naive to support strong high-level claims without stricter controls.
+- Model upgrades do not produce a corresponding qualitative shift in outcome patterns here.
 
-### Step 4. Run Custom Experiments
+Anyone using this project should treat paper-level performance claims as unverified unless they can be reproduced under explicitly matched settings, datasets, seeds, and evaluation protocol.
 
-**Specify a solver:**
+## Reproduction Pointers
 
-```bash
-python main.py solver=tsp_aco
-python main.py solver=cvrp_dr_f1_f2_f3
-```
-
-**Configure MCTS parameters:**
-
-```bash
-python main.py \
-       solver=tsp_aco \
-       mcts.outer_iterations=20 \
-       mcts.inner_iterations=10 \
-       mcts.final_iterations=10
-```
-
-**Customize LLM settings:**
-
-```bash
-python main.py \
-       llm.model=gpt-4o \
-       llm.temperature=0.8
-```
-
-### Step 5. Results
-
-Results are saved to `./results/`:
-
-- `F*_final_best.py`: Final optimized strategy implementations
-- `*_round_*.json`: Detailed experiment logs with performance metrics
-
----
-
-## 📋 4. Supported Problems and Solvers
-
-<div align="center">
-
-| Solver | Problems | Strategies |
-|:-------|:--------|:-----------|
-| ACO | TSP, CVRP, MKP | - **F1**: Heuristic & Pheromone Initialization<br>- **F2**: Probabilistic Transition Rule<br>- **F3**: Pheromone Update Rule |
-| ACO | OP, BPP | - **F1**: Heuristic & Pheromone Initialization<br>- **F2**: Pheromone Update Rule |
-| GLS | TSP | - **F1**: Guide Matrix Initialization |
-| DR  | TSP, CVRP, BPP | - **F1**: Initial Solution Construction Rule<br>- **F2**: Deconstruction Rule<br>- **F3**: Repair Rule |
-
-</div>
-
----
-
-## 🔧 5. Customization and Extension
-
-MOTIF is designed for easy extension. Follow these guides to add new problems and solvers.
-
-### Step 1. Create the problem directory:
-
-```
-problems/
-└── problem_solver/
-    ├── __init__.py
-	├── solver.py        # Solver implementation
-	├── eval.py          # Evaluation functions
-	├── generator.py     # Instance generator
-	├── prompts.py       # LLM prompts for each strategy
-	├── F1.py            # Strategy component 1 (baseline)
-	├── F2.py            # Strategy component 2 (baseline)
-	├── F3.py            # Strategy component 3 (baseline)
-	└── datasets/        # Training and test datasets
-```
-
-### Step 2. Implement core files:
-
-- **`prompts.py`**: Define `PROBLEM_DESCRIPTION`, `CONSTRAINTS`, and strategy prompts (`F1`, `F2`, `F3`)
-- **`F*.py`**: Provide baseline implementations for each strategy component
-
-### Step 3. Create solver configuration:
-
-```yaml
-# @package _global_.solver
-base_path: ${paths.problems_dir}/problem_solver # Path to problem-solver directory
-
-functions: [F1, F2] # Strategy files to optimize
-```
-
----
-
-## 📚 6. Citation
-
-If you find MOTIF useful in your research, please consider citing our paper:
-
-```bibtex
-@inproceedings{nguyen2026motif,
-  title     = {MOTIF: Multi-Strategy Optimization via Turn-based Interactive Framework},
-  author    = {Kiet, Nguyen Viet Tuan and Tung, Dao Van and Dao, Tran Cong and Binh, Huynh Thi Thanh},
-  booktitle = {Proceedings of the AAAI Conference on Artificial Intelligence (AAAI)},
-  year      = {2026},
-  address   = {Singapore},
-  month     = {January},
-  note      = {Oral Presentation}
-}
-```
-
----
-
-<div align="center">
-
-Made with ❤️ for the optimization research community!
-
-</div>
+- Configurations used for these reruns: [run_cfg](run_cfg)
+- Runtime entry point: [main.py](main.py)
+- Evaluation scripts: [problems/tsp_aco/eval.py](problems/tsp_aco/eval.py), [problems/cvrp_aco/eval.py](problems/cvrp_aco/eval.py), [problems/tsp_gls/eval.py](problems/tsp_gls/eval.py)
+- Logged structured results: [results](results)
